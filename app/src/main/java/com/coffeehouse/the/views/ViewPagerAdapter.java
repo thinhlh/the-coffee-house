@@ -1,10 +1,9 @@
-package com.example.cafeui;
+package com.coffeehouse.the.views;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
@@ -16,16 +15,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        switch (position){
-            case 0:
-                return new MainFragment();
-            case 1:
-                return new DangkiFragment();
-
-            default: return new MainFragment();
-
-        }
-
+        return (position == 1) ? new LoginFragment() : new SignUpFragment();
     }
 
     @Override
@@ -36,16 +26,6 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        String tittle ="";
-        switch (position){
-            case 0:
-                tittle="Đăng nhập";
-                break;
-            case 1:
-                tittle="Đăng ký";
-                break;
-        }
-
-        return tittle;
+        return (position == 1) ? "Đăng ký" : "Đăng nhập";
     }
 }

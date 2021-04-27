@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">The Coffee House</string>
+    <string name="auth_background">auth back ground</string>
+    <string name="login_by_google">Login by Google</string>
+    <string name="login_by_facebook">Login by facebook</string>
+    <string name="login_by_twitter">Login by Twitter</string>
+    <string name="login_greeting">Login Greeting</string>
+    <string name="phone_hint">Số điện thoại</string>
+    <string name="login_text">Đăng nhập</string>
+    <string name="forget_password_text">Quên mật khẩu</string>
+    <string name="email_hint">Email</string>
+    <string name="birthday_hint">Ngày sinh</string>
+    <string name="confirm_password_hint">Xác nhận mật khẩu</string>
+    <string name="sign_up_text">đăng ký</string>
+    <string name="password_hint">Mật khẩu</string>
 </resources>

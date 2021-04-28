@@ -15,7 +15,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        return (position == 1) ? new LoginFragment() : new SignUpFragment();
+        return (position == 0) ? new LoginFragment() : new SignUpFragment();
     }
 
     @Override
@@ -26,6 +26,6 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     @Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        return (position == 1) ? "Đăng ký" : "Đăng nhập";
+        return (position == 0) ? "Đăng nhập" : "Đăng ký";
     }
 }

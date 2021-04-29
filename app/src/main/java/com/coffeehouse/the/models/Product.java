@@ -3,6 +3,7 @@ package com.coffeehouse.the.models;
 import java.util.Map;
 
 public class Product {
+    private String id;
     private String title;
     private String description;
     private String categoryId;

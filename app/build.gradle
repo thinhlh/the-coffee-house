@@ -36,6 +36,9 @@ dependencies {
     implementation platform('com.google.firebase:firebase-bom:27.1.0')
     implementation 'com.google.firebase:firebase-firestore'
     implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.airbnb.android:lottie:3.4.1'
+    implementation 'com.synnapps:carouselview:0.1.5'
+    implementation 'androidx.cardview:cardview:1.0.0'
 
     //Login sdk
 //    implementation 'com.firebaseui:firebase-ui-auth:6.4.0'
@@ -45,6 +48,9 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    compileOnly 'com.google.android.wearable:wearable:2.6.0'
 }
 
 apply plugin: 'com.google.gms.google-services'
+

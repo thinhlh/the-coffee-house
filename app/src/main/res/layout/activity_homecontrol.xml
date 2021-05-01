@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HomecontrolActivity">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+
+
+
+             <RelativeLayout
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 >
+
+             <com.synnapps.carouselview.CarouselView
+              android:id="@+id/carouse_view"
+              android:layout_width="350dp"
+              android:layout_height="250dp"
+                 app:strokeColor="#FF777777"
+                 app:strokeWidth="1dp"
+              android:layout_centerHorizontal="true"
+              android:layout_marginTop="30dp"/>
+
+
+
+                 <androidx.cardview.widget.CardView
+                  android:id="@+id/cardview_1"
+                  android:layout_width="160dp"
+                  android:layout_height="100dp"
+                  android:layout_alignLeft="@+id/carouse_view"
+                  android:layout_marginTop="20dp"
+                  app:cardCornerRadius="8dp"
+                  app:cardElevation="8dp"
+                     android:layout_below="@+id/carouse_view">
+
+             <RelativeLayout
+                 android:layout_height="match_parent"
+                 android:layout_width="match_parent"
+                 android:padding="0dp"
+                 >
+
+                 <ImageView
+                     android:layout_width="60dp"
+                     android:layout_height="40dp"
+                     android:layout_alignParentBottom="true"
+                     android:layout_alignParentRight="true"
+                     android:src="@drawable/delivery">
+
+                 </ImageView>
+                 <TextView
+                     android:layout_width="120dp"
+                     android:layout_height="40dp"
+                     android:text="Giao tận nơi"
+                     android:textSize="20sp"
+                     android:layout_marginLeft="10dp"
+                     android:layout_marginTop="10dp"
+                     android:textStyle="bold"
+                     android:textColor="#5E5E5E"/>
+
+
+             </RelativeLayout>
+
+                 </androidx.cardview.widget.CardView>
+
+
+
+                 <androidx.cardview.widget.CardView
+                     android:id="@+id/cardview_2"
+                     android:layout_width="160dp"
+                     android:layout_height="100dp"
+                     android:layout_alignRight="@+id/carouse_view"
+                     android:layout_marginTop="20dp"
+                     app:cardCornerRadius="8dp"
+                     app:cardElevation="8dp"
+                     android:layout_below="@+id/carouse_view">
+
+                     <RelativeLayout
+                         android:layout_height="match_parent"
+                         android:layout_width="match_parent"
+                         android:padding="0dp"
+                         >
+
+                         <ImageView
+                             android:layout_width="60dp"
+                             android:layout_height="40dp"
+                             android:layout_alignParentBottom="true"
+                             android:layout_alignParentRight="true"
+                             android:src="@drawable/takeaway">
+
+                         </ImageView>
+                         <TextView
+                             android:layout_width="120dp"
+                             android:layout_height="40dp"
+                             android:text="Tự đến lấy"
+                             android:textSize="20sp"
+                             android:layout_marginLeft="10dp"
+                             android:layout_marginTop="10dp"
+                             android:textStyle="bold"
+                             android:textColor="#5E5E5E"/>
+
+
+                     </RelativeLayout>
+
+                 </androidx.cardview.widget.CardView>
+
+                 <androidx.cardview.widget.CardView
+                     android:id="@+id/cardview_3"
+                     android:layout_width="350dp"
+                     android:layout_height="140dp"
+                     android:layout_below="@+id/cardview_1"
+                     android:layout_centerHorizontal="true"
+                     android:layout_marginTop="20dp"
+                     app:cardCornerRadius="8dp"
+                     app:cardElevation="8dp"
+                     >
+
+
+                     <RelativeLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent"
+                         android:padding="0dp">
+
+                         <ImageView
+                             android:layout_width="match_parent"
+                             android:layout_height="match_parent"
+                             android:src="@drawable/promotion2">
+
+                         </ImageView>
+
+
+
+
+                     </RelativeLayout>
+
+                 </androidx.cardview.widget.CardView>
+
+               <androidx.cardview.widget.CardView
+                   android:id="@+id/cardview_4"
+                   android:layout_width="350dp"
+                   android:layout_height="140dp"
+                   app:cardCornerRadius="8dp"
+                   android:layout_below="@+id/cardview_3"
+                   android:layout_centerHorizontal="true"
+                   android:layout_marginTop="20dp">
+
+
+
+                   <RelativeLayout
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent"
+                       android:padding="0dp">
+
+                       <TextView
+                           android:layout_width="match_parent"
+                           android:layout_height="40dp"
+
+                           android:text="Thông báo mới"
+                           android:textStyle="bold"
+                           android:textColor="@color/black"
+                           android:layout_marginLeft="10dp"
+                           android:textSize="18dp"
+                           android:layout_marginTop="10dp"/>
+                       <ListView
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"/>
+
+
+
+
+
+                   </RelativeLayout>
+
+
+
+               </androidx.cardview.widget.CardView>
+
+"
+
+
+
+             </RelativeLayout>
+     
+
+
+    </ScrollView>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:labelVisibilityMode="labeled"
+        app:itemBackground="@color/white"
+        app:itemIconTint="@drawable/selector"
+        app:itemTextColor="@drawable/selector"
+        app:menu="@menu/menu_bottomnavigation" />
+
+</RelativeLayout>

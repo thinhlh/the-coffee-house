@@ -2,19 +2,29 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.coffeehouse.the">
 
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-feature android:name="android.hardware.type.watch" />
+
     <application
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TheCoffeeHouse">
-        <activity android:name=".views.MainActivity">
+        <activity android:name=".OthersActivity"></activity>
+        <activity android:name=".MembershipActivity" />
+        <activity android:name=".Store_LocationActivity" />
+        <activity android:name=".HomecontrolActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".OrderActivity" />
+        <activity android:name=".IntroductoryActivity" />
+        <activity android:name=".views.MainActivity" />
     </application>
 
 </manifest>

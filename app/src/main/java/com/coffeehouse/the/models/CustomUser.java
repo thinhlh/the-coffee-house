@@ -17,7 +17,7 @@ public class CustomUser {
     private List<String> favoriteProducts;
 
 
-    CustomUser() {
+    public CustomUser() {
         this.email = "";
         this.name = "";
         this.point = 0;

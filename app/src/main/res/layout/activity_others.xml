@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OthersActivity">
+    tools:context=".views.OthersActivity">
 
 
     <ScrollView
@@ -28,5 +28,5 @@
         app:itemBackground="@color/white"
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
-        app:menu="@menu/menu_bottomnavigation" />
+        app:menu="@menu/menu_bottom_navigation" />
 </RelativeLayout>

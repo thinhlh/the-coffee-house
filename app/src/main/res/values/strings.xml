@@ -13,7 +13,6 @@
     <string name="confirm_password_hint">Xác nhận mật khẩu</string>
     <string name="sign_up_text">đăng ký</string>
     <string name="password_hint">Mật khẩu</string>
-    <string name="title_activity_home_control">HomeControlActivity</string>
     <string name="action_home">Trang chủ</string>
     <string name="action_order">Đặt món</string>
     <string name="action_store_location">Cửa hàng</string>

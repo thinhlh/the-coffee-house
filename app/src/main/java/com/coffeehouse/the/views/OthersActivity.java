@@ -25,7 +25,7 @@ public class OthersActivity extends AppCompatActivity {
                 switch (item.getItemId()) {
                     case R.id.action_home:
                         startActivity(new Intent(getApplicationContext()
-                                , HomeControlActivity.class));
+                                , HomeActivity.class));
                         overridePendingTransition(0, 0);
                         return true;
                     case R.id.action_order:

@@ -26,7 +26,7 @@ public class StoreLocationsActivity extends AppCompatActivity {
                     case R.id.action_home:
 
                         startActivity(new Intent(getApplicationContext()
-                                , HomeControlActivity.class));
+                                , HomeActivity.class));
                         overridePendingTransition(0,0);
                         return true;
                     case R.id.action_order:

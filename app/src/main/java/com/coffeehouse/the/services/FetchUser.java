@@ -16,7 +16,6 @@ public class FetchUser extends Fetching {
 
         String uid = FirebaseAuth.getInstance().getUid();
         if (uid == null) uid = "";
-        return db.collection("user").document(uid).get();
+        return db.collection("users").document(uid).get();
     }
-
 }

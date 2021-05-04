@@ -1,18 +1,13 @@
 package com.coffeehouse.the.views;
 
-import androidx.annotation.NonNull;
+import android.os.Bundle;
+import android.view.WindowManager;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.os.Bundle;
-import android.renderscript.ScriptGroup;
-import android.view.MenuItem;
-import android.view.WindowManager;
-import android.widget.Toast;
-
 import com.coffeehouse.the.R;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.FirebaseApp;
 

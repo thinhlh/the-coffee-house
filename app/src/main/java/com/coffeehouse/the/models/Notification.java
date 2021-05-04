@@ -1,9 +1,5 @@
 package com.coffeehouse.the.models;
 
-import androidx.lifecycle.MutableLiveData;
-
-import com.coffeehouse.the.viewmodel.NotificationViewModel;
-
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.ArrayList;

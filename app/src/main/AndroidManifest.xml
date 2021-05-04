@@ -15,7 +15,7 @@
         <activity android:name=".views.OthersActivity" />
         <activity android:name=".views.MembershipActivity" />
         <activity android:name=".views.StoreLocationsActivity" />
-        <activity android:name=".views.HomeControlActivity">
+        <activity android:name=".views.HomeActivity">
             <!--            <intent-filter>-->
             <!--                <action android:name="android.intent.action.MAIN" />-->
 

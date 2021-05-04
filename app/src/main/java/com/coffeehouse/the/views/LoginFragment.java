@@ -15,16 +15,11 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.coffeehouse.the.R;
-import com.coffeehouse.the.services.FetchNotifications;
-import com.coffeehouse.the.services.FetchUser;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.concurrent.ExecutionException;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -170,7 +165,7 @@ public class LoginFragment extends Fragment {
                         if (task.isSuccessful()){
                             //new intent
                             Toast.makeText(getContext(), "Login success", Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(getContext(), HomeControlActivity.class));
+                            startActivity(new Intent(getContext(), HomeActivity.class));
                             pb_loginload.setVisibility(View.GONE);
 
                         } else {

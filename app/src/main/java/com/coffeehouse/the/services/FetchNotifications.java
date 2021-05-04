@@ -18,5 +18,4 @@ public class FetchNotifications extends Fetching {
     public Task<QuerySnapshot> fetchNotifications() {
         return db.collection("notifications").get();
     }
-
 }

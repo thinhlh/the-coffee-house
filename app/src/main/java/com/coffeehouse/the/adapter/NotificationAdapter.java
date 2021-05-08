@@ -30,7 +30,7 @@ public class NotificationAdapter extends Adapter<NotificationAdapter.Notificatio
 
     @Override
     public void onBindViewHolder(@NonNull NotificationViewHolder holder, int position) {
-        Notification currentNotification=notifications.get(position);
+        Notification currentNotification = notifications.get(position);
         holder.notificationListItemBinding.setNotification(currentNotification);
     }
 

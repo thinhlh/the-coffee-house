@@ -14,7 +14,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.NotificationAdapter;
 import com.coffeehouse.the.databinding.ActivityHomeBinding;
+import com.coffeehouse.the.models.CustomUser;
 import com.coffeehouse.the.models.Notification;
+import com.coffeehouse.the.services.FetchUser;
 import com.coffeehouse.the.viewModels.NotificationViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.synnapps.carouselview.CarouselView;
@@ -31,7 +33,6 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         ActivityHomeBinding activityHomeBinding = DataBindingUtil.setContentView(this, R.layout.activity_home);
-
 
         //BINDING
         notificationViewModel = new ViewModelProvider(this).get(NotificationViewModel.class);

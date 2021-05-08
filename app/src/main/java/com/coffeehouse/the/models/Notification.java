@@ -12,7 +12,7 @@ public class Notification {
     private Date dateTime;
     private String description;
     private String imageUrl;
-    private List<String> targetCustomerString = new ArrayList<>();
+    //private List<String> targetCustomerString = new ArrayList<>();
     private List<String> targetCustomer;
     private String title;
 

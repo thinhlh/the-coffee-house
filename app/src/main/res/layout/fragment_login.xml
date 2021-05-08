@@ -28,17 +28,17 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_password"
         style="@style/TextInputLayout.OutlinedBox.Custom"
-        app:startIconDrawable="@drawable/ic_baseline_lock_24"
-        app:endIconMode="password_toggle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/password_hint"
+        app:endIconMode="password_toggle"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.378"
-        app:layout_constraintWidth_percent=".8">
+        app:layout_constraintWidth_percent=".8"
+        app:startIconDrawable="@drawable/ic_baseline_lock_24">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -60,8 +60,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias=".7"
-        app:layout_constraintWidth_percent=".8"
-        />
+        app:layout_constraintWidth_percent=".8" />
 
     <Button
         android:id="@+id/textButton"

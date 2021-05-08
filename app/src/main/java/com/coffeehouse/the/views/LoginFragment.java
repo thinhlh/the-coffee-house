@@ -105,7 +105,7 @@ public class LoginFragment extends Fragment {
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                switch (v.getId()){
+                switch (v.getId()) {
                     case R.id.login_button:
                         AuthLogin();
                         break;
@@ -118,13 +118,13 @@ public class LoginFragment extends Fragment {
         return v;
     }
 
-    private boolean emailValidation(){
+    private boolean emailValidation() {
         String email = input_email.getEditText().getText().toString().trim();
-        if (email.isEmpty()){
+        if (email.isEmpty()) {
             input_email.setError("Email is required");
             input_email.requestFocus();
             return false;
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             input_email.setError("Invalid Email");
             input_email.requestFocus();
             return false;
@@ -133,17 +133,18 @@ public class LoginFragment extends Fragment {
             return true;
         }
     }
-    private boolean passwordValidation(){
+
+    private boolean passwordValidation() {
         String pw = input_password.getEditText().getText().toString().trim();
-        if (pw.isEmpty()){
+        if (pw.isEmpty()) {
             input_password.setError("Password is required");
             input_password.requestFocus();
             return false;
-        } else if (pw.length() < 6){
+        } else if (pw.length() < 6) {
             input_password.setError("Password required at least 6 characters");
             input_password.requestFocus();
             return false;
-        } else{
+        } else {
             input_password.setError(null);
             return true;
         }
@@ -151,8 +152,8 @@ public class LoginFragment extends Fragment {
 
     private void AuthLogin() {
         pb_loginload.setVisibility(View.VISIBLE);
-        if (!emailValidation() || !passwordValidation()){
-            pb_loginload.setVisibility(View.GONE);
+        if (!emailValidation() || !passwordValidation()) {
+            pb_loginload.setVisibility(View.INVISIBLE);
             return;
         }
         String email = input_email.getEditText().getText().toString().trim();
@@ -162,15 +163,16 @@ public class LoginFragment extends Fragment {
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             //new intent
                             Toast.makeText(getContext(), "Login success", Toast.LENGTH_LONG).show();
-                            startActivity(new Intent(getContext(), HomeActivity.class));
-                            pb_loginload.setVisibility(View.GONE);
+                            Intent intent = new Intent(getContext(), HomeActivity.class);
+                            startActivity(intent);
+                            //pb_loginload.setVisibility(View.GONE);
 
                         } else {
                             Toast.makeText(getContext(), "Account incorrect", Toast.LENGTH_SHORT).show();
-                            pb_loginload.setVisibility(View.GONE);
+                            pb_loginload.setVisibility(View.INVISIBLE);
                         }
                     }
                 });

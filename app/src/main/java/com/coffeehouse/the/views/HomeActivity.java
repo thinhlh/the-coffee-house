@@ -6,7 +6,6 @@ import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,19 +13,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.NotificationAdapter;
 import com.coffeehouse.the.databinding.ActivityHomeBinding;
-import com.coffeehouse.the.models.CustomUser;
-import com.coffeehouse.the.models.Notification;
-import com.coffeehouse.the.services.FetchUser;
-import com.coffeehouse.the.viewModels.NotificationViewModel;
+import com.coffeehouse.the.viewModels.HomeViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.synnapps.carouselview.CarouselView;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class HomeActivity extends AppCompatActivity {
-    private NotificationViewModel notificationViewModel;
-    //private NotificationAdapter notificationsAdapter;
+    private HomeViewModel homeViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +26,9 @@ public class HomeActivity extends AppCompatActivity {
 
         ActivityHomeBinding activityHomeBinding = DataBindingUtil.setContentView(this, R.layout.activity_home);
 
+
         //BINDING
-        notificationViewModel = new ViewModelProvider(this).get(NotificationViewModel.class);
+        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
         RecyclerView recyclerView = activityHomeBinding.notificationsRecyclerView;
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setHasFixedSize(true);
@@ -105,6 +98,6 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void getNotifications(NotificationAdapter notificationAdapter) {
-        notificationViewModel.getNotifications().observe(this, notificationAdapter::setNotificationsList);
+        homeViewModel.getNotifications().observe(this, notificationAdapter::setNotificationsList);
     }
 }

@@ -8,23 +8,23 @@ import java.util.List;
 import java.util.Map;
 
 public class CustomUser {
-    private String email;
-    private String name;
-    private int point;
-    //private String phoneNumber;
-    private Date birthday;
-    private String membership;
-    private List<String> favoriteProducts;
+    private String email = "";
+    private String name = "";
+    private int point = 0;
+    private String phoneNumber = "";
+    private Date birthday = Date.from(Instant.now());
+    private Membership membership = Membership.Bronze;
+    private List<String> favoriteProducts = new ArrayList<>();
 
 
     public CustomUser() {
-        this.email = "";
-        this.name = "";
-        this.point = 0;
-        //this.phoneNumber = "";
-        this.birthday = Date.from(Instant.EPOCH);
-        this.membership = "Membership.Bronze";
-        this.favoriteProducts = new ArrayList<>();
+    }
+
+    public CustomUser(String email, String name, String phoneNumber, Date birthday) {
+        this.email = email;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.birthday = birthday;
     }
 
     public String getEmail() {
@@ -51,13 +51,13 @@ public class CustomUser {
         this.point = point;
     }
 
-//    public String getPhoneNumber() {
-//        return phoneNumber;
-//    }
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
 
-//    public void setPhoneNumber(String phoneNumber) {
-//        this.phoneNumber = phoneNumber;
-//    }
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
 
     public Date getBirthday() {
         return birthday;
@@ -67,11 +67,11 @@ public class CustomUser {
         this.birthday = birthday;
     }
 
-    public String getMembership() {
+    public Membership getMembership() {
         return membership;
     }
 
-    public void setMembership(String membership) {
+    public void setMembership(Membership membership) {
         this.membership = membership;
     }
 
@@ -87,22 +87,22 @@ public class CustomUser {
         this.email = (String) json.get("email");
         this.name = (String) json.get("name");
         this.point = Integer.parseInt((String) json.get("point"));
-        //this.phoneNumber = (String) json.getOrDefault("phone", "");
+        this.phoneNumber = (String) json.getOrDefault("phone", "");
         this.birthday = Date.from(((Timestamp) json.get("birthday")).toInstant());
-//        switch ((String) json.get("membership")) {
-//            case "Membership.Silver":
-//                this.membership = Membership.Silver;
-//                break;
-//            case "Membership.Gold":
-//                this.membership = Membership.Gold;
-//                break;
-//            case "Membership.Diamond":
-//                this.membership = Membership.Diamond;
-//                break;
-//            default:
-//                this.membership = Membership.Bronze;
-//                break;
-//        }
-//        this.favoriteProducts = (List<String>) json.get("favoriteProducts");
+        switch ((String) json.get("membership")) {
+            case "Membership.Silver":
+                this.membership = Membership.Silver;
+                break;
+            case "Membership.Gold":
+                this.membership = Membership.Gold;
+                break;
+            case "Membership.Diamond":
+                this.membership = Membership.Diamond;
+                break;
+            default:
+                this.membership = Membership.Bronze;
+                break;
+        }
+        this.favoriteProducts = (List<String>) json.get("favoriteProducts");
     }
 }

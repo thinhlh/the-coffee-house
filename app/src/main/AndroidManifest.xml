@@ -25,7 +25,9 @@
         <activity android:name=".views.OrderActivity" />
         <activity android:name=".views.GreetingActivity" />
 
-        <activity android:name=".views.MainActivity">
+        <activity
+            android:name=".views.MainActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -18,6 +18,7 @@
     <string name="action_store_location">Cửa hàng</string>
     <string name="action_accumulate_point">Tích điểm</string>
     <string name="action_others">Khác</string>
+    <string name="customer_name_hint">Tên Khách Hàng</string>
 
     <!--
     This string is used for square devices and overridden by hello_world in

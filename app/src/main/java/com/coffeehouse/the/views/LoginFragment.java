@@ -70,15 +70,9 @@ public class LoginFragment extends Fragment {
             password = Objects.requireNonNull(input_password.getEditText()).getText().toString().trim();
 
             if (validate()) {
-                try {
-                    loginProgress.setVisibility(View.VISIBLE);
-                    signIn();
-                    loginProgress.setVisibility(View.GONE);
-
-
-                } catch (ExecutionException | InterruptedException e) {
-                    e.printStackTrace();
-                }
+                loginProgress.setVisibility(View.VISIBLE);
+                signIn();
+                loginProgress.setVisibility(View.GONE);
             }
         });
         return v;
@@ -118,14 +112,14 @@ public class LoginFragment extends Fragment {
         }
     }
 
-    private void signIn() throws ExecutionException, InterruptedException {
+    private void signIn() {
 
         authViewModel.signIn(email, password)
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         startActivity(new Intent(getContext(), HomeActivity.class));
                     } else {
-                        Toast.makeText(getContext(), "Account incorrect", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "Login Failed", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

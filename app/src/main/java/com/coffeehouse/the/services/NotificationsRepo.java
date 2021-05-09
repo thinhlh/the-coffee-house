@@ -23,8 +23,8 @@ public class NotificationsRepo extends Fetching {
 
     private MutableLiveData<List<Notification>> data = new MutableLiveData<>();
 
-    public NotificationsRepo() {
-
+    private Task<QuerySnapshot> fetchNotifications() {
+        return db.collection("notifications").get();
     }
 
     private void fetchData() {
@@ -34,25 +34,22 @@ public class NotificationsRepo extends Fetching {
                 if (task.isSuccessful()) {
                     for (QueryDocumentSnapshot document : task.getResult()) {
                         Notification notification = document.toObject(Notification.class);
-                        Log.d("TITLE", notification.getTitle());
                         notification.setId(document.getId());
                         notifications.add(notification);
                         data.setValue(notifications);
                     }
                 } else {
-                    Log.d("", "Error");
+                    Log.d("", "Fetching Notifications Error");
                 }
             });
         }
     }
 
-    public LiveData<List<Notification>> getData() {
+    public LiveData<List<Notification>> getNotifications() {
         if (data == null || data.getValue() == null || data.getValue().isEmpty())
             fetchData();
         return data;
     }
 
-    public Task<QuerySnapshot> fetchNotifications() {
-        return db.collection("notifications").get();
-    }
+
 }

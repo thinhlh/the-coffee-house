@@ -18,7 +18,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.synnapps.carouselview.CarouselView;
 
 public class HomeActivity extends AppCompatActivity {
-    private HomeViewModel homeViewModel;
+    private HomeViewModel homeViewModel = new HomeViewModel();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

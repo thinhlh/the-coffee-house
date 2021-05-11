@@ -10,12 +10,13 @@ public class UserRepo extends Fetching {
 
     private CustomUser user = new CustomUser();
 
-    private LiveData<CustomUser> data = new MutableLiveData<>();
+    private MutableLiveData<CustomUser> data = new MutableLiveData<>();
 
 
     public Task<CustomUser> fetchUser(String uid) {
         return db.collection("users").document(uid).get().continueWith(task -> {
             user = task.getResult().toObject(CustomUser.class);
+            data.setValue(user);
             return user;
         });
     }

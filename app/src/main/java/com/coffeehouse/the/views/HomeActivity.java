@@ -21,7 +21,7 @@ import com.synnapps.carouselview.CarouselView;
 
 public class HomeActivity extends AppCompatActivity {
     private ViewPager mViewPager;
-  private  BottomNavigationView navigationView;
+    private BottomNavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +33,6 @@ public class HomeActivity extends AppCompatActivity {
         getSupportActionBar().hide();
 
 
-
         navigationView = findViewById(R.id.bottom_navigation);
         mViewPager = findViewById(R.id.home_viewpager);
         setUpViewPager();
@@ -42,8 +41,8 @@ public class HomeActivity extends AppCompatActivity {
         navigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.action_home:
-                      mViewPager.setCurrentItem(0);
-                   break;
+                    mViewPager.setCurrentItem(0);
+                    break;
                 case R.id.action_order:
                     mViewPager.setCurrentItem(1);
                     break;
@@ -59,11 +58,10 @@ public class HomeActivity extends AppCompatActivity {
                 case R.id.action_others:
                     mViewPager.setCurrentItem(4);
 
-                  break;
+                    break;
             }
             return true;
         });
-
 
 
     }
@@ -72,43 +70,39 @@ public class HomeActivity extends AppCompatActivity {
         ViewPagerAdapterHome viewPagerAdapterHome = new ViewPagerAdapterHome(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         mViewPager.setAdapter(viewPagerAdapterHome);
 
-       mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
-           @Override
-           public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
-               switch(position){
-                   case 0:
-                       navigationView.getMenu().findItem(R.id.action_home).setChecked(true);
-                       break;
-                   case 1:
-                       navigationView.getMenu().findItem(R.id.action_order).setChecked(true);
-                       break;
-                   case 2:
-                       navigationView.getMenu().findItem(R.id.action_store_location).setChecked(true);
-                       break;
-                   case 3:
-                       navigationView.getMenu().findItem(R.id.action_accumulate_point).setChecked(true);
-                       break;
-                   case 4:
-                       navigationView.getMenu().findItem(R.id.action_others).setChecked(true);
-                       break;
+        mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+                switch (position) {
+                    case 0:
+                        navigationView.getMenu().findItem(R.id.action_home).setChecked(true);
+                        break;
+                    case 1:
+                        navigationView.getMenu().findItem(R.id.action_order).setChecked(true);
+                        break;
+                    case 2:
+                        navigationView.getMenu().findItem(R.id.action_store_location).setChecked(true);
+                        break;
+                    case 3:
+                        navigationView.getMenu().findItem(R.id.action_accumulate_point).setChecked(true);
+                        break;
+                    case 4:
+                        navigationView.getMenu().findItem(R.id.action_others).setChecked(true);
+                        break;
 
-               }
-           }
+                }
+            }
 
-           @Override
-           public void onPageSelected(int position) {
+            @Override
+            public void onPageSelected(int position) {
 
-           }
+            }
 
-           @Override
-           public void onPageScrollStateChanged(int state) {
+            @Override
+            public void onPageScrollStateChanged(int state) {
 
-           }
-       });
-
-
-
-
+            }
+        });
 
 
     }

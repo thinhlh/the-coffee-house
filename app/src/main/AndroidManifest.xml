@@ -12,27 +12,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TheCoffeeHouse">
-        <activity android:name=".views.OthersActivity" />
-        <activity android:name=".views.MembershipActivity" />
-        <activity android:name=".views.StoreLocationsActivity" />
+
         <activity android:name=".views.HomeActivity">
-            <!--            <intent-filter>-->
-            <!--                <action android:name="android.intent.action.MAIN" />-->
-
-            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
-            <!--            </intent-filter>-->
-        </activity>
-        <activity android:name=".views.OrderActivity" />
-        <activity android:name=".views.GreetingActivity" />
-
-        <activity
-            android:name=".views.MainActivity"
-            android:windowSoftInputMode="adjustPan|adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+
+        <activity android:name=".views.GreetingActivity" />
+
+        <activity
+            android:name=".views.MainActivity"
+            android:windowSoftInputMode="adjustPan|adjustResize">
+
         </activity>
 
     </application>

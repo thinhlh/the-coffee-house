@@ -44,6 +44,7 @@ dependencies {
     implementation 'com.synnapps:carouselview:0.1.5'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    implementation 'org.jetbrains:annotations:15.0'
 
     //Login sdk
 //    implementation 'com.firebaseui:firebase-ui-auth:6.4.0'

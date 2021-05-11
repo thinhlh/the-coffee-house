@@ -6,9 +6,11 @@ import android.view.WindowManager;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.NotificationAdapter;
@@ -18,86 +20,98 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.synnapps.carouselview.CarouselView;
 
 public class HomeActivity extends AppCompatActivity {
-    private HomeViewModel homeViewModel = new HomeViewModel();
+    private ViewPager mViewPager;
+  private  BottomNavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_home);
 
-        ActivityHomeBinding activityHomeBinding = DataBindingUtil.setContentView(this, R.layout.activity_home);
-
-
-        //BINDING
-        homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
-        RecyclerView recyclerView = activityHomeBinding.notificationsRecyclerView;
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setHasFixedSize(true);
-
-        NotificationAdapter notificationsAdapter = new NotificationAdapter();
-        recyclerView.setAdapter(notificationsAdapter);
-        getNotifications(notificationsAdapter);
-        //END_BINDING
 
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
-        BottomNavigationView navigationView = findViewById(R.id.bottom_navigation);
-        navigationView.setSelectedItemId(R.id.action_home);
+
+
+
+        navigationView = findViewById(R.id.bottom_navigation);
+        mViewPager = findViewById(R.id.home_viewpager);
+        setUpViewPager();
+
+
         navigationView.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
                 case R.id.action_home:
-
-                    return true;
+                      mViewPager.setCurrentItem(0);
+                   break;
                 case R.id.action_order:
-
-                    startActivity(new Intent(getApplicationContext()
-                            , OrderActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
+                    mViewPager.setCurrentItem(1);
+                    break;
                 case R.id.action_store_location:
+                    mViewPager.setCurrentItem(2);
 
-                    startActivity(new Intent(getApplicationContext()
-                            , StoreLocationsActivity.class));
-                    overridePendingTransition(0, 0);
-                    return true;
+                    break;
                 case R.id.action_accumulate_point:
+                    mViewPager.setCurrentItem(3);
 
-                    startActivity(new Intent(getApplicationContext()
-                            , MembershipActivity.class));
-                    overridePendingTransition(0, 0);
+                    break;
+
                 case R.id.action_others:
+                    mViewPager.setCurrentItem(4);
 
-                    startActivity(new Intent(getApplicationContext()
-                            , OthersActivity.class));
-                    overridePendingTransition(0, 0);
+                  break;
             }
             return true;
         });
 
-        CarouselView carouselView = (CarouselView) findViewById(R.id.carouse_view);
-        carouselView.setPageCount(5);
-        carouselView.setImageListener((position, imageView) -> {
-            switch (position) {
-                case 0:
-                    imageView.setImageResource(R.drawable.carouselview1);
-                    break;
-                case 1:
-                    imageView.setImageResource(R.drawable.carouselview2);
-                    break;
-                case 2:
-                    imageView.setImageResource(R.drawable.carouselview3);
-                    break;
-                case 3:
-                    imageView.setImageResource(R.drawable.carouselview4);
-                    break;
-                case 4:
-                    imageView.setImageResource(R.drawable.carouselview5);
-                    break;
-            }
-        });
+
 
     }
 
-    private void getNotifications(NotificationAdapter notificationAdapter) {
-        homeViewModel.getNotifications().observe(this, notificationAdapter::setNotificationsList);
+    private void setUpViewPager() {
+        ViewPagerAdapterHome viewPagerAdapterHome = new ViewPagerAdapterHome(getSupportFragmentManager(), FragmentStatePagerAdapter.BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
+        mViewPager.setAdapter(viewPagerAdapterHome);
+
+       mViewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+           @Override
+           public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+               switch(position){
+                   case 0:
+                       navigationView.getMenu().findItem(R.id.action_home).setChecked(true);
+                       break;
+                   case 1:
+                       navigationView.getMenu().findItem(R.id.action_order).setChecked(true);
+                       break;
+                   case 2:
+                       navigationView.getMenu().findItem(R.id.action_store_location).setChecked(true);
+                       break;
+                   case 3:
+                       navigationView.getMenu().findItem(R.id.action_accumulate_point).setChecked(true);
+                       break;
+                   case 4:
+                       navigationView.getMenu().findItem(R.id.action_others).setChecked(true);
+                       break;
+
+               }
+           }
+
+           @Override
+           public void onPageSelected(int position) {
+
+           }
+
+           @Override
+           public void onPageScrollStateChanged(int state) {
+
+           }
+       });
+
+
+
+
+
+
     }
+
+
 }

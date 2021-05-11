@@ -13,9 +13,9 @@ import java.util.concurrent.ExecutionException;
 
 public class AuthViewModel extends ViewModel {
 
-    private FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
-    private UserRepo userRepo = new UserRepo();
+    private final UserRepo userRepo = new UserRepo();
 
     public Task<CustomUser> signIn(String email, String password) {
         return mAuth.signInWithEmailAndPassword(email, password).continueWithTask(task -> userRepo.fetchUser(task.getResult().getUser().getUid()));

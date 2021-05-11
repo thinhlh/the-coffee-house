@@ -56,7 +56,7 @@ public class ProductsRepo extends Fetching {
                 list.add(product);
         }
         
-        MutableLiveData<List<Product>> res = new MutableLiveData<List<Product>>();
+        MutableLiveData<List<Product>> res = new MutableLiveData<>();
         res.setValue(list);
         return res;
 

@@ -24,11 +24,8 @@ public class UserRepo extends Fetching {
     public Task<CustomUser> createUser(String uid, CustomUser user) {
         return db.collection("users").document(uid).set(user).continueWith(task -> {
             this.user = user;
-            return this.user;
+            return user;
         });
-    }
-
-    public void signOut() {
     }
 
     public LiveData<CustomUser> getUser() {

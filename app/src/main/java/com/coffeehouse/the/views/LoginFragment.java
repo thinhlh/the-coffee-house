@@ -18,7 +18,6 @@ import com.coffeehouse.the.viewModels.AuthViewModel;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Objects;
-import java.util.concurrent.ExecutionException;
 
 public class LoginFragment extends Fragment {
 
@@ -58,7 +57,7 @@ public class LoginFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.fragment_login, container, false);
+        View v = inflater.inflate(R.layout.login_fragment, container, false);
 
         input_email = (TextInputLayout) v.findViewById(R.id.text_input_email);
         input_password = (TextInputLayout) v.findViewById(R.id.text_input_password);

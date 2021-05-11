@@ -96,7 +96,6 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.viewModels.AuthViewModel;
@@ -150,7 +149,7 @@ public class SignUpFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.fragment_signup, container, false);
+        View v = inflater.inflate(R.layout.signup_fragment, container, false);
         Init(v);
 
         //CREATE DATE_PICKER

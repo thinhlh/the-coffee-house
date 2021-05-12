@@ -14,6 +14,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Objects;
+
 public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     HomeFragment homeFragment = new HomeFragment();
@@ -29,7 +31,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         setContentView(R.layout.activity_home);
 
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().hide();
+        Objects.requireNonNull(getSupportActionBar()).hide();
 
         loadFragment(homeFragment);
         BottomNavigationView navigation = findViewById(R.id.bottom_navigation);

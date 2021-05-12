@@ -101,48 +101,28 @@ import com.coffeehouse.the.R;
 import com.coffeehouse.the.viewModels.AuthViewModel;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.datepicker.MaterialDatePicker;
-import com.google.android.material.datepicker.MaterialPickerOnPositiveButtonClickListener;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Objects;
 
-public class SignUpFragment extends Fragment {
-
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+public class SignUpFragment extends Fragment implements View.OnClickListener {
 
     TextInputLayout input_name, input_email, input_phone, input_password, input_cf_password, mDisplayDate;
     String name, email, phone, password, cf_password, birthday;
     Date birthDate;
 
-    private AuthViewModel authViewModel = new AuthViewModel();
+    private final AuthViewModel authViewModel = new AuthViewModel();
 
     public SignUpFragment() {
-    }
-
-    public static SignUpFragment newInstance(String param1, String param2) {
-        SignUpFragment fragment = new SignUpFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
@@ -150,23 +130,20 @@ public class SignUpFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.signup_fragment, container, false);
-        Init(v);
+        init(v);
 
         //CREATE DATE_PICKER
-        MaterialDatePicker.Builder builder = MaterialDatePicker.Builder.datePicker();
+        MaterialDatePicker.Builder<Long> builder = MaterialDatePicker.Builder.datePicker();
         builder.setTitleText("Select birthday date");
         builder.setTheme(R.style.MaterialCalendarTheme);
-        MaterialDatePicker materialDatePicker = builder.build();
-        materialDatePicker.addOnPositiveButtonClickListener(new MaterialPickerOnPositiveButtonClickListener() {
-            @Override
-            public void onPositiveButtonClick(Object selection) {
-                String datePicked = materialDatePicker.getHeaderText();
-                mDisplayDate.getEditText().setText(datePicked);
-                try {
-                    birthDate = new SimpleDateFormat("MMM dd, yyyy").parse(datePicked);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                }
+        MaterialDatePicker<Long> materialDatePicker = builder.build();
+        materialDatePicker.addOnPositiveButtonClickListener(selection -> {
+            String datePicked = materialDatePicker.getHeaderText();
+            Objects.requireNonNull(mDisplayDate.getEditText()).setText(datePicked);
+            try {
+                birthDate = new SimpleDateFormat("MMM dd, yyyy", Locale.US).parse(datePicked);
+            } catch (ParseException e) {
+                e.printStackTrace();
             }
         });
 
@@ -179,21 +156,10 @@ public class SignUpFragment extends Fragment {
         });
 
 
-        mDisplayDate.getEditText().setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        mDisplayDate.getEditText().setOnClickListener(v1 -> materialDatePicker.show(getFragmentManager(), "DATE_PICKER"));
+        mDisplayDate.getEditText().setOnFocusChangeListener((v12, hasFocus) -> {
+            if (hasFocus) {
                 materialDatePicker.show(getFragmentManager(), "DATE_PICKER");
-            }
-        });
-
-        mDisplayDate.getEditText().setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (hasFocus) {
-                    materialDatePicker.show(getFragmentManager(), "DATE_PICKER");
-                } else {
-
-                }
             }
         });
 
@@ -209,7 +175,7 @@ public class SignUpFragment extends Fragment {
         birthday = Objects.requireNonNull(mDisplayDate.getEditText()).getText().toString().trim();
     }
 
-    private void Init(View v) {
+    private void init(View v) {
         input_name = (TextInputLayout) v.findViewById(R.id.name_text_input);
         input_email = (TextInputLayout) v.findViewById(R.id.email_text_input);
         input_phone = (TextInputLayout) v.findViewById(R.id.phone_text_input);
@@ -218,7 +184,7 @@ public class SignUpFragment extends Fragment {
         mDisplayDate = (TextInputLayout) v.findViewById(R.id.birthday);
     }
 
-    private void signUp(){
+    private void signUp() {
         authViewModel.signUp(email, name, password, phone, birthDate).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 startActivity(new Intent(getContext(), HomeActivity.class));
@@ -301,5 +267,10 @@ public class SignUpFragment extends Fragment {
             input_phone.setError(null);
             return true;
         }
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

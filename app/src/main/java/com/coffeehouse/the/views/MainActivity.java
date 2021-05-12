@@ -15,12 +15,17 @@ import com.google.firebase.FirebaseApp;
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
-    TabLayout tabLayout;
-    ViewPager viewPager;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         FirebaseApp.initializeApp(this);
         super.onCreate(savedInstanceState);
+
+
+
+        TabLayout tabLayout;
+        ViewPager viewPager;
         setContentView(R.layout.auth_skeleton);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Objects.requireNonNull(getSupportActionBar()).hide();

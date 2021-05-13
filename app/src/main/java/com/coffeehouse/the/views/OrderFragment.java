@@ -11,12 +11,11 @@ import androidx.fragment.app.Fragment;
 
 import com.coffeehouse.the.R;
 
-public class othersfragment extends Fragment {
+public class OrderFragment extends Fragment {
     @Nullable
     @org.jetbrains.annotations.Nullable
     @Override
     public View onCreateView(@NonNull @org.jetbrains.annotations.NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-       View v = inflater.inflate(R.layout.others_fragment,container,false);
-       return  v;
+        return inflater.inflate(R.layout.order_fragment,container,false);
     }
 }

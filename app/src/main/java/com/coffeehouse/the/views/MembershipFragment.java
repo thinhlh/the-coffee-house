@@ -11,12 +11,12 @@ import androidx.fragment.app.Fragment;
 
 import com.coffeehouse.the.R;
 
-public class storelocationfragment extends Fragment {
+public class MembershipFragment extends Fragment {
     @Nullable
     @org.jetbrains.annotations.Nullable
     @Override
     public View onCreateView(@NonNull @org.jetbrains.annotations.NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-       View v = inflater.inflate(R.layout.storelocation_fragment,container,false);
+       View v = inflater.inflate(R.layout.membership_fragment,container,false);
        return  v;
     }
 }

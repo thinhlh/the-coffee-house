@@ -1,4 +1,4 @@
-package com.coffeehouse.the.views;
+package com.coffeehouse.the.adapter;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -6,9 +6,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-public class ViewPagerAdapter extends FragmentStatePagerAdapter {
+import com.coffeehouse.the.views.LoginFragment;
+import com.coffeehouse.the.views.SignUpFragment;
 
-    public ViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
+public class AuthViewPagerAdapter extends FragmentStatePagerAdapter {
+
+    public AuthViewPagerAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);
     }
 

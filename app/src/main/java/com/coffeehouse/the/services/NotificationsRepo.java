@@ -51,5 +51,9 @@ public class NotificationsRepo extends Fetching {
         return data;
     }
 
+    public int getNumberOfNotifications() {
+        return notifications.size();
+    }
+
 
 }

@@ -1,10 +1,15 @@
 package com.coffeehouse.the.views;
 
+import android.annotation.SuppressLint;
+import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.preference.PreferenceManager;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,69 +19,122 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.coffeehouse.the.R;
+import com.coffeehouse.the.services.CustomGoogleSignInClient;
 import com.coffeehouse.the.viewModels.AuthViewModel;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.common.api.Scope;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.GoogleAuthCredential;
+import com.google.firebase.auth.GoogleAuthProvider;
 
 import java.util.Objects;
-import java.util.concurrent.ExecutionException;
 
-public class LoginFragment extends Fragment {
+public class LoginFragment extends Fragment implements View.OnClickListener {
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private final AuthViewModel authViewModel = new AuthViewModel();
+    private TextInputLayout input_email, input_password;
+    private String email, password;
 
-    private String mParam1;
-    private String mParam2;
+    private static final int RC_SIGN_IN = 9000;
+    private GoogleSignInClient mGoogleSignInClient;
 
-    AuthViewModel authViewModel = new AuthViewModel();
-    TextInputLayout input_email, input_password;
-    String email, password;
-
-
-    public LoginFragment() {
-    }
-
-    public static LoginFragment newInstance(String param1, String param2) {
-        LoginFragment fragment = new LoginFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View v = inflater.inflate(R.layout.fragment_login, container, false);
+        View v = inflater.inflate(R.layout.login_fragment, container, false);
 
         input_email = (TextInputLayout) v.findViewById(R.id.text_input_email);
         input_password = (TextInputLayout) v.findViewById(R.id.text_input_password);
-        Button btn_login = (Button) v.findViewById(R.id.login_button);
-        ProgressBar loginProgress = (ProgressBar) v.findViewById(R.id.login_progress);
+        ((Button) v.findViewById(R.id.login_button)).setOnClickListener(this);
 
-        btn_login.setOnClickListener(loginButton -> {
-            email = Objects.requireNonNull(input_email.getEditText()).getText().toString().trim();
-            password = Objects.requireNonNull(input_password.getEditText()).getText().toString().trim();
+//        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(v.getContext());
+//        navigateToHome();
 
-            if (validate()) {
-                loginProgress.setVisibility(View.VISIBLE);
-                signIn();
-                loginProgress.setVisibility(View.GONE);
-            }
-        });
+        //GOOGLE SIGN IN
+        SignInButton googleSignInButton = (SignInButton) v.findViewById(R.id.google_sign_in);
+        googleSignInButton.setSize(SignInButton.SIZE_WIDE);
+        googleSignInButton.setOnClickListener(this);
+
+        mGoogleSignInClient = CustomGoogleSignInClient.mGoogleSignInClient(v.getContext());
+
         return v;
     }
+
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.google_sign_in:
+                googleSignIn();
+                break;
+            case R.id.login_button:
+                userPasswordSignIn();
+        }
+    }
+
+    private void navigateToHome() {
+        startActivity(new Intent(getContext(), HomeActivity.class));
+    }
+
+
+    //EVENTS HANDLING
+
+    private void userPasswordSignIn() {
+
+        email = Objects.requireNonNull(input_email.getEditText()).getText().toString().trim();
+        password = Objects.requireNonNull(input_password.getEditText()).getText().toString().trim();
+
+        if (validate()) {
+            //loginProgress.setVisibility(View.VISIBLE);
+            authViewModel.signIn(email, password)
+                    .addOnCompleteListener(task -> {
+                        if (task.isSuccessful()) {
+                            navigateToHome();
+                        } else {
+                            Toast.makeText(getContext(), "Login Failed", Toast.LENGTH_SHORT).show();
+                        }
+                        //loginProgress.setVisibility(View.GONE);
+                    });
+        }
+    }
+
+    private void googleSignIn() {
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == RC_SIGN_IN) {
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                authViewModel.handleGoogleSignIn(task).addOnCompleteListener(task1 -> {
+                    if (task1.isSuccessful()) {
+                        navigateToHome();
+                    }
+                });
+            } catch (ApiException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 
     private boolean validate() {
         return emailValidation() && passwordValidation();
@@ -110,17 +168,5 @@ public class LoginFragment extends Fragment {
             input_password.setError(null);
             return true;
         }
-    }
-
-    private void signIn() {
-
-        authViewModel.signIn(email, password)
-                .addOnCompleteListener(task -> {
-                    if (task.isSuccessful()) {
-                        startActivity(new Intent(getContext(), HomeActivity.class));
-                    } else {
-                        Toast.makeText(getContext(), "Login Failed", Toast.LENGTH_SHORT).show();
-                    }
-                });
     }
 }

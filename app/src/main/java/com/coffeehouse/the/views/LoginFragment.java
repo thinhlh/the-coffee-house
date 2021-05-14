@@ -5,6 +5,7 @@ import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
@@ -21,6 +22,14 @@ import android.widget.Toast;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.services.CustomGoogleSignInClient;
 import com.coffeehouse.the.viewModels.AuthViewModel;
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.FacebookSdk;
+import com.facebook.internal.WebDialog;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -28,14 +37,21 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.common.api.Scope;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthCredential;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Objects;
+import java.util.concurrent.Executor;
 
 public class LoginFragment extends Fragment implements View.OnClickListener {
 
@@ -46,6 +62,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     private static final int RC_SIGN_IN = 9000;
     private GoogleSignInClient mGoogleSignInClient;
 
+    private CallbackManager mCallbackManager;
+    private LoginButton loginButton;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -57,11 +75,11 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.login_fragment, container, false);
+        FacebookSdk.sdkInitialize(getContext());
 
         input_email = (TextInputLayout) v.findViewById(R.id.text_input_email);
         input_password = (TextInputLayout) v.findViewById(R.id.text_input_password);
         ((Button) v.findViewById(R.id.login_button)).setOnClickListener(this);
-
 //        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(v.getContext());
 //        navigateToHome();
 
@@ -84,6 +102,10 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.login_button:
                 userPasswordSignIn();
+                break;
+            case R.id.facebook_sign_in:
+                facebookSignIn(v);
+                break;
         }
     }
 
@@ -132,8 +154,57 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             } catch (ApiException e) {
                 e.printStackTrace();
             }
+        } else {
+            mCallbackManager.onActivityResult(requestCode, resultCode, data);
         }
     }
+
+
+
+    private void facebookSignIn(View v) {
+        mCallbackManager = CallbackManager.Factory.create();
+        loginButton = v.findViewById(R.id.facebook_sign_in);
+        loginButton.setReadPermissions("name", "email", "phone_number", "birthday");
+        loginButton.registerCallback(mCallbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                Log.d("FACEBOOK", "facebook:onSuccess:" + loginResult);
+                authViewModel.handleFacebookAccessToken(loginResult.getAccessToken()).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()){
+                        navigateToHome();
+                    } else {
+                        Log.e("FACEBOOK SIGN IN FAILED", "FAILLLLLL");
+                    }
+                });
+
+                //handleFacebookAccessToken(loginResult.getAccessToken());
+            }
+
+            @Override
+            public void onCancel() {
+                Log.d("FACEBOOK", "facebook:onCancel");
+            }
+
+            @Override
+            public void onError(FacebookException error) {
+                Log.d("FACEBOOK", "facebook:onError", error);
+            }
+        });
+    }
+
+//    private void handleFacebookAccessToken(AccessToken token) {
+//        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
+//        FirebaseAuth.getInstance().signInWithCredential(credential)
+//                .addOnCompleteListener((Executor) this, new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        if (task.isSuccessful()) {
+//                            navigateToHome();
+//                        } else {
+//                        }
+//                    }
+//                });
+//    }
 
 
     private boolean validate() {

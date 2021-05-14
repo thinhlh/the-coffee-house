@@ -71,66 +71,78 @@
             app:layout_constraintTop_toBottomOf="@id/text_input_password" />
 
 
-        <com.google.android.material.progressindicator.CircularProgressIndicator
-            android:id="@+id/login_progress"
-            android:layout_width="301dp"
-            android:layout_height="match_parent"
-            android:indeterminate="true"
-            android:visibility="invisible"
-            app:indicatorColor="@color/accent_color"
-            app:indicatorSize="80dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+<!--        <com.google.android.material.progressindicator.CircularProgressIndicator-->
+<!--            android:id="@+id/login_progress"-->
+<!--            android:layout_width="301dp"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:indeterminate="true"-->
+<!--            android:visibility="invisible"-->
+<!--            app:indicatorColor="@color/accent_color"-->
+<!--            app:indicatorSize="80dp"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintStart_toStartOf="parent" />-->
 
-        <com.google.android.gms.common.SignInButton
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/facebook_sign_in"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/google_sign_in"/>
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="3dp"
+            android:textSize="20sp"
+            />
 
-<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="215dp"-->
-<!--            android:orientation="horizontal">-->
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/google_sign_in"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-<!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--                android:id="@+id/fab_google"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:contentDescription="@string/login_by_google"-->
-<!--                android:elevation="70dp"-->
-<!--                android:foreground="@drawable/google_icon"-->
-<!--                app:backgroundTint="@color/white"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toStartOf="@+id/fab_facebook"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
 
-<!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--                android:id="@+id/fab_facebook"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:contentDescription="@string/login_by_facebook"-->
-<!--                android:elevation="70dp"-->
-<!--                android:foreground="@drawable/facebook_icon"-->
-<!--                app:backgroundTint="#FFFFFF"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toStartOf="@+id/fab_twitter"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/fab_google"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
 
-<!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
-<!--                android:id="@+id/fab_twitter"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:contentDescription="@string/login_by_twitter"-->
-<!--                android:elevation="70dp"-->
-<!--                android:foreground="@drawable/twitter_icon"-->
-<!--                app:backgroundTint="@color/white"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toEndOf="@id/fab_facebook"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
-<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+        <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="215dp"-->
+        <!--            android:orientation="horizontal">-->
+
+        <!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+        <!--                android:id="@+id/fab_google"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:contentDescription="@string/login_by_google"-->
+        <!--                android:elevation="70dp"-->
+        <!--                android:foreground="@drawable/google_icon"-->
+        <!--                app:backgroundTint="@color/white"-->
+        <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--                app:layout_constraintEnd_toStartOf="@+id/fab_facebook"-->
+        <!--                app:layout_constraintStart_toStartOf="parent"-->
+        <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+        <!--                android:id="@+id/fab_facebook"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:contentDescription="@string/login_by_facebook"-->
+        <!--                android:elevation="70dp"-->
+        <!--                android:foreground="@drawable/facebook_icon"-->
+        <!--                app:backgroundTint="#FFFFFF"-->
+        <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--                app:layout_constraintEnd_toStartOf="@+id/fab_twitter"-->
+        <!--                app:layout_constraintStart_toEndOf="@+id/fab_google"-->
+        <!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+        <!--                android:id="@+id/fab_twitter"-->
+        <!--                android:layout_width="wrap_content"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:contentDescription="@string/login_by_twitter"-->
+        <!--                android:elevation="70dp"-->
+        <!--                android:foreground="@drawable/twitter_icon"-->
+        <!--                app:backgroundTint="@color/white"-->
+        <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+        <!--                app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                app:layout_constraintStart_toEndOf="@id/fab_facebook"-->
+        <!--                app:layout_constraintTop_toTopOf="parent" />-->
+        <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
     </LinearLayout>
 
 

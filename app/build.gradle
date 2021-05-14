@@ -14,6 +14,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        signingConfig signingConfigs.debug
     }
 
     buildTypes {
@@ -29,6 +30,17 @@ android {
 
     buildFeatures {
         dataBinding true
+        viewBinding true
+    }
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+        exclude 'META-INF/ASL2.0'
     }
 }
 
@@ -42,6 +54,7 @@ dependencies {
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
     implementation 'org.jetbrains:annotations:15.0'
+    implementation 'com.borjabravo:readmoretextview:2.1.0'
 
     //Firebase
     implementation platform('com.google.firebase:firebase-bom:27.1.0')
@@ -52,6 +65,7 @@ dependencies {
     //Google
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
     implementation 'com.google.apis:google-api-services-people:v1-rev20210419-1.31.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.1'
 
 
 //    Login sdk
@@ -66,8 +80,13 @@ dependencies {
     compileOnly 'com.google.android.wearable:wearable:2.8.1'
     implementation 'com.google.firebase:firebase-auth:20.0.4'
     implementation 'com.google.firebase:firebase-firestore:22.1.2'
+    implementation 'com.facebook.android:facebook-android-sdk:[4,5)'
+    implementation 'com.facebook.android:facebook-login:[8.1)'
 
 }
 
 apply plugin: 'com.google.gms.google-services'
 
+task wrapper(type: Wrapper) {
+    gradleVersion = '4.1'
+}

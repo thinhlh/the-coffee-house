@@ -195,7 +195,17 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
     }
 
     private boolean validation() {
-        return (nameValidation() && emailValidation() && phoneValidation() && passwordValidation() && cfPasswordValidation());
+        return (nameValidation() && emailValidation() && phoneValidation() && birthdayValidation() && passwordValidation() && cfPasswordValidation());
+    }
+
+    private boolean birthdayValidation() {
+        if (birthday.isEmpty()) {
+            mDisplayDate.setError("Birthday is required");
+            return false;
+        } else {
+            mDisplayDate.setError(null);
+            return true;
+        }
     }
 
     private boolean emailValidation() {

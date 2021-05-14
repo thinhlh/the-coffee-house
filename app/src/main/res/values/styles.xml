@@ -11,35 +11,16 @@
     </style>
 
 
-    <!--    <style name="ThemeOverlay.App.DatePicker" parent="@style/ThemeOverlay.MaterialComponents.MaterialCalendar">-->
-    <!--        <item name="colorPrimary">@color/white_gray</item>-->
-    <!--        <item name="colorOnPrimary">@color/accent_color</item>-->
+<!--    <style name="ThemeOverlay.App.DatePicker" parent="@style/ThemeOverlay.MaterialComponents.MaterialCalendar">-->
+<!--        <item name="colorPrimary">@color/white_gray</item>-->
+<!--        <item name="colorOnPrimary">@color/accent_color</item>-->
 
-    <!--        &lt;!&ndash; Customize text field of the text input mode. &ndash;&gt;-->
-    <!--    </style>-->
+<!--        &lt;!&ndash; Customize text field of the text input mode. &ndash;&gt;-->
+<!--    </style>-->
     <style name="MaterialCalendarTheme" parent="ThemeOverlay.MaterialComponents.MaterialCalendar">
         <!-- just override the colors used in the default style -->
         <item name="colorOnPrimary">@color/white_gray</item>
         <item name="colorPrimary">@color/accent_color</item>
-    </style>
-    <style name="TopCornerCardView" parent="Widget.MaterialComponents.CardView">
-        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MyApp.MaterialCardView</item>
-    </style>
-
-    <style name="ShapeAppearanceOverlay.MyApp.MaterialCardView" parent="">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSizeTopLeft">8dp</item>
-        <item name="cornerSizeTopRight">8dp</item>
-        <item name="cornerSizeBottomLeft">0dp</item>
-        <item name="cornerSizeBottomRight">0dp</item>
-    </style>
-
-
-
-    <style name="RadioButtonStyle" parent="Theme.AppCompat.Light">
-        <item name="colorAccent">@color/accent</item>
-        <item name="android:textColorPrimary">@android:color/darker_gray</item>
-
     </style>
 
 </resources>

@@ -33,17 +33,17 @@ public class AuthViewModel extends ViewModel {
     }
 
 
-    // Google Sign-in
+    //Google Sign In
     public Task<CustomUser> handleGoogleSignIn(Task<GoogleSignInAccount> completedTask) throws ApiException {
-        GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-        if (account != null) {
+        GoogleSignInAccount account=completedTask.getResult(ApiException.class);
+        if(account!=null){
             return firebaseAuthWithGoogle(account);
         }
         return null;
     }
 
-    private Task<CustomUser> firebaseAuthWithGoogle(GoogleSignInAccount account) {
-        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
+    private Task<CustomUser> firebaseAuthWithGoogle(GoogleSignInAccount account){
+        AuthCredential credential= GoogleAuthProvider.getCredential(account.getIdToken(),null);
         return mAuth.signInWithCredential(credential).continueWithTask(task -> userRepo.fetchUser(account));
     }
 
@@ -53,8 +53,7 @@ public class AuthViewModel extends ViewModel {
         return mAuth.signInWithCredential(credential).continueWithTask(task -> userRepo.fetchUser(accessToken, mAuth.getCurrentUser()));
     }
 
-
-    // Sign out
+    //Sign out
     public void signOut() {
         mAuth.signOut();
     }

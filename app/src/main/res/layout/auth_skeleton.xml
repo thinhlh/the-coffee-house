@@ -57,7 +57,5 @@
             app:layout_constraintVertical_bias="0"
             app:tabIndicatorColor="#7f7f7f"
             app:tabSelectedTextColor="#C87533" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

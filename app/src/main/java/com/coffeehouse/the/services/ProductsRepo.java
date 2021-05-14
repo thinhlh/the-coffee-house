@@ -17,6 +17,10 @@ public class ProductsRepo extends Fetching {
 
     private List<Product> products;
 
+    public ProductsRepo() {
+        fetchData();
+    }
+
     private final MutableLiveData<List<Product>> data = new MutableLiveData<>();
 
     private Task<QuerySnapshot> fetchProducts() {
@@ -31,8 +35,10 @@ public class ProductsRepo extends Fetching {
                     for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
                         Product product = documentSnapshot.toObject(Product.class);
                         product.setId(documentSnapshot.getId());
+                        products.add(product);
                         data.setValue(products);
                     }
+                    Log.d("",String.valueOf(data.getValue().size()));
                 } else {
                     Log.d("", "Fetching Products Error");
                 }
@@ -41,7 +47,6 @@ public class ProductsRepo extends Fetching {
     }
 
     public LiveData<List<Product>> getProducts() {
-
         if (data.getValue() == null || data.getValue().isEmpty()) {
             fetchData();
         }
@@ -55,12 +60,10 @@ public class ProductsRepo extends Fetching {
             if (product.getCategoryId().equals(categoryId))
                 list.add(product);
         }
-        
+
         MutableLiveData<List<Product>> res = new MutableLiveData<>();
         res.setValue(list);
         return res;
-
-
     }
 
 }

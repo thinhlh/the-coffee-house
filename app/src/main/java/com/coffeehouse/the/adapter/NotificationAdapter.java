@@ -1,12 +1,11 @@
 package com.coffeehouse.the.adapter;
 
-import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.Adapter;
@@ -14,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView.Adapter;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.databinding.NotificationListItemBinding;
 import com.coffeehouse.the.models.Notification;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -32,6 +32,8 @@ public class NotificationAdapter extends Adapter<NotificationAdapter.Notificatio
     public void onBindViewHolder(@NonNull NotificationViewHolder holder, int position) {
         Notification currentNotification=notifications.get(position);
         holder.notificationListItemBinding.setNotification(currentNotification);
+        Log.d("",currentNotification.getImageUrl());
+        Picasso.get().load(currentNotification.getImageUrl()).into((ImageView) holder.itemView.findViewById(R.id.notification_image_view));
     }
 
     public void setNotificationsList(List<Notification> notifications) {

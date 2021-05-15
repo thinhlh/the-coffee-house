@@ -32,7 +32,6 @@ public class NotificationAdapter extends Adapter<NotificationAdapter.Notificatio
     public void onBindViewHolder(@NonNull NotificationViewHolder holder, int position) {
         Notification currentNotification=notifications.get(position);
         holder.notificationListItemBinding.setNotification(currentNotification);
-        Log.d("",currentNotification.getImageUrl());
         Picasso.get().load(currentNotification.getImageUrl()).into((ImageView) holder.itemView.findViewById(R.id.notification_image_view));
     }
 

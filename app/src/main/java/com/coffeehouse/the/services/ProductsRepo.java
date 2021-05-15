@@ -15,9 +15,18 @@ import java.util.List;
 
 public class ProductsRepo extends Fetching {
 
-    private List<Product> products;
+    private List<Product> products=new ArrayList<>();
 
-    public ProductsRepo() {
+    public ProductsRepo() {db.collection("products").addSnapshotListener((value, error) -> {
+        for(QueryDocumentSnapshot doc:value){
+            if(doc!=null){
+                Product product = doc.toObject(Product.class);
+                product.setId(doc.getId());
+                products.add(product);
+                data.setValue(products);
+            }
+        }
+    });
         fetchData();
     }
 

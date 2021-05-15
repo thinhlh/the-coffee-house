@@ -3,8 +3,8 @@
     <ANNOTATIONS>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2d79252fbf22abe39a459c6f53b09592/jetified-carouselview-0.1.5/annotations.zip!/" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c097d4d1ed65e099d5ef4e608f739078/jetified-carouselview-0.1.5/annotations.zip!/" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b9561250279345f34e783c91bb050ef2/jetified-carouselview-0.1.5/annotations.zip!/" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6ab07ff30da68748bae9cfd421f88d72/jetified-carouselview-0.1.5/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/263f3c270683c0c24c75a45220fcea64/jetified-carouselview-0.1.5/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/2d79252fbf22abe39a459c6f53b09592/jetified-carouselview-0.1.5/jars/classes.jar!/" />
@@ -13,12 +13,12 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c097d4d1ed65e099d5ef4e608f739078/jetified-carouselview-0.1.5/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c097d4d1ed65e099d5ef4e608f739078/jetified-carouselview-0.1.5/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/c097d4d1ed65e099d5ef4e608f739078/jetified-carouselview-0.1.5/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b9561250279345f34e783c91bb050ef2/jetified-carouselview-0.1.5/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b9561250279345f34e783c91bb050ef2/jetified-carouselview-0.1.5/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/b9561250279345f34e783c91bb050ef2/jetified-carouselview-0.1.5/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6ab07ff30da68748bae9cfd421f88d72/jetified-carouselview-0.1.5/res" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6ab07ff30da68748bae9cfd421f88d72/jetified-carouselview-0.1.5/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6ab07ff30da68748bae9cfd421f88d72/jetified-carouselview-0.1.5/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/263f3c270683c0c24c75a45220fcea64/jetified-carouselview-0.1.5/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/263f3c270683c0c24c75a45220fcea64/jetified-carouselview-0.1.5/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/263f3c270683c0c24c75a45220fcea64/jetified-carouselview-0.1.5/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.synnapps/carouselview/0.1.5/92f490aa1ab3bd170cfaa91435e80067d00f5275/carouselview-0.1.5-javadoc.jar!/" />

@@ -1,22 +1,18 @@
 package com.coffeehouse.the.views;
 
 import android.annotation.SuppressLint;
-import android.app.Application;
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
-import android.preference.PreferenceManager;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.services.CustomGoogleSignInClient;
@@ -24,25 +20,16 @@ import com.coffeehouse.the.viewModels.AuthViewModel;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
-import com.facebook.GraphRequest;
-import com.facebook.login.LoginBehavior;
-import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
-import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.GoogleAuthCredential;
-import com.google.firebase.auth.GoogleAuthProvider;
 
 import java.util.Objects;
 
@@ -90,11 +77,11 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 authViewModel.handleFacebookAccessToken(loginResult.getAccessToken()).addOnCompleteListener(task -> {
-                    Log.d("","Login Complete");
-                    if(task.isSuccessful()){
+                    Log.d("", "Login Complete");
+                    if (task.isSuccessful()) {
+                        Toast.makeText(v.getContext(), "Welcome " + FirebaseAuth.getInstance().getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
                         navigateToHome();
-                    }
-                    else {
+                    } else {
                         Log.d("", Objects.requireNonNull(task.getException()).getMessage());
                     }
                 });
@@ -110,7 +97,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                 Log.d("", "Error In Facebook Login: " + error.toString());
             }
         });
-
 
 
         return v;
@@ -148,6 +134,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             authViewModel.signIn(email, password)
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
+                            Toast.makeText(this.getContext(), "Welcome " + FirebaseAuth.getInstance().getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
                             navigateToHome();
                         } else {
                             Toast.makeText(getContext(), "Login Failed", Toast.LENGTH_SHORT).show();
@@ -172,6 +159,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             try {
                 authViewModel.handleGoogleSignIn(task).addOnCompleteListener(task1 -> {
                     if (task1.isSuccessful()) {
+                        Toast.makeText(this.getContext(), "Welcome " + FirebaseAuth.getInstance().getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
                         navigateToHome();
                     }
                 });

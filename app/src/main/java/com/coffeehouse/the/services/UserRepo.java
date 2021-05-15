@@ -57,7 +57,7 @@ public class UserRepo extends Fetching {
     }
 
     public Task<CustomUser> createUser(String uid, CustomUser user) {
-        return db.collection("users").document(uid).set(user).continueWith(task -> {
+        return db.collection("users").document().set(user).continueWith(task -> {
             this.user = user;
             return user;
         });

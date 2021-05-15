@@ -22,6 +22,7 @@ import java.util.List;
 
 public class ProductAdapter extends Adapter<ProductAdapter.ProductViewHolder> {
     private List<Product> products;
+//    private ProductsClickListener listener;
 
     @NonNull
     @Override

@@ -6,12 +6,14 @@ import androidx.lifecycle.ViewModel;
 import com.coffeehouse.the.adapter.ProductsClickListener;
 import com.coffeehouse.the.models.Product;
 import com.coffeehouse.the.services.ProductsRepo;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.List;
 
-public class OrderViewModel extends ViewModel implements ProductsClickListener {
+public class OrderViewModel extends ViewModel {
     private final ProductsRepo productsRepo;
 
+    private ProductsClickListener listener;
 
     public OrderViewModel(){ productsRepo = new ProductsRepo(); }
 
@@ -19,8 +21,12 @@ public class OrderViewModel extends ViewModel implements ProductsClickListener {
         return productsRepo.getProducts();
     }
 
-    @Override
-    public void onItemClick() {
 
+    public void setListener(ProductsClickListener listener) {
+        this.listener = listener;
+    }
+
+    public void productOnClick(Product product){
+        listener.onItemClick(product);
     }
 }

@@ -2,9 +2,11 @@ package com.coffeehouse.the.views;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,11 +18,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.ProductAdapter;
+import com.coffeehouse.the.adapter.ProductsClickListener;
 import com.coffeehouse.the.databinding.OrderFragmentBinding;
 import com.coffeehouse.the.models.Product;
 import com.coffeehouse.the.viewModels.OrderViewModel;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-public class OrderFragment extends Fragment  {
+public class OrderFragment extends Fragment implements ProductsClickListener {
 
     private OrderViewModel orderViewModel;
 
@@ -41,10 +45,9 @@ public class OrderFragment extends Fragment  {
         ProductAdapter productsAdapter=new ProductAdapter();
         recyclerView.setAdapter(productsAdapter);
 
-
-
         getProducts(productsAdapter);
 
+        orderViewModel.setListener(this);
 
         return v;
     }
@@ -52,4 +55,14 @@ public class OrderFragment extends Fragment  {
     private void getProducts(ProductAdapter productAdapter){
         orderViewModel.getProducts().observe(getViewLifecycleOwner(),productAdapter::setProductsList);
     }
+
+    @Override
+    public void onItemClick(Product product) {
+        //Inflate BottomSheetDialogFragment
+        Toast.makeText(getContext(), "CHECKED ITEM" + product.getTitle(), Toast.LENGTH_SHORT).show();
+        BottomSheetDialogFragment bottomSheetDialogFragment = new BottomSheetDialogFragment();
+        bottomSheetDialogFragment.show(bottomSheetDialogFragment.getFragmentManager(), bottomSheetDialogFragment.getTag());
+    }
+
+
 }

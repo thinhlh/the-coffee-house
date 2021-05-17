@@ -8,23 +8,23 @@ import java.util.List;
 import java.util.Map;
 
 public class CustomUser {
-    private String email;
-    private String name;
-    private int point;
-    private String phoneNumber;
-    private Date birthday;
-    private Membership membership;
-    private List<String> favoriteProducts;
+    private String email = "";
+    private String name = "";
+    private int point = 0;
+    private String phoneNumber = "";
+    private Date birthday = Date.from(Instant.now());
+    private Membership membership = Membership.Bronze;
+    private List<String> favoriteProducts = new ArrayList<>();
 
 
     public CustomUser() {
-        this.email = "";
-        this.name = "";
-        this.point = 0;
-        this.phoneNumber = "";
-        this.birthday = Date.from(Instant.EPOCH);
-        this.membership = Membership.Bronze;
-        this.favoriteProducts = new ArrayList<>();
+    }
+
+    public CustomUser(String email, String name, String phoneNumber, Date birthday) {
+        this.email = email;
+        this.name = name;
+        this.phoneNumber = phoneNumber;
+        this.birthday = birthday;
     }
 
     public String getEmail() {

@@ -1,48 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
+
         <variable
             name="notification"
             type="com.coffeehouse.the.models.Notification" />
     </data>
 
-    <RelativeLayout
+    <LinearLayout
+        android:elevation="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/notification_image_view"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="9dp"
-            android:background="@drawable/notification_1" />
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="10dp" />
 
-        <TextView
-            android:id="@+id/notification_title"
+
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:layout_toEndOf="@+id/notification_image_view"
-            android:text="@{notification.title}"
-            android:textColor="@color/black"
-            android:textSize="15sp" />
+            android:layout_height="match_parent" android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/notification_description"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/notification_title"
-            android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="2dp"
-            android:layout_toEndOf="@+id/notification_image_view"
-            android:text="@{notification.description}"
-            android:textColor="	#808080"
-            android:textSize="13sp" />
+            <TextView
+                android:id="@+id/notification_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:maxLines="1"
+                android:layout_marginStart="10dp"
+                android:text="@{notification.title}"
+                android:textAppearance="?textAppearanceListItem"
+                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/notification_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:maxLines="3"
+                android:layout_marginStart="10dp"
+                android:autoSizeTextType="uniform"
+                android:layout_marginTop="2dp"
+                android:textAppearance="?textAppearanceListItemSecondary"
+                android:text="@{notification.description}"
+                tools:ignore="SmallSp" />
+
+        </LinearLayout>
 
 
-    </RelativeLayout>
+    </LinearLayout>
 </layout>

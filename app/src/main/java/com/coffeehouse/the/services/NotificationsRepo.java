@@ -19,15 +19,12 @@ import java.util.concurrent.ExecutionException;
 
 public class NotificationsRepo extends Fetching {
 
-
     private List<Notification> notifications;
 
-    private MutableLiveData<List<Notification>> data = new MutableLiveData<>();
+    private final MutableLiveData<List<Notification>> data = new MutableLiveData<>();
 
-    public NotificationsRepo() {
-        Log.w("", "HERE");
-        fetchData();
-
+    private Task<QuerySnapshot> fetchNotifications() {
+        return db.collection("notifications").get();
     }
 
     private void fetchData() {
@@ -35,26 +32,28 @@ public class NotificationsRepo extends Fetching {
             notifications = new ArrayList<>();
             fetchNotifications().addOnCompleteListener(task -> {
                 if (task.isSuccessful()) {
-                    for (QueryDocumentSnapshot document : task.getResult()) {
+                    for (QueryDocumentSnapshot document : Objects.requireNonNull(task.getResult())) {
                         Notification notification = document.toObject(Notification.class);
-                        Log.d("TITLE", notification.getTitle());
                         notification.setId(document.getId());
                         notifications.add(notification);
                         data.setValue(notifications);
                     }
                 } else {
-                    Log.d("", "Error");
+                    Log.d("", "Fetching Notifications Error");
                 }
             });
         }
     }
 
-    public LiveData<List<Notification>> getData() {
-        fetchData();
+    public LiveData<List<Notification>> getNotifications() {
+        if (data.getValue() == null || data.getValue().isEmpty())
+            fetchData();
         return data;
     }
 
-    public Task<QuerySnapshot> fetchNotifications() {
-        return db.collection("notifications").get();
+    public int getNumberOfNotifications() {
+        return notifications.size();
     }
+
+
 }

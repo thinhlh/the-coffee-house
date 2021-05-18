@@ -10,7 +10,7 @@ public class Product {
     private String imageUrl;
     private int price;
 
-    Product() {
+    public Product() {
         this.title = "";
         this.description = "";
         this.categoryId = "";

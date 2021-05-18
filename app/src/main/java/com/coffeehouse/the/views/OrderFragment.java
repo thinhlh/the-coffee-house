@@ -24,7 +24,7 @@ import com.coffeehouse.the.models.Product;
 import com.coffeehouse.the.viewModels.OrderViewModel;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
-public class OrderFragment extends Fragment implements ProductsClickListener {
+public class OrderFragment extends Fragment {
 
     private OrderViewModel orderViewModel;
 
@@ -33,36 +33,35 @@ public class OrderFragment extends Fragment implements ProductsClickListener {
     @Override
     public View onCreateView(@NonNull @org.jetbrains.annotations.NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
 
-        OrderFragmentBinding orderFragmentBinding= DataBindingUtil.inflate(inflater,R.layout.order_fragment,container,false);
-        View v=orderFragmentBinding.getRoot();
+        OrderFragmentBinding orderFragmentBinding = DataBindingUtil.inflate(inflater, R.layout.order_fragment, container, false);
+        View v = orderFragmentBinding.getRoot();
 
         //BINDING
-        orderViewModel= new ViewModelProvider(this).get(OrderViewModel.class);
-        RecyclerView recyclerView= orderFragmentBinding.productsRecyclerView;
+        orderViewModel = new ViewModelProvider(this).get(OrderViewModel.class);
+        RecyclerView recyclerView = orderFragmentBinding.productsRecyclerView;
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
 
-        ProductAdapter productsAdapter=new ProductAdapter();
+        ProductAdapter productsAdapter = new ProductAdapter();
         recyclerView.setAdapter(productsAdapter);
 
         getProducts(productsAdapter);
 
-        orderViewModel.setListener(this);
+        productsAdapter.setListener(new ProductsClickListener() {
+            @Override
+            public void onItemClick(Product product) {
+                //Toast.makeText(getContext(), "PRODUCT " + product.getTitle() + " CHECKED ",Toast.LENGTH_SHORT).show();
+                ProductDetailBottomSheet bottomSheet = new ProductDetailBottomSheet();
+                bottomSheet.setProductChosen(product);
+                bottomSheet.show(getFragmentManager(), "Product Detail");
+            }
+        });
 
         return v;
     }
 
-    private void getProducts(ProductAdapter productAdapter){
-        orderViewModel.getProducts().observe(getViewLifecycleOwner(),productAdapter::setProductsList);
+    private void getProducts(ProductAdapter productAdapter) {
+        orderViewModel.getProducts().observe(getViewLifecycleOwner(), productAdapter::setProductsList);
     }
-
-    @Override
-    public void onItemClick(Product product) {
-        //Inflate BottomSheetDialogFragment
-        Toast.makeText(getContext(), "CHECKED ITEM" + product.getTitle(), Toast.LENGTH_SHORT).show();
-        BottomSheetDialogFragment bottomSheetDialogFragment = new BottomSheetDialogFragment();
-        bottomSheetDialogFragment.show(bottomSheetDialogFragment.getFragmentManager(), bottomSheetDialogFragment.getTag());
-    }
-
 
 }

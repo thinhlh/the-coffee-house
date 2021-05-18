@@ -1,6 +1,5 @@
 package com.coffeehouse.the.adapter;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +21,7 @@ import java.util.List;
 
 public class ProductAdapter extends Adapter<ProductAdapter.ProductViewHolder> {
     private List<Product> products;
-//    private ProductsClickListener listener;
+    private ProductsClickListener listener;
 
     @NonNull
     @Override
@@ -36,6 +35,7 @@ public class ProductAdapter extends Adapter<ProductAdapter.ProductViewHolder> {
         Product currentProduct = products.get(position);
         holder.productListItemBinding.setProduct(currentProduct);
         Picasso.get().load(currentProduct.getImageUrl()).into((ImageView) holder.itemView.findViewById(R.id.product_image));
+        holder.bindOnClick(currentProduct, listener);
     }
 
     public void setProductsList(List<Product> products) {
@@ -48,6 +48,10 @@ public class ProductAdapter extends Adapter<ProductAdapter.ProductViewHolder> {
         return products != null ? products.size() : 0;
     }
 
+    public void setListener(ProductsClickListener listener) {
+        this.listener = listener;
+    }
+
     static class ProductViewHolder extends RecyclerView.ViewHolder{
 
         private final ProductListItemBinding productListItemBinding;
@@ -55,6 +59,15 @@ public class ProductAdapter extends Adapter<ProductAdapter.ProductViewHolder> {
         public ProductViewHolder(@NonNull ProductListItemBinding productListItemBinding) {
             super(productListItemBinding.getRoot());
             this.productListItemBinding = productListItemBinding;
+        }
+
+        public void bindOnClick (Product product, ProductsClickListener clickListener) {
+            productListItemBinding.setProduct(product);
+            productListItemBinding.executePendingBindings();
+            itemView.setOnClickListener(view -> {
+                if (clickListener != null)
+                    clickListener.onItemClick(product);
+            });
         }
 
     }

@@ -1,12 +1,14 @@
 package com.coffeehouse.the.views;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -14,6 +16,7 @@ import androidx.fragment.app.Fragment;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.services.CustomGoogleSignInClient;
+import com.coffeehouse.the.services.UserRepo;
 import com.coffeehouse.the.viewModels.AuthViewModel;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
@@ -28,7 +31,9 @@ public class OthersFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(@NonNull @org.jetbrains.annotations.NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.others_fragment, container, false);
-        ((Button)v.findViewById(R.id.signOutButton)).setOnClickListener(this);
+        ((Button) v.findViewById(R.id.signOutButton)).setOnClickListener(this);
+        v.findViewById(R.id.showFavorites).setOnClickListener(this);
+        v.findViewById(R.id.toggleFavoriteButton).setOnClickListener(this);
 
         mGoogleSignInClient = CustomGoogleSignInClient.mGoogleSignInClient(v.getContext());
         return v;
@@ -40,6 +45,15 @@ public class OthersFragment extends Fragment implements View.OnClickListener {
             mGoogleSignInClient.signOut().addOnCompleteListener(task -> {
                 authViewModel.signOut();
                 startActivity(new Intent(v.getContext(), MainActivity.class));
+            });
+        } else if (v.getId() == R.id.showFavorites) {
+            Toast.makeText(v.getContext(), UserRepo.user.getFavoriteProducts().toString(), Toast.LENGTH_SHORT).show();
+        }
+        else if(v.getId()==R.id.toggleFavoriteButton){
+            UserRepo userRepo=new UserRepo();
+            userRepo.toggleFavorite("1234").addOnCompleteListener(task -> {
+                if(task.isSuccessful())
+                    ((Button)v).setBackgroundColor(Color.RED);
             });
         }
     }

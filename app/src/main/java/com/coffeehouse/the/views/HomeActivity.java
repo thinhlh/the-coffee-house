@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.coffeehouse.the.R;
+import com.coffeehouse.the.services.UserRepo;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.jetbrains.annotations.NotNull;
@@ -17,6 +18,12 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        UserRepo.fetchUser();
+    }
 
     HomeFragment homeFragment = new HomeFragment();
     OrderFragment orderFragment = new OrderFragment();

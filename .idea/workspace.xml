@@ -32,28 +32,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="971f74bb-6ea5-4aba-ab0c-51aedc2e2bc6" name="Default Changelist" comment="add: binding for OnItemClick event">
-      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/jarAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/models/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/models/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/viewModels/ProductDetailViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/viewModels/ProductDetailViewModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/ProductDetailBottomSheet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/ProductDetailBottomSheet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_product_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_product_detail.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/models/Cart.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@D:\Android_SDK_HOME\.android\avd\Pixel_4_XL_API_30.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@/home/hoangthinh/.android/avd/Pixel_3a_API_30_x86.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -91,6 +77,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="layoutResourceFile" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -114,6 +101,9 @@
     <property name="android-custom-viewC:/Users/Nhan2509/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.1.0/f2bdf79e1977939817f54a9d3e2f6bc52b63bdd0/recyclerview-1.1.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED" value="RecyclerView" />
     <property name="android-custom-viewD:/AppData/Local/Android/SDK/sources/android-30/android/view/View.java_SELECTED" value="View" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="SDK Location" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="emulator" />
   </component>
   <component name="RunManager">
@@ -192,14 +182,6 @@
       <option name="presentableId" value="Default" />
       <updated>1621047863492</updated>
     </task>
-    <task id="LOCAL-00001" summary="feat: add data binding for onClickProduct">
-      <created>1621354181814</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1621354181814</updated>
-    </task>
-    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -214,23 +196,24 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="feat: add data binding for onClickProduct" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: add data binding for onClickProduct" />
-  </component>
   <component name="WindowStateProjectService">
     <state x="395" y="111" key="#Inspections" timestamp="1621303527049">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="395" y="111" key="#Inspections/0.0.1536.864@0.0.1536.864" timestamp="1621303527049" />
+    <state x="480" y="252" width="950" height="532" key="#PSD" timestamp="1621413054235">
+      <screen x="0" y="28" width="1920" height="978" />
+    </state>
+    <state x="480" y="252" width="950" height="532" key="#PSD/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621413054235" />
     <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1621347735750">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1621347735750" />
-    <state x="574" y="139" key="#com.intellij.ide.util.MemberChooser" timestamp="1621410266926">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state x="718" y="185" width="374" height="587" key="#com.intellij.ide.util.MemberChooser" timestamp="1621410133959">
+      <screen x="0" y="28" width="1920" height="978" />
     </state>
-    <state x="574" y="139" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1621410266926" />
+    <state x="574" y="139" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1621349893654" />
+    <state x="718" y="185" width="374" height="587" key="#com.intellij.ide.util.MemberChooser/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621410133959" />
     <state x="499" y="179" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1621349023545">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -251,42 +234,42 @@
       <screen x="0" y="28" width="1920" height="978" />
     </state>
     <state x="743" y="275" width="424" height="486" key="FileChooserDialogImpl/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621057893448" />
-    <state width="1493" height="325" key="GridCell.Tab.0.bottom" timestamp="1621415677541">
+    <state width="1874" height="251" key="GridCell.Tab.0.bottom" timestamp="1621417017953">
+      <screen x="0" y="28" width="1920" height="978" />
+    </state>
+    <state width="1493" height="325" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1621353501979" />
+    <state width="1874" height="251" key="GridCell.Tab.0.bottom/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621417017953" />
+    <state width="1874" height="251" key="GridCell.Tab.0.center" timestamp="1621417017953">
+      <screen x="0" y="28" width="1920" height="978" />
+    </state>
+    <state width="1493" height="325" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1621353501979" />
+    <state width="1874" height="251" key="GridCell.Tab.0.center/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621417017953" />
+    <state width="1874" height="251" key="GridCell.Tab.0.left" timestamp="1621417017953">
+      <screen x="0" y="28" width="1920" height="978" />
+    </state>
+    <state width="1493" height="325" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1621353501977" />
+    <state width="1874" height="251" key="GridCell.Tab.0.left/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621417017953" />
+    <state width="1874" height="251" key="GridCell.Tab.0.right" timestamp="1621417017953">
+      <screen x="0" y="28" width="1920" height="978" />
+    </state>
+    <state width="1493" height="325" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1621353501979" />
+    <state width="1874" height="251" key="GridCell.Tab.0.right/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621417017953" />
+    <state width="1493" height="223" key="GridCell.Tab.1.bottom" timestamp="1621351846973">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="325" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1621415677541" />
-    <state width="1874" height="252" key="GridCell.Tab.0.bottom/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621063043511" />
-    <state width="1493" height="325" key="GridCell.Tab.0.center" timestamp="1621415677540">
+    <state width="1493" height="223" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1621351846973" />
+    <state width="1493" height="223" key="GridCell.Tab.1.center" timestamp="1621351846973">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="325" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1621415677540" />
-    <state width="1874" height="252" key="GridCell.Tab.0.center/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621063043510" />
-    <state width="1493" height="325" key="GridCell.Tab.0.left" timestamp="1621415677538">
+    <state width="1493" height="223" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1621351846973" />
+    <state width="1493" height="223" key="GridCell.Tab.1.left" timestamp="1621351846973">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="325" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1621415677538" />
-    <state width="1874" height="252" key="GridCell.Tab.0.left/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621063043510" />
-    <state width="1493" height="325" key="GridCell.Tab.0.right" timestamp="1621415677540">
+    <state width="1493" height="223" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1621351846973" />
+    <state width="1493" height="223" key="GridCell.Tab.1.right" timestamp="1621351846973">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
-    <state width="1493" height="325" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1621415677540" />
-    <state width="1874" height="252" key="GridCell.Tab.0.right/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621063043510" />
-    <state width="1493" height="321" key="GridCell.Tab.1.bottom" timestamp="1621412159794">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1493" height="321" key="GridCell.Tab.1.bottom/0.0.1536.864@0.0.1536.864" timestamp="1621412159794" />
-    <state width="1493" height="321" key="GridCell.Tab.1.center" timestamp="1621412159793">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1493" height="321" key="GridCell.Tab.1.center/0.0.1536.864@0.0.1536.864" timestamp="1621412159793" />
-    <state width="1493" height="321" key="GridCell.Tab.1.left" timestamp="1621412159792">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1493" height="321" key="GridCell.Tab.1.left/0.0.1536.864@0.0.1536.864" timestamp="1621412159792" />
-    <state width="1493" height="321" key="GridCell.Tab.1.right" timestamp="1621412159793">
-      <screen x="0" y="0" width="1536" height="864" />
-    </state>
-    <state width="1493" height="321" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1621412159793" />
+    <state width="1493" height="223" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1621351846973" />
     <state x="349" y="175" key="IDE.errors.dialog" timestamp="1621338546692">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -295,29 +278,22 @@
       <screen x="0" y="28" width="1920" height="978" />
     </state>
     <state x="449" y="152" width="1022" height="732" key="SettingsEditor/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621063273218" />
+    <state x="1920" y="0" width="1366" height="768" key="dock-window-1" timestamp="1621413744925">
+      <screen x="1920" y="0" width="1366" height="768" />
+    </state>
+    <state x="1920" y="0" width="1366" height="768" key="dock-window-1/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621413744925" />
     <state x="562" y="180" key="refactoring.ChangeSignatureDialog" timestamp="1621304294648">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="562" y="180" key="refactoring.ChangeSignatureDialog/0.0.1536.864@0.0.1536.864" timestamp="1621304294648" />
-    <state x="624" y="235" key="run.anything.popup" timestamp="1621058416569">
+    <state x="624" y="235" key="run.anything.popup" timestamp="1621410809278">
       <screen x="0" y="28" width="1920" height="978" />
     </state>
-    <state x="624" y="235" key="run.anything.popup/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621058416569" />
-    <state x="498" y="188" width="672" height="599" key="search.everywhere.popup" timestamp="1621404227594">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state x="624" y="235" key="run.anything.popup/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621410809278" />
+    <state x="623" y="241" width="672" height="678" key="search.everywhere.popup" timestamp="1621412918870">
+      <screen x="0" y="28" width="1920" height="978" />
     </state>
-    <state x="498" y="188" width="672" height="599" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1621404227594" />
-    <state x="623" y="241" width="672" height="678" key="search.everywhere.popup/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621063268560" />
-  </component>
-  <component name="XDebuggerManager">
-    <watches-manager>
-      <configuration name="The Coffee House.The_Coffee_House.app">
-        <watch expression="((CategoriesRepo)((ProductDetailViewModel)this).categoriesRepo).shadow$_klass_" custom="com.coffeehouse.the.services.CategoriesRepo,com.coffeehouse.the.viewModels.ProductDetailViewModel" />
-        <watch expression="((java.util.ArrayList)((CategoriesRepo)((ProductDetailViewModel)this).categoriesRepo).categories).get(2)" language="JAVA" custom="com.coffeehouse.the.services.CategoriesRepo,java.util.ArrayList,com.coffeehouse.the.viewModels.ProductDetailViewModel" />
-        <watch expression="categoriesRepo.getCategories().getValue()" language="JAVA" />
-        <watch expression="product.getCategoryId()" />
-        <watch expression="radioButton.getText()" />
-      </configuration>
-    </watches-manager>
+    <state x="498" y="188" width="672" height="599" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1621306145280" />
+    <state x="623" y="241" width="672" height="678" key="search.everywhere.popup/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621412918870" />
   </component>
 </project>

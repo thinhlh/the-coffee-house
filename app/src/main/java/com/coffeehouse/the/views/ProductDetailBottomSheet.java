@@ -46,6 +46,13 @@ public class ProductDetailBottomSheet extends BottomSheetDialogFragment {
         //END BINDING
 
         Picasso.get().load(product.getImageUrl()).into((ImageView) v.findViewById(R.id.detail_product_image));
+
+        ((TextView) v.findViewById(R.id.sum_textview)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dismiss();
+            }
+        });
         return v;
     }
 

@@ -56,7 +56,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/item_name"
                         android:layout_marginStart="10dp"
-                        android:text="@{Integer.toString(productDetail.price)}"
+                        android:text="@{productDetail.currency}"
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -73,7 +73,7 @@
                         app:trimMode="trimModeLength" />
 
 
-                    <ImageButton
+                    <CheckBox
                         android:id="@+id/image_favorite"
                         android:layout_width="30dp"
                         android:layout_height="30dp"
@@ -126,14 +126,14 @@
                         android:text="@string/pick_size"
                         android:textSize="15sp" />
 
-                    <ImageButton
-                        android:id="@+id/item_image"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/size_selection"
-                        android:layout_marginStart="5dp"
-                        android:background="@color/white"
-                        android:src="@drawable/ic_baseline_remove_24" />
+                    <!--                    <ImageButton-->
+                    <!--                        android:id="@+id/item_image"-->
+                    <!--                        android:layout_width="wrap_content"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_below="@+id/size_selection"-->
+                    <!--                        android:layout_marginStart="5dp"-->
+                    <!--                        android:background="@color/white"-->
+                    <!--                        android:src="@drawable/ic_baseline_remove_24" />-->
 
 
                     <TextView
@@ -150,13 +150,35 @@
                         android:textSize="10dp"
                         android:textStyle="bold" />
 
-                    <ListView
-                        android:id="@+id/size_options_listview"
+                    <!--                    <ListView-->
+                    <!--                        android:id="@+id/size_options_listview"-->
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content"-->
+                    <!--                        android:layout_below="@+id/item_image"-->
+                    <!--                        android:layout_marginTop="3dp" />-->
+
+                    <RadioGroup
+                        android:id="@+id/radioGroup"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/item_image"
-                        android:layout_marginTop="3dp" />
+                        android:layout_below="@+id/size_selection"
+                        android:checkedButton="@id/size_medium_radioButton">
 
+                        <RadioButton
+                            android:id="@+id/size_medium_radioButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:onClick="@{(v)->productDetailViewModel.sizeSelect(v, radioGroup, productDetail)}"
+                            android:text="Vừa" />
+
+                        <RadioButton
+                            android:id="@+id/size_large_radioButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:onClick="@{(v)->productDetailViewModel.sizeSelect(v, radioGroup, productDetail)}"
+                            android:text="Lớn" />
+
+                    </RadioGroup>
 
                 </RelativeLayout>
 
@@ -217,14 +239,15 @@
                         android:text="@string/optional"
                         android:textStyle="bold" />
 
-                    <RadioButton
+                    <CheckBox
                         android:id="@+id/topping_selection_radio_button"
                         android:layout_width="30dp"
                         android:layout_height="20dp"
                         android:layout_below="@+id/item_image2"
                         android:layout_marginStart="10dp"
-
-                        android:layout_marginBottom="5dp" />
+                        android:layout_marginBottom="5dp"
+                        android:checked="@{productDetailViewModel.toppingCheck}"
+                        android:onClick="@{() -> productDetailViewModel.toppingOnCheck(productDetail)}" />
 
                     <TextView
                         android:id="@+id/item_nametopping"
@@ -380,6 +403,8 @@
                             android:background="#654321">
 
                             <TextView
+                                android:id="@+id/sum_textview"
+                                android:clickable="true"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerInParent="true"

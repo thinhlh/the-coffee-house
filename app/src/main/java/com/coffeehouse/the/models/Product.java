@@ -1,5 +1,8 @@
 package com.coffeehouse.the.models;
 
+import java.text.Format;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Map;
 
 public class Product {
@@ -9,6 +12,8 @@ public class Product {
     private String categoryId;
     private String imageUrl;
     private int price;
+    private Locale locale = new Locale("vi", "VN");
+    private Format format = NumberFormat.getCurrencyInstance(locale);
 
     public Product() {
         this.title = "";
@@ -60,6 +65,10 @@ public class Product {
 
     public int getPrice() {
         return price;
+    }
+
+    public String getCurrency() {
+        return format.format(price);
     }
 
     public void setPrice(int price) {

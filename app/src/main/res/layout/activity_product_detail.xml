@@ -18,7 +18,7 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/black">
+        android:background="@color/white_gray">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -67,22 +67,24 @@
                         android:layout_marginStart="10dp"
                         android:text="@{productDetail.description}"
                         app:colorClickableText="#C87533"
-                        app:trimCollapsedText="@string/show_less"
-                        app:trimExpandedText="@string/show_more"
+                        app:trimCollapsedText="@string/show_more"
+                        app:trimExpandedText="@string/show_less"
                         app:trimLength="42"
                         app:trimMode="trimModeLength" />
 
 
-                    <CheckBox
+                    <ToggleButton
                         android:id="@+id/image_favorite"
                         android:layout_width="30dp"
+                        android:textOff=""
+                        android:textOn=""
+                        android:onClick="onDefaultToggleClick"
                         android:layout_height="30dp"
                         android:layout_alignParentEnd="true"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="15dp"
                         android:layout_marginEnd="25dp"
-                        android:backgroundTint="@color/white"
-                        android:src="@drawable/ic_baseline_favorite_border_24" />
+                        android:background="@drawable/ic_baseline_favorite_border_24"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -126,20 +128,20 @@
                         android:text="@string/pick_size"
                         android:textSize="15sp" />
 
-                    <!--                    <ImageButton-->
-                    <!--                        android:id="@+id/item_image"-->
-                    <!--                        android:layout_width="wrap_content"-->
-                    <!--                        android:layout_height="wrap_content"-->
-                    <!--                        android:layout_below="@+id/size_selection"-->
-                    <!--                        android:layout_marginStart="5dp"-->
-                    <!--                        android:background="@color/white"-->
-                    <!--                        android:src="@drawable/ic_baseline_remove_24" />-->
+                    <ImageButton
+                        android:id="@+id/item_image"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/size_selection"
+                        android:layout_marginStart="5dp"
+                        android:background="@color/white"
+                        android:src="@drawable/ic_baseline_remove_242" />
 
 
                     <TextView
                         android:id="@+id/image_compulsory"
-                        android:layout_width="60dp"
-                        android:layout_height="25dp"
+                        android:layout_width="70dp"
+                        android:layout_height="30dp"
                         android:layout_alignParentEnd="true"
                         android:layout_marginTop="15dp"
                         android:layout_marginEnd="25dp"
@@ -147,21 +149,45 @@
                         android:gravity="center"
                         android:text="@string/compulsory"
                         android:textColor="#C87533"
-                        android:textSize="10dp"
+                        android:textSize="15dp"
+                        android:backgroundTint="@color/light_orange"
                         android:textStyle="bold" />
 
-                    <!--                    <ListView-->
-                    <!--                        android:id="@+id/size_options_listview"-->
-                    <!--                        android:layout_width="match_parent"-->
-                    <!--                        android:layout_height="wrap_content"-->
-                    <!--                        android:layout_below="@+id/item_image"-->
-                    <!--                        android:layout_marginTop="3dp" />-->
 
+                    <TextView
+                        android:id="@+id/text_extramoney"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/radioGroup"
+                        android:layout_below="@+id/image_compulsory"
+                        android:text="+ 0đ"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="80dp"
+                        android:layout_marginRight="15dp"
+                        android:textSize="15dp"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="2dp"
+                        android:layout_below="@id/text_extramoney"
+                        android:background="@color/white_gray"
+                        android:layout_marginTop="7dp"/>
+
+                    <TextView
+                        android:id="@+id/text_extramoney2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toRightOf="@+id/radioGroup"
+                        android:layout_below="@+id/image_compulsory"
+                        android:text="+ 5.000đ"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="127dp"
+                        android:layout_marginRight="15dp"
+                        android:textSize="15dp"/>
                     <RadioGroup
                         android:id="@+id/radioGroup"
-                        android:layout_width="match_parent"
+                        android:layout_width="300dp"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/size_selection"
+                        android:layout_below="@+id/item_image"
                         android:checkedButton="@id/size_medium_radioButton">
 
                         <RadioButton
@@ -169,7 +195,12 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:onClick="@{(v)->productDetailViewModel.sizeSelect(v, radioGroup, productDetail)}"
-                            android:text="Vừa" />
+                            android:text="Vừa"
+
+
+                           />
+
+
 
                         <RadioButton
                             android:id="@+id/size_large_radioButton"
@@ -223,19 +254,19 @@
                         android:layout_below="@+id/topping_selection"
                         android:layout_marginStart="5dp"
                         android:background="@color/white"
-                        android:src="@drawable/ic_baseline_remove_24" />
+                        android:src="@drawable/ic_baseline_remove_242" />
 
 
                     <TextView
                         android:id="@+id/image_optional"
-                        android:layout_width="80dp"
-                        android:layout_height="25dp"
+                        android:layout_width="70dp"
+                        android:layout_height="30dp"
                         android:layout_alignParentEnd="true"
                         android:layout_marginTop="15dp"
                         android:layout_marginEnd="25dp"
                         android:background="@drawable/round_button_with_gray_background"
                         android:gravity="center"
-                        android:padding="2dp"
+                        android:textSize="15dp"
                         android:text="@string/optional"
                         android:textStyle="bold" />
 
@@ -266,11 +297,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:layout_alignParentBottom="true"
                         android:layout_marginEnd="10dp"
-                        android:layout_marginBottom="20dp"
+                        android:layout_marginTop="105dp"
                         android:text="+ 10.000đ"
-                        android:textSize="20sp" />
+                        android:textSize="15sp" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
@@ -313,18 +343,19 @@
                         android:layout_below="@+id/optional_selection"
                         android:layout_marginStart="5dp"
                         android:background="@color/white"
-                        android:src="@drawable/ic_baseline_remove_24" />
+                        android:src="@drawable/ic_baseline_remove_242" />
 
 
                     <TextView
                         android:id="@+id/image_optional2"
-                        android:layout_width="60dp"
-                        android:layout_height="25dp"
+                        android:layout_width="70dp"
+                        android:layout_height="30dp"
                         android:layout_alignParentEnd="true"
                         android:layout_marginTop="15dp"
                         android:layout_marginEnd="25dp"
                         android:background="@drawable/round_button_with_gray_background"
                         android:gravity="center"
+                        android:textSize="15dp"
                         android:text="@string/optional"
                         android:textStyle="bold" />
 

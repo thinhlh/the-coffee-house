@@ -38,6 +38,25 @@
     <string name="size">Size</string>
     <string name="pick_size">Chọn một loại size</string>
     <string name="favorite">Yêu thích</string>
+    <string name="search">Tìm kiếm</string>
+    <string name="choosemap">Chọn trên bản đồ</string>
+    <string name="savedaddress">Địa chỉ đã lưu</string>
+    <string name="addhomeaddress">Thêm địa chỉ nhà</string>
+    <string name="addcompanyaddress">Thêm địa chỉ công ty</string>
+    <string name="addnewaddress">Thêm địa chỉ mới</string>
+    <string name="nameaddress">Tên địa chỉ</string>
+    <string name="address">Địa chỉ*</string>
+    <string name="chooseaddress">Chọn địa chỉ</string>
+    <string name="floor">Tòa nhà, số tầng</string>
+    <string name="gate">Cổng</string>
+    <string name="noti">Ghi chú khác</string>
+    <string name="howtodeliver">Hướng dẫn giao hàng</string>
+    <string name="nameofclient">Tên người nhận</string>
+    <string name="telephonenumber">Số điện thoại</string>
+    <string name="finish">Xong</string>
+    <string name="smallsize">Vừa</string>
+    <string name="bigsize">Lớn</string>
+
 
 
     <!--

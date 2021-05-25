@@ -27,7 +27,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
 
     HomeFragment homeFragment = new HomeFragment();
     OrderFragment orderFragment = new OrderFragment();
-    StoreLocationFragment storeLocationFragment = new StoreLocationFragment();
+    StoresFragment storeLocationFragment = new StoresFragment();
     MembershipFragment membershipFragment = new MembershipFragment();
     OthersFragment othersFragment = new OthersFragment();
 

@@ -14,58 +14,44 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductsRepo extends Fetching {
+    private final MutableLiveData<List<Product>> data = new MutableLiveData<>();
 
-    private List<Product> products=new ArrayList<>();
-
-    public ProductsRepo() {db.collection("products").addSnapshotListener((value, error) -> {
-        for(QueryDocumentSnapshot doc:value){
-            if(doc!=null){
-                Product product = doc.toObject(Product.class);
-                product.setId(doc.getId());
-                products.add(product);
-                data.setValue(products);
-            }
-        }
-    });
-        fetchData();
+    public ProductsRepo() {
+        setUpRealTimeListener();
     }
 
-    private final MutableLiveData<List<Product>> data = new MutableLiveData<>();
+    private void setUpRealTimeListener() {
+        db.collection("products").addSnapshotListener((value, error) -> {
+            if (error != null) {
+                Log.w("Products Repo", error);
+            } else {
+                List<Product> currentProducts = new ArrayList<>();
+                for (QueryDocumentSnapshot doc : value) {
+                    if (doc!=null) {
+                        Product product = doc.toObject(Product.class);
+                        product.setId(doc.getId());
+                        currentProducts.add(product);
+                    }
+                }
+                data.setValue(currentProducts);
+            }
+
+        });
+    }
+
 
     private Task<QuerySnapshot> fetchProducts() {
         return db.collection("products").get();
     }
 
-    private void fetchData() {
-        if (products == null) {
-            products = new ArrayList<>();
-            fetchProducts().addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
-                        Product product = documentSnapshot.toObject(Product.class);
-                        product.setId(documentSnapshot.getId());
-                        products.add(product);
-                        data.setValue(products);
-                    }
-                    Log.d("",String.valueOf(data.getValue().size()));
-                } else {
-                    Log.d("", "Fetching Products Error");
-                }
-            });
-        }
-    }
-
     public LiveData<List<Product>> getProducts() {
-        if (data.getValue() == null || data.getValue().isEmpty()) {
-            fetchData();
-        }
         return data;
     }
 
     public LiveData<List<Product>> getProductsOfCategory(String categoryId) {
         List<Product> list = new ArrayList<>();
 
-        for (Product product : products) {
+        for (Product product : data.getValue()) {
             if (product.getCategoryId().equals(categoryId))
                 list.add(product);
         }

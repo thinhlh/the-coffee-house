@@ -27,33 +27,6 @@ public class UserRepo extends Fetching {
 
     }
 
-
-//    // Facebook region
-//    public Task<CustomUser> fetchUser(AccessToken accessToken, FirebaseUser userFacebook) {
-//        return db.collection("users").document(accessToken.getUserId()).get().continueWith(task -> {
-//            if (!task.getResult().exists())
-//                createUser(accessToken, userFacebook).addOnCompleteListener(task1 -> user = task1.getResult());
-//            else
-//                user = task.getResult().toObject(CustomUser.class);
-//            data.setValue(user);
-//            return user;
-//        });
-//    }
-//
-//    public Task<CustomUser> createUser(AccessToken token, FirebaseUser userFacebook) {
-//        CustomUser user = new CustomUser();
-//        user.setName(userFacebook.getDisplayName());
-//        user.setEmail(userFacebook.getEmail());
-//        user.setPhoneNumber(userFacebook.getPhoneNumber());
-//        this.user = user;
-//        return db.collection("users").document(token.getUserId()).set(this.user).continueWith(task -> user);
-//    }
-//    // End FB region
-//
-//    public LiveData<CustomUser> getUser() {
-//        return data;
-//    }
-
     public static void fetchUser() {
         FirebaseFirestore.getInstance().collection("users").document(mAuth.getCurrentUser().getUid()).get().continueWith(task -> user = task.getResult().toObject(CustomUser.class));
     }

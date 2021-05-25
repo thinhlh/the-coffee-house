@@ -32,7 +32,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="971f74bb-6ea5-4aba-ab0c-51aedc2e2bc6" name="Default Changelist" comment="add: binding for OnItemClick event">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/models/Cart.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/models/CartItem.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/models/Order.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/models/ProductSize.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/models/Store.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/services/OrderRepo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/services/StoresRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/models/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/models/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/services/NotificationsRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/services/NotificationsRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/services/ProductsRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/services/ProductsRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/services/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/services/UserRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/HomeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/HomeActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/StoreLocationFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/StoresFragment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,8 +101,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="layoutResourceFile" />
         <option value="Interface" />
+        <option value="layoutResourceFile" />
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -86,7 +112,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1sYS7c5r6oZmZZcJBqRZxcjhohL" />
-  <component name="ProjectLevelVcsManager">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
@@ -97,16 +123,15 @@
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="VirtualDevicePath@D:\Android_SDK_HOME\.android\avd\Pixel_4_XL_API_30.avd" />
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-05-15T03:19:43.525498800Z" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="android-custom-viewC:/Users/Nhan2509/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.1.0/f2bdf79e1977939817f54a9d3e2f6bc52b63bdd0/recyclerview-1.1.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED" value="RecyclerView" />
     <property name="android-custom-viewD:/AppData/Local/Android/SDK/sources/android-30/android/view/View.java_SELECTED" value="View" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="project.structure.last.edited" value="SDK Location" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.17" />
     <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="emulator" />
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Android App.app">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <option name="TEST_OBJECT" value="class" />
       <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
@@ -116,6 +141,64 @@
     </configuration>
     <configuration name="The Coffee House.The_Coffee_House.app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
       <module name="The Coffee House.The_Coffee_House.app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="The_Coffee_House.app" />
       <option name="DEPLOY" value="true" />
       <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
       <option name="DEPLOY_AS_INSTANT" value="false" />
@@ -201,59 +284,71 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="395" y="111" key="#Inspections/0.0.1536.864@0.0.1536.864" timestamp="1621303527049" />
-    <state x="480" y="252" width="950" height="532" key="#PSD" timestamp="1621413054235">
-      <screen x="0" y="28" width="1920" height="978" />
+    <state x="294" y="252" width="950" height="532" key="#PSD" timestamp="1621879193364">
+      <screen x="0" y="28" width="3286" height="978" />
     </state>
     <state x="480" y="252" width="950" height="532" key="#PSD/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621413054235" />
+    <state x="294" y="252" key="#PSD/0.28.3286.978@0.28.3286.978" timestamp="1621879193364" />
     <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1621347735750">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="223" y="87" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.864@0.0.1536.864" timestamp="1621347735750" />
-    <state x="718" y="185" width="374" height="587" key="#com.intellij.ide.util.MemberChooser" timestamp="1621410133959">
-      <screen x="0" y="28" width="1920" height="978" />
+    <state x="1229" y="185" width="374" height="587" key="#com.intellij.ide.util.MemberChooser" timestamp="1621878941635">
+      <screen x="0" y="28" width="3286" height="978" />
     </state>
     <state x="574" y="139" key="#com.intellij.ide.util.MemberChooser/0.0.1536.864@0.0.1536.864" timestamp="1621349893654" />
     <state x="718" y="185" width="374" height="587" key="#com.intellij.ide.util.MemberChooser/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621410133959" />
+    <state x="1229" y="185" key="#com.intellij.ide.util.MemberChooser/0.28.3286.978@0.28.3286.978" timestamp="1621878941635" />
+    <state x="656" y="28" width="598" height="978" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1621878837902">
+      <screen x="0" y="28" width="3286" height="978" />
+    </state>
+    <state x="656" y="28" width="598" height="978" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.28.3286.978@0.28.3286.978" timestamp="1621878837902" />
     <state x="499" y="179" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1621349023545">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="499" y="179" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.0.1536.864@0.0.1536.864" timestamp="1621349023545" />
-    <state x="93" y="93" width="1350" height="678" key="AVDManager" timestamp="1621302123665">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state x="0" y="133" width="1122" height="768" key="AVDManager" timestamp="1621880952377">
+      <screen x="0" y="28" width="1920" height="978" />
     </state>
     <state x="93" y="93" width="1350" height="678" key="AVDManager/0.0.1536.864@0.0.1536.864" timestamp="1621302123665" />
+    <state x="0" y="133" width="1122" height="768" key="AVDManager/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621880952377" />
+    <state x="0" y="133" width="1920" height="768" key="AVDManager/0.28.3286.978@0.28.3286.978" timestamp="1621879301770" />
     <state x="349" y="187" key="AndroidCreateResourceDirectoryDialog" timestamp="1621329190117">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="349" y="187" key="AndroidCreateResourceDirectoryDialog/0.0.1536.864@0.0.1536.864" timestamp="1621329190117" />
-    <state x="543" y="275" width="824" height="486" key="AndroidCreateResourceFileDialog" timestamp="1621061843353">
+    <state x="543" y="275" width="824" height="486" key="AndroidCreateResourceFileDialog" timestamp="1621493168122">
       <screen x="0" y="28" width="1920" height="978" />
     </state>
-    <state x="543" y="275" width="824" height="486" key="AndroidCreateResourceFileDialog/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621061843353" />
+    <state x="543" y="275" width="824" height="486" key="AndroidCreateResourceFileDialog/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621493168122" />
     <state x="743" y="275" width="424" height="486" key="FileChooserDialogImpl" timestamp="1621057893448">
       <screen x="0" y="28" width="1920" height="978" />
     </state>
     <state x="743" y="275" width="424" height="486" key="FileChooserDialogImpl/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621057893448" />
-    <state width="1874" height="251" key="GridCell.Tab.0.bottom" timestamp="1621417017953">
+    <state width="1874" height="250" key="GridCell.Tab.0.bottom" timestamp="1621882653953">
       <screen x="0" y="28" width="1920" height="978" />
     </state>
     <state width="1493" height="325" key="GridCell.Tab.0.bottom/0.0.1536.864@0.0.1536.864" timestamp="1621353501979" />
-    <state width="1874" height="251" key="GridCell.Tab.0.bottom/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621417017953" />
-    <state width="1874" height="251" key="GridCell.Tab.0.center" timestamp="1621417017953">
+    <state width="1874" height="250" key="GridCell.Tab.0.bottom/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621882653953" />
+    <state width="1874" height="250" key="GridCell.Tab.0.bottom/0.28.3286.978@0.28.3286.978" timestamp="1621879301576" />
+    <state width="1874" height="250" key="GridCell.Tab.0.center" timestamp="1621882653953">
       <screen x="0" y="28" width="1920" height="978" />
     </state>
     <state width="1493" height="325" key="GridCell.Tab.0.center/0.0.1536.864@0.0.1536.864" timestamp="1621353501979" />
-    <state width="1874" height="251" key="GridCell.Tab.0.center/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621417017953" />
-    <state width="1874" height="251" key="GridCell.Tab.0.left" timestamp="1621417017953">
+    <state width="1874" height="250" key="GridCell.Tab.0.center/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621882653953" />
+    <state width="1874" height="250" key="GridCell.Tab.0.center/0.28.3286.978@0.28.3286.978" timestamp="1621879301576" />
+    <state width="1874" height="250" key="GridCell.Tab.0.left" timestamp="1621882653953">
       <screen x="0" y="28" width="1920" height="978" />
     </state>
     <state width="1493" height="325" key="GridCell.Tab.0.left/0.0.1536.864@0.0.1536.864" timestamp="1621353501977" />
-    <state width="1874" height="251" key="GridCell.Tab.0.left/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621417017953" />
-    <state width="1874" height="251" key="GridCell.Tab.0.right" timestamp="1621417017953">
+    <state width="1874" height="250" key="GridCell.Tab.0.left/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621882653953" />
+    <state width="1874" height="250" key="GridCell.Tab.0.left/0.28.3286.978@0.28.3286.978" timestamp="1621879301575" />
+    <state width="1874" height="250" key="GridCell.Tab.0.right" timestamp="1621882653953">
       <screen x="0" y="28" width="1920" height="978" />
     </state>
     <state width="1493" height="325" key="GridCell.Tab.0.right/0.0.1536.864@0.0.1536.864" timestamp="1621353501979" />
-    <state width="1874" height="251" key="GridCell.Tab.0.right/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621417017953" />
+    <state width="1874" height="250" key="GridCell.Tab.0.right/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621882653953" />
+    <state width="1874" height="250" key="GridCell.Tab.0.right/0.28.3286.978@0.28.3286.978" timestamp="1621879301576" />
     <state width="1493" height="223" key="GridCell.Tab.1.bottom" timestamp="1621351846973">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
@@ -270,30 +365,38 @@
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state width="1493" height="223" key="GridCell.Tab.1.right/0.0.1536.864@0.0.1536.864" timestamp="1621351846973" />
-    <state x="349" y="175" key="IDE.errors.dialog" timestamp="1621338546692">
-      <screen x="0" y="0" width="1536" height="864" />
+    <state x="747" y="226" width="824" height="510" key="IDE.errors.dialog" timestamp="1621879293387">
+      <screen x="0" y="28" width="3286" height="978" />
     </state>
     <state x="349" y="175" key="IDE.errors.dialog/0.0.1536.864@0.0.1536.864" timestamp="1621338546692" />
-    <state x="449" y="152" width="1022" height="732" key="SettingsEditor" timestamp="1621063273218">
+    <state x="747" y="226" width="824" height="510" key="IDE.errors.dialog/0.28.3286.978@0.28.3286.978" timestamp="1621879293387" />
+    <state x="449" y="152" width="1022" height="732" key="SettingsEditor" timestamp="1621880952045">
       <screen x="0" y="28" width="1920" height="978" />
     </state>
-    <state x="449" y="152" width="1022" height="732" key="SettingsEditor/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621063273218" />
-    <state x="1920" y="0" width="1366" height="768" key="dock-window-1" timestamp="1621413744925">
+    <state x="449" y="152" width="1022" height="732" key="SettingsEditor/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621880952045" />
+    <state x="170" y="152" width="1022" height="732" key="SettingsEditor/0.28.3286.978@0.28.3286.978" timestamp="1621879201677" />
+    <state x="1920" y="0" width="1366" height="768" key="dock-window-1" timestamp="1621492958260">
       <screen x="1920" y="0" width="1366" height="768" />
     </state>
-    <state x="1920" y="0" width="1366" height="768" key="dock-window-1/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621413744925" />
+    <state x="1920" y="0" width="1366" height="768" key="dock-window-1/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621492958260" />
+    <state width="600" height="428" key="javadoc.popup" timestamp="1621876706093">
+      <screen x="0" y="28" width="3286" height="978" />
+    </state>
+    <state width="600" height="428" key="javadoc.popup/0.28.3286.978@0.28.3286.978" timestamp="1621876706093" />
     <state x="562" y="180" key="refactoring.ChangeSignatureDialog" timestamp="1621304294648">
       <screen x="0" y="0" width="1536" height="864" />
     </state>
     <state x="562" y="180" key="refactoring.ChangeSignatureDialog/0.0.1536.864@0.0.1536.864" timestamp="1621304294648" />
-    <state x="624" y="235" key="run.anything.popup" timestamp="1621410809278">
+    <state x="624" y="235" key="run.anything.popup" timestamp="1621493178298">
       <screen x="0" y="28" width="1920" height="978" />
     </state>
-    <state x="624" y="235" key="run.anything.popup/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621410809278" />
-    <state x="623" y="241" width="672" height="678" key="search.everywhere.popup" timestamp="1621412918870">
+    <state x="624" y="235" key="run.anything.popup/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621493178298" />
+    <state x="623" y="241" width="672" height="678" key="search.everywhere.popup" timestamp="1621903468139">
       <screen x="0" y="28" width="1920" height="978" />
     </state>
     <state x="498" y="188" width="672" height="599" key="search.everywhere.popup/0.0.1536.864@0.0.1536.864" timestamp="1621306145280" />
-    <state x="623" y="241" width="672" height="678" key="search.everywhere.popup/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621412918870" />
+    <state x="623" y="241" width="672" height="678" key="search.everywhere.popup/0.28.1920.978/1920.0.1366.768@0.28.1920.978" timestamp="1621903468139" />
+    <state x="623" y="241" width="672" height="678" key="search.everywhere.popup/0.28.1920.978@0.28.1920.978" timestamp="1621875196695" />
+    <state x="1066" y="241" width="1151" height="678" key="search.everywhere.popup/0.28.3286.978@0.28.3286.978" timestamp="1621879251185" />
   </component>
 </project>

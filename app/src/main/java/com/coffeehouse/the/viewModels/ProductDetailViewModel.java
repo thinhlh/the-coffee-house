@@ -11,6 +11,7 @@ import androidx.lifecycle.ViewModel;
 import com.coffeehouse.the.models.Category;
 import com.coffeehouse.the.models.Product;
 import com.coffeehouse.the.services.CategoriesRepo;
+import com.coffeehouse.the.services.UserRepo;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -96,5 +97,14 @@ public class ProductDetailViewModel extends ViewModel {
                 updateBill(product);
             }
         }
+    }
+
+    public void onFavToggleButton(Product product) {
+        UserRepo user = new UserRepo();
+        user.toggleFavorite(product.getId()).addOnCompleteListener(task -> {
+            if (task.isSuccessful()){
+
+            }
+        });
     }
 }

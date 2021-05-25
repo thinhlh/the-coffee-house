@@ -15,6 +15,7 @@ import java.util.List;
 
 public class ProductsRepo extends Fetching {
     private final MutableLiveData<List<Product>> data = new MutableLiveData<>();
+    private final MutableLiveData<List<Product>> dataFavPro = new MutableLiveData<>();
 
     public ProductsRepo() {
         setUpRealTimeListener();
@@ -60,5 +61,34 @@ public class ProductsRepo extends Fetching {
         res.setValue(list);
         return res;
     }
+
+    //FAVORITE PRODUCT REGION
+
+    public void setUpRTListenerForFavPro() {
+        db.collection("products").addSnapshotListener((value, error) -> {
+            if (error != null) {
+                Log.w("Products Repo", error);
+            } else {
+                List<Product> favProducts = new ArrayList<>();
+                for (QueryDocumentSnapshot doc : value) {
+                    if (doc != null) {
+                        Product product = doc.toObject(Product.class);
+                        product.setId(doc.getId());
+                        if (UserRepo.user.getFavoriteProducts().contains(product.getId())) {
+                            favProducts.add(product);
+                        }
+                    }
+                }
+                dataFavPro.setValue(favProducts);
+            }
+
+        });
+    }
+
+    public LiveData<List<Product>> getFavProductOfUser() {
+        return dataFavPro;
+    }
+
+    //END
 
 }

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.databinding.ActivityProductDetailBinding;
 import com.coffeehouse.the.models.Product;
+import com.coffeehouse.the.services.UserRepo;
 import com.coffeehouse.the.viewModels.ProductDetailViewModel;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.squareup.picasso.Picasso;
@@ -45,7 +47,16 @@ public class ProductDetailBottomSheet extends BottomSheetDialogFragment {
         activityProductDetailBinding.setProductDetailViewModel(productDetailViewModel);
         //END BINDING
 
+
+        //LOAD INFORMATION
+        if (UserRepo.user.getFavoriteProducts().contains(product.getId())){
+            ((ToggleButton) v.findViewById(R.id.image_favorite)).setChecked(true);
+        } else {
+            ((ToggleButton) v.findViewById(R.id.image_favorite)).setChecked(false);
+        }
         Picasso.get().load(product.getImageUrl()).into((ImageView) v.findViewById(R.id.detail_product_image));
+        //DONE
+
 
         ((TextView) v.findViewById(R.id.sum_textview)).setOnClickListener(new View.OnClickListener() {
             @Override

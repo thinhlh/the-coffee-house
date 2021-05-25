@@ -22,7 +22,6 @@ import com.coffeehouse.the.adapter.ProductsClickListener;
 import com.coffeehouse.the.databinding.OrderFragmentBinding;
 import com.coffeehouse.the.models.Product;
 import com.coffeehouse.the.viewModels.OrderViewModel;
-import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 public class OrderFragment extends Fragment {
 
@@ -52,10 +51,25 @@ public class OrderFragment extends Fragment {
             public void onItemClick(Product product) {
                 //Toast.makeText(getContext(), "PRODUCT " + product.getTitle() + " CHECKED ",Toast.LENGTH_SHORT).show();
                 ProductDetailBottomSheet bottomSheet = new ProductDetailBottomSheet();
+                bottomSheet.setTargetFragment(OrderFragment.this, 1);
                 bottomSheet.setProductChosen(product);
                 bottomSheet.show(getFragmentManager(), "Product Detail");
             }
         });
+
+        //INFLATE MENU
+        (v.findViewById(R.id.menu_selection_card_view)).setOnClickListener(view -> {
+            CategoryBottomSheet categoryBottomSheet = new CategoryBottomSheet();
+            categoryBottomSheet.show(getFragmentManager(), "Category");
+        });
+
+
+        //INFLATE LIST FAVORITE PRODUCT
+        (v.findViewById(R.id.favorite_products_icon)).setOnClickListener(view -> {
+            Fragment fragment = new FavouriteProductListFragment();
+            getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
+        });
+        //DONE
 
         return v;
     }

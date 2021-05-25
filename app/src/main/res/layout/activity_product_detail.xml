@@ -76,15 +76,15 @@
                     <ToggleButton
                         android:id="@+id/image_favorite"
                         android:layout_width="30dp"
-                        android:textOff=""
-                        android:textOn=""
-                        android:onClick="onDefaultToggleClick"
                         android:layout_height="30dp"
                         android:layout_alignParentEnd="true"
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="15dp"
                         android:layout_marginEnd="25dp"
-                        android:background="@drawable/ic_baseline_favorite_border_24"/>
+                        android:background="@drawable/toggle_button_fav_pro"
+                        android:onClick="@{()->productDetailViewModel.onFavToggleButton(productDetail)}"
+                        android:textOff=""
+                        android:textOn="" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -146,11 +146,11 @@
                         android:layout_marginTop="15dp"
                         android:layout_marginEnd="25dp"
                         android:background="@drawable/round_button"
+                        android:backgroundTint="@color/light_orange"
                         android:gravity="center"
                         android:text="@string/compulsory"
                         android:textColor="#C87533"
                         android:textSize="15dp"
-                        android:backgroundTint="@color/light_orange"
                         android:textStyle="bold" />
 
 
@@ -158,31 +158,33 @@
                         android:id="@+id/text_extramoney"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/radioGroup"
                         android:layout_below="@+id/image_compulsory"
-                        android:text="+ 0đ"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="80dp"
                         android:layout_marginRight="15dp"
-                        android:textSize="15dp"/>
+                        android:layout_toRightOf="@+id/radioGroup"
+                        android:text="+ 0đ"
+                        android:textSize="15dp" />
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="2dp"
                         android:layout_below="@id/text_extramoney"
-                        android:background="@color/white_gray"
-                        android:layout_marginTop="7dp"/>
+                        android:layout_marginTop="7dp"
+                        android:background="@color/white_gray" />
 
                     <TextView
                         android:id="@+id/text_extramoney2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@+id/radioGroup"
                         android:layout_below="@+id/image_compulsory"
-                        android:text="+ 5.000đ"
                         android:layout_marginLeft="10dp"
                         android:layout_marginTop="127dp"
                         android:layout_marginRight="15dp"
-                        android:textSize="15dp"/>
+                        android:layout_toRightOf="@+id/radioGroup"
+                        android:text="+ 5.000đ"
+                        android:textSize="15dp" />
+
                     <RadioGroup
                         android:id="@+id/radioGroup"
                         android:layout_width="300dp"
@@ -198,8 +200,7 @@
                             android:text="Vừa"
 
 
-                           />
-
+                            />
 
 
                         <RadioButton
@@ -266,8 +267,8 @@
                         android:layout_marginEnd="25dp"
                         android:background="@drawable/round_button_with_gray_background"
                         android:gravity="center"
-                        android:textSize="15dp"
                         android:text="@string/optional"
+                        android:textSize="15dp"
                         android:textStyle="bold" />
 
                     <CheckBox
@@ -297,8 +298,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:layout_marginEnd="10dp"
                         android:layout_marginTop="105dp"
+                        android:layout_marginEnd="10dp"
                         android:text="+ 10.000đ"
                         android:textSize="15sp" />
                 </RelativeLayout>
@@ -355,8 +356,8 @@
                         android:layout_marginEnd="25dp"
                         android:background="@drawable/round_button_with_gray_background"
                         android:gravity="center"
-                        android:textSize="15dp"
                         android:text="@string/optional"
+                        android:textSize="15dp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -435,10 +436,10 @@
 
                             <TextView
                                 android:id="@+id/sum_textview"
-                                android:clickable="true"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_centerInParent="true"
+                                android:clickable="true"
                                 android:text="@{productDetailViewModel.sum}"
                                 android:textColor="@color/white"
                                 android:textSize="16sp"

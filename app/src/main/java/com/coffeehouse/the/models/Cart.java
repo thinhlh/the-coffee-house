@@ -9,17 +9,17 @@ public class Cart {
     // A Map of Products that user choose include ProductId and its quantity
     private List<CartItem> items = new ArrayList<>();
 
-    public void addItem(CartItem item) {
-        int index = findCartItemByProductId(item.getProductId());
+    public void addItem(CartItem cartItem) {
+        int index = findCartItemIndex(cartItem);
         if (index == -1) {
-            items.add(item);
+            items.add(cartItem);
         } else {
-            items.get(index).increaseQuantity(item.getQuantity());
+            items.get(index).increaseQuantity(cartItem.getQuantity());
         }
     }
 
-    public void deleteItem(String productId) {
-        int index = findCartItemByProductId(productId);
+    public void deleteItem(CartItem cartItem) {
+        int index = findCartItemIndex(cartItem);
         items.remove(index);
     }
 
@@ -27,9 +27,9 @@ public class Cart {
         items.clear();
     }
 
-    private int findCartItemByProductId(String productId) {
-        for (int i = 0; i < items.size(); i++) {
-            if (items.get(i).getProductId().equals(productId))
+    private int findCartItemIndex(CartItem cartItem) {
+        for (int i = 0; i < items.size(); i++)
+            if(items.get(i).equals(cartItem)){
                 return i;
         }
         return -1;

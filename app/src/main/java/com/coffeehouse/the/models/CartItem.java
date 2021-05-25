@@ -73,11 +73,12 @@ public class CartItem {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         CartItem cartItem = (CartItem) o;
-        return productId.equals(cartItem.productId);
+        return productId.equals(cartItem.productId) &&
+                size == cartItem.size;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(productId);
+        return Objects.hash(productId, size);
     }
 }

@@ -1,5 +1,6 @@
 package com.coffeehouse.the.views;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.databinding.ActivityProductDetailBinding;
+import com.coffeehouse.the.models.CartItem;
 import com.coffeehouse.the.models.Product;
 import com.coffeehouse.the.services.UserRepo;
 import com.coffeehouse.the.viewModels.ProductDetailViewModel;
@@ -28,9 +30,23 @@ public class ProductDetailBottomSheet extends BottomSheetDialogFragment {
 
     private Product product = new Product();
     private ProductDetailViewModel productDetailViewModel;
+    //private CartItem cartItem = new CartItem();
 
     public ProductDetailBottomSheet() {
     }
+
+    //SEND CART DATA TO ORDER FRAGMENT
+    public interface UpdateCart {
+        void onUpdateCart(CartItem cartItem);
+    }
+
+    private UpdateCart listener;
+
+    public void setListener(UpdateCart listener) {
+        this.listener = listener;
+    }
+    //DONE SETUP
+
 
     @Nullable
     @org.jetbrains.annotations.Nullable
@@ -49,7 +65,7 @@ public class ProductDetailBottomSheet extends BottomSheetDialogFragment {
 
 
         //LOAD INFORMATION
-        if (UserRepo.user.getFavoriteProducts().contains(product.getId())){
+        if (UserRepo.user.getFavoriteProducts().contains(product.getId())) {
             ((ToggleButton) v.findViewById(R.id.image_favorite)).setChecked(true);
         } else {
             ((ToggleButton) v.findViewById(R.id.image_favorite)).setChecked(false);
@@ -61,6 +77,14 @@ public class ProductDetailBottomSheet extends BottomSheetDialogFragment {
         ((TextView) v.findViewById(R.id.sum_textview)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (productDetailViewModel.count.getValue() > 0) {
+                    //(productId, itemPrice, quantity, size, topping, note)
+                    CartItem cartItem = new CartItem(product.getId(), productDetailViewModel.getAmount(),
+                            productDetailViewModel.count.getValue(), productDetailViewModel.getSize(), productDetailViewModel.getTopping(), "test note");
+
+                    //cartItem.getItemPrice();
+                    listener.onUpdateCart(cartItem);
+                }
                 dismiss();
             }
         });
@@ -75,4 +99,16 @@ public class ProductDetailBottomSheet extends BottomSheetDialogFragment {
     public void setProductChosen(Product product) {
         this.product = product;
     }
+
+
+    @Override
+    public void onAttach(@NonNull @NotNull Context context) {
+        super.onAttach(context);
+        try {
+            listener = (UpdateCart) getTargetFragment();
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString() + " must implement UpdateCart listener");
+        }
+    }
+
 }

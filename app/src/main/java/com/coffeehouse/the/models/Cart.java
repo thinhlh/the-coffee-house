@@ -6,6 +6,9 @@ import java.util.List;
 //Cart class to be used at client side, can be convert to Order object for further information
 public class Cart {
 
+    public Cart() {
+    }
+
     // A Map of Products that user choose include ProductId and its quantity
     private List<CartItem> items = new ArrayList<>();
 

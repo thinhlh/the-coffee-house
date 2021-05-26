@@ -10,6 +10,8 @@ import androidx.lifecycle.ViewModel;
 
 import com.coffeehouse.the.models.Category;
 import com.coffeehouse.the.models.Product;
+import com.coffeehouse.the.models.ProductSize;
+import com.coffeehouse.the.models.ProductTopping;
 import com.coffeehouse.the.services.CategoriesRepo;
 import com.coffeehouse.the.services.UserRepo;
 
@@ -90,10 +92,12 @@ public class ProductDetailViewModel extends ViewModel {
         RadioButton radioButton = v.findViewById(radioID);
         if (radioButton.getText().equals("Vừa")) {
             sizePrice = 0;
+            size = ProductSize.Medium;
             updateBill(product);
         } else if (radioButton.getText().equals("Lớn")) {
             if (checkProduct(product)) {
                 sizePrice = upSize;
+                size = ProductSize.Large;
                 updateBill(product);
             }
         }
@@ -106,5 +110,22 @@ public class ProductDetailViewModel extends ViewModel {
 
             }
         });
+    }
+
+    //GETTER FOR CART INFORMATION
+    private ProductSize size = ProductSize.Medium;
+    public ProductTopping getTopping() {
+        if (toppingCheckM.getValue()){
+            return ProductTopping.On;
+        }
+        return ProductTopping.Off;
+    }
+
+    public ProductSize getSize() {
+        return size;
+    }
+
+    public Integer getAmount() {
+        return amount;
     }
 }

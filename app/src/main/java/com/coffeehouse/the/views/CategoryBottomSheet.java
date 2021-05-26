@@ -39,7 +39,7 @@ public class CategoryBottomSheet extends BottomSheetDialogFragment {
     public void setListener(SendCategoryPick listener) {
         this.listener = listener;
     }
-    //END
+    //DONE SETUP
 
 
     @Nullable

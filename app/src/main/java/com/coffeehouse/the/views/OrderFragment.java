@@ -23,14 +23,19 @@ import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.ProductAdapter;
 import com.coffeehouse.the.adapter.ProductsClickListener;
 import com.coffeehouse.the.databinding.OrderFragmentBinding;
+import com.coffeehouse.the.models.Cart;
+import com.coffeehouse.the.models.CartItem;
 import com.coffeehouse.the.models.Category;
+import com.coffeehouse.the.models.Order;
 import com.coffeehouse.the.models.Product;
 import com.coffeehouse.the.viewModels.OrderViewModel;
 
-public class OrderFragment extends Fragment implements CategoryBottomSheet.SendCategoryPick {
+public class OrderFragment extends Fragment implements CategoryBottomSheet.SendCategoryPick, ProductDetailBottomSheet.UpdateCart {
 
     private OrderViewModel orderViewModel;
     private ProductAdapter productsAdapter = new ProductAdapter();
+    private Cart cart = new Cart();
+    private Order order = new Order();
 
     @Nullable
     @org.jetbrains.annotations.Nullable
@@ -76,6 +81,13 @@ public class OrderFragment extends Fragment implements CategoryBottomSheet.SendC
         //DONE
 
 
+        //CREATE ORDER
+        (v.findViewById(R.id.order_button)).setOnClickListener(view -> {
+            Order order = new Order("test order", cart);
+            order.getId();
+        });
+        //DONE
+
         return v;
     }
 
@@ -88,4 +100,8 @@ public class OrderFragment extends Fragment implements CategoryBottomSheet.SendC
         orderViewModel.getProductsOfCategory(category.getId()).observe(getViewLifecycleOwner(), productsAdapter::setProductsList);
     }
 
+    @Override
+    public void onUpdateCart(CartItem cartItem) {
+        cart.addItem(cartItem);
+    }
 }

@@ -8,16 +8,26 @@ public class CartItem {
     private int quantity = 0;
     private ProductSize size = ProductSize.Medium;
     private String note = "";
+    private ProductTopping topping = ProductTopping.Off;
 
     public CartItem() {
     }
 
-    public CartItem(String productId, int itemPrice, int quantity, ProductSize size, String note) {
+    public CartItem(String productId, int itemPrice, int quantity, ProductSize size, ProductTopping topping, String note) {
         this.productId = productId;
         this.itemPrice = itemPrice;
         this.quantity = quantity;
         this.size = size;
+        this.topping = topping;
         this.note = note;
+    }
+
+    public ProductTopping getTopping() {
+        return topping;
+    }
+
+    public void setTopping(ProductTopping topping) {
+        this.topping = topping;
     }
 
     public String getProductId() {

@@ -1,5 +1,6 @@
 package com.coffeehouse.the.views;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,19 @@ public class CategoryBottomSheet extends BottomSheetDialogFragment {
     public CategoryBottomSheet() {
     }
 
+    //SEND CATEGORY PICK BACK TO ORDER FRAGMENT
+    public interface SendCategoryPick {
+        void onInputCategory(Category category);
+    }
+
+    private SendCategoryPick listener;
+
+    public void setListener(SendCategoryPick listener) {
+        this.listener = listener;
+    }
+    //END
+
+
     @Nullable
     @org.jetbrains.annotations.Nullable
     @Override
@@ -50,7 +64,8 @@ public class CategoryBottomSheet extends BottomSheetDialogFragment {
 
         categoryAdapter.setListener(new CategoryClickListener() {
             @Override
-            public void onCategoryClick(String categoryID) {
+            public void onCategoryClick(Category category) {
+                listener.onInputCategory(category);
                 dismiss();
             }
         });
@@ -60,5 +75,15 @@ public class CategoryBottomSheet extends BottomSheetDialogFragment {
 
     private void getCategories(CategoryAdapter categoryAdapter) {
         categoriesViewModel.getCategories().observe(getViewLifecycleOwner(), categoryAdapter::setCategories);
+    }
+
+    @Override
+    public void onAttach(@NonNull @NotNull Context context) {
+        super.onAttach(context);
+        try {
+            listener = (SendCategoryPick) getTargetFragment();
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString() + " must implement Category Bottom Sheet send Data listener");
+        }
     }
 }

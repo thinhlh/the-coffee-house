@@ -59,12 +59,12 @@ public class CategoryAdapter extends Adapter<CategoryAdapter.CategoryViewHolder>
             this.menuListItemBinding = menuListItemBinding;
         }
 
-        public void bindOnClick (Category category, CategoryClickListener clickListener) {
+        public void bindOnClick(Category category, CategoryClickListener clickListener) {
             menuListItemBinding.setCategory(category);
             menuListItemBinding.executePendingBindings();
             itemView.setOnClickListener(view -> {
                 if (clickListener != null)
-                    clickListener.onCategoryClick(category.getId());
+                    clickListener.onCategoryClick(category);
             });
         }
     }

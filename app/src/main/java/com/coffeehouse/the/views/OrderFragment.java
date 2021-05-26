@@ -6,12 +6,15 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,12 +23,14 @@ import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.ProductAdapter;
 import com.coffeehouse.the.adapter.ProductsClickListener;
 import com.coffeehouse.the.databinding.OrderFragmentBinding;
+import com.coffeehouse.the.models.Category;
 import com.coffeehouse.the.models.Product;
 import com.coffeehouse.the.viewModels.OrderViewModel;
 
-public class OrderFragment extends Fragment {
+public class OrderFragment extends Fragment implements CategoryBottomSheet.SendCategoryPick {
 
     private OrderViewModel orderViewModel;
+    private ProductAdapter productsAdapter = new ProductAdapter();
 
     @Nullable
     @org.jetbrains.annotations.Nullable
@@ -41,7 +46,7 @@ public class OrderFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
 
-        ProductAdapter productsAdapter = new ProductAdapter();
+        productsAdapter = new ProductAdapter();
         recyclerView.setAdapter(productsAdapter);
 
         getProducts(productsAdapter);
@@ -60,22 +65,27 @@ public class OrderFragment extends Fragment {
         //INFLATE MENU
         (v.findViewById(R.id.menu_selection_card_view)).setOnClickListener(view -> {
             CategoryBottomSheet categoryBottomSheet = new CategoryBottomSheet();
+            categoryBottomSheet.setTargetFragment(OrderFragment.this, 2);
             categoryBottomSheet.show(getFragmentManager(), "Category");
         });
 
-
-        //INFLATE LIST FAVORITE PRODUCT
         (v.findViewById(R.id.favorite_products_icon)).setOnClickListener(view -> {
             Fragment fragment = new FavouriteProductListFragment();
             getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
         });
         //DONE
 
+
         return v;
     }
 
     private void getProducts(ProductAdapter productAdapter) {
         orderViewModel.getProducts().observe(getViewLifecycleOwner(), productAdapter::setProductsList);
+    }
+
+    @Override
+    public void onInputCategory(Category category) {
+        orderViewModel.getProductsOfCategory(category.getId()).observe(getViewLifecycleOwner(), productsAdapter::setProductsList);
     }
 
 }

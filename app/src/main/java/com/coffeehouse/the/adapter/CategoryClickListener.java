@@ -3,5 +3,5 @@ package com.coffeehouse.the.adapter;
 import com.coffeehouse.the.models.Category;
 
 public interface CategoryClickListener {
-    void onCategoryClick(String categoryID);
+    void onCategoryClick(Category category);
 }

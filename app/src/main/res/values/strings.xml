@@ -59,7 +59,16 @@
     <string name="map">BẢN ĐỒ</string>
     <string name="othersstore">CÁC CỬA HÀNG KHÁC</string>
     <string name="list">DANH SÁCH</string>
-
+    <string name="favoritefood">Món yêu Thích</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="promotionchange">Đổi ưu đãi</string>
+    <string name="voucher">Voucher của bạn</string>
+    <string name="right">Quyền lợi của bạn</string>
+    <string name="yourpromotion">Phiếu ưu đãi của bạn</string>
+    <string name="seeall">Xem Tất Cả</string>
+    <string name="enterpromotioncode">Nhập mã khuyến mãi</string>
+    <string name="outofdate">Sắp hết hạn</string>
+    <string name="apply">Áp dụng</string>
 
 
     <!--

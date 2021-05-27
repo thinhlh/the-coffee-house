@@ -81,12 +81,7 @@ public class OrderFragment extends Fragment implements CategoryBottomSheet.SendC
         //DONE
 
 
-        //CREATE ORDER
-        (v.findViewById(R.id.order_button)).setOnClickListener(view -> {
-            Order order = new Order("test order", cart);
-            order.getId();
-        });
-        //DONE
+
 
         return v;
     }

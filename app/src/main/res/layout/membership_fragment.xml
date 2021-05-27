@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tablayout_membership"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabIndicatorColor="#C87533"
+        app:tabSelectedTextColor="#C87533" />
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager_membership"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 
 
@@ -17,5 +28,4 @@
 
 
 
-
-</androidx.core.widget.NestedScrollView>
+</LinearLayout>

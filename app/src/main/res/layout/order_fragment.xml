@@ -15,6 +15,7 @@
         <!--            android:background="@color/black" />-->
 
         <androidx.cardview.widget.CardView
+            android:layout_marginTop="10dp"
             android:id="@+id/menu_selection_card_view"
             android:layout_width="250dp"
             android:layout_height="40dp"
@@ -48,6 +49,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:layout_marginTop="10dp"
             android:id="@+id/search_category_icon"
             android:layout_width="40dp"
             android:layout_height="40dp"
@@ -69,6 +71,7 @@
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
+            android:layout_marginTop="10dp"
             android:id="@+id/favorite_products_icon"
             android:layout_width="40dp"
             android:layout_height="40dp"
@@ -102,7 +105,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/menu_selection_card_view"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="10dp"
             android:text="@string/must_try"
             android:textColor="@color/black"
             android:textSize="22sp"

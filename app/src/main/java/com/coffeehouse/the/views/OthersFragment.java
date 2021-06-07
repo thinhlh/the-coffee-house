@@ -20,7 +20,7 @@ import com.coffeehouse.the.services.UserRepo;
 import com.coffeehouse.the.viewModels.AuthViewModel;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
-public class OthersFragment extends Fragment implements View.OnClickListener {
+public class OthersFragment extends Fragment  {
 
     private GoogleSignInClient mGoogleSignInClient;
     private final AuthViewModel authViewModel = new AuthViewModel();
@@ -31,30 +31,10 @@ public class OthersFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(@NonNull @org.jetbrains.annotations.NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.others_fragment, container, false);
-        ((Button) v.findViewById(R.id.signOutButton)).setOnClickListener(this);
-        v.findViewById(R.id.showFavorites).setOnClickListener(this);
-        v.findViewById(R.id.toggleFavoriteButton).setOnClickListener(this);
 
-        mGoogleSignInClient = CustomGoogleSignInClient.mGoogleSignInClient(v.getContext());
         return v;
     }
 
-    @Override
-    public void onClick(View v) {
-        if (v.getId() == R.id.signOutButton) {
-            mGoogleSignInClient.signOut().addOnCompleteListener(task -> {
-                authViewModel.signOut();
-                startActivity(new Intent(v.getContext(), MainActivity.class));
-            });
-        } else if (v.getId() == R.id.showFavorites) {
-            Toast.makeText(v.getContext(), UserRepo.user.getFavoriteProducts().toString(), Toast.LENGTH_SHORT).show();
-        }
-        else if(v.getId()==R.id.toggleFavoriteButton){
-            UserRepo userRepo=new UserRepo();
-            userRepo.toggleFavorite("1234").addOnCompleteListener(task -> {
-                if(task.isSuccessful())
-                    ((Button)v).setBackgroundColor(Color.RED);
-            });
-        }
-    }
+
+
 }

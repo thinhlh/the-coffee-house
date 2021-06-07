@@ -69,7 +69,34 @@
     <string name="enterpromotioncode">Nhập mã khuyến mãi</string>
     <string name="outofdate">Sắp hết hạn</string>
     <string name="apply">Áp dụng</string>
-
+    <string name="utilities">Tiện ích</string>
+    <string name="history">Lịch sử đơn hàng</string>
+    <string name="rules">Điều khoản</string>
+    <string name="news">Tin tức và Khuyến...</string>
+    <string name="support">Hỗ trợ</string>
+    <string name="feedback">Gửi đánh giá và góp ý</string>
+    <string name="contact">Liên hệ</string>
+    <string name="personalinfor">Thông tin cá nhân</string>
+    <string name="saveaddress">Địa chỉ đã lưu</string>
+    <string name="setting">Cài đặt</string>
+    <string name="logout">Đăng xuất</string>
+    <string name="account">Tài khoản</string>
+    <string name="newsandpromotion">Tin tức và Khuyến mãi</string>
+    <string name="callcenter">Tổng đài</string>
+    <string name="email">Email</string>
+    <string name="website">Website</string>
+    <string name="facebook">Facebook</string>
+    <string name="sendfeedback">Gửi phản hồi</string>
+    <string name="nameofsender">Tên người gửi</string>
+    <string name="emailad">Địa chỉ email</string>
+    <string name="telephonenum">Số điện thoại</string>
+    <string name="feedbackcontent">Nội dung phản hồi</string>
+    <string name="updateinfo">Cập nhật thông tin</string>
+    <string name="updateaccount">Cập nhật tài khoản</string>
+    <string name="enteryourname">Nhập tên của bạn</string>
+    <string name="enteryourlastname">Nhập họ của bạn</string>
+    <string name="recievenoti">Nhận thông báo</string>
+    <string name="aboutus">Về chúng tôi</string>
 
     <!--
     This string is used for square devices and overridden by hello_world in

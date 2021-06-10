@@ -29,6 +29,7 @@ public class ProductDetailViewModel extends ViewModel {
     public LiveData<Boolean> toppingCheck;
 
     private Integer amount = 0;
+    private Integer amountPerOrder = 0;
     private final Integer toppingPrice = 10000;
     private Integer sizePrice = 0;
     private final Integer upSize = 5000;
@@ -69,10 +70,11 @@ public class ProductDetailViewModel extends ViewModel {
 
     private void updateBill(Product product) {
         if (toppingCheckM.getValue()) {
-            amount = countM.getValue() * (sizePrice + toppingPrice + product.getPrice());
+            amountPerOrder = sizePrice + toppingPrice + product.getPrice();
         } else {
-            amount = countM.getValue() * (sizePrice + product.getPrice());
+            amountPerOrder = sizePrice + product.getPrice();
         }
+        amount = countM.getValue() * amountPerOrder;
         sumM.setValue("Thêm vào giỏ - " + format.format(amount));
     }
 
@@ -125,7 +127,11 @@ public class ProductDetailViewModel extends ViewModel {
         return size;
     }
 
-    public Integer getAmount() {
-        return amount;
+    public Integer getAmountPerOrder() {
+        return amountPerOrder;
     }
+//
+//    public Integer getAmount() {
+//        return amount;
+//    }
 }

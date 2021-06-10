@@ -7,21 +7,60 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.coffeehouse.the.R;
+import com.coffeehouse.the.adapter.ProductAdapter;
+import com.coffeehouse.the.adapter.StoreAdapter;
+import com.coffeehouse.the.adapter.StoreClickListener;
+import com.coffeehouse.the.databinding.StoreLocationFragmentBinding;
+import com.coffeehouse.the.models.Store;
 import com.coffeehouse.the.services.StoresRepo;
+import com.coffeehouse.the.viewModels.OrderViewModel;
+import com.coffeehouse.the.viewModels.StoreViewModel;
 
 public class StoresFragment extends Fragment {
 
-
+    private StoreViewModel storeViewModel;
+    private StoreAdapter storeAdapter;
 
     @Nullable
     @org.jetbrains.annotations.Nullable
     @Override
     public View onCreateView(@NonNull @org.jetbrains.annotations.NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-       View v = inflater.inflate(R.layout.store_location_fragment,container,false);
-        StoresRepo repo=new StoresRepo();
-       return  v;
+
+        StoreLocationFragmentBinding storeLocationFragmentBinding = DataBindingUtil.inflate(inflater, R.layout.store_location_fragment, container, false);
+        View v = storeLocationFragmentBinding.getRoot();
+
+        //BINDING
+        storeViewModel = new ViewModelProvider(this).get(StoreViewModel.class);
+        RecyclerView recyclerView = storeLocationFragmentBinding.storeRecyclerView;
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setHasFixedSize(true);
+
+        storeAdapter = new StoreAdapter();
+        recyclerView.setAdapter(storeAdapter);
+
+        getStores(storeAdapter);
+        //END BINDING
+
+        storeAdapter.setListener(new StoreClickListener() {
+            @Override
+            public void onStoreClick(Store store) {
+                StoreDetailBottomSheet bottomSheet = new StoreDetailBottomSheet();
+                bottomSheet.setStoreChosen(store);
+                bottomSheet.show(getFragmentManager(), "Store Detail");
+            }
+        });
+
+        return v;
+    }
+
+    private void getStores(StoreAdapter storeAdapter) {
+        storeViewModel.getStores().observe(getViewLifecycleOwner(), storeAdapter::setStoresList);
     }
 }

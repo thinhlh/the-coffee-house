@@ -31,13 +31,14 @@
                   android:src="@drawable/tcfhlogo2">
 
               </ImageView>
-              <ImageView
-                  android:layout_width="wrap_content"
-                  android:layout_marginTop="7dp"
-                  android:layout_height="30dp"
-                  android:src="@drawable/ic_baseline_article_242"
-                  android:layout_alignParentRight="true"
-                  android:layout_marginRight="20dp"/>
+<!--              <ImageView-->
+<!--                  android:id="@+id/order_view"-->
+<!--                  android:layout_width="wrap_content"-->
+<!--                  android:layout_marginTop="7dp"-->
+<!--                  android:layout_height="30dp"-->
+<!--                  android:src="@drawable/ic_baseline_article_242"-->
+<!--                  android:layout_alignParentRight="true"-->
+<!--                  android:layout_marginRight="20dp"/>-->
 
           </RelativeLayout>
 

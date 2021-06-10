@@ -21,7 +21,7 @@ public class MembershipViewPagerAdapter extends FragmentStatePagerAdapter {
     @NotNull
     @Override
     public Fragment getItem(int position) {
-        switch (position){
+        switch (position) {
             case 0:
                 return new screen1_MembershipFragment();
             case 1:
@@ -40,17 +40,14 @@ public class MembershipViewPagerAdapter extends FragmentStatePagerAdapter {
     @org.jetbrains.annotations.Nullable
     @Override
     public CharSequence getPageTitle(int position) {
-        String title="";
-        switch (position){
+        String title = "";
+        switch (position) {
             case 0:
-                title="Tích Điểm";
+                title = "Tích Điểm";
                 break;
             case 1:
-                title="Phiếu Ưu Đãi";
+                title = "Phiếu Ưu Đãi";
                 break;
-
-
-
         }
         return title;
     }

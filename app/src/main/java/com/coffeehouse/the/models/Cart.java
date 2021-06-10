@@ -46,4 +46,7 @@ public class Cart {
         return total;
     }
 
+    public List<CartItem> getItems() {
+        return items;
+    }
 }

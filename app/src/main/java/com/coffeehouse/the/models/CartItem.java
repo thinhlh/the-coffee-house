@@ -1,5 +1,7 @@
 package com.coffeehouse.the.models;
 
+import android.util.Size;
+
 import java.util.Objects;
 
 public class CartItem {
@@ -80,11 +82,11 @@ public class CartItem {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+//        if (this == o) return true;
+//        if (o == null || getClass() != o.getClass()) return false;
         CartItem cartItem = (CartItem) o;
-        return productId.equals(cartItem.productId) &&
-                size == cartItem.size;
+        return (productId.equals(cartItem.productId) &&
+                size == cartItem.size && topping == cartItem.topping);
     }
 
     @Override

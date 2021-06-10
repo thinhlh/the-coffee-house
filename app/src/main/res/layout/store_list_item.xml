@@ -1,88 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardCornerRadius="8dp"
-    app:cardElevation="8dp"
-    android:layout_height="wrap_content">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <LinearLayout
+    <data>
+
+        <variable
+            name="store"
+            type="com.coffeehouse.the.models.Store" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
-        android:orientation="horizontal"
-        android:paddingStart="16dp"
-        android:paddingTop="16dp"
-        android:paddingEnd="16dp"
-        android:paddingBottom="16dp"
-        android:layout_height="match_parent">
-
-        <androidx.cardview.widget.CardView
-
-            android:layout_width="120dp"
-            android:layout_height="94dp"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="8dp">
-
-            <ImageView
-                android:id="@+id/product_image"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-               />
-
-        </androidx.cardview.widget.CardView>
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="8dp">
 
         <LinearLayout
-            android:layout_width="250dp"
-            android:layout_marginLeft="5dp"
-            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="16dp">
 
-            <com.google.android.material.textview.MaterialTextView
-                android:textColor="@color/accent_color"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                android:textStyle="bold"
-                android:textSize="11sp"
-                android:text="THE COFFEE HOUSE"
-                android:id="@+id/store_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-             />
+            <androidx.cardview.widget.CardView
 
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/action_store_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:maxLines="3"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:layout_marginLeft="20dp"
-                android:text="43 Hoa Hồng, Quận Phú Nhuận"
-            />
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/action_store_discription"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:maxLines="3"
-                android:layout_marginTop="3dp"
-                android:textColor="@color/grey"
-                android:textSize="12sp"
-                android:layout_marginLeft="20dp"
-                android:text="Chưa xác định"
-                />
+                android:layout_width="120dp"
+                android:layout_height="94dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp">
+
+                <ImageView
+                    android:id="@+id/store_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:orientation="vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/store_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="THE COFFEE HOUSE"
+                    android:textColor="@color/accent_color"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/action_store_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:maxLines="3"
+                    android:text="@{store.address}"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/action_store_discription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="3dp"
+                    android:maxLines="3"
+                    android:text="Cách đây ? km"
+                    android:textColor="@color/grey"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
 
-
-
-
-
-    </LinearLayout>
-
-
-
-
-
-
-</com.google.android.material.card.MaterialCardView>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

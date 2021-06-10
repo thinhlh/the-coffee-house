@@ -51,7 +51,7 @@ public class ProductAdapter extends Adapter<ProductAdapter.ProductViewHolder> {
         this.listener = listener;
     }
 
-    static class ProductViewHolder extends RecyclerView.ViewHolder{
+    static class ProductViewHolder extends RecyclerView.ViewHolder {
 
         private final ProductListItemBinding productListItemBinding;
 
@@ -60,7 +60,7 @@ public class ProductAdapter extends Adapter<ProductAdapter.ProductViewHolder> {
             this.productListItemBinding = productListItemBinding;
         }
 
-        public void bindOnClick (Product product, ProductsClickListener clickListener) {
+        public void bindOnClick(Product product, ProductsClickListener clickListener) {
             productListItemBinding.setProduct(product);
             productListItemBinding.executePendingBindings();
             itemView.setOnClickListener(view -> {

@@ -79,7 +79,7 @@ public class ProductDetailBottomSheet extends BottomSheetDialogFragment {
             public void onClick(View v) {
                 if (productDetailViewModel.count.getValue() > 0) {
                     //(productId, itemPrice, quantity, size, topping, note)
-                    CartItem cartItem = new CartItem(product.getId(), productDetailViewModel.getAmount(),
+                    CartItem cartItem = new CartItem(product.getId(), productDetailViewModel.getAmountPerOrder(),
                             productDetailViewModel.count.getValue(), productDetailViewModel.getSize(), productDetailViewModel.getTopping(), "test note");
 
                     //cartItem.getItemPrice();

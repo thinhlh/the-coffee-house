@@ -6,6 +6,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class UserRepo extends Fetching {
@@ -28,7 +29,9 @@ public class UserRepo extends Fetching {
     }
 
     public static void fetchUser() {
-        FirebaseFirestore.getInstance().collection("users").document(mAuth.getCurrentUser().getUid()).get().continueWith(task -> user = task.getResult().toObject(CustomUser.class));
+        FirebaseFirestore.getInstance().collection("users")
+                .document(mAuth.getCurrentUser().getUid()).get()
+                .continueWith(task -> user = task.getResult().toObject(CustomUser.class));
     }
 
 
@@ -77,13 +80,18 @@ public class UserRepo extends Fetching {
         mAuth.signOut();
     }
 
-    public Task<Void> toggleFavorite(String productId){
-        if(user.getFavoriteProducts().contains(productId)){
+    public Task<Void> toggleFavorite(String productId) {
+        if (user.getFavoriteProducts().contains(productId)) {
             user.getFavoriteProducts().remove(productId);
-            return db.collection("users").document(mAuth.getCurrentUser().getUid()).update("favoriteProducts",user.getFavoriteProducts());
-        }else {
+            return db.collection("users").document(mAuth.getCurrentUser().getUid()).update("favoriteProducts", user.getFavoriteProducts());
+        } else {
             user.getFavoriteProducts().add(productId);
-            return db.collection("users").document(mAuth.getCurrentUser().getUid()).update("favoriteProducts",user.getFavoriteProducts());
+            return db.collection("users").document(mAuth.getCurrentUser().getUid()).update("favoriteProducts", user.getFavoriteProducts());
         }
     }
+
+    public Task<Void> updateUserPoint(Integer point) {
+        return db.collection("users").document(mAuth.getCurrentUser().getUid()).update("point", (UserRepo.user.getPoint() + point));
+    }
+
 }

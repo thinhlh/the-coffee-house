@@ -1,20 +1,14 @@
 package com.coffeehouse.the.views;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -28,6 +22,8 @@ import com.coffeehouse.the.models.CartItem;
 import com.coffeehouse.the.models.Category;
 import com.coffeehouse.the.models.Order;
 import com.coffeehouse.the.models.Product;
+import com.coffeehouse.the.services.OrderRepo;
+import com.coffeehouse.the.services.UserRepo;
 import com.coffeehouse.the.viewModels.OrderViewModel;
 
 public class OrderFragment extends Fragment implements CategoryBottomSheet.SendCategoryPick, ProductDetailBottomSheet.UpdateCart {
@@ -35,7 +31,9 @@ public class OrderFragment extends Fragment implements CategoryBottomSheet.SendC
     private OrderViewModel orderViewModel;
     private ProductAdapter productsAdapter = new ProductAdapter();
     private Cart cart = new Cart();
-    private Order order = new Order();
+    private Order order;
+    private OrderRepo orderRepo = new OrderRepo();
+    private UserRepo userRepo = new UserRepo();
 
     @Nullable
     @org.jetbrains.annotations.Nullable
@@ -55,6 +53,7 @@ public class OrderFragment extends Fragment implements CategoryBottomSheet.SendC
         recyclerView.setAdapter(productsAdapter);
 
         getProducts(productsAdapter);
+        //END BINDING
 
         productsAdapter.setListener(new ProductsClickListener() {
             @Override
@@ -81,7 +80,11 @@ public class OrderFragment extends Fragment implements CategoryBottomSheet.SendC
         //DONE
 
 
-
+        v.findViewById(R.id.order_view).setOnClickListener(view -> {
+            order = new Order(cart);
+            orderRepo.addOrderData(order);
+            userRepo.updateUserPoint(cart.getTotalCartValue() / 1000);
+        });
 
         return v;
     }

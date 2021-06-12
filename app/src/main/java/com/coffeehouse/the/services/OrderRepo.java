@@ -34,8 +34,7 @@ public class OrderRepo extends Fetching {
                 String id = task.getResult().getId();
                 AtomicReference<Integer> i = new AtomicReference<>(1);
                 order.getCart().getItems().forEach(cartItem -> {
-                    db.collection("orders").document(id).collection("cart")
-                            .document("cart item " + (i.getAndSet(i.get() + 1)).toString()).set(cartItem);
+                    db.collection("orders").document(id).collection("cart").document().set(cartItem);
                 });
             }
         });

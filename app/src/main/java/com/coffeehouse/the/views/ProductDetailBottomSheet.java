@@ -26,11 +26,10 @@ import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
-public class ProductDetailBottomSheet extends BottomSheetDialogFragment {
+public class ProductDetailBottomSheet extends BottomSheetDialogFragment implements View.OnClickListener {
 
     private Product product = new Product();
     private ProductDetailViewModel productDetailViewModel;
-    //private CartItem cartItem = new CartItem();
 
     public ProductDetailBottomSheet() {
     }
@@ -74,20 +73,8 @@ public class ProductDetailBottomSheet extends BottomSheetDialogFragment {
         //DONE
 
 
-        ((TextView) v.findViewById(R.id.sum_textview)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (productDetailViewModel.count.getValue() > 0) {
-                    //(productId, itemPrice, quantity, size, topping, note)
-                    CartItem cartItem = new CartItem(product.getId(), productDetailViewModel.getAmountPerOrder(),
-                            productDetailViewModel.count.getValue(), productDetailViewModel.getSize(), productDetailViewModel.getTopping(), "test note");
-
-                    //cartItem.getItemPrice();
-                    listener.onUpdateCart(cartItem);
-                }
-                dismiss();
-            }
-        });
+        (v.findViewById(R.id.select_item_button)).setOnClickListener(this::onClick);
+        (v.findViewById(R.id.sum_textview)).setOnClickListener(this::onClick);
         return v;
     }
 
@@ -100,6 +87,15 @@ public class ProductDetailBottomSheet extends BottomSheetDialogFragment {
         this.product = product;
     }
 
+    @Override
+    public void onClick(View v) {
+        if (productDetailViewModel.count.getValue() > 0) {
+            CartItem cartItem = new CartItem(product.getId(), productDetailViewModel.getAmountPerOrder(),
+                    productDetailViewModel.count.getValue(), productDetailViewModel.getSize(), productDetailViewModel.getTopping(), "test note");
+            listener.onUpdateCart(cartItem);
+        }
+        dismiss();
+    }
 
     @Override
     public void onAttach(@NonNull @NotNull Context context) {

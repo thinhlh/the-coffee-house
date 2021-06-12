@@ -108,7 +108,7 @@ public class ProductDetailViewModel extends ViewModel {
     public void onFavToggleButton(Product product) {
         UserRepo user = new UserRepo();
         user.toggleFavorite(product.getId()).addOnCompleteListener(task -> {
-            if (task.isSuccessful()){
+            if (task.isSuccessful()) {
 
             }
         });
@@ -116,8 +116,9 @@ public class ProductDetailViewModel extends ViewModel {
 
     //GETTER FOR CART INFORMATION
     private ProductSize size = ProductSize.Medium;
+
     public ProductTopping getTopping() {
-        if (toppingCheckM.getValue()){
+        if (toppingCheckM.getValue()) {
             return ProductTopping.On;
         }
         return ProductTopping.Off;
@@ -130,8 +131,5 @@ public class ProductDetailViewModel extends ViewModel {
     public Integer getAmountPerOrder() {
         return amountPerOrder;
     }
-//
-//    public Integer getAmount() {
-//        return amount;
-//    }
+
 }

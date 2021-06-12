@@ -73,6 +73,7 @@
             app:cardCornerRadius="10dp">
 
             <LinearLayout
+                android:id="@+id/term"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
@@ -112,6 +113,7 @@
             app:cardCornerRadius="10dp">
 
             <LinearLayout
+                android:id="@+id/card_view_news"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
@@ -175,6 +177,7 @@
                     android:layout_height="60dp">
 
                     <RelativeLayout
+                        android:id="@+id/feedback"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
@@ -221,6 +224,7 @@
                     android:layout_height="60dp">
 
                     <RelativeLayout
+                        android:id="@+id/contact"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
@@ -298,6 +302,7 @@
                     android:layout_height="60dp">
 
                     <RelativeLayout
+                        android:id="@+id/user_info"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
@@ -344,6 +349,7 @@
                     android:layout_height="60dp">
 
                     <RelativeLayout
+                        android:id="@+id/saved_address"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
@@ -392,6 +398,7 @@
                     android:layout_height="60dp">
 
                     <RelativeLayout
+                        android:id="@+id/settings"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
@@ -440,6 +447,7 @@
                     android:layout_height="60dp">
 
                     <RelativeLayout
+                        android:id="@+id/logout"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 

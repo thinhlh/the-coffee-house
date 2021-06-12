@@ -91,7 +91,18 @@ public class UserRepo extends Fetching {
     }
 
     public Task<Void> updateUserPoint(Integer point) {
+        updateUserMembership(point);
         return db.collection("users").document(mAuth.getCurrentUser().getUid()).update("point", (UserRepo.user.getPoint() + point));
+    }
+
+    private void updateUserMembership(Integer point) {
+        Integer uPoint = UserRepo.user.getPoint() + point;
+        if (uPoint >= 3000)
+            db.collection("users").document(mAuth.getCurrentUser().getUid()).update("membership", "Diamond");
+        else if (uPoint >= 2000)
+            db.collection("users").document(mAuth.getCurrentUser().getUid()).update("membership", "Gold");
+        else if (uPoint >= 1000)
+            db.collection("users").document(mAuth.getCurrentUser().getUid()).update("membership", "Silver");
     }
 
 }

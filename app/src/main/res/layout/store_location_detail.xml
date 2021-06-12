@@ -237,6 +237,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/store_google_map"
                 android:layout_width="370dp"
                 android:layout_height="230dp"
                 android:layout_gravity="center"
@@ -244,7 +245,7 @@
                 app:cardCornerRadius="8dp">
 
                 <ImageView
-                    android:id="@+id/store_detail_gg_map"
+                    android:id="@+id/img_store_detail_gg_map"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_gravity="fill"

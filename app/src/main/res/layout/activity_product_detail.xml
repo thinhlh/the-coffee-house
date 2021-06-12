@@ -430,6 +430,7 @@
                         app:cardElevation="8dp">
 
                         <RelativeLayout
+                            android:id="@+id/add_to_cart"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="#654321">

@@ -94,9 +94,12 @@
     <string name="updateinfo">Cập nhật thông tin</string>
     <string name="updateaccount">Cập nhật tài khoản</string>
     <string name="enteryourname">Nhập tên của bạn</string>
-    <string name="enteryourlastname">Nhập họ của bạn</string>
+    <string name="enteryourphone">Nhập số điện thoại của bạn</string>
+    <string name="enteryouremail">Nhập email của bạn</string>
+    <string name="enteryourbirthday">Chọn ngày sinh của bạn</string>
     <string name="recievenoti">Nhận thông báo</string>
     <string name="aboutus">Về chúng tôi</string>
+    <string name="term">Điều khoản sử dụng</string>
 
     <!--
     This string is used for square devices and overridden by hello_world in

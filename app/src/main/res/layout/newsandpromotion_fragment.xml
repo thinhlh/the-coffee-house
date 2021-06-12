@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:orientation="vertical"
     android:layout_height="match_parent">
+
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -23,7 +24,7 @@
 
                 />
             <ImageView
-                android:id="@+id/close_oder_bottomesheetdialog"
+                android:id="@+id/close_website_contact"
                 android:layout_width="30dp"
                 android:layout_height="40dp"
                 android:layout_centerVertical="true"

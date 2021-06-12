@@ -5,9 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.coffeehouse.the.R;
+import com.coffeehouse.the.databinding.FragmentScreen1MembershipBinding;
+import com.coffeehouse.the.services.UserRepo;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,7 +62,12 @@ public class screen1_MembershipFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_screen1__membership, container, false);
+        FragmentScreen1MembershipBinding fragmentScreen1MembershipBinding = DataBindingUtil
+                .inflate(inflater, R.layout.fragment_screen1__membership, container, false);
+        View v = fragmentScreen1MembershipBinding.getRoot();
+
+        fragmentScreen1MembershipBinding.setUser(UserRepo.user);
+
+        return v;
     }
 }

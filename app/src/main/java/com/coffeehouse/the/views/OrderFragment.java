@@ -59,10 +59,11 @@ public class OrderFragment extends Fragment implements CategoryBottomSheet.SendC
             @Override
             public void onItemClick(Product product) {
                 //Toast.makeText(getContext(), "PRODUCT " + product.getTitle() + " CHECKED ",Toast.LENGTH_SHORT).show();
-                ProductDetailBottomSheet bottomSheet = new ProductDetailBottomSheet();
-                bottomSheet.setTargetFragment(OrderFragment.this, 1);
-                bottomSheet.setProductChosen(product);
-                bottomSheet.show(getFragmentManager(), "Product Detail");
+//                ProductDetailBottomSheet bottomSheet = new ProductDetailBottomSheet();
+//                bottomSheet.setTargetFragment(OrderFragment.this, 1);
+//                bottomSheet.setProductChosen(product);
+//                bottomSheet.show(getFragmentManager(), "Product Detail");
+                navigateToProductDetailBottomSheet(product);
             }
         });
 
@@ -79,7 +80,6 @@ public class OrderFragment extends Fragment implements CategoryBottomSheet.SendC
         });
         //DONE
 
-
         v.findViewById(R.id.order_view).setOnClickListener(view -> {
             order = new Order(cart);
             orderRepo.addOrderData(order);
@@ -91,6 +91,13 @@ public class OrderFragment extends Fragment implements CategoryBottomSheet.SendC
 
     private void getProducts(ProductAdapter productAdapter) {
         orderViewModel.getProducts().observe(getViewLifecycleOwner(), productAdapter::setProductsList);
+    }
+
+    public void navigateToProductDetailBottomSheet(Product product) {
+        ProductDetailBottomSheet bottomSheet = new ProductDetailBottomSheet();
+        bottomSheet.setTargetFragment(OrderFragment.this, 1);
+        bottomSheet.setProductChosen(product);
+        bottomSheet.show(getFragmentManager(), "Product Detail");
     }
 
     @Override

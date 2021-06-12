@@ -58,12 +58,13 @@ dependencies {
 
     //Google
     implementation 'com.google.android.gms:play-services-auth:19.0.0'
+    implementation 'com.google.android.gms:play-services-maps:17.0.1'
     //implementation 'com.google.apis:google-api-services-people:v1-rev20210419-1.31.0'
     //implementation 'com.google.oauth-client:google-oauth-client-jetty:1.23.0'
 
     //Facebook
     implementation 'com.facebook.android:facebook-login:4.42.0'
-    implementation 'com.google.android.gms:play-services-maps:17.0.1'
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
 
 
     testImplementation 'junit:junit:4.13.2'

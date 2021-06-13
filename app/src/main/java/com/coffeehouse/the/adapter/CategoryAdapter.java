@@ -18,9 +18,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class CategoryAdapter extends Adapter<CategoryAdapter.CategoryViewHolder> {
+public class CategoryAdapter extends Adapter<CategoryAdapter.CategoryViewHolder> implements ClickableRecyclerView<Category> {
     private List<Category> categories;
-    private CategoryClickListener listener;
+    private RecyclerViewClickListener<Category> listener;
 
     @NonNull
     @Override
@@ -37,17 +37,26 @@ public class CategoryAdapter extends Adapter<CategoryAdapter.CategoryViewHolder>
         holder.bindOnClick(currentCategory, listener);
     }
 
-    public void setCategories(List<Category> categories) {
-        this.categories = categories;
-        notifyDataSetChanged();
-    }
 
     @Override
     public int getItemCount() {
         return categories != null ? categories.size() : 0;
     }
 
-    public void setListener(CategoryClickListener listener) {
+
+    @Override
+    public void setItems(List<Category> items) {
+        this.categories = items;
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public List<Category> getItems() {
+        return categories;
+    }
+
+    @Override
+    public void setClickListener(RecyclerViewClickListener<Category> listener) {
         this.listener = listener;
     }
 
@@ -59,14 +68,15 @@ public class CategoryAdapter extends Adapter<CategoryAdapter.CategoryViewHolder>
             this.menuListItemBinding = menuListItemBinding;
         }
 
-        public void bindOnClick(Category category, CategoryClickListener clickListener) {
+        public void bindOnClick(Category category, RecyclerViewClickListener<Category> clickListener) {
             menuListItemBinding.setCategory(category);
             menuListItemBinding.executePendingBindings();
             itemView.setOnClickListener(view -> {
                 if (clickListener != null)
-                    clickListener.onCategoryClick(category);
+                    clickListener.onClick(category);
             });
         }
+
     }
 }
 

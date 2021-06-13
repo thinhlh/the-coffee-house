@@ -6,21 +6,29 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.coffeehouse.the.models.Store;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class StoresRepo extends Fetching {
+public class StoresRepo implements Fetching {
+
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private final MutableLiveData<List<Store>> stores = new MutableLiveData<>();
 
     public StoresRepo() {
-        setUpStoresListener();
+        setUpRealTimeListener();
     }
 
-    private void setUpStoresListener() {
+    public LiveData<List<Store>> getStores() {
+        return stores;
+    }
+
+    @Override
+    public void setUpRealTimeListener() {
         db.collection("stores").addSnapshotListener((value, error) -> {
             if (error != null) {
                 Log.w("Stores Repo", error);
@@ -36,9 +44,5 @@ public class StoresRepo extends Fetching {
                 this.stores.setValue(_stores);
             }
         });
-    }
-
-    public LiveData<List<Store>> getStores() {
-        return stores;
     }
 }

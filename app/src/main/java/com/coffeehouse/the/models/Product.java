@@ -1,5 +1,7 @@
 package com.coffeehouse.the.models;
 
+import com.google.gson.Gson;
+
 import java.text.Format;
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -81,5 +83,13 @@ public class Product {
         this.categoryId = (String) json.get("categoryId");
         this.imageUrl = (String) json.get("imageUrl");
         this.price = Integer.parseInt((String) json.get("price"));
+    }
+
+    public String toGson() {
+        return new Gson().toJson(this);
+    }
+
+    public Product fromGson(String gSon) {
+        return new Gson().fromJson(gSon, Product.class);
     }
 }

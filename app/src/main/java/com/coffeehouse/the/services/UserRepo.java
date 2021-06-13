@@ -9,7 +9,9 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class UserRepo extends Fetching {
+public class UserRepo {
+
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private static final FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
@@ -83,11 +85,10 @@ public class UserRepo extends Fetching {
     public Task<Void> toggleFavorite(String productId) {
         if (user.getFavoriteProducts().contains(productId)) {
             user.getFavoriteProducts().remove(productId);
-            return db.collection("users").document(mAuth.getCurrentUser().getUid()).update("favoriteProducts", user.getFavoriteProducts());
         } else {
             user.getFavoriteProducts().add(productId);
-            return db.collection("users").document(mAuth.getCurrentUser().getUid()).update("favoriteProducts", user.getFavoriteProducts());
         }
+        return db.collection("users").document(mAuth.getCurrentUser().getUid()).update("favoriteProducts", user.getFavoriteProducts());
     }
 
     public Task<Void> updateUserPoint(Integer point) {

@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.CategoryAdapter;
-import com.coffeehouse.the.adapter.CategoryClickListener;
 import com.coffeehouse.the.databinding.MenuBottomSheetBinding;
 import com.coffeehouse.the.models.Category;
 import com.coffeehouse.the.viewModels.CategoriesViewModel;
@@ -62,19 +61,16 @@ public class CategoryBottomSheet extends BottomSheetDialogFragment {
 
         getCategories(categoryAdapter);
 
-        categoryAdapter.setListener(new CategoryClickListener() {
-            @Override
-            public void onCategoryClick(Category category) {
-                listener.onInputCategory(category);
-                dismiss();
-            }
+        categoryAdapter.setClickListener(category -> {
+            listener.onInputCategory(category);
+            dismiss();
         });
 
         return v;
     }
 
     private void getCategories(CategoryAdapter categoryAdapter) {
-        categoriesViewModel.getCategories().observe(getViewLifecycleOwner(), categoryAdapter::setCategories);
+        categoriesViewModel.getCategories().observe(getViewLifecycleOwner(), categoryAdapter::setItems);
     }
 
     @Override

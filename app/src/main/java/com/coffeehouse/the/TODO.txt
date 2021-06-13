@@ -1,0 +1,59 @@
+Tui đã xem qua phần client của 2 ông ra ha đây là những gì list ra sẽ cần làm. Vì thời gian không còn
+nhiều nên 2 ông sẽ phải xong hết trong tuần này và cuối tuần mình sẽ tiến hành
+merge lại giữa client admin và viết báo cáo nữa. Sẽ có vài phần tui nghĩ bỏ để tiện hơn
+vì vấn đề thời gian và giảm bớt độ phức tạp, vì thế công việc còn lại không quá nhiều 2 ông ráng tranh thủ.
+
+Bên cạnh đó tui sửa lại 1 tí về mấy cái adapter cho nó có hệ thống hơn, phần admin chưa bỏ
+vô nhiều sợ gây rối khi nào xong sẽ merge lại
+
+Đây là một số note cần làm nha càng sớm càng tốt nhưng không được trễ.
+
+
+Phần giao diện của Nhật:
+
+	- Ông làm khá tốt trong 3 trang cuối ha tuy nhiên sẽ có 1 vài cái cần làm với cải thiện như sau:
+		1/ Tạo notification detail (bottom sheet) cho mỗi notification trang home
+		2/ Xử lý 2 cái card ở home khi ấn vào sẽ có trách nhiệm chuyển sang trang 2 và tính năng tương ứng. Đối với card tự đến lấy đổi ông chuyển sang trang store là được rồi
+		3/ Phần địa chỉ giao và nhận chưa có nha. Ông làm UI cho phần này đồng thời có thể lược bớt thành địa chỉ giao hàng của khách hàng thôi cho tiện không cần phần pick up nữa, phần pick up coi như mình chỉ hiện store gần đây thôi
+		4/ Trang order nhìn chung Ui tốt nhưng còn có lỗi trong video (tui sẽ đính kèm) khi hiện lên product detail, phải kéo 2 lần nó mới tắt
+		5/ Trang cart chưa có nên ông nhân không inflate được nha ĐÂY LÀ QUAN TRỌNG NHẤT
+		6/ Phần store nhìn chung ổn nhưng store detail thì UI có mấy cái lằn ngang hơi xấu, ông chỉnh cho nó mờ lại là được.
+		7/ Bỏ phần chia sẻ với bạn bè và thêm vào danh sách yêu thích ha vì nó lằn nhằn và k có thời gian
+		8/ Nút xem tất cả ấn vào để chuyển sang Tab thứ 2 chưa được ha
+		9/ Mấy cái card cũng vậy chưa có chức nào nào hết. Ông chỉ implement logic phần UI thôi chuyển trang qua lại này nọ là được
+		10/ Trang cuối sửa lại background cho đồng bộ với maayss trang khác nha, font chữ này nọ nữa cho hợp lý
+		11/ Phần địa chỉ đã lưu chỉ hiện ra các địa chỉ đã lưu và thêm địa chỉ mới thôi, không cần nhiều
+		12/ Bỏ phần đăng xuất trong mục liên hệ đi vì bị duplicate rồi nha, đồng thời sửa lại title app bar là liên hệ luôn
+		13/ Gửi đánh giá góp ý ổn rồi nhưng lỗi font ô nội dung phản hồi nha ông sửa lại
+
+		Ông có những điều sau ưu tiên làm trước: 5, 1, 4, 3
+
+		Hạn cho mục số 5 là tối tối t3 15/06 là ông xong phần UI của cart nha (nghĩa là phần đặt hàng sau khi người dùng chọn 1 số món )
+
+
+
+Phần xử lý logic của Nhân
+
+	- Phần này ông còn khá nhiều việc cần làm đó nha: trong khi chờ Nhật làm xong cái UI của cart trễ nhất là tối t3 => ông phải xong phần UI product vào tối t4 16/06 trong thời gian đó thì ông có thể làm những việc quan trọng sau:
+
+		1/ Facebook login, chưa có và chưa được nha phần này cực kỳ quan trọng ưu tiên fix trước
+		2/ Ông sửa lại phần filter của trang order, với mỗi category khách chọn thì cũng phải update cái title là tên category nha.
+		3/ Chưa implement search product nha phần này quan trọng và ông làm được liền đó bỏ ra 1 tiếng là xong
+		4/ Tương tự là tìm kiếm ở trang cửa hàng, và bản đồ ở cái button bản đồ của app bar chưa implement
+		5/ Phần store detail (khi ấn vào store) mình lược bỏ 2 phần, Thêm vào danh sách yêu thích với chia sẻ bạn bè. Nhưng khi ấn vào liên hệ thì phải mở sang gọi điện với số điện thoại của cửa hàng nha.
+		6/ Button ở cuối trang là đặt món, tự đến lấy => nó sẽ quay lại trang số 2 nha ông ông implement luôn
+		7/ Trang tích điểm ông chưa implement mấy cái logic nha, đồng thời phiếu ưu đãi cũng chưa inflate UI này nọ nữa đó
+
+		8/ Trang số 4 phần liên hệ, ấn vào tổng đài thì mở sang đth, ấn vào email thì soạn thảo email, ấn vào website thì mở website bằng app ngoài không implement mấy cái này vô nha nhanh lắm tầm 30p là xong
+
+		9/ Lịch sử đơn hàng chưa có nha ông
+		10/ và như tui nói thì inflate phần cart, facebook là quan trọng nhất.
+
+		Ông có những điều sau ưu tiền làm trước: 1,10,2,8
+
+
+========================================================================================
+
+Bên cạnh đó tui sẽ hỏi thăm công việc từng ngày để không bị trễ tiến độ và sửa lỗi sớm nhất có thể.
+
+Chúc mọi người 1 tuần làm việc năng động nghen :>

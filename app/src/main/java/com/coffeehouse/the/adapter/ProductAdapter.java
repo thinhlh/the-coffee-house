@@ -18,9 +18,9 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
-public class ProductAdapter extends Adapter<ProductAdapter.ProductViewHolder> {
+public class ProductAdapter extends Adapter<ProductAdapter.ProductViewHolder> implements SwipeAbleRecyclerView<Product> {
     private List<Product> products;
-    private ProductsClickListener listener;
+    private RecyclerViewClickListener<Product> listener;
 
     @NonNull
     @Override
@@ -37,18 +37,31 @@ public class ProductAdapter extends Adapter<ProductAdapter.ProductViewHolder> {
         holder.bindOnClick(currentProduct, listener);
     }
 
-    public void setProductsList(List<Product> products) {
-        this.products = products;
-        notifyDataSetChanged();
-    }
-
     @Override
     public int getItemCount() {
         return products != null ? products.size() : 0;
     }
 
-    public void setListener(ProductsClickListener listener) {
+    @Override
+    public void setItems(List<Product> items) {
+        this.products = items;
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public List<Product> getItems() {
+        return products;
+    }
+
+    @Override
+    public void setClickListener(RecyclerViewClickListener<Product> listener) {
         this.listener = listener;
+    }
+
+    @Override
+    public void remove(int position) {
+        this.products.remove(position);
+        this.notifyItemRemoved(position);
     }
 
     static class ProductViewHolder extends RecyclerView.ViewHolder {
@@ -60,15 +73,13 @@ public class ProductAdapter extends Adapter<ProductAdapter.ProductViewHolder> {
             this.productListItemBinding = productListItemBinding;
         }
 
-        public void bindOnClick(Product product, ProductsClickListener clickListener) {
+        public void bindOnClick(Product product, RecyclerViewClickListener<Product> clickListener) {
             productListItemBinding.setProduct(product);
             productListItemBinding.executePendingBindings();
             itemView.setOnClickListener(view -> {
                 if (clickListener != null)
-                    clickListener.onItemClick(product);
+                    clickListener.onClick(product);
             });
         }
-
     }
-
 }

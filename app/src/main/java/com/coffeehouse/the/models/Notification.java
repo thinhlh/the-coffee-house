@@ -1,20 +1,23 @@
 package com.coffeehouse.the.models;
 
+import com.google.gson.Gson;
+
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Notification {
     private String id;
     private Date dateTime;
+    private String title;
     private String description;
     private String imageUrl;
-    private List<String> targetCustomerString = new ArrayList<>();
     private List<String> targetCustomer;
-    private String title;
+
 
     public Notification() {
         this.id = "";
@@ -84,22 +87,23 @@ public class Notification {
         this.description = (String) json.get("description");
         this.imageUrl = (String) json.get("imageUrl");
         this.targetCustomer = (List<String>) json.get("targetCustomer");
-//        this.targetCustomerString = (List<String>) json.get("targetCustomer");
-//        for (int i = 0; i < targetCustomerString.size(); i++) {
-//            switch (targetCustomerString.get(i)) {
-//                case "Membership.Silver":
-//                    this.targetCustomer.add(Membership.Silver);
-//                    break;
-//                case "Membership.Gold":
-//                    this.targetCustomer.add(Membership.Gold);
-//                    break;
-//                case "Membership.Diamond":
-//                    this.targetCustomer.add(Membership.Diamond);
-//                    break;
-//                case "Membership.Bronze":
-//                    this.targetCustomer.add(Membership.Bronze);
-//                    break;
-//            }
-//        }
+    }
+
+    public String toGson() {
+        return new Gson().toJson(this);
+    }
+
+    public static Notification fromGson(String gSon) {
+        return new Gson().fromJson(gSon, Notification.class);
+    }
+
+    public Map<String, Object> toMap() {
+        Map<String, Object> map = new HashMap<>();
+        map.put("dateTime", dateTime);
+        map.put("description", description);
+        map.put("imageUrl", imageUrl);
+        map.put("title", title);
+        map.put("targetCustomer", targetCustomer);
+        return map;
     }
 }

@@ -28,8 +28,7 @@
             <ImageView
                 android:id="@+id/detail_product_image"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:src="@{productDetail.imageUrl}" />
+                android:layout_height="300dp" />
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -67,6 +66,8 @@
                         android:layout_marginStart="10dp"
                         android:text="@{productDetail.description}"
                         app:colorClickableText="#C87533"
+                        android:paddingTop="@dimen/general_padding"
+                        android:paddingBottom="@dimen/general_padding"
                         app:trimCollapsedText="@string/show_more"
                         app:trimExpandedText="@string/show_less"
                         app:trimLength="42"

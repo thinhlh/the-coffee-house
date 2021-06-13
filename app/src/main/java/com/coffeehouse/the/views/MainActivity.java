@@ -2,16 +2,15 @@ package com.coffeehouse.the.views;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.WindowManager;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.AuthViewPagerAdapter;
+import com.coffeehouse.the.views.admin.AdminHomeActivity;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,6 +25,10 @@ public class MainActivity extends AppCompatActivity {
         if(FirebaseAuth.getInstance().getCurrentUser()!=null) {
             startActivity(new Intent(this, HomeActivity.class));
         }
+        if(FirebaseAuth.getInstance().getCurrentUser()!=null){
+            startActivity(new Intent(this,HomeActivity.class));
+        }
+//        startActivity(new Intent(this, AdminHomeActivity.class));
         super.onStart();
     }
 

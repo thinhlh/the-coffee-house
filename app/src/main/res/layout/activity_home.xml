@@ -16,6 +16,7 @@
             app:liftOnScroll="true"
             app:layout_constraintTop_toTopOf="parent"
             android:backgroundTint="@color/white"
+            android:background="@drawable/tcfhlogo"
             >
 
           <RelativeLayout
@@ -51,12 +52,11 @@
             android:id="@+id/home_fragment_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginBottom="60dp"
-
-            />
+            android:layout_marginBottom="60dp"/>
 
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
+            
             android:id="@+id/bottom_navigation"
             android:layout_width="match_parent"
             android:layout_height="60dp"

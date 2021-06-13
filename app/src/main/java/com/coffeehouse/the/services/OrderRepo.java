@@ -8,6 +8,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -16,8 +17,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 
-public class OrderRepo extends Fetching {
+public class OrderRepo implements Fetching {
+    private final Order order=new Order();
     private final MutableLiveData<List<Order>> data = new MutableLiveData<>();
+    private FirebaseFirestore db=FirebaseFirestore.getInstance();
 
     public OrderRepo() {
     }
@@ -38,5 +41,10 @@ public class OrderRepo extends Fetching {
                 });
             }
         });
+    }
+
+    @Override
+    public void setUpRealTimeListener() {
+
     }
 }

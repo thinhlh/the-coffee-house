@@ -15,7 +15,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.ProductAdapter;
-import com.coffeehouse.the.adapter.ProductsClickListener;
 import com.coffeehouse.the.databinding.OrderFragmentBinding;
 import com.coffeehouse.the.models.Cart;
 import com.coffeehouse.the.models.CartItem;
@@ -55,16 +54,13 @@ public class OrderFragment extends Fragment implements CategoryBottomSheet.SendC
         getProducts(productsAdapter);
         //END BINDING
 
-        productsAdapter.setListener(new ProductsClickListener() {
-            @Override
-            public void onItemClick(Product product) {
-                //Toast.makeText(getContext(), "PRODUCT " + product.getTitle() + " CHECKED ",Toast.LENGTH_SHORT).show();
-//                ProductDetailBottomSheet bottomSheet = new ProductDetailBottomSheet();
-//                bottomSheet.setTargetFragment(OrderFragment.this, 1);
-//                bottomSheet.setProductChosen(product);
-//                bottomSheet.show(getFragmentManager(), "Product Detail");
+        productsAdapter.setClickListener(product -> {
+            //Toast.makeText(getContext(), "PRODUCT " + product.getTitle() + " CHECKED ",Toast.LENGTH_SHORT).show();
+            ProductDetailBottomSheet bottomSheet = new ProductDetailBottomSheet();
+            bottomSheet.setTargetFragment(OrderFragment.this, 1);
+            bottomSheet.setProductChosen(product);
+            bottomSheet.show(getFragmentManager(), "Product Detail");
                 navigateToProductDetailBottomSheet(product);
-            }
         });
 
         //INFLATE MENU
@@ -80,7 +76,7 @@ public class OrderFragment extends Fragment implements CategoryBottomSheet.SendC
         });
         //DONE
 
-        v.findViewById(R.id.order_view).setOnClickListener(view -> {
+        orderFragmentBinding.orderView.setOnClickListener(view -> {
             order = new Order(cart);
             orderRepo.addOrderData(order);
             userRepo.updateUserPoint(cart.getTotalCartValue() / 1000);
@@ -90,7 +86,7 @@ public class OrderFragment extends Fragment implements CategoryBottomSheet.SendC
     }
 
     private void getProducts(ProductAdapter productAdapter) {
-        orderViewModel.getProducts().observe(getViewLifecycleOwner(), productAdapter::setProductsList);
+        orderViewModel.getProducts().observe(getViewLifecycleOwner(), productAdapter::setItems);
     }
 
     public void navigateToProductDetailBottomSheet(Product product) {
@@ -102,7 +98,7 @@ public class OrderFragment extends Fragment implements CategoryBottomSheet.SendC
 
     @Override
     public void onInputCategory(Category category) {
-        orderViewModel.getProductsOfCategory(category.getId()).observe(getViewLifecycleOwner(), productsAdapter::setProductsList);
+        orderViewModel.getProductsOfCategory(category.getId()).observe(getViewLifecycleOwner(), productsAdapter::setItems);
     }
 
     @Override

@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.ProductAdapter;
-import com.coffeehouse.the.adapter.ProductsClickListener;
+import com.coffeehouse.the.adapter.RecyclerViewClickListener;
 import com.coffeehouse.the.databinding.FavouriteFragmentBinding;
 import com.coffeehouse.the.models.Product;
 import com.coffeehouse.the.viewModels.FavouriteProductViewModel;
@@ -47,12 +47,8 @@ public class FavouriteProductListFragment extends Fragment {
         getFavProducts(productsAdapter);
         //END BINDING
 
-        productsAdapter.setListener(new ProductsClickListener() {
-            @Override
-            public void onItemClick(Product product) {
-                onFavProductClick(product);
-            }
-        });
+        productsAdapter.setClickListener(item -> onFavProductClick(item));
+
         return v;
     }
 
@@ -63,7 +59,7 @@ public class FavouriteProductListFragment extends Fragment {
     }
 
     private void getFavProducts(ProductAdapter productsAdapter) {
-        favouriteProductViewModel.getFavProducts().observe(getViewLifecycleOwner(), productsAdapter::setProductsList);
+        favouriteProductViewModel.getFavProducts().observe(getViewLifecycleOwner(), productsAdapter::setItems);
     }
 
 }

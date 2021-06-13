@@ -168,8 +168,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             } catch (ApiException | GeneralSecurityException | IOException e) {
                 e.printStackTrace();
             }
-        } else {
-
         }
     }
 

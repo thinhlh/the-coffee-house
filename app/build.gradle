@@ -29,6 +29,7 @@ android {
 
     buildFeatures {
         dataBinding true
+        viewBinding true
     }
 // Get user Birthday
 //    packagingOptions{
@@ -49,11 +50,11 @@ dependencies {
     implementation 'com.borjabravo:readmoretextview:2.1.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
 
-
     //Firebase
     implementation platform('com.google.firebase:firebase-bom:27.1.0')
     implementation 'com.google.firebase:firebase-firestore'
     implementation 'com.google.firebase:firebase-auth'
+    implementation 'com.google.firebase:firebase-storage'
 
 
     //Google
@@ -65,7 +66,12 @@ dependencies {
     //Facebook
     implementation 'com.facebook.android:facebook-login:4.42.0'
     implementation 'com.google.android.gms:play-services-location:18.0.0'
-
+    implementation 'com.google.android.gms:play-services-maps:17.0.1'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+    implementation 'androidx.navigation:navigation-fragment:2.3.5'
+    implementation 'androidx.navigation:navigation-ui:2.3.5'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'

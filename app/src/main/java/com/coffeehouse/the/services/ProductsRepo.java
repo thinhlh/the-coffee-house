@@ -7,13 +7,15 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.coffeehouse.the.models.Product;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductsRepo extends Fetching {
+public class ProductsRepo implements Fetching {
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private final MutableLiveData<List<Product>> data = new MutableLiveData<>();
     private final MutableLiveData<List<Product>> dataFavPro = new MutableLiveData<>();
 
@@ -21,14 +23,15 @@ public class ProductsRepo extends Fetching {
         setUpRealTimeListener();
     }
 
-    private void setUpRealTimeListener() {
+    @Override
+    public void setUpRealTimeListener() {
         db.collection("products").addSnapshotListener((value, error) -> {
             if (error != null) {
                 Log.w("Products Repo", error);
             } else {
                 List<Product> currentProducts = new ArrayList<>();
                 for (QueryDocumentSnapshot doc : value) {
-                    if (doc!=null) {
+                    if (doc != null) {
                         Product product = doc.toObject(Product.class);
                         product.setId(doc.getId());
                         currentProducts.add(product);
@@ -36,7 +39,6 @@ public class ProductsRepo extends Fetching {
                 }
                 data.setValue(currentProducts);
             }
-
         });
     }
 
@@ -89,6 +91,12 @@ public class ProductsRepo extends Fetching {
         return dataFavPro;
     }
 
-    //END
+    public void removeProduct(int index) {
+        data.getValue().remove(index);
+    }
+
+    public void addProduct(Product product, int index) {
+        data.getValue().add(index, product);
+    }
 
 }

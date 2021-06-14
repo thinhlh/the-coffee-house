@@ -111,6 +111,15 @@
     <string name="money">Thành tiền</string>
     <string name="clearoder">Xóa đơn hàng</string>
     <string name="orderfinal">Đặt hàng</string>
+    <string name="title">Nội dung</string>
+    <string name="description">Miêu tả</string>
+    <string name="pick_an_image">Chọn một tấm hình</string>
+    <string name="products">Sản phẩm</string>
+    <string name="categories">Phân loại</string>
+    <string name="notifications_title">Nội dung phản hồi</string>
+    <string name="stores">Cửa hàng</string>
+    <string name="others">Ghi chú thêm</string>
+
     <!--
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.

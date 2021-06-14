@@ -22,7 +22,6 @@
     <string name="delivery">Giao tận nơi</string>
     <string name="pickup">Tự đến lấy</string>
     <string name="notifications">Thông báo mới</string>
-    <string name="notifications_title">Notifications</string>
     <string name="google_default_web_client_id">1008379625573-esujc5bhtv63js83cujpsefq9m0mvot0.apps.googleusercontent.com</string>
     <string name="facebook_app_id">292926142546450</string>
     <string name="fb_login_protocol_scheme">fb292926142546450</string>
@@ -101,17 +100,17 @@
     <string name="recievenoti">Nhận thông báo</string>
     <string name="aboutus">Về chúng tôi</string>
     <string name="term">Điều khoản sử dụng</string>
-
-    <string name="admin">Admin</string>
-    <string name="title_activity_admin_home">MainActivity</string>
-    <string name="products">Products</string>
-    <string name="categories">Categories</string>
-    <string name="stores">Stores</string>
-    <string name="others">Others</string>
-    <string name="title">Title</string>
-    <string name="description">Description</string>
-    <string name="pick_an_image">Pick an image</string>
-
+    <string name="confirmorder">Xác nhận đơn hàng</string>
+    <string name="order">Giao hàng tận nơi</string>
+    <string name="change">Thay đổi</string>
+    <string name="addmenu">+ Thêm món</string>
+    <string name="itemorder">Các món đã chọn</string>
+    <string name="total">Tổng cộng</string>
+    <string name="choosepromotion">Chọn khuyến mãi</string>
+    <string name="paymentamount">Số tiền thanh toán</string>
+    <string name="money">Thành tiền</string>
+    <string name="clearoder">Xóa đơn hàng</string>
+    <string name="orderfinal">Đặt hàng</string>
     <!--
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.

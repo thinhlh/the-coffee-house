@@ -10,18 +10,29 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <com.synnapps.carouselview.CarouselView
-                android:id="@+id/carouse_view"
+            <androidx.cardview.widget.CardView
+                android:layout_marginTop="10dp"
+                android:id="@+id/carouse_view2"
                 android:layout_width="350dp"
-                android:layout_height="250dp"
+                android:layout_height="350dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="30dp" />
+                >
+                <com.synnapps.carouselview.CarouselView
+                    android:id="@+id/carouse_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    />
+
+            </androidx.cardview.widget.CardView>
+
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="160dp"
                 android:layout_height="100dp"
-                android:layout_below="@+id/carouse_view"
-                android:layout_alignStart="@+id/carouse_view"
+                android:layout_below="@+id/carouse_view2"
+                android:layout_alignStart="@+id/carouse_view2"
                 android:layout_marginTop="20dp"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp">
@@ -55,8 +66,8 @@
                 android:id="@+id/pickUpCard"
                 android:layout_width="160dp"
                 android:layout_height="100dp"
-                android:layout_below="@+id/carouse_view"
-                android:layout_alignEnd="@+id/carouse_view"
+                android:layout_below="@+id/carouse_view2"
+                android:layout_alignEnd="@+id/carouse_view2"
                 android:layout_marginTop="20dp"
                 app:cardCornerRadius="8dp"
                 app:cardElevation="8dp">

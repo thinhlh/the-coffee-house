@@ -1,5 +1,6 @@
 package com.coffeehouse.the.services;
 
+import android.net.Uri;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
@@ -7,65 +8,57 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.coffeehouse.the.models.Product;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ProductsRepo extends Fetching {
+public class ProductsRepo implements Fetching {
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private final FirebaseStorage storage = FirebaseStorage.getInstance();
+    private final MutableLiveData<List<Product>> products = new MutableLiveData<>();
+    private final MutableLiveData<List<Product>> dataFavProduct = new MutableLiveData<>();
+    private final MutableLiveData<List<Product>> filters = new MutableLiveData<>();
 
-    private List<Product> products=new ArrayList<>();
-
-    public ProductsRepo() {db.collection("products").addSnapshotListener((value, error) -> {
-        for(QueryDocumentSnapshot doc:value){
-            if(doc!=null){
-                Product product = doc.toObject(Product.class);
-                product.setId(doc.getId());
-                products.add(product);
-                data.setValue(products);
-            }
-        }
-    });
-        fetchData();
+    public ProductsRepo() {
+        setUpRealTimeListener();
     }
 
-    private final MutableLiveData<List<Product>> data = new MutableLiveData<>();
-
+    @Override
+    public void setUpRealTimeListener() {
+        db.collection("products").addSnapshotListener((value, error) -> {
+            if (error != null) {
+                Log.w("Products Repo", error);
+            } else {
+                List<Product> currentProducts = new ArrayList<>();
+                for (QueryDocumentSnapshot doc : value) {
+                    if (doc != null) {
+                        Product product = doc.toObject(Product.class);
+                        product.setId(doc.getId());
+                        currentProducts.add(product);
+                    }
+                }
+                products.setValue(currentProducts);
+            }
+        });
+    }
     private Task<QuerySnapshot> fetchProducts() {
         return db.collection("products").get();
     }
 
-    private void fetchData() {
-        if (products == null) {
-            products = new ArrayList<>();
-            fetchProducts().addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    for (QueryDocumentSnapshot documentSnapshot : task.getResult()) {
-                        Product product = documentSnapshot.toObject(Product.class);
-                        product.setId(documentSnapshot.getId());
-                        products.add(product);
-                        data.setValue(products);
-                    }
-                    Log.d("",String.valueOf(data.getValue().size()));
-                } else {
-                    Log.d("", "Fetching Products Error");
-                }
-            });
-        }
-    }
-
     public LiveData<List<Product>> getProducts() {
-        if (data.getValue() == null || data.getValue().isEmpty()) {
-            fetchData();
-        }
-        return data;
+        return products;
     }
 
     public LiveData<List<Product>> getProductsOfCategory(String categoryId) {
         List<Product> list = new ArrayList<>();
 
-        for (Product product : products) {
+        for (Product product : products.getValue()) {
             if (product.getCategoryId().equals(categoryId))
                 list.add(product);
         }
@@ -73,6 +66,96 @@ public class ProductsRepo extends Fetching {
         MutableLiveData<List<Product>> res = new MutableLiveData<>();
         res.setValue(list);
         return res;
+    }
+
+    public Product getProductsById(String productId) {
+        for (Product product : products.getValue()) {
+            if (product.getId().equals(productId))
+                return product;
+        }
+        return null;
+    }
+
+    //FAVORITE PRODUCT REGION
+    public void setUpRTListenerForFavPro() {
+        db.collection("products").addSnapshotListener((value, error) -> {
+            if (error != null) {
+                Log.w("Products Repo", error);
+            } else {
+                List<Product> favProducts = new ArrayList<>();
+                for (QueryDocumentSnapshot doc : value) {
+                    if (doc != null) {
+                        Product product = doc.toObject(Product.class);
+                        product.setId(doc.getId());
+                        if (UserRepo.user.getFavoriteProducts().contains(product.getId())) {
+                            favProducts.add(product);
+                        }
+                    }
+                }
+                dataFavProduct.setValue(favProducts);
+            }
+        });
+    }
+    public LiveData<List<Product>> getFavProductOfUser() {
+        return dataFavProduct;
+    }
+
+
+    //FILTER PRODUCT REGION
+    public void setUpRTListenerForFilterProduct(String s) {
+        db.collection("products").addSnapshotListener((value, error) -> {
+            if (error != null) {
+                Log.w("Products Repo", error);
+            } else {
+                List<Product> filterProducts = new ArrayList<>();
+                for (QueryDocumentSnapshot doc : value) {
+                    if (doc != null) {
+                        Product product = doc.toObject(Product.class);
+                        product.setId(doc.getId());
+                        if (product.getTitle().toLowerCase().contains(s.toLowerCase()))
+                            filterProducts.add(product);
+                    }
+                }
+                filters.setValue(filterProducts);
+            }
+        });
+    }
+
+    public LiveData<List<Product>> filterProduct() {
+        return filters;
+    }
+
+    public Task<Void> removeProduct(int index) {
+        String id = products.getValue().get(index).getId();
+        return storage.getReference().child("images/products/" + id).delete()
+                .continueWithTask(task -> db.collection("products").document(id).delete());
+    }
+
+    public Task<Void> addProduct(Product product, Uri imageUri) {
+        String id = db.collection("products").document().getId();
+        StorageReference storageReferenceToImage = storage.getReference("images/products/" + id);
+        UploadTask uploadTask = storageReferenceToImage.putFile(imageUri);
+        return uploadTask.continueWithTask(upTask -> storageReferenceToImage.getDownloadUrl()).continueWith(uri -> {
+            product.setImageUrl(uri.getResult().toString());
+            return null;
+        }).continueWithTask(task -> db.collection("products").document(id).set(product.toMap()));
+    }
+
+    public Task<Void> updateProduct(Product product, Uri imageUri) {
+        if (imageUri != null) {
+            // Update the image
+            StorageReference storageReferenceImage = storage.getReference().child("images/products/" + product.getId());
+            UploadTask uploadTask = storageReferenceImage.putFile(imageUri);
+            return uploadTask.continueWithTask(upTask -> storageReferenceImage.getDownloadUrl())
+                    .continueWith(uri -> {
+                        product.setImageUrl(uri.getResult().toString());
+                        return null;
+                    })
+                    .continueWithTask(task -> db.collection("products").document(product.getId()).update(product.toMap()));
+        } else {
+            // Don't update the image
+            return db.collection("products").document(product.getId()).update(product.toMap());
+        }
     }
 
 }

@@ -7,51 +7,46 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.coffeehouse.the.models.Category;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CategoriesRepo extends Fetching {
+public class CategoriesRepo implements Fetching {
 
-    private List<Category> categories;
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    private MutableLiveData<List<Category>> data = new MutableLiveData<>();
-
-    private Task<QuerySnapshot> fetchCategories() {
-        return db.collection("categories").get();
-    }
+    private final MutableLiveData<List<Category>> categories = new MutableLiveData<>();
 
     public CategoriesRepo() {
-        getCategories();
-    }
-
-    private void fetchData() {
-        if (categories == null || categories.isEmpty()) {
-            categories = new ArrayList<>();
-            fetchCategories().addOnCompleteListener(task -> {
-                if (task.isSuccessful()) {
-                    for (QueryDocumentSnapshot documentSnapshots : task.getResult()) {
-                        Category category = documentSnapshots.toObject(Category.class);
-                        category.setId(documentSnapshots.getId());
-                        categories.add(category);
-                        data.setValue(categories);
-                        Log.d("", category.getTitle());
-                    }
-
-                } else {
-                    Log.d("", "Fetching Categories Error");
-                }
-            });
-        }
+        setUpRealTimeListener();
     }
 
     public LiveData<List<Category>> getCategories() {
-        if (data == null || data.getValue() == null || data.getValue().isEmpty()) {
-            fetchData();
-        }
-        return data;
+        return categories;
     }
 
+    @Override
+    public void setUpRealTimeListener() {
+        db.collection("categories").addSnapshotListener((value, error) -> {
+            if (error != null) {
+                Log.w("Categories Repository", error);
+            } else {
+                List<Category> currentCategories = new ArrayList<>();
+                for (QueryDocumentSnapshot doc : value) {
+                    if (doc != null) {
+                        Category category = doc.toObject(Category.class);
+                        category.setId(doc.getId());
+                        currentCategories.add(category);
+                    }
+                }
+                categories.setValue(currentCategories);
+            }
+        });
+    }
+
+    public Task<List<Category>> getCategoriesTask(){
+        return db.collection("categories").get().continueWith(task -> task.getResult().toObjects(Category.class));
+    }
 }

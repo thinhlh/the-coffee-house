@@ -1,0 +1,48 @@
+<resources>
+    <string name="app_name">The Coffee House</string>
+    <string name="auth_background">auth back ground</string>
+    <string name="login_by_google">Login by Google</string>
+    <string name="login_by_facebook">Login by facebook</string>
+    <string name="login_by_twitter">Login by Twitter</string>
+    <string name="login_greeting">Login Greeting</string>
+    <string name="phone_hint">Số điện thoại</string>
+    <string name="login_text">Đăng nhập</string>
+    <string name="forget_password_text">Quên mật khẩu</string>
+    <string name="email_hint">Email</string>
+    <string name="birthday_hint">Ngày sinh</string>
+    <string name="confirm_password_hint">Xác nhận mật khẩu</string>
+    <string name="sign_up_text">đăng ký</string>
+    <string name="password_hint">Mật khẩu</string>
+    <string name="action_home">Trang chủ</string>
+    <string name="action_order">Đặt món</string>
+    <string name="action_store_location">Cửa hàng</string>
+    <string name="action_accumulate_point">Tích điểm</string>
+    <string name="action_others">Khác</string>
+    <string name="customer_name_hint">Tên Khách Hàng</string>
+    <string name="delivery">Giao tận nơi</string>
+    <string name="pickup">Tự đến lấy</string>
+    <string name="notifications">Thông báo mới</string>
+    <string name="google_default_web_client_id">1008379625573-esujc5bhtv63js83cujpsefq9m0mvot0.apps.googleusercontent.com</string>
+    <string name="facebook_app_id">292926142546450</string>
+    <string name="fb_login_protocol_scheme">fb292926142546450</string>
+    <string name="must_try">Món phải thử</string>
+    <string name="menu">Thực đơn</string>
+    <string name="show_more">Xem thêm</string>
+    <string name="show_less">Rút gọn</string>
+    <string name="order_note">Thêm ghi chú món...</string>
+    <string name="optional">Tùy chọn</string>
+    <string name="other_options">Những tùy chọn khác</string>
+    <string name="other_requirements">Yêu cầu khác</string>
+    <string name="topping">Topping</string>
+    <string name="compulsory">Bắt buộc</string>
+    <string name="size">Size</string>
+    <string name="pick_size">Chọn một loại size</string>
+    <string name="favorite">Yêu thích</string>
+
+
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+
+</resources>

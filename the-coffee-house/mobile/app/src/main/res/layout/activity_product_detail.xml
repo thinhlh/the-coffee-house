@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/product_image"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:src="@drawable/login_background" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/item_name"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Trà Sữa Oolong Nướng"
+                    android:textColor="@color/black"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/item_price"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/item_name"
+                    android:layout_marginStart="10dp"
+                    android:text="50.000đ"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <com.borjabravo.readmoretextview.ReadMoreTextView
+                    android:layout_width="370dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/item_price"
+                    android:layout_marginStart="10dp"
+                    android:text="Đạm đà chuẩn gu\nHương vị chân ái đúng gu đậm đà - trà oolong được sao nướng"
+                    app:colorClickableText="#C87533"
+                    app:trimCollapsedText="@string/show_less"
+                    app:trimExpandedText="@string/show_more"
+                    app:trimLength="42"
+                    app:trimMode="trimModeLength" />
+
+
+                <ImageButton
+                    android:id="@+id/image_favorite"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="25dp"
+                    android:backgroundTint="@color/white"
+                    android:src="@drawable/ic_baseline_favorite_border_24" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/image_favorite"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="10dp"
+                    android:text="@string/favorite"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/item_size"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/size"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/size_selection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/item_size"
+                    android:layout_marginStart="10dp"
+                    android:text="@string/pick_size"
+                    android:textSize="15sp" />
+
+                <ImageButton
+                    android:id="@+id/item_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/size_selection"
+                    android:layout_marginStart="5dp"
+                    android:background="@color/white"
+                    android:src="@drawable/ic_baseline_remove_24" />
+
+
+                <TextView
+                    android:id="@+id/image_compulsory"
+                    android:layout_width="60dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="25dp"
+                    android:background="@drawable/round_button"
+                    android:gravity="center"
+                    android:text="@string/compulsory"
+                    android:textColor="#C87533"
+                    android:textSize="10dp"
+                    android:textStyle="bold" />
+
+                <ListView
+                    android:id="@+id/size_options_listview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/item_image"
+                    android:layout_marginTop="3dp" />
+
+
+            </RelativeLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/item_topping"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/topping"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/topping_selection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/item_topping"
+                    android:layout_marginStart="10dp"
+                    android:text="Chọn tối đa 2 loại"
+                    android:textSize="15sp" />
+
+                <ImageButton
+                    android:id="@+id/item_image2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/topping_selection"
+                    android:layout_marginStart="5dp"
+                    android:background="@color/white"
+                    android:src="@drawable/ic_baseline_remove_24" />
+
+
+                <TextView
+                    android:id="@+id/image_optional"
+                    android:layout_width="80dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="25dp"
+                    android:background="@drawable/round_button_with_gray_background"
+                    android:gravity="center"
+                    android:padding="2dp"
+                    android:text="@string/optional"
+                    android:textStyle="bold" />
+
+                <RadioButton
+                    android:id="@+id/topping_selection_radio_button"
+                    android:layout_width="30dp"
+                    android:layout_height="20dp"
+                    android:layout_below="@+id/item_image2"
+                    android:layout_marginStart="10dp"
+
+                    android:layout_marginBottom="5dp" />
+
+                <TextView
+                    android:id="@+id/item_nametopping"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/topping_selection"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="41dp"
+                    android:layout_marginBottom="15dp"
+                    android:layout_toEndOf="@+id/topping_selection_radio_button"
+                    android:text="Trân châu trắng"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/topping_price"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="20dp"
+                    android:text="+ 10.000đ"
+                    android:textSize="20sp" />
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/item_require"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/other_requirements"
+                    android:textColor="@color/black"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/optional_selection"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/item_require"
+                    android:layout_marginStart="10dp"
+                    android:paddingStart="4dp"
+                    android:text="@string/other_options"
+                    android:textSize="15sp"
+                    tools:ignore="RtlSymmetry" />
+
+                <ImageButton
+                    android:id="@+id/item_image3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/optional_selection"
+                    android:layout_marginStart="5dp"
+                    android:background="@color/white"
+                    android:src="@drawable/ic_baseline_remove_24" />
+
+
+                <TextView
+                    android:id="@+id/image_optional2"
+                    android:layout_width="60dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginEnd="25dp"
+                    android:background="@drawable/round_button_with_gray_background"
+                    android:gravity="center"
+                    android:text="@string/optional"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/other_option"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/item_image3"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="5dp"
+                    android:paddingStart="4dp"
+                    android:text="@string/order_note"
+                    android:textSize="20sp"
+                    tools:ignore="RtlSymmetry" />
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_alignParentBottom="true">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/item_quantity"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:text="1"
+                    android:textColor="@color/black"
+                    android:textSize="25sp">
+
+                </TextView>
+
+                <ImageButton
+                    android:id="@+id/add_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="18dp"
+                    android:layout_toEndOf="@+id/item_quantity"
+                    android:background="@drawable/round_button"
+                    android:src="@drawable/ic_baseline_add_24" />
+
+                <ImageButton
+                    android:id="@+id/minus_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_toStartOf="@id/item_quantity"
+                    android:background="@drawable/round_button"
+                    android:src="@drawable/ic_baseline_remove_24" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/select_item_button"
+                    android:layout_width="350dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginBottom="2dp"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="8dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#654321">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="Chọn món"
+                            android:textColor="@color/white"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

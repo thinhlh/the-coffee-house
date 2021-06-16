@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/client">
+        <item
+            android:id="@+id/user_info"
+            android:icon="@drawable/ic_baseline_person_24"
+            android:title="@string/users" />
+
+        <item
+            android:id="@+id/banner"
+            android:icon="@drawable/ic_baseline_image_24"
+            android:title="@string/banners" />
+    </group>
+
+    <group android:id="@+id/brand">
+        <item
+            android:id="@+id/stores"
+            android:icon="@drawable/ic_baseline_store_24"
+            android:title="@string/stores" />
+
+        <item
+            android:id="@+id/categories"
+            android:icon="@drawable/ic_baseline_category_24"
+            android:title="@string/categories" />
+    </group>
+
+    <group android:id="@+id/admin">
+        <item
+            android:id="@+id/statistic"
+            android:icon="@drawable/ic_baseline_show_chart_24"
+            android:title="@string/profit" />
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/logout"
+            android:title="@string/log_out" />
+    </group>
+</menu>

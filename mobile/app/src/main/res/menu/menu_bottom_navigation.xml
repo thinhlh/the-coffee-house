@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/action_home"
+        android:icon="@drawable/ic_outline_home_24"
+        android:title="@string/action_home" />
+
+    <item
+        android:id="@+id/action_order"
+        android:icon="@drawable/ic_outline_coffee_24"
+        android:title="@string/action_order" />
+
+    <item
+        android:id="@+id/action_store_location"
+        android:icon="@drawable/ic_baseline_store_24"
+        android:title="@string/action_store_location" />
+    <item
+        android:id="@+id/action_accumulate_point"
+        android:icon="@drawable/ic_outline_chrome_reader_mode_24"
+        android:title="@string/action_accumulate_point" />
+    <item
+        android:id="@+id/action_others"
+        android:icon="@drawable/ic_baseline_menu_24"
+        android:title="@string/action_others" />
+
+</menu>

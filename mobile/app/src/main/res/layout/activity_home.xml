@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".views.HomeActivity">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:fitsSystemWindows="true"
+            app:liftOnScroll="true"
+            app:layout_constraintTop_toTopOf="parent"
+            android:backgroundTint="@color/white"
+            android:background="@drawable/tcfhlogo"
+            >
+
+          <RelativeLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              >
+
+              <ImageView
+                  android:layout_marginTop="15dp"
+                  android:layout_width="230dp"
+                  android:layout_alignParentLeft="true"
+                  android:layout_height="15dp"
+                  android:src="@drawable/tcfhlogo2">
+
+              </ImageView>
+<!--              <ImageView-->
+<!--                  android:id="@+id/order_view"-->
+<!--                  android:layout_width="wrap_content"-->
+<!--                  android:layout_marginTop="7dp"-->
+<!--                  android:layout_height="30dp"-->
+<!--                  android:src="@drawable/ic_baseline_article_242"-->
+<!--                  android:layout_alignParentRight="true"-->
+<!--                  android:layout_marginRight="20dp"/>-->
+
+          </RelativeLayout>
+
+
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.fragment.app.FragmentContainerView
+            android:layout_below="@+id/app_bar"
+            android:id="@+id/home_fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="60dp"/>
+
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            
+            android:id="@+id/bottom_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            app:itemBackground="@color/white"
+            app:itemIconTint="@drawable/selector"
+            app:itemTextColor="@drawable/selector"
+            app:labelVisibilityMode="labeled"
+            app:menu="@menu/menu_bottom_navigation" />
+
+    </RelativeLayout>
+</layout>

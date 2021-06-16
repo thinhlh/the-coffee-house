@@ -17,7 +17,8 @@ import java.util.List;
 public class ProductsRepo implements Fetching {
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
     private final MutableLiveData<List<Product>> data = new MutableLiveData<>();
-    private final MutableLiveData<List<Product>> dataFavPro = new MutableLiveData<>();
+    private final MutableLiveData<List<Product>> dataFavProduct = new MutableLiveData<>();
+    private final MutableLiveData<List<Product>> filters = new MutableLiveData<>();
 
     public ProductsRepo() {
         setUpRealTimeListener();
@@ -64,8 +65,15 @@ public class ProductsRepo implements Fetching {
         return res;
     }
 
-    //FAVORITE PRODUCT REGION
+    public Product getProductsById(String productId) {
+        for (Product product : data.getValue()) {
+            if (product.getId().equals(productId))
+                return product;
+        }
+        return null;
+    }
 
+    //FAVORITE PRODUCT REGION
     public void setUpRTListenerForFavPro() {
         db.collection("products").addSnapshotListener((value, error) -> {
             if (error != null) {
@@ -81,14 +89,39 @@ public class ProductsRepo implements Fetching {
                         }
                     }
                 }
-                dataFavPro.setValue(favProducts);
+                dataFavProduct.setValue(favProducts);
             }
 
         });
     }
 
     public LiveData<List<Product>> getFavProductOfUser() {
-        return dataFavPro;
+        return dataFavProduct;
+    }
+
+
+    //FILTER PRODUCT REGION
+    public void setUpRTListenerForFilterProduct(String s) {
+        db.collection("products").addSnapshotListener((value, error) -> {
+            if (error != null) {
+                Log.w("Products Repo", error);
+            } else {
+                List<Product> filterProducts = new ArrayList<>();
+                for (QueryDocumentSnapshot doc : value) {
+                    if (doc != null) {
+                        Product product = doc.toObject(Product.class);
+                        product.setId(doc.getId());
+                        if (product.getTitle().toLowerCase().contains(s.toLowerCase()))
+                            filterProducts.add(product);
+                    }
+                }
+                filters.setValue(filterProducts);
+            }
+        });
+    }
+
+    public LiveData<List<Product>> filterProduct() {
+        return filters;
     }
 
     public void removeProduct(int index) {

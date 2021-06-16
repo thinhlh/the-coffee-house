@@ -1,503 +1,477 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white_gray">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <LinearLayout
+    <data>
+
+        <variable
+            name="user"
+            type="com.coffeehouse.the.models.CustomUser" />
+
+        <variable
+            name="cart"
+            type="com.coffeehouse.the.models.Cart" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:background="@color/white_gray">
 
-        <androidx.cardview.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="40dp">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-            <RelativeLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="40dp">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:text="@string/confirmorder"
-                    android:textColor="@color/black"
-                    android:textSize="20sp" />
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:backgroundTint="@color/white"
-                    android:src="@drawable/ic_baseline_close_24" />
-
-            </RelativeLayout>
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="250dp"
-            android:layout_marginTop="15dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/text_order"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
-                    android:text="@string/order"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/image_change"
-                    android:layout_width="75dp"
-                    android:layout_height="30dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="@drawable/round_button"
-                    android:backgroundTint="@color/light_orange"
-                    android:gravity="center"
-                    android:text="@string/change"
-                    android:textColor="#C87533"
-                    android:textSize="12dp"
-                    android:textStyle="bold" />
-
-                <View
-                    android:id="@+id/view"
-                    android:layout_width="25dp"
-                    android:layout_height="3dp"
-                    android:layout_below="@+id/text_order"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/brown" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/text_destination"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/view"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="16dp"
-                    android:text="Chợ Bến Thành"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/text_destinationdiscription"
-                    android:layout_width="290dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/text_destination"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="5dp"
-                    android:maxLines="2"
-                    android:text="Chợ Bến Thành, Phường Nguyễn Thái Bình, Quận 1, Thành phố Hồ Chí Minh, Vietnam"
-                    android:textColor="@color/black"
-                    android:textSize="14sp" />
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/text_destination"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginEnd="20dp"
-                    android:background="@drawable/ic_baseline_arrow_forward_ios_24" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/text_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:layout_below="@id/text_destinationdiscription"
-                    android:layout_marginTop="35dp"
-                    android:text="Minh Nhật Huỳnh"
-                    android:layout_marginLeft="15dp"/>
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/text_phonenumber"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/grey"
-                    android:textSize="14sp"
-                    android:layout_below="@id/text_name"
-                    android:text="0916854821"
-                    android:layout_marginLeft="15dp"/>
-                <ImageView
-                    android:layout_width="170dp"
-                    android:layout_height="5dp"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_below="@id/text_phonenumber"
-                    android:src="@drawable/dottedunderline"/>
-                <View
-                    android:id="@+id/view2"
-                    android:layout_width="1dp"
-                    android:layout_height="50dp"
-                    android:layout_below="@+id/text_destinationdiscription"
-                    android:background="@color/white_gray"
-                    android:layout_centerInParent="true"
-                    android:layout_marginTop="38dp"/>
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/text_duration"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/grey"
-                    android:textStyle="bold"
-                    android:textSize="14sp"
-                    android:layout_toRightOf="@+id/view2"
-                    android:layout_below="@id/text_destinationdiscription"
-                    android:layout_marginTop="35dp"
-                    android:text="15-30 phút"
-                    android:layout_marginLeft="15dp"/>
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/text_durationdiscription"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:layout_toRightOf="@+id/view2"
-                    android:layout_below="@id/text_duration"
-                    android:text="Càng sớm càng tốt"
-                    android:layout_marginLeft="15dp"/>
-                <ImageView
-                    android:layout_width="170dp"
-                    android:layout_height="5dp"
-                    android:layout_alignStart="@+id/text_durationdiscription"
-                    android:layout_marginTop="5dp"
-                    android:layout_below="@id/text_durationdiscription"
-                    android:src="@drawable/dottedunderline"/>
-
-
-
-
-
-            </RelativeLayout>
-
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:layout_marginTop="15dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/text_itemorder"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
-                    android:text="@string/itemorder"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/image_addmenu"
-                    android:layout_width="85dp"
-                    android:layout_height="30dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="@drawable/round_button"
-                    android:backgroundTint="@color/light_orange"
-                    android:gravity="center"
-                    android:text="@string/addmenu"
-                    android:textColor="#C87533"
-                    android:textSize="12dp"
-                    android:textStyle="bold" />
-
-                <View
-                    android:id="@+id/view3"
-                    android:layout_width="25dp"
-                    android:layout_height="3dp"
-                    android:layout_below="@+id/text_itemorder"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/brown" />
-
-                <ImageView
-                    android:id="@+id/bush"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/view3"
-                    android:layout_marginTop="20dp"
-                    android:src="@drawable/ic_baseline_brush_24"
-                    android:layout_marginLeft="15dp"/>
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/text_itemname"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:text="2 x Gói 35 ngày Tươi tỉnh"
-                    android:layout_below="@id/view3"
-                    android:layout_marginTop="15dp"
-                    android:layout_toRightOf="@id/bush"
-                    android:layout_marginLeft="20dp"/>
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/text_itemsize"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/grey"
-                    android:textSize="14sp"
-                    android:text="Vửa"
-                    android:layout_below="@id/text_itemname"
-                    android:layout_toRightOf="@id/bush"
-                    android:layout_marginLeft="20dp"/>
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/text_itemprice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/grey"
-                    android:textSize="18sp"
-                    android:text="1.520.00đ"
-                    android:layout_below="@id/view3"
-                    android:layout_marginTop="15dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginRight="25dp"/>
-
-
-
-
-            </RelativeLayout>
-
-
-
-
-
-        </androidx.cardview.widget.CardView>
-
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="210dp"
-            android:layout_marginTop="15dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/text_itemordertotalprice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
-                    android:text="@string/total"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-
-
-                <View
-                    android:id="@+id/view4"
-                    android:layout_width="25dp"
-                    android:layout_height="3dp"
-                    android:layout_below="@+id/text_itemordertotalprice"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/brown" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/view4"
-                    android:text="@string/money"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="10dp"
-                    android:textSize="16sp"
-                    android:textColor="@color/black"/>
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/text_itempricetotal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/grey"
-                    android:textSize="18sp"
-                    android:text="1.520.00đ"
-                    android:layout_below="@id/view4"
-                    android:layout_marginTop="11dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginRight="25dp"/>
-                <View
-                    android:id="@+id/view5"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/white_gray"
-                    android:layout_marginTop="10dp"
-                    android:layout_below="@id/text_itempricetotal"/>
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/text_choosepromotion"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/view5"
-                    android:text="@string/choosepromotion"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
-                    android:textSize="16sp"
-                    android:textColor="@color/light_blue"/>
-                <ImageButton
-                    android:layout_width="25dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/view5"
-                    android:layout_alignParentEnd="true"
-                    android:background="@drawable/ic_baseline_arrow_forward_ios_24"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginRight="15dp"/>
-                <View
-                    android:id="@+id/view6"
+                    android:layout_height="match_parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="@string/confirmorder"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <ImageButton
+                        android:id="@+id/close_cart_info"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:backgroundTint="@color/white"
+                        android:src="@drawable/ic_baseline_close_24" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginTop="15dp">
+
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/white_gray"
-                    android:layout_marginTop="15dp"
-                    android:layout_below="@id/text_choosepromotion"/>
+                    android:layout_height="match_parent">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/text_moneyamount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/view6"
-                    android:text="@string/paymentamount"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="15dp"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:textColor="@color/black"/>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_order"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/order"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/text_itempricetotal2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/grey"
-                    android:textSize="18sp"
-                    android:text="1.520.00đ"
-                    android:layout_below="@id/view6"
-                    android:layout_marginTop="15dp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginRight="25dp"/>
+                    <TextView
+                        android:id="@+id/image_change"
+                        android:layout_width="75dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/round_button"
+                        android:backgroundTint="@color/light_orange"
+                        android:gravity="center"
+                        android:text="@string/change"
+                        android:textColor="#C87533"
+                        android:textSize="12dp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:id="@+id/view"
+                        android:layout_width="25dp"
+                        android:layout_height="3dp"
+                        android:layout_below="@+id/text_order"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/brown" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_destination"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/view"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="16dp"
+                        android:text="Chợ Bến Thành"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
 
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_destinationdiscription"
+                        android:layout_width="290dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/text_destination"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="5dp"
+                        android:maxLines="2"
+                        android:text="Chợ Bến Thành, Phường Nguyễn Thái Bình, Quận 1, Thành phố Hồ Chí Minh, Vietnam"
+                        android:textColor="@color/black"
+                        android:textSize="14sp" />
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/text_destination"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/ic_baseline_arrow_forward_ios_24" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/text_destinationdiscription"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="35dp"
+                        android:text="@{user.name}"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_phonenumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/text_name"
+                        android:layout_marginLeft="15dp"
+                        android:text="@{user.phoneNumber}"
+                        android:textColor="@color/grey"
+                        android:textSize="14sp" />
+
+                    <ImageView
+                        android:layout_width="170dp"
+                        android:layout_height="5dp"
+                        android:layout_below="@id/text_phonenumber"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/dottedunderline" />
+
+                    <View
+                        android:id="@+id/view2"
+                        android:layout_width="1dp"
+                        android:layout_height="50dp"
+                        android:layout_below="@+id/text_destinationdiscription"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="38dp"
+                        android:background="@color/white_gray" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_duration"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/text_destinationdiscription"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="35dp"
+                        android:layout_toRightOf="@+id/view2"
+                        android:text="15-30 phút"
+                        android:textColor="@color/grey"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_durationdiscription"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/text_duration"
+                        android:layout_marginLeft="15dp"
+                        android:layout_toRightOf="@+id/view2"
+                        android:text="Càng sớm càng tốt"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <ImageView
+                        android:layout_width="170dp"
+                        android:layout_height="5dp"
+                        android:layout_below="@id/text_durationdiscription"
+                        android:layout_alignStart="@+id/text_durationdiscription"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/dottedunderline" />
 
 
-            </RelativeLayout>
+                </RelativeLayout>
 
 
+            </androidx.cardview.widget.CardView>
 
-
-
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginTop="10dp">
-
-            <LinearLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:layout_height="200dp"
+                android:layout_marginTop="15dp">
 
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/ic_baseline_auto_delete_24"
-                    android:layout_gravity="center_vertical"
-                    android:layout_marginLeft="20dp"/>
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:textColor="@color/red"
-                    android:layout_marginLeft="10dp"
-                    android:textSize="18sp"
-                    android:text="@string/clearoder"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_itemorder"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/itemorder"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/image_addmenu"
+                        android:layout_width="85dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/round_button"
+                        android:backgroundTint="@color/light_orange"
+                        android:gravity="center"
+                        android:text="@string/addmenu"
+                        android:textColor="#C87533"
+                        android:textSize="12dp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:id="@+id/view3"
+                        android:layout_width="25dp"
+                        android:layout_height="3dp"
+                        android:layout_below="@+id/text_itemorder"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/brown" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/cart_recycler_view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/text_itemorder"
+                        android:layout_margin="10dp"
+                        android:layout_toRightOf="@+id/view3" />
 
 
+                </RelativeLayout>
 
 
-            </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
 
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            android:backgroundTint="@color/accent_color"
-            android:layout_marginTop="10dp">
-
-            <RelativeLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="210dp"
+                android:layout_marginTop="15dp">
 
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/text_orderamount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:text="Giao tận nơi 2 món"
-                    android:layout_marginTop="15dp"
-                    android:textSize="18sp"
-                    android:layout_marginLeft="20dp"/>
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/text_orderprice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:text="1.550.000đ"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:layout_below="@id/text_orderamount"
-                    android:layout_marginLeft="20dp"/>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_itemordertotalprice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/total"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
 
 
+                    <View
+                        android:id="@+id/view4"
+                        android:layout_width="25dp"
+                        android:layout_height="3dp"
+                        android:layout_below="@+id/text_itemordertotalprice"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/brown" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/view4"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/money"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_itempricetotal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/view4"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="11dp"
+                        android:layout_marginRight="25dp"
+                        android:text="@{cart.currency}"
+                        android:textColor="@color/grey"
+                        android:textSize="18sp" />
+
+                    <View
+                        android:id="@+id/view5"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/text_itempricetotal"
+                        android:layout_marginTop="10dp"
+                        android:background="@color/white_gray" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_choosepromotion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/view5"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/choosepromotion"
+                        android:textColor="@color/light_blue"
+                        android:textSize="16sp" />
+
+                    <ImageButton
+                        android:layout_width="25dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/view5"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="15dp"
+                        android:background="@drawable/ic_baseline_arrow_forward_ios_24" />
+
+                    <View
+                        android:id="@+id/view6"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@id/text_choosepromotion"
+                        android:layout_marginTop="15dp"
+                        android:background="@color/white_gray" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_moneyamount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/view6"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="15dp"
+                        android:text="@string/paymentamount"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_itempricetotal2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/view6"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginRight="25dp"
+                        android:text="@{cart.currency}"
+                        android:textColor="@color/grey"
+                        android:textSize="18sp" />
 
 
-                <TextView
-                    android:id="@+id/image_finalorder"
-                    android:layout_width="85dp"
-                    android:layout_height="30dp"
-                    android:layout_centerInParent="true"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginTop="15dp"
-                    android:layout_marginEnd="20dp"
-                    android:background="@drawable/round_button"
-                    android:backgroundTint="@color/white"
-                    android:gravity="center"
-                    android:text="@string/orderfinal"
-                    android:textColor="#C87533"
-                    android:textSize="16dp"
-                    android:textStyle="bold" />
+                </RelativeLayout>
 
 
-            </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="10dp">
+
+                <LinearLayout
+                    android:id="@+id/delete_cart"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="20dp"
+                        android:background="@drawable/ic_baseline_auto_delete_24" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="10dp"
+                        android:text="@string/clearoder"
+                        android:textColor="@color/red"
+                        android:textSize="18sp" />
 
 
-
-        </androidx.cardview.widget.CardView>
-
+                </LinearLayout>
 
 
-    </LinearLayout>
+            </androidx.cardview.widget.CardView>
 
-</androidx.core.widget.NestedScrollView>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/accent_color">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_orderamount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="15dp"
+                        android:text="@{cart.amountQuantity}"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_orderprice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/text_orderamount"
+                        android:layout_marginLeft="20dp"
+                        android:text="@{cart.totalCurrency}"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/image_finalorder"
+                        android:layout_width="85dp"
+                        android:layout_height="30dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginEnd="20dp"
+                        android:background="@drawable/round_button"
+                        android:backgroundTint="@color/white"
+                        android:gravity="center"
+                        android:text="@string/orderfinal"
+                        android:textColor="#C87533"
+                        android:textSize="16dp"
+                        android:textStyle="bold" />
+
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

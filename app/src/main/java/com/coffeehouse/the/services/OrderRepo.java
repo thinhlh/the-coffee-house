@@ -18,9 +18,9 @@ import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class OrderRepo implements Fetching {
-    private final Order order=new Order();
+    private final Order order = new Order();
     private final MutableLiveData<List<Order>> data = new MutableLiveData<>();
-    private FirebaseFirestore db=FirebaseFirestore.getInstance();
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     public OrderRepo() {
     }

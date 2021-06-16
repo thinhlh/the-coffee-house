@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -57,10 +58,29 @@ public class StoresFragment extends Fragment {
             }
         });
 
+        //Search
+        SearchView searchView = storeLocationFragmentBinding.textSearch;
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                filterStores(query, storeAdapter);
+                return true;
+            }
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                filterStores(newText, storeAdapter);
+                return true;
+            }
+        });
+
         return v;
     }
 
     private void getStores(StoreAdapter storeAdapter) {
         storeViewModel.getStores().observe(getViewLifecycleOwner(), storeAdapter::setStoresList);
+    }
+
+    private void filterStores(String s, StoreAdapter storeAdapter) {
+        storeViewModel.filterStores(s).observe(getViewLifecycleOwner(), storeAdapter::setStoresList);
     }
 }

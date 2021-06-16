@@ -19,4 +19,8 @@ public class StoreViewModel extends ViewModel {
         return storesRepo.getStores();
     }
 
+    public LiveData<List<Store>> filterStores(String s) {
+        storesRepo.setUpRealTimeFilter(s);
+        return storesRepo.filterStores();
+    }
 }

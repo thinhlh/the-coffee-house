@@ -23,4 +23,9 @@ public class OrderViewModel extends ViewModel {
         return productsRepo.getProductsOfCategory(categoryID);
     }
 
+    public LiveData<List<Product>> getFilterProduct(String s) {
+        productsRepo.setUpRTListenerForFilterProduct(s);
+        return productsRepo.filterProduct();
+    }
+
 }

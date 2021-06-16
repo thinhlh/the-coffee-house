@@ -2,20 +2,26 @@ package com.coffeehouse.the.models;
 
 import android.util.Size;
 
+import java.text.Format;
+import java.text.NumberFormat;
+import java.util.Locale;
 import java.util.Objects;
 
 public class CartItem {
     private String productId = "";
-    private int itemPrice = 0;
-    private int quantity = 0;
+    private Integer itemPrice = 0;
+    private Integer quantity = 0;
     private ProductSize size = ProductSize.Medium;
     private String note = "";
     private ProductTopping topping = ProductTopping.Off;
 
+    private Locale locale = new Locale("vi", "VN");
+    private Format format = NumberFormat.getCurrencyInstance(locale);
+
     public CartItem() {
     }
 
-    public CartItem(String productId, int itemPrice, int quantity, ProductSize size, ProductTopping topping, String note) {
+    public CartItem(String productId, Integer itemPrice, Integer quantity, ProductSize size, ProductTopping topping, String note) {
         this.productId = productId;
         this.itemPrice = itemPrice;
         this.quantity = quantity;
@@ -40,7 +46,7 @@ public class CartItem {
         this.productId = productId;
     }
 
-    public int getItemPrice() {
+    public Integer getItemPrice() {
         return itemPrice;
     }
 
@@ -48,7 +54,7 @@ public class CartItem {
         this.itemPrice = itemPrice;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
@@ -76,8 +82,21 @@ public class CartItem {
         this.quantity += increaseValue;
     }
 
-    public int getTotalCartItemValue() {
+    public Integer getTotalCartItemValue() {
         return itemPrice * quantity;
+    }
+
+    public String options() {
+        String _size = "Vừa";
+        if (size == ProductSize.Large)
+            _size = "Lớn";
+        if (topping == ProductTopping.On)
+            return _size + ", Có Topping";
+        return _size;
+    }
+
+    public String totalCartItemPrice() {
+        return format.format(getTotalCartItemValue());
     }
 
     @Override
@@ -93,4 +112,5 @@ public class CartItem {
     public int hashCode() {
         return Objects.hash(productId, size);
     }
+
 }

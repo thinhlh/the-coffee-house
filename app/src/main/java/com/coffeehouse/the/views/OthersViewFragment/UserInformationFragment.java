@@ -4,23 +4,28 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.databinding.PersonalinfoFragmentBinding;
 import com.coffeehouse.the.services.UserRepo;
-import com.coffeehouse.the.viewModels.UpdateUserInforViewModel;
+import com.google.android.material.textfield.TextInputEditText;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.Date;
+
 public class UserInformationFragment extends Fragment implements View.OnClickListener {
     private UserRepo userRepo = new UserRepo();
-    private UpdateUserInforViewModel updateUserInforViewModel;
+    private TextInputEditText txtName, txtPhone, txtEmail, txtBirthday;
+    private Date birthDate;
+    private PersonalinfoFragmentBinding personalinfoFragmentBinding;
+
     public UserInformationFragment() {
     }
 
@@ -28,17 +33,31 @@ public class UserInformationFragment extends Fragment implements View.OnClickLis
     @org.jetbrains.annotations.Nullable
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-        PersonalinfoFragmentBinding personalinfoFragmentBinding = DataBindingUtil.inflate(inflater, R.layout.personalinfo_fragment, container, false);
+        personalinfoFragmentBinding = DataBindingUtil.inflate(inflater, R.layout.personalinfo_fragment, container, false);
         View v = personalinfoFragmentBinding.getRoot();
 
+        init();
+        setVariable();
 
-        updateUserInforViewModel = new ViewModelProvider(this).get(UpdateUserInforViewModel.class);
-        personalinfoFragmentBinding.setLifecycleOwner(this);
-        personalinfoFragmentBinding.setUserInfoViewModel(updateUserInforViewModel);
+        personalinfoFragmentBinding.closePersonalInformation.setOnClickListener(this::onClick);
+        personalinfoFragmentBinding.updateUserInfoBtn.setOnClickListener(this::onClick);
 
-
-        v.findViewById(R.id.close_personal_information).setOnClickListener(this::onClick);
         return v;
+    }
+
+    private void setVariable() {
+        txtName.setText(UserRepo.user.getName());
+        txtPhone.setText(UserRepo.user.getPhoneNumber());
+        txtEmail.setText(UserRepo.user.getEmail());
+        txtBirthday.setText(UserRepo.user.getBirthdayString());
+        birthDate = UserRepo.user.getBirthday();
+    }
+
+    private void init() {
+        txtName = personalinfoFragmentBinding.textInputName;
+        txtPhone = personalinfoFragmentBinding.textInputPhone;
+        txtEmail = personalinfoFragmentBinding.textInputEmail;
+        txtBirthday = personalinfoFragmentBinding.textInputBirthday;
     }
 
     @Override
@@ -48,6 +67,11 @@ public class UserInformationFragment extends Fragment implements View.OnClickLis
             case R.id.close_personal_information:
                 fragment = new OthersFragment();
                 getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
+                break;
+            case R.id.update_user_info_btn:
+                UserRepo userRepo = new UserRepo();
+                userRepo.updateUserInfo(txtName.getText().toString(), txtPhone.getText().toString(), birthDate);
+                Toast.makeText(getContext(), "Updated User Information", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

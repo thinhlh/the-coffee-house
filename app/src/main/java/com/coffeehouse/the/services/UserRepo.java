@@ -8,6 +8,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
+
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
 public class UserRepo {
 
@@ -88,7 +93,8 @@ public class UserRepo {
         } else {
             user.getFavoriteProducts().add(productId);
         }
-        return db.collection("users").document(mAuth.getCurrentUser().getUid()).update("favoriteProducts", user.getFavoriteProducts());
+        return db.collection("users").document(mAuth.getCurrentUser().getUid())
+                .update("favoriteProducts", user.getFavoriteProducts());
     }
 
     public Task<Void> updateUserPoint(Integer point) {
@@ -104,6 +110,12 @@ public class UserRepo {
             db.collection("users").document(mAuth.getCurrentUser().getUid()).update("membership", "Gold");
         else if (uPoint >= 1000)
             db.collection("users").document(mAuth.getCurrentUser().getUid()).update("membership", "Silver");
+    }
+
+    public void updateUserInfo(String name, String phoneNumber, Date birthday) {
+        db.collection("users").document(mAuth.getCurrentUser().getUid()).update("name", name);
+        db.collection("users").document(mAuth.getCurrentUser().getUid()).update("phone", phoneNumber);
+        db.collection("users").document(mAuth.getCurrentUser().getUid()).update("birthday", birthday);
     }
 
 }

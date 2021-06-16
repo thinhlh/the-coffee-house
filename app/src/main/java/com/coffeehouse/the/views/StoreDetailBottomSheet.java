@@ -27,7 +27,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import org.jetbrains.annotations.NotNull;
 
 public class StoreDetailBottomSheet extends BottomSheetDialogFragment {
-
+    private final String contactPhoneNumber = "18006939";
     private Store store = new Store();
 
     public StoreDetailBottomSheet() {
@@ -46,18 +46,22 @@ public class StoreDetailBottomSheet extends BottomSheetDialogFragment {
         storeLocationDetailBinding.setLifecycleOwner(this);
         //END BINDING
 
-        v.findViewById(R.id.store_detail_button).setOnClickListener(new View.OnClickListener() {
+        storeLocationDetailBinding.storeDetailButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 dismiss();
             }
         });
-
-        v.findViewById(R.id.img_store_detail_gg_map).setOnClickListener(new View.OnClickListener() {
+        storeLocationDetailBinding.imgStoreDetailGgMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 navigateToGoogleMap();
             }
+        });
+        storeLocationDetailBinding.storePhoneContact.setOnClickListener(listener -> {
+            Intent intent = new Intent(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse("tel:" + contactPhoneNumber));
+            startActivity(intent);
         });
 
         return v;

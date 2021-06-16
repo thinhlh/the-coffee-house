@@ -1,7 +1,10 @@
 package com.coffeehouse.the.models;
 
+import java.text.Format;
+import java.text.NumberFormat;
 import java.time.Instant;
 import java.util.Date;
+import java.util.Locale;
 
 public class Order {
 

@@ -90,14 +90,14 @@
                             android:textColor="@color/black"
                             android:textSize="18sp" />
 
-                        <androidx.appcompat.widget.AppCompatTextView
+                        <TextView
                             android:id="@+id/telephonenumber_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/telephone_text"
                             android:layout_alignStart="@id/telephone_text"
                             android:layout_centerVertical="true"
-                            android:text="02871087088"
+                            android:text="@string/contact_phoneNumber"
                             android:textColor="@color/black"
                             android:textSize="14sp" />
 
@@ -148,7 +148,7 @@
                             android:textColor="@color/black"
                             android:textSize="18sp" />
 
-                        <androidx.appcompat.widget.AppCompatTextView
+                        <TextView
                             android:id="@+id/emailaddress_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -208,7 +208,7 @@
                             android:textColor="@color/black"
                             android:textSize="18sp" />
 
-                        <androidx.appcompat.widget.AppCompatTextView
+                        <TextView
                             android:id="@+id/websiteaddress_text"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

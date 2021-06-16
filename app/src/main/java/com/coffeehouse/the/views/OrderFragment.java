@@ -5,6 +5,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.appcompat.widget.SearchView;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
@@ -29,17 +31,15 @@ public class OrderFragment extends Fragment implements CategoryBottomSheet.SendC
 
     private OrderViewModel orderViewModel;
     private ProductAdapter productsAdapter = new ProductAdapter();
+    private OrderFragmentBinding orderFragmentBinding;
     private Cart cart = new Cart();
-    private Order order;
-    private OrderRepo orderRepo = new OrderRepo();
-    private UserRepo userRepo = new UserRepo();
 
     @Nullable
     @org.jetbrains.annotations.Nullable
     @Override
     public View onCreateView(@NonNull @org.jetbrains.annotations.NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
 
-        OrderFragmentBinding orderFragmentBinding = DataBindingUtil.inflate(inflater, R.layout.order_fragment, container, false);
+        orderFragmentBinding = DataBindingUtil.inflate(inflater, R.layout.order_fragment, container, false);
         View v = orderFragmentBinding.getRoot();
 
         //BINDING
@@ -55,34 +55,58 @@ public class OrderFragment extends Fragment implements CategoryBottomSheet.SendC
         //END BINDING
 
         productsAdapter.setClickListener(product -> {
-            //Toast.makeText(getContext(), "PRODUCT " + product.getTitle() + " CHECKED ",Toast.LENGTH_SHORT).show();
-            ProductDetailBottomSheet bottomSheet = new ProductDetailBottomSheet();
-            bottomSheet.setTargetFragment(OrderFragment.this, 1);
-            bottomSheet.setProductChosen(product);
-            bottomSheet.show(getFragmentManager(), "Product Detail");
-                navigateToProductDetailBottomSheet(product);
+            navigateToProductDetailBottomSheet(product);
         });
 
-        //INFLATE MENU
-        (v.findViewById(R.id.menu_selection_card_view)).setOnClickListener(view -> {
+        //Inflate Menu Bottom Sheet
+        orderFragmentBinding.menuSelectionCardView.setOnClickListener(view -> {
             CategoryBottomSheet categoryBottomSheet = new CategoryBottomSheet();
             categoryBottomSheet.setTargetFragment(OrderFragment.this, 2);
             categoryBottomSheet.show(getFragmentManager(), "Category");
         });
 
-        (v.findViewById(R.id.favorite_products_icon)).setOnClickListener(view -> {
+        //Inflate Favorite Product Fragment
+        orderFragmentBinding.favoriteProductsIcon.setOnClickListener(view -> {
             Fragment fragment = new FavouriteProductListFragment();
             getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
         });
-        //DONE
 
+        //Inflate Order Fragment
         orderFragmentBinding.orderView.setOnClickListener(view -> {
-            order = new Order(cart);
-            orderRepo.addOrderData(order);
-            userRepo.updateUserPoint(cart.getTotalCartValue() / 1000);
+            OrderDetailFragment fragment = new OrderDetailFragment();
+            fragment.setCartOrderView(cart);
+            getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
+        });
+
+        //SEARCH PRODUCT REGION
+        SearchView searchView = (SearchView) orderFragmentBinding.searchViewProduct;
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                searchProduct(query);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searchProduct(newText);
+                return true;
+            }
+        });
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                orderFragmentBinding.titleMustTry.setText("Món phải thử");
+                orderFragmentBinding.txtMenu.setText("Thực đơn");
+                return false;
+            }
         });
 
         return v;
+    }
+
+    private void searchProduct(String s) {
+        orderViewModel.getFilterProduct(s).observe(getViewLifecycleOwner(), productsAdapter::setItems);
     }
 
     private void getProducts(ProductAdapter productAdapter) {
@@ -99,10 +123,16 @@ public class OrderFragment extends Fragment implements CategoryBottomSheet.SendC
     @Override
     public void onInputCategory(Category category) {
         orderViewModel.getProductsOfCategory(category.getId()).observe(getViewLifecycleOwner(), productsAdapter::setItems);
+        orderFragmentBinding.txtMenu.setText(category.getTitle());
+        orderFragmentBinding.titleMustTry.setText(category.getTitle());
     }
 
     @Override
     public void onUpdateCart(CartItem cartItem) {
         cart.addItem(cartItem);
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 }

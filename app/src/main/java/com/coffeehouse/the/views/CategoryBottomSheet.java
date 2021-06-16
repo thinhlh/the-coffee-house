@@ -65,6 +65,9 @@ public class CategoryBottomSheet extends BottomSheetDialogFragment {
             listener.onInputCategory(category);
             dismiss();
         });
+        menuBottomSheetBinding.closeOderBottomesheetdialog.setOnClickListener(listener1 -> {
+            dismiss();
+        });
 
         return v;
     }

@@ -39,6 +39,7 @@
     <string name="pick_size">Chọn một loại size</string>
     <string name="favorite">Yêu thích</string>
     <string name="search">Tìm kiếm</string>
+    <string name="store_search">Tìm kiếm</string>
     <string name="choosemap">Chọn trên bản đồ</string>
     <string name="savedaddress">Địa chỉ đã lưu</string>
     <string name="addhomeaddress">Thêm địa chỉ nhà</string>
@@ -119,6 +120,7 @@
     <string name="notifications_title">Nội dung phản hồi</string>
     <string name="stores">Cửa hàng</string>
     <string name="others">Ghi chú thêm</string>
+    <string name="contact_phoneNumber">18006936</string>
 
     <!--
     This string is used for square devices and overridden by hello_world in

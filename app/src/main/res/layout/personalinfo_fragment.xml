@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <data>
-
-        <variable
-            name="userInfoViewModel"
-            type="com.coffeehouse.the.viewModels.UpdateUserInforViewModel" />
-    </data>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -65,16 +59,16 @@
         <!--            >-->
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txt_input_name"
+            android:id="@+id/text_input_name"
             android:layout_width="370dp"
             android:layout_height="40dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:background="@drawable/round_with_greyoutline"
             android:hint="@string/enteryourname"
+            android:inputType="text"
             android:paddingStart="15dp"
             android:paddingRight="10dp"
-            android:text="@{userInfoViewModel.name}"
             android:textSize="16dp" />
         <!--        </com.google.android.material.textfield.TextInputLayout>-->
 
@@ -96,6 +90,7 @@
         <!--        </com.google.android.material.textfield.TextInputLayout>-->
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_input_phone"
             android:layout_width="370dp"
             android:layout_height="35dp"
             android:layout_gravity="center_horizontal"
@@ -105,24 +100,25 @@
             android:hint="@string/enteryourphone"
             android:inputType="phone"
             android:paddingStart="15dp"
-            android:text="@{userInfoViewModel.phone}"
             android:textSize="16sp" />
 
         <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_input_email"
             android:layout_width="370dp"
             android:layout_height="35dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
             android:background="@drawable/round_with_greyoutline"
+            android:editable="false"
             android:gravity="center_vertical"
             android:hint="@string/enteryouremail"
             android:inputType="textEmailAddress"
             android:paddingStart="15dp"
-            android:text="@{userInfoViewModel.email}"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            tools:ignore="Deprecated" />
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/input_update_user_birthday"
+            android:id="@+id/text_input_birthday"
             android:layout_width="370dp"
             android:layout_height="35dp"
             android:layout_gravity="center_horizontal"
@@ -131,10 +127,9 @@
             android:drawableEnd="@drawable/ic_baseline_calendar_view_day_24"
             android:gravity="center_vertical"
             android:hint="@string/enteryourbirthday"
-            android:inputType="none"
+            android:inputType="datetime"
             android:paddingStart="15dp"
             android:paddingRight="10dp"
-            android:text="@{userInfoViewModel.birthday}"
             android:textSize="16sp" />
 
         <!--        <TextView-->

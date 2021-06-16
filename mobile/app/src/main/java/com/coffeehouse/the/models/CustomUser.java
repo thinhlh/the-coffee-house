@@ -1,8 +1,6 @@
 package com.coffeehouse.the.models;
 
 import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
@@ -106,28 +104,5 @@ public class CustomUser {
                 break;
         }
         this.favoriteProducts = (List<String>) json.get("favoriteProducts");
-    }
-
-    public String getBirthdayString() {
-        DateFormat df = new SimpleDateFormat("MMM dd, yyyy");
-        return df.format(birthday);
-    }
-
-    public String getMembershipString() {
-        String _membership;
-        switch (membership) {
-            case Gold:
-                _membership = "Membership.Gold";
-                break;
-            case Silver:
-                _membership = "Membership.Silver";
-                break;
-            case Diamond:
-                _membership = "Membership.Diamond";
-                break;
-            default:
-                _membership = "Membership.Bronze";
-        }
-        return _membership;
     }
 }

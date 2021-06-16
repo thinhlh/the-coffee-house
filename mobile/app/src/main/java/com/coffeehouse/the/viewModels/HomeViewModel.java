@@ -17,6 +17,7 @@ public class HomeViewModel extends ViewModel {
         notificationsRepo = new NotificationsRepo();
     }
 
+
     //Observable data, which could either return LiveData or MutableLiveData
     public LiveData<List<Notification>> getNotifications() {
         return notificationsRepo.getNotifications();

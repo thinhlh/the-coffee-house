@@ -15,9 +15,4 @@
     inner_frame_layout_padding (below variable) on round screens.
     -->
     <dimen name="inner_frame_layout_padding">5dp</dimen>
-    <dimen name="general_padding">16dp</dimen>
-    <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
-    <dimen name="general_dimen">8dp</dimen>
 </resources>

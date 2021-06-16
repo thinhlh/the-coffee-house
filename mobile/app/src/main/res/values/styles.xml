@@ -10,25 +10,17 @@
         <item name="boxCornerRadiusTopStart">@dimen/input_border_radius</item>
     </style>
 
+
+<!--    <style name="ThemeOverlay.App.DatePicker" parent="@style/ThemeOverlay.MaterialComponents.MaterialCalendar">-->
+<!--        <item name="colorPrimary">@color/white_gray</item>-->
+<!--        <item name="colorOnPrimary">@color/accent_color</item>-->
+
+<!--        &lt;!&ndash; Customize text field of the text input mode. &ndash;&gt;-->
+<!--    </style>-->
     <style name="MaterialCalendarTheme" parent="ThemeOverlay.MaterialComponents.MaterialCalendar">
         <!-- just override the colors used in the default style -->
         <item name="colorOnPrimary">@color/white_gray</item>
         <item name="colorPrimary">@color/accent_color</item>
     </style>
 
-    <style name="AdminEditToolbar" parent="@style/ThemeOverlay.AppCompat.ActionBar">
-        <item name="colorControlNormal">@color/white</item>
-        <item name="android:textColorSecondary">@color/white</item>
-    </style>
-
-    <style name="IconButton" parent="Widget.MaterialComponents.Button.TextButton">
-        <item name="android:layout_width">52dp</item>
-        <item name="android:layout_height">52dp</item>
-        <item name="android:insetTop">0dp</item>
-        <item name="android:insetLeft">0dp</item>
-        <item name="android:insetRight">0dp</item>
-        <item name="android:insetBottom">0dp</item>
-
-        <item name="iconPadding">0dp</item>
-    </style>
 </resources>

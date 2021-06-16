@@ -31,8 +31,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
 
-import java.io.IOException;
-import java.security.GeneralSecurityException;
 import java.util.Objects;
 
 public class LoginFragment extends Fragment implements View.OnClickListener {
@@ -78,15 +76,15 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         facebookLoginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-//                authViewModel.handleFacebookAccessToken(loginResult.getAccessToken()).addOnCompleteListener(task -> {
-//                    Log.d("", "Login Complete");
-//                    if (task.isSuccessful()) {
-//                        Toast.makeText(v.getContext(), "Welcome " + FirebaseAuth.getInstance().getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
-//                        navigateToHome();
-//                    } else {
-//                        Log.d("", Objects.requireNonNull(task.getException()).getMessage());
-//                    }
-//                });
+                authViewModel.handleFacebookAccessToken(loginResult.getAccessToken()).addOnCompleteListener(task -> {
+                    Log.d("", "Login Complete");
+                    if (task.isSuccessful()) {
+                        Toast.makeText(v.getContext(), "Welcome " + FirebaseAuth.getInstance().getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
+                        navigateToHome();
+                    } else {
+                        Log.d("", Objects.requireNonNull(task.getException()).getMessage());
+                    }
+                });
             }
 
             @Override
@@ -165,9 +163,11 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                         navigateToHome();
                     }
                 });
-            } catch (ApiException | GeneralSecurityException | IOException e) {
+            } catch (ApiException e) {
                 e.printStackTrace();
             }
+        } else {
+
         }
     }
 

@@ -1,6 +1,5 @@
 package com.coffeehouse.the.views;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,41 +17,31 @@ import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.NotificationAdapter;
 import com.coffeehouse.the.databinding.HomeFragmentBinding;
 import com.coffeehouse.the.viewModels.HomeViewModel;
-import com.coffeehouse.the.views.admin.AdminEditNotification;
 import com.synnapps.carouselview.CarouselView;
 
 public class HomeFragment extends Fragment {
     private HomeViewModel homeViewModel = new HomeViewModel();
-    private HomeFragmentBinding binding;
-    private final NotificationAdapter adapter = new NotificationAdapter();
 
     @Nullable
     @org.jetbrains.annotations.Nullable
     @Override
     public View onCreateView(@NonNull @org.jetbrains.annotations.NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         //INFLATE
-        binding = DataBindingUtil.inflate(inflater, R.layout.home_fragment, container, false);
+        HomeFragmentBinding homeFragmentBinding = DataBindingUtil.inflate(inflater, R.layout.home_fragment, container, false);
+        View v = homeFragmentBinding.getRoot();
+
+        //BINDING
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
-
-        setUpRecyclerView();
-        setUpCarouselViewer();
-        return binding.getRoot();
-    }
-
-    private void setUpRecyclerView(){
-        RecyclerView recyclerView = binding.notificationsRecyclerView;
+        RecyclerView recyclerView = homeFragmentBinding.notificationsRecyclerView;
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(adapter);
 
-        homeViewModel.getNotifications().observe(getViewLifecycleOwner(), adapter::setItems);
-        adapter.setClickListener(notification -> {
-            //TODO: BOTTOM NAVIGATION NOTIFICATION HERE
-        });
-    }
+        NotificationAdapter notificationsAdapter = new NotificationAdapter();
+        recyclerView.setAdapter(notificationsAdapter);
+        getNotifications(notificationsAdapter);
+        //END_BINDING
 
-    private void setUpCarouselViewer(){
-        CarouselView carouselView = binding.carouseView;
+        CarouselView carouselView = v.findViewById(R.id.carouse_view);
         carouselView.setPageCount(5);
         carouselView.setImageListener((position, imageView) -> {
             switch (position) {
@@ -73,5 +62,10 @@ public class HomeFragment extends Fragment {
                     break;
             }
         });
+        return v;
+    }
+
+    private void getNotifications(NotificationAdapter notificationAdapter) {
+        homeViewModel.getNotifications().observe(getViewLifecycleOwner(), notificationAdapter::setNotificationsList);
     }
 }

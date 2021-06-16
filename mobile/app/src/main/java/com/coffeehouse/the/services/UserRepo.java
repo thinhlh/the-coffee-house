@@ -1,25 +1,28 @@
 package com.coffeehouse.the.services;
 
-import android.util.Log;
-
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
-
 import com.coffeehouse.the.models.CustomUser;
-import com.facebook.AccessToken;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.GoogleAuthProvider;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
-import java.io.IOException;
-import java.security.GeneralSecurityException;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
-public class UserRepo extends Fetching {
+public class UserRepo {
 
-    private CustomUser user = new CustomUser();
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    private MutableLiveData<CustomUser> data = new MutableLiveData<>();
+    private static final FirebaseAuth mAuth = FirebaseAuth.getInstance();
+
+    private String uid;
+
+    public static CustomUser user = null;
 
 
     private Task<Boolean> isRegistered(String uid) {
@@ -32,85 +35,87 @@ public class UserRepo extends Fetching {
 
     }
 
-    //For email,password sign in
-    public Task<CustomUser> fetchUser(String uid) {
-        return db.collection("users").document(uid).get().continueWith(task -> {
-            if (!task.getResult().exists())
-                createUser(uid).addOnCompleteListener(task1 -> user = task1.getResult());
-            else
-                user = task.getResult().toObject(CustomUser.class);
-            data.setValue(user);
-            return user;
+    public static void fetchUser() {
+        FirebaseFirestore.getInstance().collection("users")
+                .document(mAuth.getCurrentUser().getUid()).get()
+                .continueWith(task -> user = task.getResult().toObject(CustomUser.class));
+    }
+
+
+    public Task<CustomUser> signIn(String email, String password) {
+        return mAuth.signInWithEmailAndPassword(email, password).continueWithTask(task -> {
+            if (task.isSuccessful()) {
+                uid = task.getResult().getUser().getUid();
+                return db.collection("users").document(uid).get().continueWith(task1 -> user = task1.getResult().toObject(CustomUser.class));
+            }
+            return null;
         });
     }
 
-    //For google sign in
-    public Task<CustomUser> fetchUser(GoogleSignInAccount account) {
-        return db.collection("users").document(account.getId()).get().continueWith(task -> {
-            if (!task.getResult().exists())
-                createUser(account).addOnCompleteListener(task1 -> user = task1.getResult());
-            else
-                user = task.getResult().toObject(CustomUser.class);
-            data.setValue(user);
-            return user;
+    public Task<CustomUser> createUser(String email, String password, CustomUser givenUser) {
+        user = givenUser;
+        return mAuth.createUserWithEmailAndPassword(email, password).continueWithTask(task -> {
+            uid = task.getResult().getUser().getUid();
+            return db.collection("users").document(uid).set(user).continueWith(task1 -> user);
         });
-    }
-
-    public Task<CustomUser> createUser(String uid, CustomUser user) {
-        return db.collection("users").document().set(user).continueWith(task -> {
-            this.user = user;
-            return user;
-        });
-    }
-
-    //Blank user for Email and Password sign up
-    public Task<CustomUser> createUser(String uid) {
-        this.user = new CustomUser();
-        return db.collection("users").document(uid).set(this.user).continueWith(task -> user);
     }
 
     //User with some information for Google Sign In
-    public Task<CustomUser> createUser(GoogleSignInAccount account) throws GeneralSecurityException, IOException {
-        CustomUser user = new CustomUser();
-        user.setEmail(account.getEmail());
-        user.setName(account.getDisplayName());
+    public Task<CustomUser> googleSignIn(GoogleSignInAccount account) {
 
-//        Get Birthday
-//        Person profile=PeopleAPI.peopleService().people().get("people/"+account.getId()).setPersonFields("birthdays").execute();
-//
-//        profile.getBirthdays().forEach(birthday -> {
-//            Log.d("",birthday.getText());
-//        });
-
-        this.user = user;
-        return db.collection("users").document(account.getId()).set(this.user).continueWith(task -> user);
-    }
-
-    // Facebook region
-    public Task<CustomUser> fetchUser(AccessToken accessToken, FirebaseUser userFacebook){
-        return db.collection("users").document(accessToken.getUserId()).get().continueWith(task -> {
-            if (!task.getResult().exists())
-                createUser(accessToken, userFacebook).addOnCompleteListener(task1 ->  user = task1.getResult());
-            else
-                user = task.getResult().toObject(CustomUser.class);
-            data.setValue(user);
-            return user;
+        AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
+        return mAuth.signInWithCredential(credential).continueWithTask(task -> {
+            uid = task.getResult().getUser().getUid();
+            return isRegistered(uid).continueWithTask(isRegister -> {
+                if (!isRegister.getResult()) {
+                    CustomUser signUpUser = new CustomUser();
+                    signUpUser.setName(account.getDisplayName());
+                    signUpUser.setEmail(account.getEmail());
+                    user = signUpUser;
+                    return db.collection("users").document(uid).set(signUpUser).continueWith(task1 -> signUpUser);
+                } else {
+                    return db.collection("users").document(uid).get().continueWith(task1 ->
+                            user = task1.getResult().toObject(CustomUser.class)
+                    );
+                }
+            });
         });
     }
 
-    public Task<CustomUser> createUser(AccessToken token, FirebaseUser userFacebook){
-        CustomUser user = new CustomUser();
-        user.setName(userFacebook.getDisplayName());
-        user.setEmail(userFacebook.getEmail());
-        user.setPhoneNumber(userFacebook.getPhoneNumber());
-        this.user = user;
-        return db.collection("users").document(token.getUserId()).set(this.user).continueWith(task -> user);
-    }
-    // End FB region
-
-    public LiveData<CustomUser> getUser() {
-        return data;
+    public void signOut() {
+        user = null;
+        mAuth.signOut();
     }
 
+    public Task<Void> toggleFavorite(String productId) {
+        if (user.getFavoriteProducts().contains(productId)) {
+            user.getFavoriteProducts().remove(productId);
+        } else {
+            user.getFavoriteProducts().add(productId);
+        }
+        return db.collection("users").document(mAuth.getCurrentUser().getUid())
+                .update("favoriteProducts", user.getFavoriteProducts());
+    }
+
+    public Task<Void> updateUserPoint(Integer point) {
+        updateUserMembership(point);
+        return db.collection("users").document(mAuth.getCurrentUser().getUid()).update("point", (UserRepo.user.getPoint() + point));
+    }
+
+    private void updateUserMembership(Integer point) {
+        Integer uPoint = UserRepo.user.getPoint() + point;
+        if (uPoint >= 3000)
+            db.collection("users").document(mAuth.getCurrentUser().getUid()).update("membership", "Diamond");
+        else if (uPoint >= 2000)
+            db.collection("users").document(mAuth.getCurrentUser().getUid()).update("membership", "Gold");
+        else if (uPoint >= 1000)
+            db.collection("users").document(mAuth.getCurrentUser().getUid()).update("membership", "Silver");
+    }
+
+    public void updateUserInfo(String name, String phoneNumber, Date birthday) {
+        db.collection("users").document(mAuth.getCurrentUser().getUid()).update("name", name);
+        db.collection("users").document(mAuth.getCurrentUser().getUid()).update("phone", phoneNumber);
+        db.collection("users").document(mAuth.getCurrentUser().getUid()).update("birthday", birthday);
+    }
 
 }

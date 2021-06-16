@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="user"
+            type="com.coffeehouse.the.models.CustomUser" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white_gray"
+        tools:context=".views.screen1_MembershipFragment">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview_screen1"
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="50dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="20dp"
+                            android:src="@drawable/barcodetest" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="5dp"
+                            android:text="M161466423"
+                            android:textColor="@color/black" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:background="@color/accent_color"
+                        android:orientation="vertical">
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="10dp"
+                            android:text="@{user.name}"
+                            android:textColor="@color/white"
+                            android:textSize="20dp"
+                            android:textStyle="bold" />
+
+                        <com.google.android.material.textview.MaterialTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="5dp"
+                            android:text="@{user.membershipString}"
+                            android:textColor="@color/white" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview_changepromotion"
+                android:layout_width="175dp"
+                android:layout_height="90dp"
+                android:layout_below="@+id/cardview_screen1"
+                android:layout_alignStart="@+id/cardview_screen1"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="16dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="16dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:src="@drawable/ic_baseline_person_pin_24" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/promotionchange"
+                        android:textColor="@color/light_blue"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview_yourvoucher"
+                android:layout_width="175dp"
+                android:layout_height="90dp"
+                android:layout_below="@+id/cardview_screen1"
+                android:layout_alignEnd="@+id/cardview_screen1"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="16dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="16dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:src="@drawable/ic_outline_chrome_reader_mode_24" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/voucher"
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview_right"
+                android:layout_width="175dp"
+                android:layout_height="90dp"
+                android:layout_below="@+id/cardview_changepromotion"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:paddingLeft="16dp"
+                    android:paddingTop="16dp"
+                    android:paddingRight="16dp"
+                    android:paddingBottom="16dp">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:src="@drawable/ic_baseline_stars_24" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="left"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/right"
+                        android:textColor="@color/brown"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/textview_yourpromotion"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/cardview_right"
+                android:layout_alignStart="@+id/cardview_changepromotion"
+                android:layout_marginTop="20dp"
+                android:text="@string/yourpromotion"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_seeall"
+                android:layout_width="85dp"
+                android:layout_height="25dp"
+                android:layout_below="@id/cardview_right"
+                android:layout_alignEnd="@+id/cardview_yourvoucher"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/round_button_with_white_background"
+                android:gravity="center"
+                android:text="@string/seeall"
+                android:textColor="#C87533"
+                android:textSize="11dp"
+                android:textStyle="bold" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview_promotion1"
+                android:layout_width="360dp"
+                android:layout_height="120dp"
+                android:layout_below="@id/textview_yourpromotion"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="8dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/image_cardview_promotion1"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp">
+
+                        <ImageView
+                            android:id="@+id/image1_cardview_promotion1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+
+                        </ImageView>
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/title_cardview_promotion1"
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_toRightOf="@+id/image_cardview_promotion1"
+                        android:maxLines="2"
+                        android:text="FLASH SALE - Mua 1 ly tặng 1 ly"
+                        android:textColor="@color/black"
+                        android:textSize="16sp">
+
+                    </com.google.android.material.textview.MaterialTextView>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/discription_cardview_promotion1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/title_cardview_promotion1"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_toRightOf="@+id/image_cardview_promotion1"
+                        android:maxLines="2"
+                        android:text="Hết hạn trong 2 ngày"
+                        android:textColor="@color/accent_color"
+                        android:textSize="14sp">
+
+                    </com.google.android.material.textview.MaterialTextView>
+
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview_promotion2"
+                android:layout_width="360dp"
+                android:layout_height="120dp"
+                android:layout_below="@id/cardview_promotion1"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="8dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/image_cardview_promotion2"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp">
+
+                        <ImageView
+                            android:id="@+id/image1_cardview_promotion2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+
+                        </ImageView>
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/title_cardview_promotion2"
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_toRightOf="@+id/image_cardview_promotion2"
+                        android:maxLines="2"
+                        android:text="FLASH SALE - Mua 1 ly tặng 1 ly"
+                        android:textColor="@color/black"
+                        android:textSize="16sp">
+
+                    </com.google.android.material.textview.MaterialTextView>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/discription_cardview_promotion2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/title_cardview_promotion2"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_toRightOf="@+id/image_cardview_promotion2"
+                        android:maxLines="2"
+                        android:text="Hết hạn trong 2 ngày"
+                        android:textColor="@color/accent_color"
+                        android:textSize="14sp">
+
+                    </com.google.android.material.textview.MaterialTextView>
+
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardview_promotion3"
+                android:layout_width="360dp"
+                android:layout_height="120dp"
+                android:layout_below="@id/cardview_promotion2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="5dp"
+                app:cardCornerRadius="8dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/image_cardview_promotion3"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp">
+
+                        <ImageView
+                            android:id="@+id/image1_cardview_promotion3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+
+                        </ImageView>
+
+
+                    </androidx.cardview.widget.CardView>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/title_cardview_promotion3"
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_toRightOf="@+id/image_cardview_promotion3"
+                        android:maxLines="2"
+                        android:text="FLASH SALE - Mua 1 ly tặng 1 ly"
+                        android:textColor="@color/black"
+                        android:textSize="16sp">
+
+                    </com.google.android.material.textview.MaterialTextView>
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/discription_cardview_promotion3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/title_cardview_promotion3"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_toRightOf="@+id/image_cardview_promotion3"
+                        android:maxLines="2"
+                        android:text="Hết hạn trong 2 ngày"
+                        android:textColor="@color/accent_color">
+
+                    </com.google.android.material.textview.MaterialTextView>
+
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
+
+
+        </RelativeLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

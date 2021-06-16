@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="35dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/bottom_sheet_dialog_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/updateinfo"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+
+                    />
+
+                <ImageView
+                    android:id="@+id/close_personal_information"
+                    android:layout_width="30dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/ic_baseline_arrow_back_ios_24" />
+
+            </RelativeLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/circle_image" />
+
+        <!--        <com.google.android.material.textfield.TextInputLayout-->
+        <!--            android:id="@+id/text_input_name"-->
+        <!--            style="@style/TextInputLayout.OutlinedBox.Custom"-->
+        <!--            android:layout_width="370dp"-->
+        <!--            android:layout_height="40dp"-->
+        <!--            android:layout_gravity="center_horizontal"-->
+        <!--            android:layout_marginTop="20dp"-->
+        <!--            android:hint="@string/enteryourname"-->
+        <!--            >-->
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_input_name"
+            android:layout_width="370dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/round_with_greyoutline"
+            android:hint="@string/enteryourname"
+            android:inputType="text"
+            android:paddingStart="15dp"
+            android:paddingRight="10dp"
+            android:textSize="16dp" />
+        <!--        </com.google.android.material.textfield.TextInputLayout>-->
+
+        <!--        <com.google.android.material.textfield.TextInputLayout-->
+        <!--            android:id="@+id/text_input_lastname"-->
+        <!--            style="@style/TextInputLayout.OutlinedBox.Custom"-->
+        <!--            android:layout_width="370dp"-->
+        <!--            android:layout_height="40dp"-->
+        <!--            android:layout_gravity="center_horizontal"-->
+        <!--            android:layout_marginTop="10dp"-->
+        <!--            android:hint="@string/enteryourlastname"-->
+
+        <!--            >-->
+
+        <!--            <com.google.android.material.textfield.TextInputEditText-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="wrap_content"-->
+        <!--                android:inputType="textEmailAddress" />-->
+        <!--        </com.google.android.material.textfield.TextInputLayout>-->
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_input_phone"
+            android:layout_width="370dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/round_with_greyoutline"
+            android:gravity="center_vertical"
+            android:hint="@string/enteryourphone"
+            android:inputType="phone"
+            android:paddingStart="15dp"
+            android:textSize="16sp" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_input_email"
+            android:layout_width="370dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/round_with_greyoutline"
+            android:editable="false"
+            android:gravity="center_vertical"
+            android:hint="@string/enteryouremail"
+            android:inputType="textEmailAddress"
+            android:paddingStart="15dp"
+            android:textSize="16sp"
+            tools:ignore="Deprecated" />
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/text_input_birthday"
+            android:layout_width="370dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/round_with_greyoutline"
+            android:drawableEnd="@drawable/ic_baseline_calendar_view_day_24"
+            android:gravity="center_vertical"
+            android:hint="@string/enteryourbirthday"
+            android:inputType="datetime"
+            android:paddingStart="15dp"
+            android:paddingRight="10dp"
+            android:textSize="16sp" />
+
+        <!--        <TextView-->
+        <!--            android:layout_width="370dp"-->
+        <!--            android:layout_height="35dp"-->
+        <!--            android:layout_gravity="center_horizontal"-->
+        <!--            android:layout_marginTop="15dp"-->
+        <!--            android:background="@drawable/round_with_greyoutline"-->
+        <!--            android:drawableEnd="@drawable/ic_baseline_keyboard_arrow_down_24"-->
+        <!--            android:gravity="center_vertical"-->
+        <!--            android:paddingStart="15dp"-->
+        <!--            android:paddingRight="10dp"-->
+        <!--            android:text="Nam"-->
+        <!--            android:textSize="16sp" />-->
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/update_user_info_btn"
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="100dp"
+            android:backgroundTint="#C87533"
+            android:text="@string/updateaccount"
+            android:textSize="16sp" />
+    </LinearLayout>
+</layout>

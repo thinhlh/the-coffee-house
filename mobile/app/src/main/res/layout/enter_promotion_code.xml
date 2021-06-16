@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/white_gray"
+    android:layout_height="match_parent">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/bottom_sheet_dialog_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/enterpromotioncode"
+                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+
+                />
+            <ImageView
+                android:id="@+id/close_oder_bottomesheetdialog"
+                android:layout_width="30dp"
+                android:layout_height="50dp"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_baseline_close_24" />
+
+        </RelativeLayout>
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bigroundbutton"
+        android:src="@drawable/ic_baseline_article_242"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="40dp"/>
+    <TextView
+        android:layout_width="190dp"
+        android:textAlignment="center"
+        android:layout_height="wrap_content"
+        android:maxLines="2"
+        android:textColor="@color/black"
+        android:layout_marginTop="10dp"
+        android:textSize="15sp"
+        android:layout_gravity="center_horizontal"
+        android:text="Bạn có thể nhập mã khuyến mãi để nhận voucher"/>
+
+    <EditText
+        android:layout_width="360dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:layout_height="30dp"
+        android:textSize="15sp"
+        android:drawableRight="@drawable/ic_baseline_article_24"
+        android:paddingRight="10dp"
+        android:hint="@string/enterpromotioncode"
+        android:paddingLeft="10dp"
+        android:background="@drawable/round_button_with_white_background"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="360dp"
+        android:layout_height="30dp"
+        android:backgroundTint="@color/accent_color"
+        android:layout_marginTop="5dp"
+        app:cardCornerRadius="8dp"
+        android:layout_gravity="center_horizontal">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:layout_centerInParent="true"
+                android:text="@string/apply"/>
+        </RelativeLayout>
+
+
+
+
+
+    </androidx.cardview.widget.CardView>
+
+
+
+
+
+</LinearLayout>

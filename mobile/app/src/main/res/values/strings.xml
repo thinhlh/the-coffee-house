@@ -139,6 +139,20 @@
     <string name="admin_information">Admin Information</string>
     <string name="profit">Profit</string>
     <string name="log_out">Log out</string>
+    <string name="finishoder">Đơn hàng đã hoàn tất</string>
+    <string name="atstore">Tại cửa hàng</string>
+    <string name="statusoderitem">Trạng thái đơn hàng</string>
+    <string name="estimteddeliverytime">Thời gian giao dự kiến</string>
+    <string name="complete">Hoàn tất</string>
+    <string name="evaluate">Đánh giá</string>
+    <string name="Callforsupport">Gọi hỗ trợ</string>
+    <string name="orderagain">Đặt lại</string>
+    <string name="orderinformation">Thông tin đơn hàng</string>
+    <string name="receiver">Người nhận</string>
+    <string name="deliveryto">Giao đến</string>
+    <string name="paymentstatus">Trạng thái thanh toán</string>
+    <string name="codeorder">Mã đơn hàng</string>
+    <string name="phonenumber">Số điện thoại</string>
 
     <!--
     This string is used for square devices and overridden by hello_world in

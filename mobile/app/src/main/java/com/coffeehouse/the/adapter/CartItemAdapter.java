@@ -1,9 +1,7 @@
 package com.coffeehouse.the.adapter;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -13,16 +11,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.Adapter;
 
 import com.coffeehouse.the.R;
-import com.coffeehouse.the.databinding.OrderDetailBinding;
 import com.coffeehouse.the.databinding.OrderDetailItemBinding;
 import com.coffeehouse.the.models.Cart;
 import com.coffeehouse.the.models.CartItem;
-import com.coffeehouse.the.models.Order;
 import com.coffeehouse.the.services.ProductsRepo;
 
 import org.jetbrains.annotations.NotNull;
-
-import java.util.List;
 
 public class CartItemAdapter extends Adapter<CartItemAdapter.CartItemViewHolder> {
     private Cart cart;
@@ -51,6 +45,7 @@ public class CartItemAdapter extends Adapter<CartItemAdapter.CartItemViewHolder>
         this.cart = cart;
         notifyDataSetChanged();
     }
+
 
     @Override
     public int getItemCount() {

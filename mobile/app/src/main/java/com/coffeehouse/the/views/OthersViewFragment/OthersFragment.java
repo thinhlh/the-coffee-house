@@ -11,9 +11,11 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.coffeehouse.the.R;
+import com.coffeehouse.the.services.CustomGoogleSignInClient;
 import com.coffeehouse.the.services.UserRepo;
 import com.coffeehouse.the.viewModels.AuthViewModel;
 import com.coffeehouse.the.views.MainActivity;
+import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 
 import java.text.SimpleDateFormat;
@@ -38,11 +40,8 @@ public class OthersFragment extends Fragment implements View.OnClickListener {
         v.findViewById(R.id.saved_address).setOnClickListener(this::onClick);
         v.findViewById(R.id.settings).setOnClickListener(this::onClick);
         v.findViewById(R.id.term).setOnClickListener(this::onClick);
-
-//        Date birthdayDate = UserRepo.user.getBirthday();
-//        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/mm/yyyy");
-//
-//        String birthdayM = (simpleDateFormat.format(birthdayDate));
+        v.findViewById(R.id.order_history).setOnClickListener(this::onClick);
+        mGoogleSignInClient = CustomGoogleSignInClient.mGoogleSignInClient(v.getContext());
 
         return v;
     }
@@ -53,6 +52,11 @@ public class OthersFragment extends Fragment implements View.OnClickListener {
         Fragment fragment;
         switch (v.getId()) {
             case R.id.logout:
+//                mGoogleSignInClient.signOut().addOnCompleteListener(task -> {
+//                    authViewModel.signOut();
+//                    startActivity(new Intent(v.getContext(), MainActivity.class));
+//                });
+                LoginManager.getInstance().logOut();
                 authViewModel.signOut();
                 startActivity(new Intent(getContext(), MainActivity.class));
                 break;
@@ -82,6 +86,10 @@ public class OthersFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.term:
                 fragment = new TermFragment();
+                getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
+                break;
+            case R.id.order_history:
+                fragment = new OrderHistoryFragment();
                 getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
                 break;
         }

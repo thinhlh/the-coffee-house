@@ -18,7 +18,7 @@ import com.coffeehouse.the.adapter.CartItemAdapter;
 import com.coffeehouse.the.databinding.OrderDetailBinding;
 import com.coffeehouse.the.models.Cart;
 import com.coffeehouse.the.models.Order;
-import com.coffeehouse.the.services.OrderRepo;
+import com.coffeehouse.the.services.OrdersRepo;
 import com.coffeehouse.the.services.UserRepo;
 import com.coffeehouse.the.viewModels.OrderDetailViewModel;
 
@@ -29,7 +29,7 @@ public class OrderDetailFragment extends Fragment {
     private CartItemAdapter cartItemAdapter = new CartItemAdapter();
     private Cart currentCart = new Cart();
     private Order order;
-    private OrderRepo orderRepo = new OrderRepo();
+    private OrdersRepo ordersRepo = new OrdersRepo();
     private UserRepo userRepo = new UserRepo();
 
     @Nullable
@@ -71,7 +71,7 @@ public class OrderDetailFragment extends Fragment {
 
     private void createOrder() {
         order = new Order(orderDetailViewModel.getCart());
-        orderRepo.addOrderData(order);
+        ordersRepo.addOrderData(order);
         userRepo.updateUserPoint(orderDetailViewModel.getCart().getTotalCartValue() / 1000);
         OrderFragment fragment = new OrderFragment();
         getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();

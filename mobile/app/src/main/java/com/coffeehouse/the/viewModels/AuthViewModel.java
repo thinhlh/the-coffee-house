@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel;
 
 import com.coffeehouse.the.models.CustomUser;
 import com.coffeehouse.the.services.UserRepo;
+import com.facebook.AccessToken;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
@@ -44,6 +45,9 @@ public class AuthViewModel extends ViewModel {
 //        AuthCredential credential = FacebookAuthProvider.getCredential(accessToken.getToken());
 //        return mAuth.signInWithCredential(credential).continueWithTask(task -> userRepo.fetchUser(accessToken, mAuth.getCurrentUser()));
 //    }
+    public Task<CustomUser> handleFacebookAccessToken(AccessToken token) {
+        return userRepo.facebookSignIn(token);
+    }
 
     //Sign out
     public void signOut() {

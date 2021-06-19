@@ -108,11 +108,6 @@ public class CustomUser {
         this.favoriteProducts = (List<String>) json.get("favoriteProducts");
     }
 
-    public String getBirthdayString() {
-        DateFormat df = new SimpleDateFormat("MMM dd, yyyy");
-        return df.format(birthday);
-    }
-
     public String getMembershipString() {
         String _membership;
         switch (membership) {

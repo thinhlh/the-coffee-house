@@ -11,6 +11,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.AuthViewPagerAdapter;
 import com.coffeehouse.the.views.admin.AdminHomeActivity;
+import com.facebook.FacebookSdk;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         FirebaseApp.initializeApp(this);
+        FacebookSdk.sdkInitialize(this);
         if(FirebaseAuth.getInstance().getCurrentUser()!=null) {
             startActivity(new Intent(this, HomeActivity.class));
         }

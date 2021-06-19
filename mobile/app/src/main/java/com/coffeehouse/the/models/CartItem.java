@@ -14,6 +14,7 @@ public class CartItem {
     private ProductSize size = ProductSize.Medium;
     private String note = "";
     private ProductTopping topping = ProductTopping.Off;
+    private Integer totalCartItemValue;
 
     private Locale locale = new Locale("vi", "VN");
     private Format format = NumberFormat.getCurrencyInstance(locale);
@@ -97,6 +98,10 @@ public class CartItem {
 
     public String totalCartItemPrice() {
         return format.format(getTotalCartItemValue());
+    }
+
+    public void setTotalCartItemValue(Integer totalCartItemValue) {
+        this.totalCartItemValue = totalCartItemValue;
     }
 
     @Override

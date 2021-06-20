@@ -1,11 +1,16 @@
 package com.coffeehouse.the.services;
 
+import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 
 import com.coffeehouse.the.models.CustomUser;
+import com.facebook.AccessToken;
+import com.facebook.Profile;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -81,9 +86,33 @@ public class UserRepo {
         });
     }
 
-    public void signOut() {
-        user = null;
-        mAuth.signOut();
+    public Task<CustomUser> facebookSignIn(AccessToken token) {
+        AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
+        return mAuth.signInWithCredential(credential).continueWithTask(task -> {
+            uid = FirebaseAuth.getInstance().getUid();
+            return isRegistered(uid).continueWithTask(isRegistered -> {
+                if (!isRegistered.getResult()) {
+                    CustomUser signUpUser = new CustomUser();
+                    signUpUser.setName(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+                    signUpUser.setEmail(FirebaseAuth.getInstance().getCurrentUser().getEmail());
+                    signUpUser.setPhoneNumber(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
+                    user = signUpUser;
+                    return db.collection("users").document(uid).set(signUpUser).continueWith(task1 -> signUpUser);
+                } else {
+                    return db.collection("users").document(uid).get().continueWith(task1 ->
+                            user = task1.getResult().toObject(CustomUser.class)
+                    );
+                }
+            });
+        });
+    }
+
+    public Task<Void> signOut(Context context) {
+        return CustomGoogleSignInClient.mGoogleSignInClient(context).signOut().continueWith(task -> {
+            user = null;
+            mAuth.signOut();
+            return null;
+        });
     }
 
     public Task<Void> toggleFavorite(String productId) {
@@ -113,7 +142,7 @@ public class UserRepo {
 
     public void updateUserInfo(String name, String phoneNumber, Date birthday) {
         db.collection("users").document(mAuth.getCurrentUser().getUid()).update("name", name);
-        db.collection("users").document(mAuth.getCurrentUser().getUid()).update("phone", phoneNumber);
+        db.collection("users").document(mAuth.getCurrentUser().getUid()).update("phoneNumber", phoneNumber);
         db.collection("users").document(mAuth.getCurrentUser().getUid()).update("birthday", birthday);
     }
 

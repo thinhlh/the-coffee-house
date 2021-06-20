@@ -60,8 +60,9 @@ public class ContactFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.logout:
                 AuthViewModel authViewModel = new AuthViewModel();
-                authViewModel.signOut();
-                startActivity(new Intent(getContext(), MainActivity.class));
+                authViewModel.signOut(getContext()).addOnCompleteListener(task -> {
+                    startActivity(new Intent(getContext(), MainActivity.class));
+                });
                 break;
         }
     }

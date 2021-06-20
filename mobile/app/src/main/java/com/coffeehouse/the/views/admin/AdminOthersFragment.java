@@ -41,8 +41,9 @@ public class AdminOthersFragment extends Fragment {
     private void setListeners() {
 //        binding.users.setOnClickListener(v -> startActivity(new Intent(getContext(),AdminUsersActivity.class)));
         binding.logout.setOnClickListener(v -> {
-            viewModel.signOut();
-            startActivity(new Intent(getContext(), MainActivity.class));
+            viewModel.signOut(getContext()).addOnCompleteListener(task -> {
+                startActivity(new Intent(getContext(), MainActivity.class));
+            });
         });
     }
 }

@@ -21,10 +21,7 @@ import com.coffeehouse.the.databinding.OrderFragmentBinding;
 import com.coffeehouse.the.models.Cart;
 import com.coffeehouse.the.models.CartItem;
 import com.coffeehouse.the.models.Category;
-import com.coffeehouse.the.models.Order;
 import com.coffeehouse.the.models.Product;
-import com.coffeehouse.the.services.OrderRepo;
-import com.coffeehouse.the.services.UserRepo;
 import com.coffeehouse.the.viewModels.OrderViewModel;
 
 public class OrderFragment extends Fragment implements CategoryBottomSheet.SendCategoryPick, ProductDetailBottomSheet.UpdateCart {

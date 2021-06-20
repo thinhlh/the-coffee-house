@@ -37,7 +37,7 @@ public class NotificationAdapter extends Adapter<NotificationAdapter.Notificatio
 
     @Override
     public int getItemCount() {
-        return notifications==null?0:notifications.size();
+        return notifications == null ? 0 : notifications.size();
     }
 
     @Override

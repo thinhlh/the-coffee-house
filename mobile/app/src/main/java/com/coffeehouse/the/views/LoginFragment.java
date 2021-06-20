@@ -21,6 +21,7 @@ import com.coffeehouse.the.views.admin.AdminHomeActivity;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -36,6 +37,7 @@ import java.io.IOException;
 import java.security.GeneralSecurityException;
 import java.util.Objects;
 
+
 public class LoginFragment extends Fragment implements View.OnClickListener {
 
     private final AuthViewModel authViewModel = new AuthViewModel();
@@ -44,11 +46,12 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
     private static final int RC_SIGN_IN = 9000;
     private GoogleSignInClient mGoogleSignInClient;
-    private final CallbackManager callbackManager = CallbackManager.Factory.create();
+    private CallbackManager callbackManager;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        callbackManager = CallbackManager.Factory.create();
         super.onCreate(savedInstanceState);
     }
 
@@ -62,7 +65,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         input_password = v.findViewById(R.id.text_input_password);
         v.findViewById(R.id.login_button).setOnClickListener(this);
 
-
         //GOOGLE SIGN IN
         SignInButton googleSignInButton = v.findViewById(R.id.google_sign_in);
         googleSignInButton.setSize(SignInButton.SIZE_WIDE);
@@ -71,26 +73,29 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         mGoogleSignInClient = CustomGoogleSignInClient.mGoogleSignInClient(v.getContext());
 
         //FACEBOOK SIGN IN
-        LoginButton facebookLoginButton = v.findViewById(R.id.facebook_login_button);
-        facebookLoginButton.setReadPermissions("name", "email", "phone_number", "birthday");
+        LoginButton facebookLoginButton = (LoginButton) v.findViewById(R.id.facebook_login_button);
         facebookLoginButton.setFragment(this);
         facebookLoginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
-//                authViewModel.handleFacebookAccessToken(loginResult.getAccessToken()).addOnCompleteListener(task -> {
-//                    Log.d("", "Login Complete");
-//                    if (task.isSuccessful()) {
-//                        Toast.makeText(v.getContext(), "Welcome " + FirebaseAuth.getInstance().getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
-//                        navigateToHome();
-//                    } else {
-//                        Log.d("", Objects.requireNonNull(task.getException()).getMessage());
-//                    }
-//                });
+                authViewModel.handleFacebookAccessToken(loginResult.getAccessToken())
+                        .addOnCompleteListener(task -> {
+                            Log.d("", "Login Complete");
+                            if (task.isSuccessful()) {
+                                Toast.makeText(v.getContext(), "Welcome " + FirebaseAuth.getInstance().getCurrentUser().getDisplayName(), Toast.LENGTH_SHORT).show();
+                                navigateToHome(
+                                        //TODO SPECIFY THE ROLE HERE
+                                        false
+                                );
+                            } else {
+                                Log.d("", Objects.requireNonNull(task.getException()).getMessage());
+                            }
+                        });
             }
 
             @Override
             public void onCancel() {
-
+                Log.d("", "facebook:onCancel");
             }
 
             @Override
@@ -109,8 +114,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.google_sign_in:
                 googleSignIn();
-                break;
-            case R.id.facebook_login_button:
                 break;
             case R.id.login_button:
                 userPasswordSignIn();
@@ -153,7 +156,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
         callbackManager.onActivityResult(requestCode, resultCode, data);
-
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);

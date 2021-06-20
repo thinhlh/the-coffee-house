@@ -2,8 +2,10 @@ package com.coffeehouse.the.views;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.WindowManager;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
@@ -12,6 +14,7 @@ import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.AuthViewPagerAdapter;
 import com.coffeehouse.the.services.UserRepo;
 import com.coffeehouse.the.views.admin.AdminHomeActivity;
+import com.facebook.*;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
@@ -23,7 +26,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         FirebaseApp.initializeApp(this);
+        FacebookSdk.sdkInitialize(this);
         if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            Log.d("", "Cannot be here");
             UserRepo.isCurrentUserAdmin().addOnCompleteListener(task -> {
                 startActivity(new Intent(this, task.getResult() ? AdminHomeActivity.class : HomeActivity.class));
             });
@@ -32,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.auth_skeleton);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);

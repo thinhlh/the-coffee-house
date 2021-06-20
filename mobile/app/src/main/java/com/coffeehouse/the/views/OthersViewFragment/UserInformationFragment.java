@@ -18,6 +18,8 @@ import com.google.android.material.textfield.TextInputEditText;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class UserInformationFragment extends Fragment implements View.OnClickListener {
@@ -49,7 +51,8 @@ public class UserInformationFragment extends Fragment implements View.OnClickLis
         txtName.setText(UserRepo.user.getName());
         txtPhone.setText(UserRepo.user.getPhoneNumber());
         txtEmail.setText(UserRepo.user.getEmail());
-        txtBirthday.setText(UserRepo.user.birthdayString());
+        DateFormat df = new SimpleDateFormat("MMM dd, yyyy");
+        txtBirthday.setText(df.format(UserRepo.user.getBirthday()));
         birthDate = UserRepo.user.getBirthday();
     }
 

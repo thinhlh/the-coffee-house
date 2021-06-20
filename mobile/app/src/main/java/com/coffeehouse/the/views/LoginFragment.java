@@ -17,6 +17,7 @@ import androidx.fragment.app.Fragment;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.services.CustomGoogleSignInClient;
 import com.coffeehouse.the.viewModels.AuthViewModel;
+import com.coffeehouse.the.views.admin.AdminHomeActivity;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -57,22 +58,20 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
         View v = inflater.inflate(R.layout.login_fragment, container, false);
 
-        input_email = (TextInputLayout) v.findViewById(R.id.text_input_email);
-        input_password = (TextInputLayout) v.findViewById(R.id.text_input_password);
-        ((Button) v.findViewById(R.id.login_button)).setOnClickListener(this);
+        input_email = v.findViewById(R.id.text_input_email);
+        input_password = v.findViewById(R.id.text_input_password);
+        v.findViewById(R.id.login_button).setOnClickListener(this);
 
-//        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(v.getContext());
-//        navigateToHome();
 
         //GOOGLE SIGN IN
-        SignInButton googleSignInButton = (SignInButton) v.findViewById(R.id.google_sign_in);
+        SignInButton googleSignInButton = v.findViewById(R.id.google_sign_in);
         googleSignInButton.setSize(SignInButton.SIZE_WIDE);
         googleSignInButton.setOnClickListener(this);
 
         mGoogleSignInClient = CustomGoogleSignInClient.mGoogleSignInClient(v.getContext());
 
         //FACEBOOK SIGN IN
-        LoginButton facebookLoginButton = (LoginButton) v.findViewById(R.id.facebook_login_button);
+        LoginButton facebookLoginButton = v.findViewById(R.id.facebook_login_button);
         facebookLoginButton.setReadPermissions("name", "email", "phone_number", "birthday");
         facebookLoginButton.setFragment(this);
         facebookLoginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
@@ -119,8 +118,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    private void navigateToHome() {
-        startActivity(new Intent(getContext(), HomeActivity.class));
+    private void navigateToHome(boolean isAdmin) {
+        startActivity(new Intent(getContext(), isAdmin ? AdminHomeActivity.class : HomeActivity.class));
     }
 
 
@@ -137,7 +136,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                     .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             Toast.makeText(this.getContext(), "Welcome " + FirebaseAuth.getInstance().getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
-                            navigateToHome();
+                            navigateToHome(task.getResult().getAdmin());
                         } else {
                             Toast.makeText(getContext(), "Login Failed", Toast.LENGTH_SHORT).show();
                         }
@@ -162,7 +161,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                 authViewModel.handleGoogleSignIn(task).addOnCompleteListener(task1 -> {
                     if (task1.isSuccessful()) {
                         Toast.makeText(this.getContext(), "Welcome " + FirebaseAuth.getInstance().getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
-                        navigateToHome();
+                        navigateToHome(task1.getResult().getAdmin());
                     }
                 });
             } catch (ApiException | GeneralSecurityException | IOException e) {

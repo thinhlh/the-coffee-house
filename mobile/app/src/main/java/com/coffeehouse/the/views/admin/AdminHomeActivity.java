@@ -39,21 +39,22 @@ public class AdminHomeActivity extends AppCompatActivity implements BottomNaviga
 
     @Override
     public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
-        AdminProductsFragment adminProductFragment = new AdminProductsFragment();
+        AdminProductsFragment adminProductsFragment = new AdminProductsFragment();
         AdminNotificationsFragment adminNotificationsFragment = new AdminNotificationsFragment();
+        AdminUsersFragment adminUsersFragment = new AdminUsersFragment();
         AdminOthersFragment adminOthersFragment = new AdminOthersFragment();
         switch (item.getItemId()) {
             case R.id.products_admin_nav:
-                loadFragment(adminProductFragment);
+                loadFragment(adminProductsFragment);
                 return true;
             case R.id.categories_admin_nav:
-                loadFragment(adminProductFragment);
+                loadFragment(adminProductsFragment);
                 return true;
             case R.id.notification_admin_nav:
                 loadFragment(adminNotificationsFragment);
                 return true;
-            case R.id.stores_admin_nav:
-                loadFragment(adminProductFragment);
+            case R.id.users_admin_nav:
+                loadFragment(adminUsersFragment);
                 return true;
             case R.id.others_admin_nav:
                 loadFragment(adminOthersFragment);

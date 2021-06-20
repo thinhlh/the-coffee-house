@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
@@ -16,6 +15,8 @@ import com.coffeehouse.the.databinding.AdminEditNotificationBinding;
 import com.coffeehouse.the.models.Notification;
 import com.coffeehouse.the.viewModels.admin.AdminEditNotificationViewModel;
 import com.squareup.picasso.Picasso;
+
+import org.jetbrains.annotations.Nullable;
 
 import java.sql.Date;
 import java.time.Instant;
@@ -32,7 +33,7 @@ public class AdminEditNotification extends AppCompatActivity {
     private Intent imageData = null;
 
     @Override
-    protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         viewModel = new ViewModelProvider(this).get(AdminEditNotificationViewModel.class);
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.admin_edit_notification);
@@ -76,15 +77,15 @@ public class AdminEditNotification extends AppCompatActivity {
         Notification notification = new Notification();
         if (!(getIntent().getStringExtra("notification") == null)) {
             notification = Notification.fromGson(getIntent().getStringExtra("notification"));
-            binding.setNotification(notification);
             binding.adminToolbar.setTitle(notification.getTitle());
             Picasso.get().load(notification.getImageUrl()).into(binding.notificationImageView);
         } else {
-            binding.setNotification(notification);
             binding.adminToolbar.setTitle("Add Notification");
             binding.notificationImageView.setVisibility(View.GONE);
             binding.notificationDate.setVisibility(View.GONE);
         }
+
+        binding.setNotification(notification);
 
 
         binding.pickImageButton.setOnClickListener(v -> {
@@ -121,7 +122,7 @@ public class AdminEditNotification extends AppCompatActivity {
 
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == PICK_IMAGE) {
             if (data != null) {

@@ -9,14 +9,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.databinding.AdminNotificationCardBinding;
+import com.coffeehouse.the.models.AdminCustomUser;
 import com.coffeehouse.the.models.Notification;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
-public class AdminNotificationAdapter extends RecyclerView.Adapter<AdminNotificationAdapter.AdminNotificationViewHolder> implements SwipeAbleRecyclerView<Notification> {
+public class AdminNotificationAdapter extends RecyclerView.Adapter<AdminNotificationAdapter.AdminNotificationViewHolder> implements SwipeAbleRecyclerView<Notification>, Searchable {
 
-    private List<Notification> notifications;
+    private List<Notification> notifications = new ArrayList<>();
+    private List<Notification> notificationsCopy = new ArrayList<>();
     private RecyclerViewClickListener<Notification> listener;
 
     @NonNull
@@ -42,6 +46,7 @@ public class AdminNotificationAdapter extends RecyclerView.Adapter<AdminNotifica
     @Override
     public void setItems(List<Notification> items) {
         this.notifications = items;
+        this.notificationsCopy.addAll(items);
         notifyDataSetChanged();
     }
 
@@ -58,6 +63,24 @@ public class AdminNotificationAdapter extends RecyclerView.Adapter<AdminNotifica
     @Override
     public void remove(int position) {
         notifyItemRemoved(position);
+    }
+
+    @Override
+    public void filter(String query) {
+        notifications.clear();
+        if (query.isEmpty()) {
+            notifications.addAll(notificationsCopy);
+        } else {
+            query = query.toLowerCase();
+            String regex = ".*" + query + ".*";
+
+            for (Notification notification : notificationsCopy) {
+                if (Pattern.matches(regex, notification.getTitle().toLowerCase()) || Pattern.matches(regex, notification.getDescription().toLowerCase())) {
+                    notifications.add(notification);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 
 

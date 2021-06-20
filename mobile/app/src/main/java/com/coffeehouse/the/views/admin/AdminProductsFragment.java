@@ -3,14 +3,17 @@ package com.coffeehouse.the.views.admin;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -19,12 +22,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.ProductAdapter;
 import com.coffeehouse.the.databinding.AdminProductsFragmentBinding;
+import com.coffeehouse.the.models.Product;
 import com.coffeehouse.the.utils.SwipeToDeleteCallback;
 import com.coffeehouse.the.viewModels.admin.AdminProductsViewModel;
 
 import org.jetbrains.annotations.NotNull;
 
-public class AdminProductsFragment extends Fragment {
+import java.util.List;
+
+public class AdminProductsFragment extends Fragment implements SearchView.OnQueryTextListener {
 
     private AdminProductsViewModel viewModel;
     private final ProductAdapter adapter = new ProductAdapter();
@@ -49,6 +55,7 @@ public class AdminProductsFragment extends Fragment {
 
     private void setUpListeners() {
         binding.addButton.setOnClickListener(v -> startActivity(new Intent(getContext(), AdminEditProduct.class)));
+        binding.searchView.setOnQueryTextListener(this);
     }
 
     private void setUpRecyclerView() {
@@ -75,8 +82,7 @@ public class AdminProductsFragment extends Fragment {
             public void onSwiped(@NonNull @NotNull RecyclerView.ViewHolder viewHolder, int direction) {
                 final int position = viewHolder.getAdapterPosition();
 
-                new AlertDialog.Builder(getContext()).setTitle("Delete product").setMessage("Are you sure want to delete this message?").setPositiveButton("Yes", (dialog, which) -> {
-                    //TODO TASK HERE THEN NOTIFY ITEM REMOVED
+                new AlertDialog.Builder(getContext()).setTitle("Delete product").setMessage("Are you sure want to delete this product?").setPositiveButton("Yes", (dialog, which) -> {
                     viewModel.removeProduct(position);
                 }).setNegativeButton("No", (dialog, which) -> adapter.notifyDataSetChanged()).show();
             }
@@ -85,4 +91,15 @@ public class AdminProductsFragment extends Fragment {
     }
 
 
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        adapter.filter(query);
+        return true;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        adapter.filter(newText);
+        return true;
+    }
 }

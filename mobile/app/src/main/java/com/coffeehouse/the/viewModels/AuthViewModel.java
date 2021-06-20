@@ -1,5 +1,7 @@
 package com.coffeehouse.the.viewModels;
 
+import android.util.Log;
+
 import androidx.lifecycle.ViewModel;
 
 import com.coffeehouse.the.models.CustomUser;

@@ -153,6 +153,8 @@
     <string name="paymentstatus">Trạng thái thanh toán</string>
     <string name="codeorder">Mã đơn hàng</string>
     <string name="phonenumber">Số điện thoại</string>
+    <string name="notifications_en">Notifications</string>
+    <string name="promote_to_admin">Promote to admin</string>
 
     <!--
     This string is used for square devices and overridden by hello_world in

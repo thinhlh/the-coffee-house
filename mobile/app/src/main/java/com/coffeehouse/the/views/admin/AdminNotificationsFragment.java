@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,7 +25,7 @@ import com.coffeehouse.the.viewModels.admin.AdminNotificationsViewModel;
 
 import org.jetbrains.annotations.NotNull;
 
-public class AdminNotificationsFragment extends Fragment {
+public class AdminNotificationsFragment extends Fragment implements SearchView.OnQueryTextListener {
 
     private AdminNotificationsViewModel viewModel;
     private final AdminNotificationAdapter adapter = new AdminNotificationAdapter();
@@ -47,6 +48,7 @@ public class AdminNotificationsFragment extends Fragment {
         binding.addButton.setOnClickListener(v -> {
             startActivity(new Intent(getContext(), AdminEditNotification.class));
         });
+        binding.searchView.setOnQueryTextListener(this);
     }
 
     private void setUpRecyclerView() {
@@ -81,5 +83,17 @@ public class AdminNotificationsFragment extends Fragment {
             }
         };
         new ItemTouchHelper(swipeToDeleteCallback).attachToRecyclerView(notificationsRecyclerView);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        adapter.filter(query);
+        return true;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        adapter.filter(newText);
+        return true;
     }
 }

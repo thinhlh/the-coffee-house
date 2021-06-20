@@ -46,7 +46,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/general_dimen"
-                    android:hint="@string/title"
+                    android:hint="@string/title_en"
                     app:boxBackgroundColor="@color/white"
                     app:startIconDrawable="@drawable/ic_baseline_short_text_24">
 
@@ -64,7 +64,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/general_dimen"
-                    android:hint="@string/description"
+                    android:hint="@string/description_en"
                     app:boxBackgroundColor="@color/white"
                     app:startIconDrawable="@drawable/ic_baseline_text_snippet_24">
 
@@ -113,7 +113,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="@string/pick_an_image" />
+                    android:text="@string/pick_an_image_en" />
 
             </LinearLayout>
 

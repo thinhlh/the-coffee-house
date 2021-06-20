@@ -8,23 +8,19 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:1008379625573:android:806e319dc24a629525468c",
+        "mobilesdk_app_id": "1:1008379625573:android:56029003fabe25dd25468c",
         "android_client_info": {
           "package_name": "com.coffeehouse.the"
         }
       },
       "oauth_client": [
         {
-          "client_id": "1008379625573-s8lq0ca14b4naolk51m45cs8dldikj8d.apps.googleusercontent.com",
+          "client_id": "1008379625573-m5pk581c1ql19q9kf3p51hlt5k1pcipk.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.coffeehouse.the",
-            "certificate_hash": "5286a532d14ba4d5da3fd74755d8e509bc69d2db"
+            "certificate_hash": "557321c94d37c94205141b049e3219205b5fce29"
           }
-        },
-        {
-          "client_id": "1008379625573-0e95lq9p82n604db37njrqlns4mcapd5.apps.googleusercontent.com",
-          "client_type": 3
         }
       ],
       "api_key": [
@@ -36,7 +32,31 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "1008379625573-0e95lq9p82n604db37njrqlns4mcapd5.apps.googleusercontent.com",
+              "client_id": "1008379625573-esujc5bhtv63js83cujpsefq9m0mvot0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1008379625573:android:08e13644baa5d1a825468c",
+        "android_client_info": {
+          "package_name": "com.example.the_coffee_house"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAApuAqAZ13iH_PsgSmoktTbKyP0-ybAwY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1008379625573-esujc5bhtv63js83cujpsefq9m0mvot0.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

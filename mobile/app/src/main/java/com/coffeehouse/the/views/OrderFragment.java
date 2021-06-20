@@ -83,13 +83,13 @@ public class OrderFragment extends Fragment implements CategoryBottomSheet.SendC
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                searchProduct(query);
+                productsAdapter.filter(query);
                 return true;
             }
 
             @Override
-            public boolean onQueryTextChange(String newText) {
-                searchProduct(newText);
+            public boolean onQueryTextChange(String query) {
+                productsAdapter.filter(query);
                 return true;
             }
         });

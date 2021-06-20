@@ -11,15 +11,19 @@ import androidx.recyclerview.widget.RecyclerView.Adapter;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.databinding.ProductListItemBinding;
+import com.coffeehouse.the.models.AdminCustomUser;
 import com.coffeehouse.the.models.Product;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.regex.Pattern;
 
-public class ProductAdapter extends Adapter<ProductAdapter.ProductViewHolder> implements SwipeAbleRecyclerView<Product> {
-    private List<Product> products;
+public class ProductAdapter extends Adapter<ProductAdapter.ProductViewHolder> implements SwipeAbleRecyclerView<Product>, Searchable {
+    private List<Product> products = new ArrayList<>();
+    private List<Product> productsCopy = new ArrayList<>();
     private RecyclerViewClickListener<Product> listener;
 
     @NonNull
@@ -45,6 +49,7 @@ public class ProductAdapter extends Adapter<ProductAdapter.ProductViewHolder> im
     @Override
     public void setItems(List<Product> items) {
         this.products = items;
+        this.productsCopy.addAll(items);
         notifyDataSetChanged();
     }
 
@@ -62,6 +67,24 @@ public class ProductAdapter extends Adapter<ProductAdapter.ProductViewHolder> im
     public void remove(int position) {
         this.products.remove(position);
         this.notifyItemRemoved(position);
+    }
+
+    @Override
+    public void filter(String query) {
+        products.clear();
+        if (query.isEmpty()) {
+            products.addAll(productsCopy);
+        } else {
+            query = query.toLowerCase();
+            String regex = ".*" + query + ".*";
+
+            for (Product product : productsCopy) {
+                if (Pattern.matches(regex, product.getTitle().toLowerCase())) {
+                    products.add(product);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 
     static class ProductViewHolder extends RecyclerView.ViewHolder {

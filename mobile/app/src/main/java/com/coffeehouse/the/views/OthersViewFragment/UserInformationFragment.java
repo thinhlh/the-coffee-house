@@ -49,7 +49,7 @@ public class UserInformationFragment extends Fragment implements View.OnClickLis
         txtName.setText(UserRepo.user.getName());
         txtPhone.setText(UserRepo.user.getPhoneNumber());
         txtEmail.setText(UserRepo.user.getEmail());
-        txtBirthday.setText(UserRepo.user.getBirthdayString());
+        txtBirthday.setText(UserRepo.user.birthdayString());
         birthDate = UserRepo.user.getBirthday();
     }
 

@@ -8,15 +8,17 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class CustomUser {
-    private String email = "";
-    private String name = "";
-    private int point = 0;
-    private String phoneNumber = "";
-    private Date birthday = Date.from(Instant.now());
-    private Membership membership = Membership.Bronze;
-    private List<String> favoriteProducts = new ArrayList<>();
+    protected String email = "";
+    protected String name = "";
+    protected int point = 0;
+    protected String phoneNumber = "";
+    protected Date birthday = Date.from(Instant.now());
+    protected Membership membership = Membership.Bronze;
+    protected List<String> favoriteProducts = new ArrayList<>();
+    protected boolean admin = false;
 
 
     public CustomUser() {
@@ -85,11 +87,19 @@ public class CustomUser {
         this.favoriteProducts = favoriteProducts;
     }
 
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
+
+    public boolean getAdmin() {
+        return admin;
+    }
+
     public void fromJson(Map<String, Object> json) {
         this.email = (String) json.get("email");
         this.name = (String) json.get("name");
         this.point = Integer.parseInt((String) json.get("point"));
-        this.phoneNumber = (String) json.getOrDefault("phone", "");
+        this.phoneNumber = (String) json.getOrDefault("phoneNumber", "");
         this.birthday = Date.from(((Timestamp) json.get("birthday")).toInstant());
         switch ((String) json.get("membership")) {
             case "Membership.Silver":
@@ -106,28 +116,43 @@ public class CustomUser {
                 break;
         }
         this.favoriteProducts = (List<String>) json.get("favoriteProducts");
+        this.admin = (boolean) json.get("isAdmin");
     }
 
-    public String getBirthdayString() {
+    public String birthdayString() {
         DateFormat df = new SimpleDateFormat("MMM dd, yyyy");
         return df.format(birthday);
     }
 
-    public String getMembershipString() {
+    public String membershipString() {
         String _membership;
         switch (membership) {
             case Gold:
-                _membership = "Membership.Gold";
+                _membership = "Vàng";
                 break;
             case Silver:
-                _membership = "Membership.Silver";
+                _membership = "Bạc";
                 break;
             case Diamond:
-                _membership = "Membership.Diamond";
+                _membership = "Kim Cương";
                 break;
             default:
-                _membership = "Membership.Bronze";
+                _membership = "Đồng";
         }
         return _membership;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CustomUser)) return false;
+        CustomUser that = (CustomUser) o;
+        return Objects.equals(email, that.email) &&
+                Objects.equals(name, that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(email, name);
     }
 }

@@ -1,27 +1,22 @@
 package com.coffeehouse.the.services;
 
+import android.util.Log;
+
 import com.coffeehouse.the.models.CustomUser;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.SetOptions;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
 
 public class UserRepo {
 
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
-
     private static final FirebaseAuth mAuth = FirebaseAuth.getInstance();
-
     private String uid;
-
     public static CustomUser user = null;
 
 
@@ -32,7 +27,12 @@ public class UserRepo {
             }
             return false;
         });
+    }
 
+    public static Task<Boolean> isCurrentUserAdmin() {
+        return FirebaseFirestore.getInstance().collection("users")
+                .document(mAuth.getUid()).get().
+                        continueWith(task -> task.getResult().contains("admin") ? task.getResult().getBoolean("admin") : false);
     }
 
     public static void fetchUser() {
@@ -62,7 +62,6 @@ public class UserRepo {
 
     //User with some information for Google Sign In
     public Task<CustomUser> googleSignIn(GoogleSignInAccount account) {
-
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
         return mAuth.signInWithCredential(credential).continueWithTask(task -> {
             uid = task.getResult().getUser().getUid();
@@ -103,7 +102,7 @@ public class UserRepo {
     }
 
     private void updateUserMembership(Integer point) {
-        Integer uPoint = UserRepo.user.getPoint() + point;
+        long uPoint = UserRepo.user.getPoint() + point;
         if (uPoint >= 3000)
             db.collection("users").document(mAuth.getCurrentUser().getUid()).update("membership", "Diamond");
         else if (uPoint >= 2000)

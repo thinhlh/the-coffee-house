@@ -11,7 +11,7 @@ import com.google.android.gms.common.api.Scope;
 
 public abstract class CustomGoogleSignInClient {
 
-    public static GoogleSignInClient mGoogleSignInClient (Context context){
+    public static GoogleSignInClient mGoogleSignInClient(Context context) {
         @SuppressLint({"StringFormatInvalid", "LocalSuppress"}) GoogleSignInOptions gso= new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(context.getResources().getString(R.string.google_default_web_client_id,"string",context.getPackageName()))
                 .requestEmail()
@@ -19,6 +19,6 @@ public abstract class CustomGoogleSignInClient {
                 .requestScopes(new Scope("https://www.googleapis.com/auth/user.birthday.read"))
                 .build();
 
-        return GoogleSignIn.getClient(context,gso);
+        return GoogleSignIn.getClient(context, gso);
     }
 }

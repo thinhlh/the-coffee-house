@@ -13,7 +13,7 @@
             android:layout_width="370dp"
             android:layout_height="40dp"
             android:layout_below="@+id/cv_search_view_product"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"
             android:backgroundTint="#dadada"
             app:cardCornerRadius="8dp">
@@ -46,7 +46,7 @@
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_search_view_product"
-            android:layout_width="300dp"
+            android:layout_width="270dp"
             android:layout_height="40dp"
             android:layout_marginStart="10dp"
             android:layout_marginTop="10dp"

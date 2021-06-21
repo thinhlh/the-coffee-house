@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/additemadress_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/ic_baseline_home_24" />
+
+        <TextView
+            android:id="@+id/text_addnewitemadd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/additemadress_icon"
+            android:text="@string/addhomeaddress"
+            android:textColor="@color/black"
+            android:textStyle="bold" />
+        // nhớ set visibility cho cái đống text ở dười chỉ hiện ra sau khi add_new address
+        <TextView
+            android:id="@+id/text_itemadd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/text_addnewitemadd"
+            android:text="Chợ Bến Thành, Phường Nguyễn Thái Bình"
+            android:layout_alignStart="@+id/text_addnewitemadd"
+            android:textColor="@color/grey"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_namehomeuser"
+            android:text="Minh Nhật Huỳnh"
+            android:layout_marginBottom="10dp"
+            android:layout_alignStart="@id/text_itemadd"
+            android:layout_below="@id/text_itemadd"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/text_phonenumberhomeuser"
+            android:text="0916854821"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@id/text_namehomeuser"
+            android:layout_below="@id/text_itemadd"/>
+
+        <ImageView
+            android:id="@+id/fix_itemaddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/ic_baseline_brush_24"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"/>
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

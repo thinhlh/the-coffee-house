@@ -28,7 +28,7 @@
 
             <LinearLayout
                 android:id="@+id/cart_info"
-                android:layout_width="250dp"
+                android:layout_width="220dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
                 android:gravity="center_vertical"
@@ -87,7 +87,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_marginLeft="5dp"
+                android:layout_marginRight="10dp"
                 android:layout_marginTop="15dp"
                 android:background="@android:color/holo_orange_light"
                 android:src="@drawable/ic_baseline_close_24" />

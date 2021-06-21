@@ -58,6 +58,8 @@
                 android:layout_marginTop="7dp"/>
 
             <EditText
+                android:textColorHint="@color/black"
+                android:background="@android:color/transparent"
                 android:id="@+id/addnewadress_edittext"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
@@ -94,6 +96,7 @@
                 android:layout_marginTop="7dp"/>
 
             <TextView
+                android:textColorHint="@color/black"
                 android:layout_below="@+id/address"
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="3dp"
@@ -139,6 +142,8 @@
                 android:layout_marginTop="7dp"/>
 
             <EditText
+                android:textColorHint="@color/black"
+                android:background="@android:color/transparent"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
@@ -172,6 +177,8 @@
                 android:layout_marginTop="7dp"/>
 
             <EditText
+                android:textColorHint="@color/black"
+                android:background="@android:color/transparent"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
@@ -207,6 +214,8 @@
                 android:layout_marginTop="7dp"/>
 
             <EditText
+                android:textColorHint="@color/black"
+                android:background="@android:color/transparent"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
@@ -240,6 +249,8 @@
                 android:layout_marginTop="7dp"/>
 
             <EditText
+                android:textColorHint="@color/black"
+                android:background="@android:color/transparent"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"
@@ -273,6 +284,8 @@
                 android:layout_marginTop="7dp"/>
 
             <EditText
+                android:textColorHint="@color/black"
+                android:background="@android:color/transparent"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_width="match_parent"

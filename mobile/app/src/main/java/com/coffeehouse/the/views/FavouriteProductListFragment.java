@@ -4,11 +4,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,10 +24,16 @@ import com.coffeehouse.the.viewModels.FavouriteProductViewModel;
 
 import org.jetbrains.annotations.NotNull;
 
-public class FavouriteProductListFragment extends Fragment {
+public class FavouriteProductListFragment extends Fragment implements View.OnClickListener {
 
     private FavouriteProductViewModel favouriteProductViewModel = new FavouriteProductViewModel();
     private ProductAdapter productsAdapter = new ProductAdapter();
+
+    @Override
+    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Initview(view);
+    }
 
     @Nullable
     @org.jetbrains.annotations.Nullable
@@ -61,5 +69,22 @@ public class FavouriteProductListFragment extends Fragment {
     private void getFavProducts(ProductAdapter productsAdapter) {
         favouriteProductViewModel.getFavProducts().observe(getViewLifecycleOwner(), productsAdapter::setItems);
     }
+    private void Initview(View view){
+        ImageView imageView=view.findViewById(R.id.close_favorite_list_fragment);
+        imageView.setOnClickListener(this);
+    }
 
+    private void Closelistfavoritefragment() {
+        FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.home_fragment_container,new OrderFragment()).addToBackStack(null).commit();
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.close_favorite_list_fragment:
+                Closelistfavoritefragment();
+        }
+    }
 }

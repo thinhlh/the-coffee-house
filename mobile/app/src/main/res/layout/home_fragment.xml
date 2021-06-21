@@ -29,6 +29,7 @@
 
 
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardview_delivery"
                 android:layout_width="160dp"
                 android:layout_height="100dp"
                 android:layout_below="@+id/carouse_view2"

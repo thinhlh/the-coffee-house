@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/Applications/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material/icons/materialicons/login/baseline_login_24.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material/icons/materialicons/local_shipping/baseline_local_shipping_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,7 +28,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputName" value="ic_baseline_login_24" />
+                            <entry key="outputName" value="ic_baseline_local_shipping_24" />
+                            <entry key="sourceFile" value="C:\Users\Admin\Desktop\Android\the-coffee-house\mobile" />
                           </map>
                         </option>
                       </PersistentState>

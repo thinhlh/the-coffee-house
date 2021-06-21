@@ -8,8 +8,10 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,12 +21,21 @@ import com.coffeehouse.the.adapter.NotificationAdapter;
 import com.coffeehouse.the.databinding.HomeFragmentBinding;
 import com.coffeehouse.the.viewModels.HomeViewModel;
 import com.coffeehouse.the.views.admin.AdminEditNotification;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.synnapps.carouselview.CarouselView;
 
-public class HomeFragment extends Fragment {
+import org.jetbrains.annotations.NotNull;
+
+public class HomeFragment extends Fragment implements View.OnClickListener {
     private HomeViewModel homeViewModel = new HomeViewModel();
     private HomeFragmentBinding binding;
     private final NotificationAdapter adapter = new NotificationAdapter();
+
+    @Override
+    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        Initview(view);
+    }
 
     @Nullable
     @org.jetbrains.annotations.Nullable
@@ -73,5 +84,41 @@ public class HomeFragment extends Fragment {
                     break;
             }
         });
+    }
+
+    private void Initview (View view){
+        CardView cardViewdelivery=view.findViewById(R.id.cardview_delivery);
+        cardViewdelivery.setOnClickListener(this);
+        CardView cardViewpickup=view.findViewById(R.id.pickUpCard);
+        cardViewpickup.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.cardview_delivery:
+                Changefragment();
+                break;
+            case R.id.pickUpCard:
+                Changefragmentstorelocation();
+                break;
+        }
+
+
+    }
+
+    private void Changefragmentstorelocation() {
+        FragmentManager fragmentManager =requireActivity().getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.home_fragment_container,new StoresFragment()).addToBackStack(null).commit();
+        BottomNavigationView bottomNavigationView=getActivity().findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.action_store_location);
+    }
+
+    private void Changefragment() {
+        FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.home_fragment_container,new OrderFragment()).addToBackStack(null).commit();
+        BottomNavigationView bottomNavigationView=getActivity().findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.action_order);
     }
 }

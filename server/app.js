@@ -4,8 +4,9 @@ const helper = require('./helper');
 const app = express();
 
 app.listen(process.env.PORT || 3000);
+app.use(express.json());
 
-app.get('/', (req, res) => {
+app.get('/', (req, res) => {    
     res.send('<h1>The Coffee House Server</h1>');
 });
 
@@ -32,19 +33,33 @@ app.get('/user-info/:id', (req, res) => {
 
 
 app.delete('/delete-user/:id', (req, res) => {
-console.log('called delete');
     if (helper.authorize(req)) {
         const userId = req.params.id;
 
         helper.deleteUser(userId).then(() => {
             console.log('Successfully delete user');
             res.status(200).send('Success delete user');
-        }).catch((error) => {
-            console.log('Internal server failure', error);
-            res.status(502).send(error)
-        });
+        }).catch((error) =>
+            res.sendStatus(502)
+        );
     } else {
         helper.denied(res);
+    }
+});
+
+app.post('/push-notification', (req, res) => {
+    console.log("HERE");
+    if (helper.authorize(req)) {
+        console.log(req);
+        helper.pushNotification(req.body).then(
+            (value) => {
+                console.log('Success',value);
+                res.status(200).send(value);
+            }
+        ).catch((error) => {
+            console.log(error);
+            res.sendStatus(500);
+        });
     }
 });
 

@@ -161,11 +161,12 @@
     <string name="phonenumber">Số điện thoại</string>
     <string name="notifications_en">Notifications</string>
     <string name="promote_to_admin">Promote to admin</string>
-    <string name="chooseordermethod">Chọn phương thức đặt hàng</string>
-    <string name="choosestorelocation">Chọn quán</string>
+    <string name="choose_order_method">Chọn phương thức đặt hàng</string>
+    <string name="choose_store_location">Chọn quán</string>
     <string name="fix">Sửa</string>
-    <string name="clearthisaddress">Xóa địa chỉ này</string>
-    <string name="fixsavedaddress">Sửa địa chỉ đã lưu</string>
+    <string name="clear_this_address">Xóa địa chỉ này</string>
+    <string name="fix_saved_address">Sửa địa chỉ đã lưu</string>
+    <string name="version">Version</string>
 
     <!--
     This string is used for square devices and overridden by hello_world in

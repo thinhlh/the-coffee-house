@@ -16,6 +16,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.coffeehouse.the.models.AdminCustomUser;
+import com.coffeehouse.the.utils.Constants;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -38,9 +39,6 @@ import bolts.Task;
  * This class is used for fetching users for admin screen*/
 public class UsersRepo implements Fetching {
 
-    private final String ENDPOINT = "https://the-coffee-house-server.herokuapp.com/";
-    private final Map<String, String> header = new HashMap<>();
-
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     private final MutableLiveData<List<AdminCustomUser>> users = new MutableLiveData<>();
@@ -51,7 +49,6 @@ public class UsersRepo implements Fetching {
 
     public UsersRepo(Context context) {
         this.context = context;
-        header.put("Authorization", "the-coffee-house");
         setUpRealTimeListener();
     }
 
@@ -104,7 +101,7 @@ public class UsersRepo implements Fetching {
     private void fetchUserSignInData(AdminCustomUser user) {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(
                 Request.Method.GET,
-                ENDPOINT + "user-info/" + user.getId(),
+                Constants.SERVER_ENDPOINT + "user-info/" + user.getId(),
                 null,
                 response -> {
                     try {
@@ -120,7 +117,7 @@ public class UsersRepo implements Fetching {
         }) {
             @Override
             public Map<String, String> getHeaders() {
-                return header;
+                return Constants.BASE_HEADERS;
             }
         };
         requestQueue.add(jsonObjectRequest);
@@ -129,7 +126,7 @@ public class UsersRepo implements Fetching {
     public void deleteUser(String uid) {
         StringRequest deleteRequest = new StringRequest(
                 Request.Method.DELETE,
-                ENDPOINT + "delete-user/" + uid,
+                Constants.SERVER_ENDPOINT + "delete-user/" + uid,
                 response -> {
                     //TODO NOTIFY COMPLETED
                 }, error -> {
@@ -137,7 +134,7 @@ public class UsersRepo implements Fetching {
         }) {
             @Override
             public Map<String, String> getHeaders() {
-                return header;
+                return Constants.BASE_HEADERS;
             }
         };
         requestQueue.add(deleteRequest);

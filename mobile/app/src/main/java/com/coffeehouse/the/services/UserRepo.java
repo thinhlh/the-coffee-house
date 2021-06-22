@@ -14,6 +14,7 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.Date;
 
@@ -37,7 +38,12 @@ public class UserRepo {
     public static Task<Boolean> isCurrentUserAdmin() {
         return FirebaseFirestore.getInstance().collection("users")
                 .document(mAuth.getUid()).get().
-                        continueWith(task -> task.getResult().contains("admin") ? task.getResult().getBoolean("admin") : false);
+                        continueWith(task -> {
+                            if (user == null) {
+                                user = task.getResult().toObject(CustomUser.class);
+                            }
+                            return task.getResult().contains("admin") ? task.getResult().getBoolean("admin") : false;
+                        });
     }
 
     public static void fetchUser() {
@@ -65,6 +71,20 @@ public class UserRepo {
         });
     }
 
+    public Task<Void> changeSubscriptionStatus() {
+        return db.collection("users").document(mAuth.getCurrentUser().getUid())
+                .update("subscribeToNotifications", user.getSubscribeToNotifications())
+                .continueWithTask(task -> {
+                    if (user.getSubscribeToNotifications()) {
+                        Log.d("","Subscribed");
+                        return FirebaseMessaging.getInstance().subscribeToTopic(FCMService.TOPIC);
+                    } else {
+                        Log.d("","Unsubscribed");
+                        return FirebaseMessaging.getInstance().unsubscribeFromTopic(FCMService.TOPIC);
+                    }
+                });
+    }
+
     //User with some information for Google Sign In
     public Task<CustomUser> googleSignIn(GoogleSignInAccount account) {
         AuthCredential credential = GoogleAuthProvider.getCredential(account.getIdToken(), null);
@@ -87,15 +107,19 @@ public class UserRepo {
     }
 
     public Task<CustomUser> facebookSignIn(AccessToken token) {
+
         AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
         return mAuth.signInWithCredential(credential).continueWithTask(task -> {
-            uid = FirebaseAuth.getInstance().getUid();
+            uid = task.getResult().getUser().getUid();
             return isRegistered(uid).continueWithTask(isRegistered -> {
                 if (!isRegistered.getResult()) {
+                    Log.d("REGISTER", "HAVENT'T REGISTER");
                     CustomUser signUpUser = new CustomUser();
-                    signUpUser.setName(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
-                    signUpUser.setEmail(FirebaseAuth.getInstance().getCurrentUser().getEmail());
-                    signUpUser.setPhoneNumber(FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
+                    signUpUser.setName(task.getResult().getUser().getDisplayName());
+                    signUpUser.setEmail(task.getResult().getUser().getEmail());
+
+                    //TODO PHONE NUMBER AND BIRTHDAY CAN BE SPECIFY HERE IF HAVE TIME
+
                     user = signUpUser;
                     return db.collection("users").document(uid).set(signUpUser).continueWith(task1 -> signUpUser);
                 } else {

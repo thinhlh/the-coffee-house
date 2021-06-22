@@ -5,11 +5,11 @@ const admin = require('firebase-admin');
 var serviceAccount = require("./the-coffee-house-212b6-firebase-adminsdk-h4fw8-08bdf6678e.json");
 
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount),
-  databaseURL: "https://the-coffee-house-212b6-default-rtdb.firebaseio.com"
+    credential: admin.credential.cert(serviceAccount),
+    databaseURL: "https://the-coffee-house-212b6-default-rtdb.firebaseio.com"
 });
 
-const db= admin.firestore();
+const db = admin.firestore();
 
 const listAllUsers = async (nextPageToken) => {
     var result = await admin
@@ -22,10 +22,19 @@ const getUserInfo = async (uid) => {
     return await admin.auth().getUser(uid);
 }
 
-const deleteUser= async (uid)=>{
-    console.log("called");
+const deleteUser = async (uid) => {
     await admin.auth().deleteUser(uid);
     await db.collection("users").doc(uid).delete();
+}
+
+const pushNotification = async (notification) => {
+    const message = {
+        notification: {
+            title: notification.title,
+            body: notification.body,
+        }
+    };
+    return admin.messaging().sendToTopic("notifications",message);
 }
 
 const authorize = (req) => {
@@ -36,4 +45,10 @@ const denied = (res) => {
     res.status(403).send('Permission Denied');
 }
 
-module.exports = { listAllUsers, authorize, getUserInfo, deleteUser, denied, };
+module.exports = { 
+    listAllUsers, 
+    authorize, 
+    getUserInfo, 
+    deleteUser, 
+    pushNotification,
+    denied, };

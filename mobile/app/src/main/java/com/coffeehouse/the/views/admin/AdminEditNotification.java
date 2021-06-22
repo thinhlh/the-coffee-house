@@ -10,6 +10,8 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.Volley;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.databinding.AdminEditNotificationBinding;
 import com.coffeehouse.the.models.Notification;
@@ -58,7 +60,7 @@ public class AdminEditNotification extends AppCompatActivity {
                     if (currentNotification.getId().equals("")) {
                         currentNotification.setDateTime(Date.from(Instant.now()));
                     }
-                    viewModel.onSubmitNotification(currentNotification, imageData).addOnCompleteListener(task -> {
+                    viewModel.onSubmitNotification(currentNotification, imageData, this).addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             this.finish();
                         } else {
@@ -84,9 +86,7 @@ public class AdminEditNotification extends AppCompatActivity {
             binding.notificationImageView.setVisibility(View.GONE);
             binding.notificationDate.setVisibility(View.GONE);
         }
-
         binding.setNotification(notification);
-
 
         binding.pickImageButton.setOnClickListener(v -> {
             if (v.getId() == R.id.pick_image_button) {
@@ -101,12 +101,12 @@ public class AdminEditNotification extends AppCompatActivity {
     private boolean validate() {
         boolean result = true;
         if (Objects.requireNonNull(binding.notificationDescription.getEditText()).getText().toString().trim().equals("")) {
-            binding.notificationDescription.setError("Description cannot be null");
+            binding.notificationDescription.setError("Description cannot be empty");
             binding.notificationDescription.requestFocus();
             result = false;
         }
         if (Objects.requireNonNull(binding.notificationTitle.getEditText()).getText().toString().trim().equals("")) {
-            binding.notificationTitle.setError("Title cannot be null");
+            binding.notificationTitle.setError("Title cannot be empty");
             binding.notificationTitle.requestFocus();
             result = false;
         }
@@ -116,6 +116,7 @@ public class AdminEditNotification extends AppCompatActivity {
             new AlertDialog.Builder(this).setTitle("No image").setMessage("You have not choose any notification image!").setPositiveButton("OKAY", (dialog, which) -> {
                 dialog.dismiss();
             }).show();
+            result=false;
         }
         return result;
     }

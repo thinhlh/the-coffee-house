@@ -11,15 +11,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.coffeehouse.the.R;
-import com.coffeehouse.the.services.CustomGoogleSignInClient;
-import com.coffeehouse.the.services.UserRepo;
 import com.coffeehouse.the.viewModels.AuthViewModel;
 import com.coffeehouse.the.views.MainActivity;
 import com.facebook.login.LoginManager;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class OthersFragment extends Fragment implements View.OnClickListener {
 

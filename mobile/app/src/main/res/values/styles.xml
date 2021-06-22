@@ -42,4 +42,11 @@
     <style name="splashScreen" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:windowBackground">@drawable/tcfhlogo</item>
     </style>
+
+    <style name="AdminOthersCard" parent="Widget.MaterialComponents.CardView">
+        <item name="android:clickable">true</item>
+        <item name="elevation">@dimen/cardview_default_elevation</item>
+        <item name="android:focusable">true</item>
+        <item name="android:layout_margin">@dimen/general_dimen</item>
+    </style>
 </resources>

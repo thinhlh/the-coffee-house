@@ -18,6 +18,7 @@ public class CustomUser {
     protected Date birthday = Date.from(Instant.now());
     protected Membership membership = Membership.Bronze;
     protected List<String> favoriteProducts = new ArrayList<>();
+    protected boolean subscribeToNotifications = true;
     protected boolean admin = false;
 
 
@@ -122,6 +123,14 @@ public class CustomUser {
     public String birthdayString() {
         DateFormat df = new SimpleDateFormat("MMM dd, yyyy");
         return df.format(birthday);
+    }
+
+    public void setSubscribeToNotifications(boolean subscribeToNotifications) {
+        this.subscribeToNotifications = subscribeToNotifications;
+    }
+
+    public boolean getSubscribeToNotifications() {
+        return subscribeToNotifications;
     }
 
     public String membershipString() {

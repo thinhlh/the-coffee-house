@@ -83,8 +83,6 @@ public class AdminUsersFragment extends Fragment implements SearchView.OnQueryTe
 
         viewModel = new ViewModelProvider(this).get(AdminUsersViewModel.class);
         viewModel.setContext(getContext());
-
-
         setUpComponents();
         return binding.getRoot();
     }

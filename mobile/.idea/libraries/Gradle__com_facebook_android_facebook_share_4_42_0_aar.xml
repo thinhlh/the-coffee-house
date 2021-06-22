@@ -1,15 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.facebook.android:facebook-share:4.42.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/20444841fc5bea42f2ef9549d78e03ee/jetified-facebook-share-4.42.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/20444841fc5bea42f2ef9549d78e03ee/jetified-facebook-share-4.42.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/20444841fc5bea42f2ef9549d78e03ee/jetified-facebook-share-4.42.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/44f27e7f3f784f420732741f84b907c0/jetified-facebook-share-4.42.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/44f27e7f3f784f420732741f84b907c0/jetified-facebook-share-4.42.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/44f27e7f3f784f420732741f84b907c0/jetified-facebook-share-4.42.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1bf64fd38e14f3cd34bbb0c0e1c730f0/jetified-facebook-share-4.42.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1bf64fd38e14f3cd34bbb0c0e1c730f0/jetified-facebook-share-4.42.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/1bf64fd38e14f3cd34bbb0c0e1c730f0/jetified-facebook-share-4.42.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d7b55b4b5323c04dedc625723211b2f9/jetified-facebook-share-4.42.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d7b55b4b5323c04dedc625723211b2f9/jetified-facebook-share-4.42.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/d7b55b4b5323c04dedc625723211b2f9/jetified-facebook-share-4.42.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.facebook.android/facebook-share/4.42.0/3e09e423eaa79903ec9d4d02df95ce3be786ecdf/facebook-share-4.42.0-javadoc.jar!/" />

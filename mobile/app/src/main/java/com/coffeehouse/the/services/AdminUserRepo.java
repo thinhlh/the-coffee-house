@@ -9,4 +9,8 @@ public class AdminUserRepo {
     public Task<Void> promoteToAdmin(String uid){
         return db.collection("users").document(uid).update("admin",true);
     }
+
+    public Task<Void> demoteToMember(String uid){
+        return db.collection("users").document(uid).update("admin",false);
+    }
 }

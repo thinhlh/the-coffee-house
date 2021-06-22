@@ -16,6 +16,7 @@ import com.coffeehouse.the.R;
 import com.coffeehouse.the.databinding.AdminUserInfoBinding;
 import com.coffeehouse.the.models.AdminCustomUser;
 import com.coffeehouse.the.viewModels.admin.AdminUserInfoViewModel;
+import com.google.android.gms.tasks.Task;
 
 import java.util.Objects;
 
@@ -58,14 +59,17 @@ public class AdminUserInfo extends AppCompatActivity {
                         .setMessage("Are you sure want to " +
                                 (isAdmin ? "demote" : "promote") + " this user to " +
                                 (isAdmin ? "user" : "admin") + " ?")
-                        .setPositiveButton("Yes", (dialog, which) ->
-                                viewModel.promoteToAdmin(binding.getUser().getId()).addOnCompleteListener(task -> {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(this, (!isAdmin ? "Promoted" : "Demoted") + " successful", Toast.LENGTH_SHORT).show();
-                                isAdmin = !isAdmin;
-                                binding.button.setText(isAdmin ? "Demote To Member" : "Promote To Admin");
-                            }})).
+                        .setPositiveButton("Yes", (dialog, which) -> {
+                            Task<Void> changeRole = (isAdmin) ? viewModel.demoteToMember(binding.getUser().getId()) : viewModel.promoteToAdmin(binding.getUser().getId());
+                            changeRole.addOnCompleteListener(task -> {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(this, (!isAdmin ? "Promoted" : "Demoted") + " successful", Toast.LENGTH_SHORT).show();
+                                    isAdmin = !isAdmin;
+                                    binding.button.setText(isAdmin ? "Demote To Member" : "Promote To Admin");
+                                }
+                            });
+                        }).
                         setNegativeButton("No", (dialog, which) -> {
-        }).show());
+                        }).show());
     }
 }

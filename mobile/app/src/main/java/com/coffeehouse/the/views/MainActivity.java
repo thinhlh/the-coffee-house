@@ -1,9 +1,10 @@
 package com.coffeehouse.the.views;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,12 +13,16 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.AuthViewPagerAdapter;
+import com.coffeehouse.the.services.FCMService;
 import com.coffeehouse.the.services.UserRepo;
 import com.coffeehouse.the.views.admin.AdminHomeActivity;
 import com.facebook.*;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.util.Objects;
 
@@ -27,13 +32,30 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         FirebaseApp.initializeApp(this);
         FacebookSdk.sdkInitialize(this);
-        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-            Log.d("", "Cannot be here");
+
+        initDependencies();
+        super.onStart();
+    }
+
+    private void initDependencies() {
+        initFirebaseServices();
+    }
+
+    private void initFirebaseServices() {
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser != null) {
+            Context context = this;
             UserRepo.isCurrentUserAdmin().addOnCompleteListener(task -> {
-                startActivity(new Intent(this, task.getResult() ? AdminHomeActivity.class : HomeActivity.class));
+                Task<Void> task1;
+                if (UserRepo.user.getSubscribeToNotifications()) {
+                    task1 = FirebaseMessaging.getInstance().subscribeToTopic(FCMService.TOPIC);
+                } else {
+                    task1 = FirebaseMessaging.getInstance().unsubscribeFromTopic(FCMService.TOPIC);
+                }
+                Toast.makeText(this, "Welcome " + UserRepo.user.getName(), Toast.LENGTH_SHORT).show();
+                task1.addOnCompleteListener(task2 -> startActivity(new Intent(context, task.getResult() ? AdminHomeActivity.class : HomeActivity.class)));
             });
         }
-        super.onStart();
     }
 
     @Override

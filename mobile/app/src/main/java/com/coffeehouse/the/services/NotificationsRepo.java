@@ -1,21 +1,42 @@
 package com.coffeehouse.the.services;
 
+import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.coffeehouse.the.models.Notification;
+import com.coffeehouse.the.utils.Constants;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.RemoteMessage;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.google.gson.JsonObject;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 public class NotificationsRepo implements Fetching {
@@ -62,7 +83,7 @@ public class NotificationsRepo implements Fetching {
                 .continueWithTask(task -> db.collection("notifications").document(id).delete());
     }
 
-    public Task<Void> addNotification(Notification notification, Uri imageUri) {
+    public Task<Void> addNotification(Notification notification, Uri imageUri, Context context) {
         String id = db.collection("notifications").document().getId();
         StorageReference storageReferenceToImage = storage.getReference().child("images/notifications/" + id);
         UploadTask uploadTask = storageReferenceToImage.putFile(imageUri);
@@ -70,7 +91,48 @@ public class NotificationsRepo implements Fetching {
         return uploadTask.continueWithTask(upTask -> storageReferenceToImage.getDownloadUrl()).continueWith(uri -> {
             notification.setImageUrl(uri.getResult().toString());
             return null;
-        }).continueWithTask(task -> db.collection("notifications").document(id).set(notification.toMap()));
+        })
+                .continueWithTask(firestoreTask ->
+                        db.collection("notifications").document(id).set(notification.toMap())
+                ).addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        sendNotification(notification, context);
+                    }
+                });
+    }
+
+    private void sendNotification(Notification notification, Context context) {
+        RequestQueue requestQueue = Volley.newRequestQueue(context);
+
+        StringRequest request = new StringRequest(Request.Method.POST, Constants.SERVER_ENDPOINT + "push-notification", response -> {
+            //TODO ON SUCCESS
+        }, error -> {
+            //TODO ERROR HANDLER HERE
+        }) {
+            @Override
+            public Map<String, String> getHeaders() {
+                return Constants.BASE_HEADERS;
+            }
+
+            @Override
+            public String getBodyContentType() {
+                return "application/json; charset=utf-8";
+            }
+
+            @Override
+            public byte[] getBody() {
+                JSONObject jsonBody = new JSONObject();
+                try {
+                    jsonBody.put("title", notification.getTitle());
+                    jsonBody.put("body", notification.getDescription());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                return jsonBody.toString().getBytes(StandardCharsets.UTF_8);
+            }
+        };
+
+        requestQueue.add(request);
     }
 
     public Task<Void> updateNotification(Notification notification, Uri imageUri) {

@@ -10,9 +10,13 @@ import com.google.android.gms.tasks.Task;
 
 public class AdminUserInfoViewModel extends ViewModel {
 
-    private final AdminUserRepo repo=new AdminUserRepo();
+    private final AdminUserRepo repo = new AdminUserRepo();
 
-    public Task<Void> promoteToAdmin(String uid){
+    public Task<Void> promoteToAdmin(String uid) {
         return repo.promoteToAdmin(uid);
+    }
+
+    public Task<Void> demoteToMember(String uid) {
+        return repo.demoteToMember(uid);
     }
 }

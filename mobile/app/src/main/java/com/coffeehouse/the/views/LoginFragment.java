@@ -16,6 +16,8 @@ import androidx.fragment.app.Fragment;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.services.CustomGoogleSignInClient;
+import com.coffeehouse.the.services.FCMService;
+import com.coffeehouse.the.services.UserRepo;
 import com.coffeehouse.the.viewModels.AuthViewModel;
 import com.coffeehouse.the.views.admin.AdminHomeActivity;
 import com.facebook.CallbackManager;
@@ -32,6 +34,7 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -73,14 +76,14 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         mGoogleSignInClient = CustomGoogleSignInClient.mGoogleSignInClient(v.getContext());
 
         //FACEBOOK SIGN IN
-        LoginButton facebookLoginButton = (LoginButton) v.findViewById(R.id.facebook_login_button);
+        LoginButton facebookLoginButton = v.findViewById(R.id.facebook_login_button);
+        facebookLoginButton.setReadPermissions("email", "public_profile");
         facebookLoginButton.setFragment(this);
         facebookLoginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 authViewModel.handleFacebookAccessToken(loginResult.getAccessToken())
                         .addOnCompleteListener(task -> {
-                            Log.d("", "Login Complete");
                             if (task.isSuccessful()) {
                                 Toast.makeText(v.getContext(), "Welcome " + FirebaseAuth.getInstance().getCurrentUser().getDisplayName(), Toast.LENGTH_SHORT).show();
                                 navigateToHome(
@@ -122,12 +125,17 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     }
 
     private void navigateToHome(boolean isAdmin) {
-        startActivity(new Intent(getContext(), isAdmin ? AdminHomeActivity.class : HomeActivity.class));
+        if (UserRepo.user.getSubscribeToNotifications()) {
+            FirebaseMessaging.getInstance().subscribeToTopic(FCMService.TOPIC).addOnCompleteListener(task -> {
+                startActivity(new Intent(getContext(), isAdmin ? AdminHomeActivity.class : HomeActivity.class));
+            });
+        } else {
+            startActivity(new Intent(getContext(), isAdmin ? AdminHomeActivity.class : HomeActivity.class));
+        }
     }
 
 
     //EVENTS HANDLING
-
     private void userPasswordSignIn() {
 
         email = Objects.requireNonNull(input_email.getEditText()).getText().toString().trim();
@@ -155,8 +163,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
-        callbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {

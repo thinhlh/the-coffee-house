@@ -39,7 +39,7 @@ public class AuthViewModel extends ViewModel {
         return null;
     }
 
-    private Task<CustomUser> firebaseAuthWithGoogle(GoogleSignInAccount account) throws GeneralSecurityException, IOException {
+    private Task<CustomUser> firebaseAuthWithGoogle(GoogleSignInAccount account) {
         return userRepo.googleSignIn(account);
     }
 

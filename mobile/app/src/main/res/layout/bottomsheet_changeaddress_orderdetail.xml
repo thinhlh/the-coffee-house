@@ -17,7 +17,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="@string/chooseordermethod"
+                android:text="@string/choose_order_method"
                 android:textColor="@color/black"
                 android:textSize="20sp" />
 
@@ -151,7 +151,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="25dp"
                 android:background="@drawable/round_button_background"
-                android:text="@string/choosestorelocation"
+                android:text="@string/choose_store_location"
                 android:textSize="10dp"
                 android:layout_alignParentEnd="true"/>
 

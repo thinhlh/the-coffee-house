@@ -24,8 +24,8 @@
     <string name="notifications">Thông báo mới</string>
     <string name="google_default_web_client_id">1008379625573-esujc5bhtv63js83cujpsefq9m0mvot0.apps.googleusercontent.com</string>
 
-<!--    <string name="facebook_app_id">501408904608563</string>-->
-<!--    <string name="fb_login_protocol_scheme">fb501408904608563</string>-->
+    <!--    <string name="facebook_app_id">501408904608563</string>-->
+    <!--    <string name="fb_login_protocol_scheme">fb501408904608563</string>-->
 
     <string name="facebook_app_id">292926142546450</string>
     <string name="fb_login_protocol_scheme">fb292926142546450</string>
@@ -108,7 +108,7 @@
     <string name="aboutus">Về chúng tôi</string>
     <string name="term">Điều khoản sử dụng</string>
     <string name="confirmorder">Xác nhận đơn hàng</string>
-    <string name="order">Giao hàng tận nơi</string>
+    <string name="order">Phương thức giao hàng</string>
     <string name="change">Thay đổi</string>
     <string name="addmenu">+ Thêm món</string>
     <string name="itemorder">Các món đã chọn</string>
@@ -163,7 +163,7 @@
     <string name="promote_to_admin">Promote to admin</string>
     <string name="chooseordermethod">Chọn phương thức đặt hàng</string>
     <string name="choosestorelocation">Chọn quán</string>
-    <string name="fix">Sửa</string>
+    <string name="fix">Chọn địa chỉ</string>
     <string name="clearthisaddress">Xóa địa chỉ này</string>
     <string name="fixsavedaddress">Sửa địa chỉ đã lưu</string>
 

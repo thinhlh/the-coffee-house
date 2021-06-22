@@ -71,6 +71,6 @@ public class Cart {
     }
 
     public String getTotalCurrency() {
-        return format.format(getTotalCartValue() + 30000);
+        return format.format(getTotalCartValue());
     }
 }

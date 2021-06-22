@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.services.CustomGoogleSignInClient;
@@ -17,9 +18,6 @@ import com.coffeehouse.the.viewModels.AuthViewModel;
 import com.coffeehouse.the.views.MainActivity;
 import com.facebook.login.LoginManager;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class OthersFragment extends Fragment implements View.OnClickListener {
 
@@ -72,8 +70,10 @@ public class OthersFragment extends Fragment implements View.OnClickListener {
                 getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
                 break;
             case R.id.saved_address:
-                fragment = new SavedAddressFragment();
-                getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
+//                fragment = new SavedAddressFragment();
+//                getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.home_fragment_container, new SavedAddressFragment()).addToBackStack(null).commit();
                 break;
             case R.id.settings:
                 fragment = new SettingsFragment();

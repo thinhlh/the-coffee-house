@@ -4,21 +4,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TableLayout;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.MembershipTablayoutAdapter;
-import com.coffeehouse.the.views.OthersViewFragment.screen1_membership;
-import com.coffeehouse.the.views.OthersViewFragment.screen2_membership;
 import com.google.android.material.tabs.TabLayout;
-
-import org.jetbrains.annotations.NotNull;
 
 public class MembershipFragment extends Fragment {
     ViewPager viewPager;

@@ -74,10 +74,11 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/text_itemprice"
-                android:layout_width="100dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/cart_info"
                 android:layout_marginTop="15dp"
+                android:layout_toLeftOf="@+id/bush"
+                android:layout_toRightOf="@+id/cart_info"
                 android:text="@{cartItem.totalCartItemPrice()}"
                 android:textColor="@color/grey"
                 android:textSize="16sp" />
@@ -87,8 +88,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_marginRight="10dp"
                 android:layout_marginTop="15dp"
+                android:layout_marginRight="10dp"
                 android:background="@android:color/holo_orange_light"
                 android:src="@drawable/ic_baseline_close_24" />
         </RelativeLayout>

@@ -50,6 +50,7 @@
                 </RelativeLayout>
 
             </androidx.cardview.widget.CardView>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -58,8 +59,7 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                >
+                android:layout_height="250dp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -107,21 +107,21 @@
                         android:layout_below="@id/view"
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="16dp"
-                        android:text="Chợ Bến Thành"
+                        android:text="Tên Địa chỉ"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/text_destinationdiscription"
+                    <TextView
+                        android:id="@+id/text_destination_detail"
                         android:layout_width="290dp"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/text_destination"
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="5dp"
                         android:maxLines="2"
-                        android:text="Chợ Bến Thành, Phường Nguyễn Thái Bình, Quận 1, Thành phố Hồ Chí Minh, Vietnam"
+                        android:text="Mô tả"
                         android:textColor="@color/black"
                         android:textSize="14sp" />
 
@@ -133,31 +133,37 @@
                         android:layout_marginEnd="20dp"
                         android:background="@drawable/ic_baseline_arrow_forward_ios_24" />
 
-                    <androidx.appcompat.widget.AppCompatTextView
+                    <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/text_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/text_destinationdiscription"
+                        android:layout_below="@id/text_destination_detail"
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="35dp"
-                        android:text="@{user.name}"
+                        android:background="@android:color/transparent"
+                        android:hint="Tên Người Nhận"
+                        android:inputType="text"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="16sp" />
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/text_phonenumber"
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:id="@+id/text_phone_number"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/text_name"
                         android:layout_marginLeft="15dp"
-                        android:text="@{user.phoneNumber}"
-                        android:textColor="@color/grey"
+                        android:background="@android:color/transparent"
+                        android:hint="Số điện thoại người nhận"
+                        android:inputType="phone"
+                        android:text=""
+                        android:textColor="@color/black"
                         android:textSize="14sp" />
 
                     <ImageView
                         android:layout_width="170dp"
                         android:layout_height="5dp"
-                        android:layout_below="@id/text_phonenumber"
+                        android:layout_below="@id/text_phone_number"
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="5dp"
                         android:src="@drawable/dottedunderline" />
@@ -166,7 +172,7 @@
                         android:id="@+id/view2"
                         android:layout_width="1dp"
                         android:layout_height="50dp"
-                        android:layout_below="@+id/text_destinationdiscription"
+                        android:layout_below="@+id/text_destination_detail"
                         android:layout_centerInParent="true"
                         android:layout_marginTop="38dp"
                         android:background="@color/white_gray" />
@@ -175,7 +181,7 @@
                         android:id="@+id/text_duration"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/text_destinationdiscription"
+                        android:layout_below="@id/text_destination_detail"
                         android:layout_marginLeft="15dp"
                         android:layout_marginTop="35dp"
                         android:layout_toRightOf="@+id/view2"

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"/>
+   <LinearLayout
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:orientation="vertical"
+       android:layout_margin="20dp">
+
+       <androidx.appcompat.widget.AppCompatTextView
+           android:id="@+id/notititle"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textColor="@color/black"
+           android:text="Chào bạn mới"
+           android:textSize="20sp"/>
+       <androidx.appcompat.widget.AppCompatTextView
+           android:id="@+id/notidiscription"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:textColor="@color/black"
+           android:text="Lần đầu"
+           android:layout_marginTop="10dp"
+           android:textSize="15sp"/>
+       <androidx.appcompat.widget.AppCompatTextView
+           android:background="@drawable/round_with_greyoutline"
+           android:id="@+id/notiquit"
+           android:layout_width="80dp"
+           android:textAlignment="center"
+           android:layout_height="wrap_content"
+           android:textColor="@color/black"
+           android:text="Đồng ý"
+           android:layout_marginTop="15dp"
+           android:paddingBottom="5dp"
+           android:paddingTop="5dp"
+           android:textSize="18sp"/>
+
+
+   </LinearLayout>
+
+
+</LinearLayout>

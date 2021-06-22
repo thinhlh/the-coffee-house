@@ -22,6 +22,7 @@ import com.coffeehouse.the.models.Order;
 import com.coffeehouse.the.services.OrdersRepo;
 import com.coffeehouse.the.services.UserRepo;
 import com.coffeehouse.the.viewModels.OrderDetailViewModel;
+import com.coffeehouse.the.views.OthersViewFragment.BottomsheetChoosePromotionOrderDetail;
 import com.coffeehouse.the.views.OthersViewFragment.ChangeAddressBottomSheet;
 
 import org.jetbrains.annotations.NotNull;
@@ -78,6 +79,7 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
 
         orderDetailBinding.textChange.setOnClickListener(this::onClick);
         orderDetailBinding.textAddmenu.setOnClickListener(this::onClick);
+        orderDetailBinding.textChoosepromotion.setOnClickListener(this::onClick);
 
         return v;
     }
@@ -119,7 +121,18 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
             case R.id.text_addmenu:
                 backToOrderFragment();
                 break;
+            case R.id.text_choosepromotion:
+                Choosepromotion();
+                break;
+
+
         }
+    }
+
+    private void Choosepromotion() {
+        BottomsheetChoosePromotionOrderDetail bottomsheetChoosePromotionOrderDetail =new BottomsheetChoosePromotionOrderDetail();
+        bottomsheetChoosePromotionOrderDetail.setTargetFragment(OrderDetailFragment.this,4);
+        bottomsheetChoosePromotionOrderDetail.show(getFragmentManager(),"Choose Promotion");
     }
 
     private void orderMethod() {

@@ -5,6 +5,7 @@
 
 
     <RelativeLayout
+        android:background="@color/browser_actions_bg_grey"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -127,8 +128,8 @@
                 android:id="@+id/products_recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_margin="2dp"
-                android:background="@color/white_gray" />
+
+            />
         </LinearLayout>
     </RelativeLayout>
 </layout>

@@ -11,19 +11,18 @@
             android:layout_height="match_parent">
 
             <androidx.cardview.widget.CardView
-                android:layout_marginTop="10dp"
                 android:id="@+id/carouse_view2"
                 android:layout_width="350dp"
                 android:layout_height="350dp"
-                app:cardCornerRadius="8dp"
-                app:cardElevation="8dp"
                 android:layout_centerHorizontal="true"
-                >
+                android:layout_marginTop="10dp"
+                app:cardCornerRadius="8dp"
+                app:cardElevation="8dp">
+
                 <com.synnapps.carouselview.CarouselView
                     android:id="@+id/carouse_view"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    />
+                    android:layout_height="match_parent" />
 
             </androidx.cardview.widget.CardView>
 
@@ -129,22 +128,46 @@
                 android:layout_height="match_parent"
                 android:layout_below="@+id/cardView3"
                 android:layout_centerHorizontal="true"
-                android:layout_marginTop="20dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="16dp"
                 android:padding="0dp"
-                app:cardCornerRadius="8dp">
+                >
 
-                <TextView
+                <LinearLayout
+                    android:background="@drawable/roundbackgroud_withleftrighttopconner"
+                    android:backgroundTint="@color/browser_actions_bg_grey"
                     android:id="@+id/new_notification"
                     android:layout_width="match_parent"
                     android:layout_height="40dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/notifications"
-                    android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/new_notification1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/notifications"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/new_countunreadednotification"
+                        android:backgroundTint="@color/red"
+                        android:background="@drawable/round_with_greyoutline"
+                        android:layout_width="30dp"
+                        android:textAlignment="center"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginTop="10dp"
+                        android:text="19"
+                        android:textColor="@color/white"
+                        android:textSize="15sp"
+                       />
+
+                </LinearLayout>
+
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/notifications_recycler_view"

@@ -2,20 +2,17 @@ package com.coffeehouse.the.services;
 
 import android.util.Log;
 
-import androidx.annotation.Nullable;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.coffeehouse.the.models.Cart;
 import com.coffeehouse.the.models.CartItem;
 import com.coffeehouse.the.models.Order;
+import com.coffeehouse.the.utils.Constants;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
-import com.google.firebase.firestore.ListenerRegistration;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -23,11 +20,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Executor;
+import java.util.concurrent.Executors;
 
 public class OrdersRepo implements Fetching {
-    private final MutableLiveData<List<Order>> data = new MutableLiveData<>();
-    private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private final int shipPrice = 30000;
+    private final MutableLiveData<List<Order>> orders = new MutableLiveData<>();
+    private final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     public OrdersRepo() {
         setUpRealTimeListener();
@@ -53,18 +51,51 @@ public class OrdersRepo implements Fetching {
 
     @Override
     public void setUpRealTimeListener() {
-        db.collection("orders").addSnapshotListener((value, error) -> {
-            if (error != null) {
-                Log.w("Orders Repo", error);
-            } else {
-                List<Order> orders = new ArrayList<>();
-                for (QueryDocumentSnapshot doc : value) {
-                    if (doc != null) {
-                        Order order = doc.toObject(Order.class);
-                        order.setId(doc.getId());
-                        if (order.getUserId().equals(FirebaseAuth.getInstance().getUid())) {
+        db.collection("orders")
+                .orderBy("orderTime", Query.Direction.DESCENDING)
+                .addSnapshotListener((orderValue, orderError) -> {
+                    if (orderError != null) {
+                        Log.w("Orders Repository", orderError);
+                    } else {
 
-                            doc.getReference().collection("cart").get()
+                        List<Order> orders = new ArrayList<>();
+                        for (QueryDocumentSnapshot orderDoc : orderValue) {
+                            if (orderDoc != null) {
+
+                                Cart cart = new Cart();
+                                orderDoc.getReference().collection("cart")
+                                        .addSnapshotListener((cartValue, cartError) -> {
+                                            List<CartItem> cartItems = new ArrayList<>();
+                                            if (cartError != null) {
+                                                //TODO Handling error
+                                            } else {
+                                                for (QueryDocumentSnapshot cartItemDoc : cartValue) {
+                                                    if (cartItemDoc != null) {
+                                                        cartItems.add(CartItem.fromMap(cartItemDoc.getData()));
+                                                    }
+                                                }
+                                            }
+                                            cart.setItems(cartItems);
+                                        });
+
+
+
+
+
+
+
+
+
+
+
+                                Map<String, Object> map = orderDoc.getData();
+                                Log.d("Order", map.toString());
+                                Order order = orderDoc.toObject(Order.class);
+                                order.setId(orderDoc.getId());
+                                order.setCart(cart);
+                                if (order.getUserId().equals(FirebaseAuth.getInstance().getUid())) {
+
+                                    orderDoc.getReference().collection("cart").get();
 //                                    .continueWithTask(task -> task.addOnSuccessListener(value1 -> {
 //                                        for (QueryDocumentSnapshot doc1 : value1) {
 //                                            if (doc1 != null) {
@@ -99,23 +130,23 @@ public class OrdersRepo implements Fetching {
 //                                return null;
 //                            });
 
-                                    //.get
-                                    .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                                        @Override
-                                        public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                                            for (QueryDocumentSnapshot doc1 : queryDocumentSnapshots) {
-                                                if (doc1 != null) {
-                                                    CartItem currentCartItem = doc1.toObject(CartItem.class);
-                                                    order.getCart().getItems().add(currentCartItem);
-                                                    order.setTotal(order.getCart().getTotalCartValue());
-                                                }
-                                            }
-                                            order.setTotal(order.getTotal() + shipPrice);
-                                        }
-                                    }).continueWith(task -> {
-                                orders.add(order);
-                                return null;
-                            });
+                                            //.get
+//                                            .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+//                                                @Override
+//                                                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+//                                                    for (QueryDocumentSnapshot doc1 : queryDocumentSnapshots) {
+//                                                        if (doc1 != null) {
+//                                                            CartItem currentCartItem = doc1.toObject(CartItem.class);
+//                                                            order.getCart().getItems().add(currentCartItem);
+//                                                            order.setTotal(order.getCart().getTotalCartValue());
+//                                                        }
+//                                                    }
+//                                                    order.setTotal(order.getTotal() + Constants.DELIVERY_LEVIED);
+//                                                }
+//                                            }).continueWith(task -> {
+//                                        orders.add(order);
+//                                        return null;
+//                                    });
 
 //                                    .continueWithTask(task -> {
 //                                orders.add(order);
@@ -140,17 +171,17 @@ public class OrdersRepo implements Fetching {
 //                                }
 //                            });
 
-                            //orders.add(order);
+                                    //orders.add(order);
+                                }
+                            }
                         }
+                        this.orders.setValue(orders);
                     }
-                }
-                data.setValue(orders);
-            }
-        });
+                });
     }
 
     public LiveData<List<Order>> getOrder() {
-        return data;
+        return orders;
     }
 
 }

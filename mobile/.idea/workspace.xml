@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_LOG_LEVEL" value="verbose" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="b9f7a0c3-2cf4-439e-8f22-a485e29e3808" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/models/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/models/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/models/CartItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/models/CartItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/models/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/models/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/services/OrdersRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/services/OrdersRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/utils/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/utils/Constants.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/admin/AdminHomeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/admin/AdminHomeActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/admin/AdminUsersFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/admin/AdminUsersFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/order_detail_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/order_detail_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/product_list_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/product_list_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/admin_menu_bottom_navigation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/admin_menu_bottom_navigation.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@/Applications/Android Emulator.app/Contents/MacOS/api30-gphone-arm64-v8a]" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="The Coffee House" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="The Coffee House" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="The Coffee House" type="f1a62948:ProjectNode" />
+                <item name="app" type="2d1252cf:ModuleNode" />
+                <item name="Dependencies" type="6de06a37:ExternalSystemViewDefaultContributor$MyDependenciesNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="layoutResourceFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1u9PDycSkv9neiAIJYXm1sU4uir" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ResourceManagerPrefKey.ResourceType" value="LAYOUT" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="android-custom-view/Users/hoangthinh/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.1.0/f2bdf79e1977939817f54a9d3e2f6bc52b63bdd0/recyclerview-1.1.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED" value="RecyclerView" />
+    <property name="android-custom-view/Users/hoangthinh/.gradle/caches/modules-2/files-2.1/com.facebook.android/facebook-login/4.42.0/5e3d08fc791650cc0df09ac481295c0ed24fe4c8/facebook-login-4.42.0-sources.jar!/com/facebook/login/widget/LoginButton.java_SELECTED" value="LoginButton" />
+    <property name="android-custom-view/Users/hoangthinh/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.3.0/b42a5159ef2c670d26ce08246ec5aaf8f92e5a42/material-1.3.0-sources.jar!/com/google/android/material/tabs/TabLayout.java_SELECTED" value="TabLayout" />
+    <property name="memory.settings.postsync.do.not.ask.for.project" value="true" />
+    <property name="memory.settings.postsync.last.time.stamp" value="1624038704828" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="vcs.Subversion.Network" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="app" type="AndroidRunConfigurationType" factoryName="Android App" activateToolWindowBeforeRun="false">
+      <module name="The_Coffee_House.app" />
+      <option name="DEPLOY" value="true" />
+      <option name="DEPLOY_APK_FROM_BUNDLE" value="false" />
+      <option name="DEPLOY_AS_INSTANT" value="false" />
+      <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ALL_USERS" value="false" />
+      <option name="ALWAYS_INSTALL_WITH_PM" value="false" />
+      <option name="DYNAMIC_FEATURES_DISABLED_LIST" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="DEVICE_AND_SNAPSHOT_COMBO_BOX" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_ENABLED" value="false" />
+        <option name="STARTUP_CPU_PROFILING_CONFIGURATION_NAME" value="Sample Java Methods" />
+        <option name="STARTUP_NATIVE_MEMORY_PROFILING_ENABLED" value="false" />
+        <option name="NATIVE_MEMORY_SAMPLE_RATE_BYTES" value="2048" />
+      </Profilers>
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
+      <option name="SEARCH_ACTIVITY_IN_GLOBAL_SCOPE" value="false" />
+      <option name="SKIP_ACTIVITY_VALIDATION" value="false" />
+      <method v="2">
+        <option name="Android.Gradle.BeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>$USER_HOME$/.subversion</configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b9f7a0c3-2cf4-439e-8f22-a485e29e3808" name="Default Changelist" comment="" />
+      <created>1624074725253</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1624074725253</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="460" y="69" key="#Plugins" timestamp="1624394590352">
+      <screen x="0" y="25" width="1920" height="969" />
+    </state>
+    <state x="460" y="69" key="#Plugins/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624394590352" />
+    <state x="576" y="155" key="#com.intellij.ide.util.MemberChooser" timestamp="1624398968912">
+      <screen x="0" y="25" width="1920" height="969" />
+    </state>
+    <state x="576" y="155" key="#com.intellij.ide.util.MemberChooser/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624398968912" />
+    <state x="576" y="155" key="#com.intellij.ide.util.MemberChooser/0.25.1920.969@0.25.1920.969" timestamp="1624245746633" />
+    <state x="594" y="220" key="#com.intellij.openapi.keymap.impl.ui.EditKeymapsDialog" timestamp="1624039847560">
+      <screen x="0" y="0" width="1920" height="1080" />
+    </state>
+    <state x="594" y="220" key="#com.intellij.openapi.keymap.impl.ui.EditKeymapsDialog/0.0.1920.1080@0.0.1920.1080" timestamp="1624039847560" />
+    <state x="632" y="203" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1624360255060">
+      <screen x="0" y="25" width="1920" height="969" />
+    </state>
+    <state x="632" y="203" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624360255060" />
+    <state x="632" y="203" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.25.1920.969@0.25.1920.969" timestamp="1624177015216" />
+    <state x="632" y="203" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog" timestamp="1624396479747">
+      <screen x="0" y="25" width="1920" height="969" />
+    </state>
+    <state x="632" y="203" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624396479747" />
+    <state x="632" y="203" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.25.1920.969@0.25.1920.969" timestamp="1624178197051" />
+    <state x="601" y="315" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1624245705644">
+      <screen x="0" y="25" width="1920" height="969" />
+    </state>
+    <state x="601" y="315" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.25.1920.969@0.25.1920.969" timestamp="1624245705644" />
+    <state x="100" y="115" width="1720" height="790" key="AVDManager" timestamp="1624041142164">
+      <screen x="0" y="25" width="1920" height="969" />
+    </state>
+    <state x="100" y="100" width="1720" height="880" key="AVDManager/0.0.1920.1080@0.0.1920.1080" timestamp="1624040692751" />
+    <state x="100" y="115" width="1720" height="790" key="AVDManager/0.25.1920.969@0.25.1920.969" timestamp="1624041142164" />
+    <state x="545" y="261" key="AndroidCreateResourceFileDialog" timestamp="1624388868960">
+      <screen x="0" y="25" width="1920" height="969" />
+    </state>
+    <state x="545" y="261" key="AndroidCreateResourceFileDialog/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624388868960" />
+    <state x="545" y="261" key="AndroidCreateResourceFileDialog/0.25.1920.969@0.25.1920.969" timestamp="1624193835428" />
+    <state x="533" y="309" key="AndroidCreateXmlResourceDialog" timestamp="1624387677830">
+      <screen x="0" y="25" width="1920" height="969" />
+    </state>
+    <state x="533" y="309" key="AndroidCreateXmlResourceDialog/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624387677830" />
+    <state x="533" y="309" key="AndroidCreateXmlResourceDialog/0.25.1920.969@0.25.1920.969" timestamp="1624193538208" />
+    <state x="100" y="125" width="1720" height="769" key="DiffContextDialog" timestamp="1624207220254">
+      <screen x="0" y="25" width="1920" height="969" />
+    </state>
+    <state x="100" y="125" width="1720" height="769" key="DiffContextDialog/0.25.1920.969@0.25.1920.969" timestamp="1624207220254" />
+    <state width="1868" height="242" key="GridCell.Tab.0.bottom" timestamp="1624399140986">
+      <screen x="0" y="25" width="1920" height="969" />
+    </state>
+    <state width="1868" height="242" key="GridCell.Tab.0.bottom/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624399140986" />
+    <state width="1868" height="349" key="GridCell.Tab.0.bottom/0.25.1920.969@0.25.1920.969" timestamp="1624249589352" />
+    <state width="1868" height="242" key="GridCell.Tab.0.center" timestamp="1624399140986">
+      <screen x="0" y="25" width="1920" height="969" />
+    </state>
+    <state width="1868" height="242" key="GridCell.Tab.0.center/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624399140986" />
+    <state width="1868" height="349" key="GridCell.Tab.0.center/0.25.1920.969@0.25.1920.969" timestamp="1624249589352" />
+    <state width="1868" height="242" key="GridCell.Tab.0.left" timestamp="1624399140986">
+      <screen x="0" y="25" width="1920" height="969" />
+    </state>
+    <state width="1868" height="242" key="GridCell.Tab.0.left/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624399140986" />
+    <state width="1868" height="349" key="GridCell.Tab.0.left/0.25.1920.969@0.25.1920.969" timestamp="1624249589351" />
+    <state width="1868" height="242" key="GridCell.Tab.0.right" timestamp="1624399140986">
+      <screen x="0" y="25" width="1920" height="969" />
+    </state>
+    <state width="1868" height="242" key="GridCell.Tab.0.right/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624399140986" />
+    <state width="1868" height="349" key="GridCell.Tab.0.right/0.25.1920.969@0.25.1920.969" timestamp="1624249589352" />
+    <state x="469" y="91" key="SettingsEditor" timestamp="1624362073037">
+      <screen x="0" y="25" width="1920" height="969" />
+    </state>
+    <state x="469" y="176" key="SettingsEditor/0.0.1920.1080@0.0.1920.1080" timestamp="1624038887755" />
+    <state x="469" y="91" key="SettingsEditor/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624362073037" />
+    <state x="469" y="91" key="SettingsEditor/0.25.1920.969@0.25.1920.969" timestamp="1624244920009" />
+    <state x="814" y="133" width="734" height="861" key="find.popup" timestamp="1624390287464">
+      <screen x="0" y="25" width="1920" height="969" />
+    </state>
+    <state x="814" y="133" width="734" height="861" key="find.popup/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624390287464" />
+    <state x="593" y="79" width="734" height="861" key="find.popup/0.25.1920.969@0.25.1920.969" timestamp="1624046615396" />
+    <state width="750" height="535" key="javadoc.popup" timestamp="1624046817865">
+      <screen x="0" y="25" width="1920" height="969" />
+    </state>
+    <state width="750" height="535" key="javadoc.popup/0.25.1920.969@0.25.1920.969" timestamp="1624046817865" />
+    <state x="541" y="229" width="838" height="1032" key="run.anything.popup" timestamp="1624210807898">
+      <screen x="0" y="25" width="1920" height="969" />
+    </state>
+    <state x="541" y="229" width="838" height="1032" key="run.anything.popup/0.25.1920.969@0.25.1920.969" timestamp="1624210807898" />
+    <state x="625" y="241" width="838" height="607" key="search.everywhere.popup" timestamp="1624399662258">
+      <screen x="0" y="25" width="1920" height="969" />
+    </state>
+    <state x="625" y="241" width="670" height="676" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1624039875506" />
+    <state x="625" y="241" width="838" height="607" key="search.everywhere.popup/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624399662258" />
+    <state x="625" y="241" width="838" height="607" key="search.everywhere.popup/0.25.1920.969@0.25.1920.969" timestamp="1624247870439" />
+  </component>
+</project>

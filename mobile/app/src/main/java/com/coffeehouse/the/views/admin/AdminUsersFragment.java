@@ -34,47 +34,6 @@ public class AdminUsersFragment extends Fragment implements SearchView.OnQueryTe
 
     private final UserAdapter adapter = new UserAdapter();
 
-//    private final SortedList.Callback<AdminCustomUser> sortListCallback = new SortedList.Callback<AdminCustomUser>() {
-//
-//        @Override
-//        public void onInserted(int position, int count) {
-//            adapter.notifyItemRangeInserted(position, count);
-//        }
-//
-//        @Override
-//        public void onRemoved(int position, int count) {
-//            adapter.notifyItemRangeRemoved(position, count);
-//        }
-//
-//        @Override
-//        public void onMoved(int fromPosition, int toPosition) {
-//            adapter.notifyItemMoved(fromPosition, toPosition);
-//        }
-//
-//        @Override
-//        public void onChanged(int position, int count) {
-//            adapter.notifyItemRangeChanged(position, count);
-//        }
-//
-//        @Override
-//        public int compare(AdminCustomUser a, AdminCustomUser b) {
-//            return SearchComparators.USER_COMPARATOR.compare(a, b);
-//        }
-//
-//        @Override
-//        public boolean areContentsTheSame(AdminCustomUser oldItem, AdminCustomUser newItem) {
-//            return oldItem.equals(newItem);
-//        }
-//
-//        @Override
-//        public boolean areItemsTheSame(AdminCustomUser item1, AdminCustomUser item2) {
-//            return item1.getId().equals(item2.getId());
-//        }
-//    };
-//
-//    private final SortedList<AdminCustomUser> list=new SortedList<>(AdminCustomUser.class, sortListCallback);
-
-
     @Nullable
     @org.jetbrains.annotations.Nullable
     @Override

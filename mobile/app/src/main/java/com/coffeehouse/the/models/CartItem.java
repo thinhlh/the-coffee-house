@@ -1,28 +1,23 @@
 package com.coffeehouse.the.models;
 
-import android.util.Size;
+import com.coffeehouse.the.utils.Constants;
 
-import java.text.Format;
-import java.text.NumberFormat;
-import java.util.Locale;
+import java.util.Map;
 import java.util.Objects;
 
 public class CartItem {
     private String productId = "";
-    private Integer itemPrice = 0;
-    private Integer quantity = 0;
+    private int itemPrice = 0;
+    private int quantity = 0;
     private ProductSize size = ProductSize.Medium;
     private String note = "";
     private ProductTopping topping = ProductTopping.Off;
-    private Integer totalCartItemValue;
-
-    private Locale locale = new Locale("vi", "VN");
-    private Format format = NumberFormat.getCurrencyInstance(locale);
+    private int totalCartItemValue = 0;
 
     public CartItem() {
     }
 
-    public CartItem(String productId, Integer itemPrice, Integer quantity, ProductSize size, ProductTopping topping, String note) {
+    public CartItem(String productId, int itemPrice, int quantity, ProductSize size, ProductTopping topping, String note) {
         this.productId = productId;
         this.itemPrice = itemPrice;
         this.quantity = quantity;
@@ -47,7 +42,7 @@ public class CartItem {
         this.productId = productId;
     }
 
-    public Integer getItemPrice() {
+    public int getItemPrice() {
         return itemPrice;
     }
 
@@ -55,7 +50,7 @@ public class CartItem {
         this.itemPrice = itemPrice;
     }
 
-    public Integer getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
@@ -83,7 +78,7 @@ public class CartItem {
         this.quantity += increaseValue;
     }
 
-    public Integer getTotalCartItemValue() {
+    public int getTotalCartItemValue() {
         return itemPrice * quantity;
     }
 
@@ -97,25 +92,51 @@ public class CartItem {
     }
 
     public String totalCartItemPrice() {
-        return format.format(getTotalCartItemValue());
+        return Constants.currencyFormatter.format(getTotalCartItemValue());
     }
 
-    public void setTotalCartItemValue(Integer totalCartItemValue) {
+    public void setTotalCartItemValue(int totalCartItemValue) {
         this.totalCartItemValue = totalCartItemValue;
     }
 
     @Override
     public boolean equals(Object o) {
-//        if (this == o) return true;
-//        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) return true;
+        if (!(o instanceof CartItem)) return false;
         CartItem cartItem = (CartItem) o;
-        return (productId.equals(cartItem.productId) &&
-                size == cartItem.size && topping == cartItem.topping);
+        return productId.equals(cartItem.productId) &&
+                size == cartItem.size &&
+                topping == cartItem.topping;
+    }
+
+    public static CartItem fromMap(Map<String, Object> map) {
+        CartItem cartItem = new CartItem();
+        cartItem.itemPrice = Integer.parseInt(map.get("itemPrice").toString());
+        cartItem.setNote(String.valueOf(map.get("note")));
+        cartItem.setProductId(String.valueOf(map.get("productId")));
+        cartItem.setQuantity(Integer.parseInt(map.get("quantity").toString()));
+        cartItem.size = map.get("size").equals("Medium") ? ProductSize.Medium : ProductSize.Large;
+        cartItem.topping = map.get("topping").equals("Off") ? ProductTopping.Off : ProductTopping.On;
+        cartItem.totalCartItemValue = Integer.parseInt(map.get("totalCartItemValue").toString());
+
+        return cartItem;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(productId, size);
+        return Objects.hash(productId, size, topping);
     }
 
+    @Override
+    public String toString() {
+        return "CartItem{" +
+                "productId='" + productId + '\'' +
+                ", itemPrice=" + itemPrice +
+                ", quantity=" + quantity +
+                ", size=" + size +
+                ", note='" + note + '\'' +
+                ", topping=" + topping +
+                ", totalCartItemValue=" + totalCartItemValue +
+                '}';
+    }
 }

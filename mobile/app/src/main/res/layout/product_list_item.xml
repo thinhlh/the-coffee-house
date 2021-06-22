@@ -7,10 +7,6 @@
         <variable
             name="product"
             type="com.coffeehouse.the.models.Product" />
-
-        <variable
-            name="ProductViewModel"
-            type="com.coffeehouse.the.viewModels.OrderViewModel" />
     </data>
 
     <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"

@@ -1,20 +1,22 @@
 package com.coffeehouse.the.models;
 
 import com.coffeehouse.the.services.UserRepo;
+import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.text.Format;
 import java.text.NumberFormat;
 import java.time.Instant;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class Order {
 
     private String id = "";
     private Date orderTime = Date.from(Instant.now());
     private Cart cart = new Cart();
-    private int total = 0;
     private String userId = "";
     private String orderMethod = "";
     private String orderAddress = "";
@@ -27,7 +29,6 @@ public class Order {
 
     public Order(Cart cart, String orderMethod, String orderAddress, String recipientName, String recipientPhone) {
         this.cart = cart;
-        this.total = cart.getTotalCartValue();
         this.userId = FirebaseAuth.getInstance().getUid();
         this.orderMethod = orderMethod;
         this.orderAddress = orderAddress;
@@ -38,7 +39,6 @@ public class Order {
     public Order(String id, Cart cart) {
         this.id = id;
         this.cart = cart;
-        this.total = cart.getTotalCartValue();
         this.userId = FirebaseAuth.getInstance().getUid();
     }
 
@@ -71,11 +71,7 @@ public class Order {
     }
 
     public int getTotal() {
-        return total;
-    }
-
-    public void setTotal(int total) {
-        this.total = total;
+        return cart.getItems().stream().mapToInt(CartItem::getTotalCartItemValue).sum();
     }
 
     public String getUserId() {
@@ -116,5 +112,32 @@ public class Order {
 
     public void setRecipientPhone(String recipientPhone) {
         this.recipientPhone = recipientPhone;
+    }
+
+    public static Order fromMap(Map<String, Object> map) {
+        Order order = new Order();
+
+        order.setId((String) map.get("id"));
+        order.setUserId((String) map.get("userId"));
+        order.setOrderTime(((Timestamp) map.get("birthday")).toDate());
+
+        List<Object> cartItemList = (List<Object>) map.get("cart");
+        Cart cart = new Cart();
+
+        return order;
+    }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "id='" + id + '\'' +
+                ", orderTime=" + orderTime +
+                ", cart=" + cart +
+                ", userId='" + userId + '\'' +
+                ", orderMethod='" + orderMethod + '\'' +
+                ", orderAddress='" + orderAddress + '\'' +
+                ", recipientName='" + recipientName + '\'' +
+                ", recipientPhone='" + recipientPhone + '\'' +
+                '}';
     }
 }

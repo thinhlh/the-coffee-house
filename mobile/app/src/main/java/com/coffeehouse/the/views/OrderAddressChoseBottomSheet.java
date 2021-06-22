@@ -1,5 +1,6 @@
-package com.coffeehouse.the.views.OthersViewFragment;
+package com.coffeehouse.the.views;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,18 +15,29 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.coffeehouse.the.R;
-import com.coffeehouse.the.adapter.RecyclerViewClickListener;
 import com.coffeehouse.the.adapter.UserAddressAdapter;
 import com.coffeehouse.the.databinding.SavedAddressFragmentBinding;
 import com.coffeehouse.the.viewModels.UserAddressViewModel;
+import com.coffeehouse.the.views.OthersViewFragment.UpdateUserAddress;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import org.jetbrains.annotations.NotNull;
 
-public class SavedAddressFragment extends Fragment implements View.OnClickListener {
+public class OrderAddressChoseBottomSheet extends BottomSheetDialogFragment {
     private UserAddressViewModel userAddressViewModel;
     private UserAddressAdapter userAddressAdapter;
 
-    public SavedAddressFragment() {
+    public OrderAddressChoseBottomSheet() {
+    }
+
+    public interface UpdateOrderAddress {
+        void onUpdateOrderAddress(String name, String des, String recipientName, String recipientPhone);
+    }
+
+    private UpdateOrderAddress listener;
+
+    public void setListener(UpdateOrderAddress listener) {
+        this.listener = listener;
     }
 
     @Nullable
@@ -34,6 +46,8 @@ public class SavedAddressFragment extends Fragment implements View.OnClickListen
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         SavedAddressFragmentBinding savedAddressFragmentBinding = DataBindingUtil.inflate(inflater, R.layout.saved_address_fragment, container, false);
         View v = savedAddressFragmentBinding.getRoot();
+
+        savedAddressFragmentBinding.addAddressCard.setVisibility(View.GONE);
 
         //Binding
         userAddressViewModel = new ViewModelProvider(this).get(UserAddressViewModel.class);
@@ -46,16 +60,17 @@ public class SavedAddressFragment extends Fragment implements View.OnClickListen
         //End binding
 
         userAddressAdapter.setClickListener(item -> {
-            UpdateUserAddress fragment = new UpdateUserAddress();
-            fragment.setFlag(false);
-            fragment.setUserAddress(item);
-            getFragmentManager().beginTransaction().replace(this.getId(), fragment).addToBackStack(null).commit();
+            listener.onUpdateOrderAddress(item.getTitle(), item.getDescription(), item.getRecipientName(), item.getRecipientPhone());
+            dismiss();
         });
 
         savedAddressFragmentBinding.closeSavedAddress.setOnClickListener(listener -> {
             getFragmentManager().popBackStack();
         });
-        savedAddressFragmentBinding.addNewAddress.setOnClickListener(this::onClick);
+        savedAddressFragmentBinding.addNewAddress.setOnClickListener(listener -> {
+//            Fragment fragment = new UpdateUserAddress();
+//            getFragmentManager().beginTransaction().replace(this.getId(), fragment).addToBackStack(null).commit();
+        });
 
         return v;
     }
@@ -65,8 +80,12 @@ public class SavedAddressFragment extends Fragment implements View.OnClickListen
     }
 
     @Override
-    public void onClick(View v) {
-        Fragment fragment1 = new UpdateUserAddress();
-        getFragmentManager().beginTransaction().replace(this.getId(), fragment1).addToBackStack(null).commit();
+    public void onAttach(@NonNull @NotNull Context context) {
+        super.onAttach(context);
+        try {
+            listener = (UpdateOrderAddress) getTargetFragment();
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString() + " must implement UpdateOrderAddress listener");
+        }
     }
 }

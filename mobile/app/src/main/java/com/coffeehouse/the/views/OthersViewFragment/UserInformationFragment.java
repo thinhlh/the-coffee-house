@@ -14,13 +14,17 @@ import androidx.fragment.app.Fragment;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.databinding.PersonalinfoFragmentBinding;
 import com.coffeehouse.the.services.UserRepo;
+import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.textfield.TextInputEditText;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
+import java.util.Objects;
 
 public class UserInformationFragment extends Fragment implements View.OnClickListener {
     private UserRepo userRepo = new UserRepo();
@@ -40,6 +44,28 @@ public class UserInformationFragment extends Fragment implements View.OnClickLis
 
         init();
         setVariable();
+
+        //Create Date Picker
+        MaterialDatePicker.Builder<Long> builder = MaterialDatePicker.Builder.datePicker();
+        builder.setTitleText("Select birthday date");
+        builder.setTheme(R.style.MaterialCalendarTheme);
+        MaterialDatePicker<Long> materialDatePicker = builder.build();
+        materialDatePicker.addOnPositiveButtonClickListener(selection -> {
+            String datePicked = materialDatePicker.getHeaderText();
+            personalinfoFragmentBinding.textInputBirthday.setText(datePicked);
+            try {
+                birthDate = new SimpleDateFormat("MMM dd, yyyy", Locale.US).parse(datePicked);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        });
+        personalinfoFragmentBinding.textInputBirthday.setOnClickListener(v1 -> materialDatePicker.show(getFragmentManager(), "DATE_PICKER"));
+        personalinfoFragmentBinding.textInputBirthday.setOnFocusChangeListener((v12, hasFocus) -> {
+            if (hasFocus) {
+                materialDatePicker.show(getFragmentManager(), "DATE_PICKER");
+            }
+        });
+        //End Date Picker Region
 
         personalinfoFragmentBinding.closePersonalInformation.setOnClickListener(this::onClick);
         personalinfoFragmentBinding.updateUserInfoBtn.setOnClickListener(this::onClick);
@@ -73,8 +99,8 @@ public class UserInformationFragment extends Fragment implements View.OnClickLis
                 break;
             case R.id.update_user_info_btn:
                 UserRepo userRepo = new UserRepo();
-                userRepo.updateUserInfo(txtName.getText().toString(), txtPhone.getText().toString(), birthDate);
-                Toast.makeText(getContext(), "Updated User Information", Toast.LENGTH_SHORT).show();
+                userRepo.updateUserInfo(txtName.getText().toString(), txtPhone.getText().toString(), txtEmail.getText().toString(), birthDate);
+                Toast.makeText(getContext(), "Update User Information Success", Toast.LENGTH_SHORT).show();
                 break;
         }
     }

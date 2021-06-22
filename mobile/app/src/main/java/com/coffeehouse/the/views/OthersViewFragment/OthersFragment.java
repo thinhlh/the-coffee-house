@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.viewModels.AuthViewModel;
@@ -20,7 +21,6 @@ public class OthersFragment extends Fragment implements View.OnClickListener {
     private final AuthViewModel authViewModel = new AuthViewModel();
 
 
-    @Nullable
     @org.jetbrains.annotations.Nullable
     @Override
     public View onCreateView(@NonNull @org.jetbrains.annotations.NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
@@ -66,8 +66,10 @@ public class OthersFragment extends Fragment implements View.OnClickListener {
                 getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
                 break;
             case R.id.saved_address:
-                fragment = new SavedAddressFragment();
-                getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
+//                fragment = new SavedAddressFragment();
+//                getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.home_fragment_container, new SavedAddressFragment()).addToBackStack(null).commit();
                 break;
             case R.id.settings:
                 fragment = new SettingsFragment();

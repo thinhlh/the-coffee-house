@@ -16,15 +16,23 @@ public class Order {
     private Cart cart = new Cart();
     private int total = 0;
     private String userId = "";
+    private String orderMethod = "";
+    private String orderAddress = "";
+    private String recipientName = "";
+    private String recipientPhone = "";
 
     public Order() {
 
     }
 
-    public Order(Cart cart) {
+    public Order(Cart cart, String orderMethod, String orderAddress, String recipientName, String recipientPhone) {
         this.cart = cart;
         this.total = cart.getTotalCartValue();
         this.userId = FirebaseAuth.getInstance().getUid();
+        this.orderMethod = orderMethod;
+        this.orderAddress = orderAddress;
+        this.recipientName = recipientName;
+        this.recipientPhone = recipientPhone;
     }
 
     public Order(String id, Cart cart) {
@@ -76,5 +84,37 @@ public class Order {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public String getOrderMethod() {
+        return orderMethod;
+    }
+
+    public void setOrderMethod(String orderMethod) {
+        this.orderMethod = orderMethod;
+    }
+
+    public String getOrderAddress() {
+        return orderAddress;
+    }
+
+    public void setOrderAddress(String orderAddress) {
+        this.orderAddress = orderAddress;
+    }
+
+    public String getRecipientName() {
+        return recipientName;
+    }
+
+    public void setRecipientName(String recipientName) {
+        this.recipientName = recipientName;
+    }
+
+    public String getRecipientPhone() {
+        return recipientPhone;
+    }
+
+    public void setRecipientPhone(String recipientPhone) {
+        this.recipientPhone = recipientPhone;
     }
 }

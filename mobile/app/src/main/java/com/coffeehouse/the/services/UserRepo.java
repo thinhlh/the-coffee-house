@@ -164,9 +164,10 @@ public class UserRepo {
             db.collection("users").document(mAuth.getCurrentUser().getUid()).update("membership", "Silver");
     }
 
-    public void updateUserInfo(String name, String phoneNumber, Date birthday) {
+    public void updateUserInfo(String name, String phoneNumber, String email, Date birthday) {
         db.collection("users").document(mAuth.getCurrentUser().getUid()).update("name", name);
         db.collection("users").document(mAuth.getCurrentUser().getUid()).update("phoneNumber", phoneNumber);
+        db.collection("users").document(mAuth.getCurrentUser().getUid()).update("email", email);
         db.collection("users").document(mAuth.getCurrentUser().getUid()).update("birthday", birthday);
     }
 

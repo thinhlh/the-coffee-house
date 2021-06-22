@@ -86,8 +86,11 @@ public class OrderHistoryAdapter extends Adapter<OrderHistoryAdapter.OrderHistor
 
     private String itemName(Order order) {
         String itemName = "";
+        if (order.getCart().getItems().size() == 1) {
+            return productsRepo.getProductsById(order.getCart().getItems().get(0).getProductId()).getTitle();
+        }
         for (CartItem cartItem : order.getCart().getItems()) {
-            itemName = productsRepo.getProductsById(cartItem.getProductId()).getTitle() + ", ";
+            itemName = itemName + productsRepo.getProductsById(cartItem.getProductId()).getTitle() + ", ";
         }
         return itemName;
     }

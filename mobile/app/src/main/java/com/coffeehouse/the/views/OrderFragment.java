@@ -64,8 +64,9 @@ public class OrderFragment extends Fragment implements CategoryBottomSheet.SendC
 
         //Inflate Favorite Product Fragment
         orderFragmentBinding.favoriteProductsIcon.setOnClickListener(view -> {
-            Fragment fragment = new FavouriteProductListFragment();
-            getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
+            FavouriteProductListFragment fragment = new FavouriteProductListFragment();
+            fragment.setCart(cart);
+            getFragmentManager().beginTransaction().replace(this.getId(), fragment).addToBackStack(null).commit();
         });
 
         //Inflate Order Fragment

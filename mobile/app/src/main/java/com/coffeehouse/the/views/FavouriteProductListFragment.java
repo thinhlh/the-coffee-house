@@ -19,21 +19,17 @@ import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.ProductAdapter;
 import com.coffeehouse.the.adapter.RecyclerViewClickListener;
 import com.coffeehouse.the.databinding.FavouriteFragmentBinding;
+import com.coffeehouse.the.models.Cart;
 import com.coffeehouse.the.models.Product;
 import com.coffeehouse.the.viewModels.FavouriteProductViewModel;
 
 import org.jetbrains.annotations.NotNull;
 
-public class FavouriteProductListFragment extends Fragment implements View.OnClickListener {
+public class FavouriteProductListFragment extends Fragment {
 
     private FavouriteProductViewModel favouriteProductViewModel = new FavouriteProductViewModel();
     private ProductAdapter productsAdapter = new ProductAdapter();
-
-    @Override
-    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        Initview(view);
-    }
+    private Cart cart = new Cart();
 
     @Nullable
     @org.jetbrains.annotations.Nullable
@@ -55,6 +51,10 @@ public class FavouriteProductListFragment extends Fragment implements View.OnCli
         getFavProducts(productsAdapter);
         //END BINDING
 
+        favouriteFragmentBinding.closeFavoriteListFragment.setOnClickListener(listener -> {
+            getFragmentManager().popBackStack();
+        });
+
         productsAdapter.setClickListener(item -> onFavProductClick(item));
 
         return v;
@@ -63,28 +63,19 @@ public class FavouriteProductListFragment extends Fragment implements View.OnCli
     private void onFavProductClick(Product product) {
         OrderFragment fragment = new OrderFragment();
         getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
+        fragment.setCart(cart);
         fragment.navigateToProductDetailBottomSheet(product);
     }
 
     private void getFavProducts(ProductAdapter productsAdapter) {
         favouriteProductViewModel.getFavProducts().observe(getViewLifecycleOwner(), productsAdapter::setItems);
     }
-    private void Initview(View view){
-        ImageView imageView=view.findViewById(R.id.close_favorite_list_fragment);
-        imageView.setOnClickListener(this);
+
+    public Cart getCart() {
+        return cart;
     }
 
-    private void Closelistfavoritefragment() {
-        FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.home_fragment_container,new OrderFragment()).addToBackStack(null).commit();
-
-    }
-
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()){
-            case R.id.close_favorite_list_fragment:
-                Closelistfavoritefragment();
-        }
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 }

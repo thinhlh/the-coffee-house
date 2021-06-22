@@ -4,13 +4,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,11 +22,17 @@ import com.coffeehouse.the.models.Order;
 import com.coffeehouse.the.services.OrdersRepo;
 import com.coffeehouse.the.services.UserRepo;
 import com.coffeehouse.the.viewModels.OrderDetailViewModel;
-import com.coffeehouse.the.views.OthersViewFragment.ChangeAddressBottomsheet;
+import com.coffeehouse.the.views.OthersViewFragment.BottomsheetChoosePromotionOrderDetail;
+import com.coffeehouse.the.views.OthersViewFragment.ChangeAddressBottomSheet;
 
 import org.jetbrains.annotations.NotNull;
 
-public class OrderDetailFragment extends Fragment implements View.OnClickListener {
+import java.text.Format;
+import java.text.NumberFormat;
+import java.util.Locale;
+
+public class OrderDetailFragment extends Fragment implements View.OnClickListener, ChangeAddressBottomSheet.OrderStorePick {
+    private OrderDetailBinding orderDetailBinding;
     private OrderDetailViewModel orderDetailViewModel = new OrderDetailViewModel();
     private CartItemAdapter cartItemAdapter = new CartItemAdapter();
     private Cart currentCart = new Cart();
@@ -35,24 +40,14 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
     private OrdersRepo ordersRepo = new OrdersRepo();
     private UserRepo userRepo = new UserRepo();
 
-    @Override
-    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        Initview(view);
-    }
-    private void Initview(View view) {
-        TextView textViewchange=view.findViewById(R.id.text_change);
-        textViewchange.setOnClickListener(this);
-        TextView textViewbacktoorderfragment=view.findViewById(R.id.text_addmenu);
-        textViewbacktoorderfragment.setOnClickListener(this);
-
-    }
+    private Locale locale = new Locale("vi", "VN");
+    private Format format = NumberFormat.getCurrencyInstance(locale);
 
     @Nullable
     @org.jetbrains.annotations.Nullable
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-        OrderDetailBinding orderDetailBinding = DataBindingUtil.inflate(inflater, R.layout.order_detail, container, false);
+        orderDetailBinding = DataBindingUtil.inflate(inflater, R.layout.order_detail, container, false);
         View v = orderDetailBinding.getRoot();
 
         currentCart = orderDetailViewModel.getCart();
@@ -82,15 +77,25 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
             orderDetailBinding.setCart(currentCart);
         });
 
+        orderDetailBinding.textChange.setOnClickListener(this::onClick);
+        orderDetailBinding.textAddmenu.setOnClickListener(this::onClick);
+        orderDetailBinding.textChoosepromotion.setOnClickListener(this::onClick);
+
         return v;
     }
 
     private void createOrder() {
-        order = new Order(orderDetailViewModel.getCart());
-        ordersRepo.addOrderData(order);
-        userRepo.updateUserPoint(orderDetailViewModel.getCart().getTotalCartValue() / 1000);
-        OrderFragment fragment = new OrderFragment();
-        getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
+        if (orderDetailBinding.textOrder.getText().toString().equals("Phương thức giao hàng")) {
+            Toast.makeText(getContext(), "Chỉnh sửa chi tiết nhận hàng", Toast.LENGTH_LONG).show();
+        } else if (orderDetailViewModel.getCart().getItems().size() == 0) {
+            Toast.makeText(getContext(), "Chưa có sản phẩm trong giỏ", Toast.LENGTH_LONG).show();
+        } else {
+            order = new Order(orderDetailViewModel.getCart(), orderDetailBinding.textOrder.getText().toString(), orderDetailBinding.textDestinationDetail.getText().toString(), orderDetailBinding.textName.getText().toString(), orderDetailBinding.textPhoneNumber.getText().toString());
+            ordersRepo.addOrderData(order);
+            userRepo.updateUserPoint(orderDetailViewModel.getCart().getTotalCartValue() / 1000);
+            OrderFragment fragment = new OrderFragment();
+            getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
+        }
     }
 
     private void backToOrderFragment() {
@@ -109,27 +114,57 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.text_change:
-                Changechooseordermethodfragment();
+                orderMethod();
                 break;
             case R.id.text_addmenu:
-                Backto_orderfragment();
+                backToOrderFragment();
+                break;
+            case R.id.text_choosepromotion:
+                Choosepromotion();
                 break;
 
 
         }
-
     }
 
-    private void Backto_orderfragment() {
-        FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.home_fragment_container,new OrderFragment()).addToBackStack(null).commit();
+    private void Choosepromotion() {
+        BottomsheetChoosePromotionOrderDetail bottomsheetChoosePromotionOrderDetail =new BottomsheetChoosePromotionOrderDetail();
+        bottomsheetChoosePromotionOrderDetail.setTargetFragment(OrderDetailFragment.this,4);
+        bottomsheetChoosePromotionOrderDetail.show(getFragmentManager(),"Choose Promotion");
     }
 
-    private void Changechooseordermethodfragment() {
-        ChangeAddressBottomsheet changeAddressBottomsheet=new ChangeAddressBottomsheet();
-        changeAddressBottomsheet.setTargetFragment(OrderDetailFragment.this, 2);
-        changeAddressBottomsheet.show(getFragmentManager(), "Category");
+    private void orderMethod() {
+        ChangeAddressBottomSheet changeAddressBottomsheet = new ChangeAddressBottomSheet();
+        changeAddressBottomsheet.setTargetFragment(OrderDetailFragment.this, 3);
+        changeAddressBottomsheet.show(getFragmentManager(), "Choose Address");
+    }
+
+    @Override
+    public void onOrderStorePick(String name, String des, String recipientName, String recipientPhone, boolean flag) {
+        if (flag) {
+            shipOrder(name, des, recipientName, recipientPhone);
+        } else {
+            storeOrder(name, des, recipientName, recipientPhone);
+        }
+    }
+
+    private void shipOrder(String name, String des, String recipientName, String recipientPhone) {
+        orderDetailBinding.textOrder.setText("Giao tận nơi");
+        orderDetailBinding.textDestination.setText(name);
+        orderDetailBinding.textDestinationDetail.setText(des);
+        orderDetailBinding.textName.setText(recipientName);
+        orderDetailBinding.textPhoneNumber.setText(recipientPhone);
+        orderDetailBinding.textOrderprice.setText(format.format(currentCart.getTotalCartValue() + 30000));
+    }
+
+    private void storeOrder(String name, String des, String recipientName, String recipientPhone) {
+        orderDetailBinding.textOrder.setText("Đến lấy tại cửa hàng");
+        orderDetailBinding.textDestination.setText(name);
+        orderDetailBinding.textDestinationDetail.setText(des);
+        orderDetailBinding.textName.setText(recipientName);
+        orderDetailBinding.textPhoneNumber.setText(recipientPhone);
+        orderDetailBinding.textOrderprice.setText(format.format(currentCart.getTotalCartValue()));
     }
 }

@@ -1,17 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
-
-    <data>
-
-    </data>
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/browser_actions_bg_grey"
-        tools:context=".views.screen2_MembershipFragment">
+        android:background="@color/browser_actions_bg_grey">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -19,11 +13,42 @@
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="40dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="@string/enterpromotioncode"
+                        android:textColor="@color/black"
+                        android:textSize="20sp" />
+
+                    <ImageButton
+                        android:id="@+id/close_promotion"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="10dp"
+                        android:background="@color/white"
+                        android:backgroundTint="@color/white"
+                        android:src="@drawable/ic_baseline_close_24" />
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                app:cardCornerRadius="8dp"
                 android:layout_width="360dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
-                app:cardCornerRadius="8dp">
+                android:layout_marginTop="10dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -37,12 +62,15 @@
                         android:layout_marginLeft="10dp"
                         android:src="@drawable/ic_baseline_article_24" />
 
-                    <com.google.android.material.textview.MaterialTextView
+                    <EditText
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center_vertical"
                         android:layout_marginLeft="10dp"
-                        android:text="@string/enterpromotioncode"
+                        android:textStyle="bold"
+                        android:background="@android:color/transparent"
+                        android:hint="@string/enterpromotioncode"
+                        android:maxLines="1"
                         android:textColor="@color/black"
                         android:textSize="15sp" />
 
@@ -80,7 +108,7 @@
             </LinearLayout>
 
         </LinearLayout>
-
-
     </androidx.core.widget.NestedScrollView>
+
+
 </layout>

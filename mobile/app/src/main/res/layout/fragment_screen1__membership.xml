@@ -3,12 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <data>
-
-        <variable
-            name="user"
-            type="com.coffeehouse.the.models.CustomUser" />
-    </data>
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -66,7 +60,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="10dp"
-                            android:text="@{user.name}"
+                            android:text="Bui Thien Nhan"
                             android:textColor="@color/white"
                             android:textSize="20dp"
                             android:textStyle="bold" />
@@ -76,7 +70,7 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="5dp"
-                            android:text="@{user.membershipString}"
+                            android:text="gold"
                             android:textColor="@color/white" />
 
                     </LinearLayout>

@@ -117,7 +117,7 @@
             </androidx.cardview.widget.CardView>
 
             <View
-                android:layout_width="360dp"
+                android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_gravity="right"
                 android:background="@color/white_gray" />
@@ -157,7 +157,7 @@
             </androidx.cardview.widget.CardView>
 
             <View
-                android:layout_width="360dp"
+                android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_gravity="right"
                 android:background="@color/white_gray" />
@@ -198,7 +198,7 @@
             </androidx.cardview.widget.CardView>
 
             <View
-                android:layout_width="360dp"
+                android:layout_width="match_parent"
                 android:layout_height="2dp"
                 android:layout_gravity="right"
                 android:background="@color/white_gray" />

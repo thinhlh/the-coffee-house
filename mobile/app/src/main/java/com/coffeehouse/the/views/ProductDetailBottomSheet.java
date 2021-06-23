@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -26,10 +27,15 @@ import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
-public class ProductDetailBottomSheet extends BottomSheetDialogFragment implements View.OnClickListener {
+import java.text.NumberFormat;
+import java.util.Locale;
 
+public class ProductDetailBottomSheet extends BottomSheetDialogFragment implements View.OnClickListener {
+    private ActivityProductDetailBinding activityProductDetailBinding;
     private Product product = new Product();
     private ProductDetailViewModel productDetailViewModel;
+    private Locale locale = new Locale("vi", "VN");
+    NumberFormat format = NumberFormat.getCurrencyInstance(locale);
 
     public ProductDetailBottomSheet() {
     }
@@ -52,11 +58,12 @@ public class ProductDetailBottomSheet extends BottomSheetDialogFragment implemen
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         //INFLATE
-        ActivityProductDetailBinding activityProductDetailBinding = DataBindingUtil.inflate(inflater, R.layout.activity_product_detail, container, false);
+        activityProductDetailBinding = DataBindingUtil.inflate(inflater, R.layout.activity_product_detail, container, false);
         View v = activityProductDetailBinding.getRoot();
 
         //BINDING
         activityProductDetailBinding.setProductDetail(product);
+        activityProductDetailBinding.itemPrice.setText(format.format(product.getPrice()));
         productDetailViewModel = new ViewModelProvider(this).get(ProductDetailViewModel.class);
         activityProductDetailBinding.setLifecycleOwner(this);
         activityProductDetailBinding.setProductDetailViewModel(productDetailViewModel);
@@ -91,7 +98,7 @@ public class ProductDetailBottomSheet extends BottomSheetDialogFragment implemen
     public void onClick(View v) {
         if (productDetailViewModel.count.getValue() > 0) {
             CartItem cartItem = new CartItem(product.getId(), productDetailViewModel.getAmountPerOrder(),
-                    productDetailViewModel.count.getValue(), productDetailViewModel.getSize(), productDetailViewModel.getTopping(), "test note");
+                    productDetailViewModel.count.getValue(), productDetailViewModel.getSize(), productDetailViewModel.getTopping(), activityProductDetailBinding.otherOption.getText().toString());
             listener.onUpdateCart(cartItem);
         }
         dismiss();

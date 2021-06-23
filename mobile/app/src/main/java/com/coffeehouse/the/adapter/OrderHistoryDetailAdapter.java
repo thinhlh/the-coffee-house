@@ -1,0 +1,62 @@
+package com.coffeehouse.the.adapter;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView.Adapter;
+
+import com.coffeehouse.the.R;
+import com.coffeehouse.the.databinding.OrderHistoryDetailListItemBinding;
+import com.coffeehouse.the.models.Cart;
+import com.coffeehouse.the.models.CartItem;
+import com.coffeehouse.the.services.ProductsRepo;
+
+import org.jetbrains.annotations.NotNull;
+
+public class OrderHistoryDetailAdapter extends Adapter<OrderHistoryDetailAdapter.OrderDetailHistoryViewHolder> {
+    private Cart cart;
+    private ProductsRepo productsRepo = new ProductsRepo();
+
+    @NonNull
+    @NotNull
+    @Override
+    public OrderHistoryDetailAdapter.OrderDetailHistoryViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
+        OrderHistoryDetailListItemBinding binding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.order_history_detail_list_item, parent, false);
+        return new OrderDetailHistoryViewHolder(binding);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull @NotNull OrderHistoryDetailAdapter.OrderDetailHistoryViewHolder holder, int position) {
+        CartItem currentCartItem = cart.getItems().get(position);
+        holder.binding.setCartItem(currentCartItem);
+        holder.title.setText(productsRepo.getProductsById(currentCartItem.getProductId()).getTitle());
+        holder.quantity.setText(currentCartItem.getQuantity().toString());
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+        notifyDataSetChanged();
+    }
+
+    @Override
+    public int getItemCount() {
+        return cart.getItems() != null ? cart.getItems().size() : 0;
+    }
+
+    static class OrderDetailHistoryViewHolder extends RecyclerView.ViewHolder {
+        private final OrderHistoryDetailListItemBinding binding;
+        TextView quantity, title;
+
+        public OrderDetailHistoryViewHolder(@NonNull @NotNull OrderHistoryDetailListItemBinding binding) {
+            super(binding.getRoot());
+            this.binding = binding;
+            quantity = binding.textItemamount;
+            title = binding.textItemname;
+        }
+    }
+}

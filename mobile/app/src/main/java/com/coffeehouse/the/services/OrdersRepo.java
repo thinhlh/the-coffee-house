@@ -37,6 +37,7 @@ public class OrdersRepo implements Fetching {
         dataOrder.put("userId", FirebaseAuth.getInstance().getCurrentUser().getUid());
         dataOrder.put("orderTime", order.getOrderTime());
         dataOrder.put("orderMethod", order.getOrderMethod());
+        dataOrder.put("delivered", order.isDelivered());
         dataOrder.put("orderAddress", order.getOrderAddress());
         dataOrder.put("recipientName", order.getRecipientName());
         dataOrder.put("recipientPhone", order.getRecipientPhone());
@@ -52,132 +53,43 @@ public class OrdersRepo implements Fetching {
     @Override
     public void setUpRealTimeListener() {
         db.collection("orders")
-                .orderBy("orderTime", Query.Direction.DESCENDING)
-                .addSnapshotListener((orderValue, orderError) -> {
+                .orderBy("orderTime", Query.Direction.DESCENDING).addSnapshotListener((orderValue, orderError) -> {
                     if (orderError != null) {
                         Log.w("Orders Repository", orderError);
                     } else {
-
                         List<Order> orders = new ArrayList<>();
                         for (QueryDocumentSnapshot orderDoc : orderValue) {
                             if (orderDoc != null) {
-
                                 Cart cart = new Cart();
                                 orderDoc.getReference().collection("cart")
                                         .addSnapshotListener((cartValue, cartError) -> {
                                             List<CartItem> cartItems = new ArrayList<>();
                                             if (cartError != null) {
                                                 //TODO Handling error
+                                                Log.e("Cart Error", cartError.getMessage());
                                             } else {
                                                 for (QueryDocumentSnapshot cartItemDoc : cartValue) {
                                                     if (cartItemDoc != null) {
                                                         cartItems.add(CartItem.fromMap(cartItemDoc.getData()));
                                                     }
                                                 }
+                                                cart.setItems(cartItems);
                                             }
-                                            cart.setItems(cartItems);
+                                            Order order = orderDoc.toObject(Order.class);
+                                            order.setId(orderDoc.getId());
+                                            order.setCart(cart);
+
+                                            if (order.getUserId().equals(FirebaseAuth.getInstance().getUid()))
+                                                orders.add(order);
+                                            this.orders.setValue(orders);
+                                            Log.d("FINAL", orders.toString());
+                                            Log.d("Orders", String.valueOf(orders.size()));
                                         });
-
-
-
-
-
-
-
-
-
-
-
-                                Map<String, Object> map = orderDoc.getData();
-                                Log.d("Order", map.toString());
-                                Order order = orderDoc.toObject(Order.class);
-                                order.setId(orderDoc.getId());
-                                order.setCart(cart);
-                                if (order.getUserId().equals(FirebaseAuth.getInstance().getUid())) {
-
-                                    orderDoc.getReference().collection("cart").get();
-//                                    .continueWithTask(task -> task.addOnSuccessListener(value1 -> {
-//                                        for (QueryDocumentSnapshot doc1 : value1) {
-//                                            if (doc1 != null) {
-//                                                CartItem currentCartItem = doc1.toObject(CartItem.class);
-//                                                order.getCart().getItems().add(currentCartItem);
-//                                                order.setTotal(order.getCart().getTotalCartValue());
-//                                            }
-//                                        }
-//                                        order.setTotal(order.getTotal() + shipPrice);
-//                                    }))
-//                                    .continueWith(task1 -> {
-//                                        orders.add(order);
-//                                        return null;
-//                                    });
-
-
-//                                        new OnSuccessListener<QuerySnapshot>() {
-//                                    @Override
-//                                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-//                                        for (QueryDocumentSnapshot doc1 : queryDocumentSnapshots) {
-//                                            if (doc1 != null) {
-//                                                CartItem currentCartItem = doc1.toObject(CartItem.class);
-//                                                order.getCart().getItems().add(currentCartItem);
-//                                                order.setTotal(order.getCart().getTotalCartValue());
-//                                            }
-//                                        }
-//                                        order.setTotal(order.getTotal() + shipPrice);
-//                                    }
-//                                });
-//                            }).continueWith(task1 -> {
-//                                orders.add(order);
-//                                return null;
-//                            });
-
-                                            //.get
-//                                            .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-//                                                @Override
-//                                                public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-//                                                    for (QueryDocumentSnapshot doc1 : queryDocumentSnapshots) {
-//                                                        if (doc1 != null) {
-//                                                            CartItem currentCartItem = doc1.toObject(CartItem.class);
-//                                                            order.getCart().getItems().add(currentCartItem);
-//                                                            order.setTotal(order.getCart().getTotalCartValue());
-//                                                        }
-//                                                    }
-//                                                    order.setTotal(order.getTotal() + Constants.DELIVERY_LEVIED);
-//                                                }
-//                                            }).continueWith(task -> {
-//                                        orders.add(order);
-//                                        return null;
-//                                    });
-
-//                                    .continueWithTask(task -> {
-//                                orders.add(order);
-//                                return null;
-//                            });
-
-//                                    .addSnapshotListener(new EventListener<QuerySnapshot>() {
-//                                @Override
-//                                public void onEvent(@Nullable @org.jetbrains.annotations.Nullable QuerySnapshot value, @Nullable @org.jetbrains.annotations.Nullable FirebaseFirestoreException error) {
-//                                    if (error != null) {
-//                                        Log.w("Sub collection Repo", error);
-//                                    } else {
-//                                        for (QueryDocumentSnapshot doc1 : value) {
-//                                            if (doc1 != null) {
-//                                                CartItem currentCartItem = doc1.toObject(CartItem.class);
-//                                                order.getCart().getItems().add(currentCartItem);
-//                                                order.setTotal(order.getCart().getTotalCartValue());
-//                                            }
-//                                        }
-//                                        order.setTotal(order.getTotal() + shipPrice);
-//                                    }
-//                                }
-//                            });
-
-                                    //orders.add(order);
-                                }
                             }
                         }
-                        this.orders.setValue(orders);
                     }
-                });
+                }
+        );
     }
 
     public LiveData<List<Order>> getOrder() {

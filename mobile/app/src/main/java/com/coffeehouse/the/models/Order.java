@@ -19,6 +19,7 @@ public class Order {
     private Cart cart = new Cart();
     private String userId = "";
     private String orderMethod = "";
+    private boolean delivered;
     private String orderAddress = "";
     private String recipientName = "";
     private String recipientPhone = "";
@@ -27,10 +28,11 @@ public class Order {
 
     }
 
-    public Order(Cart cart, String orderMethod, String orderAddress, String recipientName, String recipientPhone) {
+    public Order(Cart cart, String orderMethod, boolean delivered, String orderAddress, String recipientName, String recipientPhone) {
         this.cart = cart;
         this.userId = FirebaseAuth.getInstance().getUid();
         this.orderMethod = orderMethod;
+        this.delivered = delivered;
         this.orderAddress = orderAddress;
         this.recipientName = recipientName;
         this.recipientPhone = recipientPhone;
@@ -112,6 +114,14 @@ public class Order {
 
     public void setRecipientPhone(String recipientPhone) {
         this.recipientPhone = recipientPhone;
+    }
+
+    public boolean isDelivered() {
+        return delivered;
+    }
+
+    public void setDelivered(boolean delivered) {
+        this.delivered = delivered;
     }
 
     public static Order fromMap(Map<String, Object> map) {

@@ -8,7 +8,7 @@ import java.util.Objects;
 public class CartItem {
     private String productId = "";
     private int itemPrice = 0;
-    private int quantity = 0;
+    private Integer quantity = 0;
     private ProductSize size = ProductSize.Medium;
     private String note = "";
     private ProductTopping topping = ProductTopping.Off;
@@ -50,11 +50,11 @@ public class CartItem {
         this.itemPrice = itemPrice;
     }
 
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 

@@ -51,7 +51,7 @@
     <string name="addhomeaddress">Thêm địa chỉ nhà</string>
     <string name="addcompanyaddress">Thêm địa chỉ công ty</string>
     <string name="addnewaddress">Thêm địa chỉ mới</string>
-    <string name="nameaddress">Tên địa chỉ</string>
+    <string name="nameaddress">Tên địa chỉ*</string>
     <string name="address">Địa chỉ*</string>
     <string name="chooseaddress">Chọn địa chỉ</string>
     <string name="floor">Tòa nhà, số tầng</string>
@@ -168,6 +168,8 @@
     <string name="fix_saved_address">Sửa địa chỉ đã lưu</string>
     <string name="version">Version</string>
     <string name="orders">Orders</string>
+    <string name="recovery_email">Nhập email khôi phục</string>
+    <string name="send">Gửi yêu cầu</string>
 
     <!--
     This string is used for square devices and overridden by hello_world in

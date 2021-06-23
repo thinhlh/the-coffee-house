@@ -39,6 +39,7 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
     private Order order;
     private OrdersRepo ordersRepo = new OrdersRepo();
     private UserRepo userRepo = new UserRepo();
+    private boolean delivered;
 
     private Locale locale = new Locale("vi", "VN");
     private Format format = NumberFormat.getCurrencyInstance(locale);
@@ -77,20 +78,32 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
             orderDetailBinding.setCart(currentCart);
         });
 
+        if (orderDetailViewModel.getCart().getItems().size() == 0) {
+            orderDetailBinding.textAddmenu.setError("Chưa có sản phẩm trong giỏ");
+        }
+
         orderDetailBinding.textChange.setOnClickListener(this::onClick);
         orderDetailBinding.textAddmenu.setOnClickListener(this::onClick);
         orderDetailBinding.textChoosepromotion.setOnClickListener(this::onClick);
+
+        cartItemAdapter.setClickListener(items -> {
+            currentCart = items;
+            orderDetailViewModel.setCart(items);
+            orderDetailBinding.setCart(items);
+            getCart(cartItemAdapter);
+        });
 
         return v;
     }
 
     private void createOrder() {
         if (orderDetailBinding.textOrder.getText().toString().equals("Phương thức giao hàng")) {
-            Toast.makeText(getContext(), "Chỉnh sửa chi tiết nhận hàng", Toast.LENGTH_LONG).show();
+            orderDetailBinding.textChange.setError("Chỉnh sửa phương thức nhận hàng");
+            Toast.makeText(getContext(), "Chỉnh sửa phương thức nhận hàng", Toast.LENGTH_SHORT).show();
         } else if (orderDetailViewModel.getCart().getItems().size() == 0) {
-            Toast.makeText(getContext(), "Chưa có sản phẩm trong giỏ", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "Chưa có sản phẩm trong giỏ", Toast.LENGTH_SHORT).show();
         } else {
-            order = new Order(orderDetailViewModel.getCart(), orderDetailBinding.textOrder.getText().toString(), orderDetailBinding.textDestinationDetail.getText().toString(), orderDetailBinding.textName.getText().toString(), orderDetailBinding.textPhoneNumber.getText().toString());
+            order = new Order(orderDetailViewModel.getCart(), orderDetailBinding.textOrder.getText().toString(), delivered, orderDetailBinding.textDestinationDetail.getText().toString(), orderDetailBinding.textName.getText().toString(), orderDetailBinding.textPhoneNumber.getText().toString());
             ordersRepo.addOrderData(order);
             userRepo.updateUserPoint(orderDetailViewModel.getCart().getTotalCartValue() / 1000);
             OrderFragment fragment = new OrderFragment();
@@ -130,9 +143,9 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
     }
 
     private void Choosepromotion() {
-        BottomsheetChoosePromotionOrderDetail bottomsheetChoosePromotionOrderDetail =new BottomsheetChoosePromotionOrderDetail();
-        bottomsheetChoosePromotionOrderDetail.setTargetFragment(OrderDetailFragment.this,4);
-        bottomsheetChoosePromotionOrderDetail.show(getFragmentManager(),"Choose Promotion");
+        BottomsheetChoosePromotionOrderDetail bottomsheetChoosePromotionOrderDetail = new BottomsheetChoosePromotionOrderDetail();
+        bottomsheetChoosePromotionOrderDetail.setTargetFragment(OrderDetailFragment.this, 4);
+        bottomsheetChoosePromotionOrderDetail.show(getFragmentManager(), "Choose Promotion");
     }
 
     private void orderMethod() {
@@ -151,7 +164,9 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
     }
 
     private void shipOrder(String name, String des, String recipientName, String recipientPhone) {
+        orderDetailBinding.textChange.setError(null);
         orderDetailBinding.textOrder.setText("Giao tận nơi");
+        delivered = true;
         orderDetailBinding.textDestination.setText(name);
         orderDetailBinding.textDestinationDetail.setText(des);
         orderDetailBinding.textName.setText(recipientName);
@@ -161,6 +176,8 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
 
     private void storeOrder(String name, String des, String recipientName, String recipientPhone) {
         orderDetailBinding.textOrder.setText("Đến lấy tại cửa hàng");
+        orderDetailBinding.textChange.setError(null);
+        delivered = false;
         orderDetailBinding.textDestination.setText(name);
         orderDetailBinding.textDestinationDetail.setText(des);
         orderDetailBinding.textName.setText(recipientName);

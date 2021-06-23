@@ -32,18 +32,63 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9f7a0c3-2cf4-439e-8f22-a485e29e3808" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/OrderHistoryDetailAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/LoginForgotPasswordActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/OthersViewFragment/OrderHistoryDetailFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/login_forgot_password_activity.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_borjabravo_readmoretextview_2_1_0_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_borjabravo_readmoretextview_2_1_0_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_android_sdk_4_42_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_applinks_4_42_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_common_4_42_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_core_4_42_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_login_4_42_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_messenger_4_42_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_places_4_42_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_facebook_android_facebook_share_4_42_0_aar.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_zxing_core_3_3_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_parse_bolts_bolts_android_1_4_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_parse_bolts_bolts_applinks_1_4_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_parse_bolts_bolts_tasks_1_4_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_picasso_picasso_2_71828_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_squareup_picasso_picasso_2_71828_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_synnapps_carouselview_0_1_5_aar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Gradle__com_synnapps_carouselview_0_1_5_aar.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/AdminNotificationAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/AdminNotificationAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/AdminOrderAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/AdminOrderAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/services/AdminOrdersRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/services/AdminOrdersRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/admin/AdminOrdersFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/admin/AdminOrdersFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/CartItemAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/CartItemAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/OrderHistoryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/OrderHistoryAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/models/CartItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/models/CartItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/models/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/models/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/services/OrdersRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/services/OrdersRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/viewModels/ProductDetailViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/viewModels/ProductDetailViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/LoginFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/LoginFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/OrderDetailFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/OrderDetailFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/OthersViewFragment/OrderHistoryFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/OthersViewFragment/OrderHistoryFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/OthersViewFragment/UpdateUserAddress.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/OthersViewFragment/UpdateUserAddress.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/ProductDetailBottomSheet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/ProductDetailBottomSheet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_product_detail.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_product_detail.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/history_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/order_history_fragment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/history_list_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/order_history_list_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/login_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/login_fragment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/status_item_order.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/order_history_detail_fragment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/status_item_order_recycleview_custom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/order_history_detail_list_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@/Applications/Android Emulator.app/Contents/MacOS/api30-gphone-arm64-v8a]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@D:\Android_SDK_HOME\.android\avd\Pixel_4_XL_API_30.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -104,6 +149,8 @@
     <property name="android-custom-view/Users/hoangthinh/.gradle/caches/modules-2/files-2.1/androidx.recyclerview/recyclerview/1.1.0/f2bdf79e1977939817f54a9d3e2f6bc52b63bdd0/recyclerview-1.1.0-sources.jar!/androidx/recyclerview/widget/RecyclerView.java_SELECTED" value="RecyclerView" />
     <property name="android-custom-view/Users/hoangthinh/.gradle/caches/modules-2/files-2.1/com.facebook.android/facebook-login/4.42.0/5e3d08fc791650cc0df09ac481295c0ed24fe4c8/facebook-login-4.42.0-sources.jar!/com/facebook/login/widget/LoginButton.java_SELECTED" value="LoginButton" />
     <property name="android-custom-view/Users/hoangthinh/.gradle/caches/modules-2/files-2.1/com.google.android.material/material/1.3.0/b42a5159ef2c670d26ce08246ec5aaf8f92e5a42/material-1.3.0-sources.jar!/com/google/android/material/tabs/TabLayout.java_SELECTED" value="TabLayout" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../back_up/the-coffee-house/mobile" />
     <property name="memory.settings.postsync.do.not.ask.for.project" value="true" />
     <property name="memory.settings.postsync.last.time.stamp" value="1624038704828" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
@@ -207,9 +254,10 @@
       <screen x="0" y="25" width="1920" height="969" />
     </state>
     <state x="460" y="69" key="#Plugins/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624394590352" />
-    <state x="576" y="155" key="#com.intellij.ide.util.MemberChooser" timestamp="1624398968912">
-      <screen x="0" y="25" width="1920" height="969" />
+    <state x="461" y="112" key="#com.intellij.ide.util.MemberChooser" timestamp="1624446081057">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
+    <state x="461" y="112" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1624446081057" />
     <state x="576" y="155" key="#com.intellij.ide.util.MemberChooser/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624398968912" />
     <state x="576" y="155" key="#com.intellij.ide.util.MemberChooser/0.25.1920.969@0.25.1920.969" timestamp="1624245746633" />
     <state x="594" y="220" key="#com.intellij.openapi.keymap.impl.ui.EditKeymapsDialog" timestamp="1624039847560">
@@ -230,14 +278,16 @@
       <screen x="0" y="25" width="1920" height="969" />
     </state>
     <state x="601" y="315" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.25.1920.969@0.25.1920.969" timestamp="1624245705644" />
-    <state x="100" y="115" width="1720" height="790" key="AVDManager" timestamp="1624041142164">
-      <screen x="0" y="25" width="1920" height="969" />
+    <state x="80" y="77" width="1376" height="680" key="AVDManager" timestamp="1624440438052">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
+    <state x="80" y="77" width="1376" height="680" key="AVDManager/0.0.1536.834@0.0.1536.834" timestamp="1624440438052" />
     <state x="100" y="100" width="1720" height="880" key="AVDManager/0.0.1920.1080@0.0.1920.1080" timestamp="1624040692751" />
     <state x="100" y="115" width="1720" height="790" key="AVDManager/0.25.1920.969@0.25.1920.969" timestamp="1624041142164" />
-    <state x="545" y="261" key="AndroidCreateResourceFileDialog" timestamp="1624388868960">
-      <screen x="0" y="25" width="1920" height="969" />
+    <state x="436" y="203" key="AndroidCreateResourceFileDialog" timestamp="1624430213088">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
+    <state x="436" y="203" key="AndroidCreateResourceFileDialog/0.0.1536.834@0.0.1536.834" timestamp="1624430213088" />
     <state x="545" y="261" key="AndroidCreateResourceFileDialog/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624388868960" />
     <state x="545" y="261" key="AndroidCreateResourceFileDialog/0.25.1920.969@0.25.1920.969" timestamp="1624193835428" />
     <state x="533" y="309" key="AndroidCreateXmlResourceDialog" timestamp="1624387677830">
@@ -249,24 +299,32 @@
       <screen x="0" y="25" width="1920" height="969" />
     </state>
     <state x="100" y="125" width="1720" height="769" key="DiffContextDialog/0.25.1920.969@0.25.1920.969" timestamp="1624207220254" />
-    <state width="1868" height="298" key="GridCell.Tab.0.bottom" timestamp="1624420578994">
-      <screen x="0" y="25" width="1920" height="969" />
+    <state x="549" y="172" key="FileChooserDialogImpl" timestamp="1624429927085">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
+    <state x="549" y="172" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1624429927085" />
+    <state width="1493" height="426" key="GridCell.Tab.0.bottom" timestamp="1624448153729">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1493" height="426" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1624448153729" />
     <state width="1868" height="298" key="GridCell.Tab.0.bottom/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624420578994" />
     <state width="1868" height="349" key="GridCell.Tab.0.bottom/0.25.1920.969@0.25.1920.969" timestamp="1624249589352" />
-    <state width="1868" height="298" key="GridCell.Tab.0.center" timestamp="1624420578994">
-      <screen x="0" y="25" width="1920" height="969" />
+    <state width="1493" height="426" key="GridCell.Tab.0.center" timestamp="1624448153712">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
+    <state width="1493" height="426" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1624448153712" />
     <state width="1868" height="298" key="GridCell.Tab.0.center/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624420578994" />
     <state width="1868" height="349" key="GridCell.Tab.0.center/0.25.1920.969@0.25.1920.969" timestamp="1624249589352" />
-    <state width="1868" height="298" key="GridCell.Tab.0.left" timestamp="1624420578994">
-      <screen x="0" y="25" width="1920" height="969" />
+    <state width="1493" height="426" key="GridCell.Tab.0.left" timestamp="1624448153616">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
+    <state width="1493" height="426" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1624448153616" />
     <state width="1868" height="298" key="GridCell.Tab.0.left/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624420578994" />
     <state width="1868" height="349" key="GridCell.Tab.0.left/0.25.1920.969@0.25.1920.969" timestamp="1624249589351" />
-    <state width="1868" height="298" key="GridCell.Tab.0.right" timestamp="1624420578994">
-      <screen x="0" y="25" width="1920" height="969" />
+    <state width="1493" height="426" key="GridCell.Tab.0.right" timestamp="1624448153712">
+      <screen x="0" y="0" width="1536" height="834" />
     </state>
+    <state width="1493" height="426" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1624448153712" />
     <state width="1868" height="298" key="GridCell.Tab.0.right/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624420578994" />
     <state width="1868" height="349" key="GridCell.Tab.0.right/0.25.1920.969@0.25.1920.969" timestamp="1624249589352" />
     <state x="469" y="91" key="SettingsEditor" timestamp="1624362073037">

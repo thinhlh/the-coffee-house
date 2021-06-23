@@ -2,6 +2,7 @@ package com.coffeehouse.the.adapter;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -9,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.Adapter;
 
 import com.coffeehouse.the.R;
-import com.coffeehouse.the.databinding.HistoryListItemBinding;
+import com.coffeehouse.the.databinding.OrderHistoryListItemBinding;
 import com.coffeehouse.the.models.CartItem;
 import com.coffeehouse.the.models.Order;
 import com.coffeehouse.the.services.ProductsRepo;
@@ -23,15 +24,16 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Locale;
 
-public class OrderHistoryAdapter extends Adapter<OrderHistoryAdapter.OrderHistoryViewHolder> {
+public class OrderHistoryAdapter extends Adapter<OrderHistoryAdapter.OrderHistoryViewHolder> implements ClickableRecyclerView<Order> {
     private List<Order> orders;
     private ProductsRepo productsRepo = new ProductsRepo();
+    private RecyclerViewClickListener<Order> listener;
 
     @NonNull
     @NotNull
     @Override
     public OrderHistoryAdapter.OrderHistoryViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        HistoryListItemBinding historyListItemBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.history_list_item, parent, false);
+        OrderHistoryListItemBinding historyListItemBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.order_history_list_item, parent, false);
         return new OrderHistoryViewHolder(historyListItemBinding);
     }
 
@@ -42,6 +44,7 @@ public class OrderHistoryAdapter extends Adapter<OrderHistoryAdapter.OrderHistor
         holder.historyListItemBinding.textItemName.setText(itemName(currentOrder));
         holder.historyListItemBinding.textItemPrice.setText(itemPrice(currentOrder));
         holder.historyListItemBinding.textItemTime.setText(itemTime(currentOrder));
+        holder.bindOnClick(currentOrder, listener);
     }
 
 
@@ -50,37 +53,37 @@ public class OrderHistoryAdapter extends Adapter<OrderHistoryAdapter.OrderHistor
         return orders == null ? 0 : orders.size();
     }
 
-//    @Override
-//    public void setItems(List<Order> items) {
-//        this.orders = items;
-//        notifyDataSetChanged();
-//    }
-//
-//    @Override
-//    public List<Order> getItems() {
-//        return orders;
-//    }
-//
-//    @Override
-//    public void setClickListener(RecyclerViewClickListener<Order> listener) {
-//
-//    }
-
-    public List<Order> getOrders() {
-        return orders;
-    }
-
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
+    @Override
+    public void setItems(List<Order> items) {
+        this.orders = items;
         notifyDataSetChanged();
     }
 
-    static class OrderHistoryViewHolder extends RecyclerView.ViewHolder {
-        private final HistoryListItemBinding historyListItemBinding;
+    @Override
+    public List<Order> getItems() {
+        return orders;
+    }
 
-        public OrderHistoryViewHolder(@NonNull @NotNull HistoryListItemBinding historyListItemBinding) {
+    @Override
+    public void setClickListener(RecyclerViewClickListener<Order> listener) {
+        this.listener = listener;
+    }
+
+    static class OrderHistoryViewHolder extends RecyclerView.ViewHolder {
+        private final OrderHistoryListItemBinding historyListItemBinding;
+
+        public OrderHistoryViewHolder(@NonNull @NotNull OrderHistoryListItemBinding historyListItemBinding) {
             super(historyListItemBinding.getRoot());
             this.historyListItemBinding = historyListItemBinding;
+        }
+
+        public void bindOnClick(Order order, RecyclerViewClickListener<Order> clickListener) {
+            historyListItemBinding.setOrder(order);
+            historyListItemBinding.executePendingBindings();
+            itemView.setOnClickListener(view -> {
+                if (clickListener != null)
+                    clickListener.onClick(order);
+            });
         }
     }
 
@@ -98,7 +101,10 @@ public class OrderHistoryAdapter extends Adapter<OrderHistoryAdapter.OrderHistor
     private String itemPrice(Order order) {
         Locale locale = new Locale("vi", "VN");
         Format format = NumberFormat.getCurrencyInstance(locale);
-        return format.format(order.getTotal());
+        if (order.isDelivered()) {
+            return format.format(order.getTotal() + 30000);
+        } else
+            return format.format(order.getTotal());
     }
 
     private String itemTime(Order order) {

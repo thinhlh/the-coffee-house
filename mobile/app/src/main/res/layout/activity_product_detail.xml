@@ -55,7 +55,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/item_name"
                         android:layout_marginStart="10dp"
-                        android:text="@{productDetail.price+ ` đ`}"
+                        android:text=""
                         android:textColor="@color/black"
                         android:textSize="20sp" />
 
@@ -64,10 +64,10 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/item_price"
                         android:layout_marginStart="10dp"
-                        android:text="@{productDetail.description}"
-                        app:colorClickableText="#C87533"
                         android:paddingTop="@dimen/general_padding"
                         android:paddingBottom="@dimen/general_padding"
+                        android:text="@{productDetail.description}"
+                        app:colorClickableText="#C87533"
                         app:trimCollapsedText="@string/show_more"
                         app:trimExpandedText="@string/show_less"
                         app:trimLength="42"
@@ -291,7 +291,7 @@
                         android:layout_marginTop="41dp"
                         android:layout_marginBottom="15dp"
                         android:layout_toEndOf="@+id/topping_selection_radio_button"
-                        android:text="Trân châu trắng"
+                        android:text="Thêm topping"
                         android:textSize="15sp" />
 
                     <TextView
@@ -361,17 +361,17 @@
                         android:textSize="15dp"
                         android:textStyle="bold" />
 
-                    <TextView
+                    <EditText
                         android:id="@+id/other_option"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/item_image3"
                         android:layout_marginStart="10dp"
                         android:layout_marginTop="5dp"
+                        android:hint="@string/order_note"
                         android:paddingStart="4dp"
-                        android:text="@string/order_note"
-                        android:textSize="20sp"
-                        tools:ignore="RtlSymmetry" />
+                        android:text=""
+                        android:textSize="20sp" />
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>

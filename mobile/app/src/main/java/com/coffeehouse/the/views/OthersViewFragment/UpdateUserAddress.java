@@ -103,8 +103,9 @@ public class UpdateUserAddress extends Fragment implements View.OnClickListener 
     }
 
     private boolean titleValidation() {
-        if (txtTitle.getText().equals("")) {
-            txtTitle.setError("Name Required");
+        String title = txtTitle.getText().toString();
+        if (title.isEmpty()) {
+            txtTitle.setError("Tilte Required");
             txtTitle.requestFocus();
             return false;
         }
@@ -112,8 +113,9 @@ public class UpdateUserAddress extends Fragment implements View.OnClickListener 
     }
 
     private boolean desValidation() {
-        if (txtDescription.getText().equals("")) {
-            txtDescription.setError("Name Required");
+        String des = txtDescription.getText().toString();
+        if (des.isEmpty()) {
+            txtDescription.setError("Destination Required");
             txtDescription.requestFocus();
             return false;
         }
@@ -121,7 +123,8 @@ public class UpdateUserAddress extends Fragment implements View.OnClickListener 
     }
 
     private boolean nameValidation() {
-        if (txtRecipientName.getText().equals("")) {
+        String name = txtRecipientName.getText().toString();
+        if (name.isEmpty()) {
             txtRecipientName.setError("Name Required");
             txtRecipientName.requestFocus();
             return false;
@@ -130,8 +133,9 @@ public class UpdateUserAddress extends Fragment implements View.OnClickListener 
     }
 
     private boolean phoneValidation() {
-        if (txtRecipientPhone.getText().equals("")) {
-            txtRecipientPhone.setError("Name Required");
+        String phone = txtRecipientPhone.getText().toString();
+        if (phone.isEmpty()) {
+            txtRecipientPhone.setError("Phone Required");
             txtRecipientPhone.requestFocus();
             return false;
         }

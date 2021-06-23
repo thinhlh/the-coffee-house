@@ -8,7 +8,6 @@ import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -23,7 +22,6 @@ import com.coffeehouse.the.views.admin.AdminHomeActivity;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -107,6 +105,10 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             }
         });
 
+        //Forgot password
+        v.findViewById(R.id.btn_forgot_password).setOnClickListener(l -> {
+            startActivity(new Intent(getContext(), LoginForgotPasswordActivity.class));
+        });
 
         return v;
     }

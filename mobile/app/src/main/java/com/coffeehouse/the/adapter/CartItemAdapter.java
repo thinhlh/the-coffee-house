@@ -18,9 +18,12 @@ import com.coffeehouse.the.services.ProductsRepo;
 
 import org.jetbrains.annotations.NotNull;
 
-public class CartItemAdapter extends Adapter<CartItemAdapter.CartItemViewHolder> {
+import java.util.List;
+
+public class CartItemAdapter extends Adapter<CartItemAdapter.CartItemViewHolder> implements ClickableRecyclerView<Cart> {
     private Cart cart;
     private ProductsRepo productsRepo = new ProductsRepo();
+    private RecyclerViewClickListener<Cart> listener;
 
     @NonNull
     @NotNull
@@ -35,10 +38,7 @@ public class CartItemAdapter extends Adapter<CartItemAdapter.CartItemViewHolder>
         CartItem currentCartItem = cart.getItems().get(position);
         holder.orderDetailItemBinding.setCartItem(currentCartItem);
         holder.txtItemName.setText(productsRepo.getProductsById(currentCartItem.getProductId()).getTitle());
-        holder.btnDeleteItem.setOnClickListener(listener -> {
-            cart.deleteItem(currentCartItem);
-            notifyDataSetChanged();
-        });
+        holder.bindOnClick(cart, position, listener);
     }
 
     public void setCart(Cart cart) {
@@ -52,16 +52,42 @@ public class CartItemAdapter extends Adapter<CartItemAdapter.CartItemViewHolder>
         return cart.getItems() != null ? cart.getItems().size() : 0;
     }
 
+    @Override
+    public void setItems(List<Cart> items) {
+
+    }
+
+    @Override
+    public List<Cart> getItems() {
+        return null;
+    }
+
+    @Override
+    public void setClickListener(RecyclerViewClickListener<Cart> listener) {
+        this.listener = listener;
+    }
+
+
     static class CartItemViewHolder extends RecyclerView.ViewHolder {
         private final OrderDetailItemBinding orderDetailItemBinding;
         private TextView txtItemName;
-        private ImageButton btnDeleteItem;
+        //private ImageButton btnDeleteItem;
 
         public CartItemViewHolder(@NonNull @NotNull OrderDetailItemBinding orderDetailItemBinding) {
             super(orderDetailItemBinding.getRoot());
             this.orderDetailItemBinding = orderDetailItemBinding;
             txtItemName = orderDetailItemBinding.textItemname;
-            btnDeleteItem = orderDetailItemBinding.bush;
+            //btnDeleteItem = orderDetailItemBinding.bush;
+        }
+
+        public void bindOnClick(Cart cart, int position, RecyclerViewClickListener<Cart> clickListener) {
+            orderDetailItemBinding.setCartItem(cart.getItems().get(position));
+            orderDetailItemBinding.executePendingBindings();
+            orderDetailItemBinding.bush.setOnClickListener(view -> {
+                cart.deleteItem(cart.getItems().get(position));
+                if (clickListener != null)
+                    clickListener.onClick(cart);
+            });
         }
     }
 }

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="order"
+            type="com.coffeehouse.the.models.Order" />
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/admin_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
+                app:navigationIconTint="@color/white"
+                app:title="@{order.recipientName}" />
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            android:padding="@dimen/general_padding">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/general_padding"
+                    android:text="@string/order_information"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/AdminUserInfoField"
+                    android:drawableStart="@drawable/ic_baseline_text_snippet_24"
+                    android:text="@{order.id}" />
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/AdminUserInfoField"
+                    android:drawableStart="@drawable/ic_baseline_access_time_24"
+                    android:text="@{order.formattedOrderTime}"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/AdminUserInfoField"
+                    android:drawableStart="@drawable/ic_baseline_attach_money_24"
+                    android:text="@{order.total+ `đ`}"
+                    android:textStyle="bold" />
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/general_padding"
+                    android:text="Additional Information"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/AdminUserInfoField"
+                    android:gravity="center"
+                    android:text="Giao Tận Nơi"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:textStyle="italic" />
+
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/AdminUserInfoField"
+                    android:autoLink="map"
+                    android:drawableStart="@drawable/ic_baseline_location_on_24"
+                    android:linksClickable="true"
+                    android:text="@{order.orderAddress}" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    style="@style/AdminUserInfoField"
+                    android:autoLink="phone"
+                    android:drawableStart="@drawable/ic_baseline_phone_forwarded_24"
+                    android:text="@{order.recipientPhone}"
+                    android:textColorLink="@color/black" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/general_padding"
+                    android:text="Cart Items"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                    android:textStyle="bold" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycler_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="@dimen/general_padding" />
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

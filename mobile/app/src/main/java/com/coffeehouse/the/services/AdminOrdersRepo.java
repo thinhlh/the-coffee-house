@@ -58,13 +58,13 @@ public class AdminOrdersRepo implements Fetching {
                                 List<Order> orders = new ArrayList<>();
                                 for (QueryDocumentSnapshot orderDoc : orderValue) {
                                     if (orderDoc != null) {
-
                                         Cart cart = new Cart();
                                         orderDoc.getReference().collection("cart")
                                                 .addSnapshotListener((cartValue, cartError) -> {
                                                     List<CartItem> cartItems = new ArrayList<>();
                                                     if (cartError != null) {
                                                         //TODO Handling error
+                                                        Log.e("Cart Error", cartError.getMessage());
                                                     } else {
                                                         for (QueryDocumentSnapshot cartItemDoc : cartValue) {
                                                             if (cartItemDoc != null) {
@@ -73,19 +73,20 @@ public class AdminOrdersRepo implements Fetching {
                                                         }
                                                         cart.setItems(cartItems);
                                                     }
-                                                    Log.d("Cart", cart.toString());
 
                                                     Order order = orderDoc.toObject(Order.class);
                                                     order.setId(orderDoc.getId());
                                                     order.setCart(cart);
 
                                                     // Co the log o day bat ky gt nao de xem ket qua
-                                                    Log.d(order.getId(), String.valueOf(order.getCart().getItems().size()));
                                                     orders.add(order);
+
+                                                    this.orders.setValue(orders);
+                                                    Log.d("FINAL", orders.toString());
+                                                    Log.d("Orders", String.valueOf(orders.size()));
                                                 });
                                     }
                                 }
-                                this.orders.setValue(orders);
                             }
                         }
                 );

@@ -27,7 +27,7 @@ public class AdminOrdersFragment extends Fragment implements SearchView.OnQueryT
 
     private AdminOrderViewModel viewModel;
 
-    private AdminOrderAdapter adapter = new AdminOrderAdapter();
+    private final AdminOrderAdapter adapter = new AdminOrderAdapter();
 
 
     @Nullable
@@ -54,6 +54,7 @@ public class AdminOrdersFragment extends Fragment implements SearchView.OnQueryT
         ordersRecyclerView.setAdapter(adapter);
 
         //TODO observable here
+        viewModel.getOrders().observe(getViewLifecycleOwner(), adapter::setItems);
 
         adapter.setClickListener(item -> {
             //TODO START ACTIVITY HERE

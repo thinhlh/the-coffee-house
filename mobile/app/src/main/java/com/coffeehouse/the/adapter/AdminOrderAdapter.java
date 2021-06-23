@@ -1,5 +1,6 @@
 package com.coffeehouse.the.adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -20,8 +21,8 @@ import java.util.List;
 public class AdminOrderAdapter extends RecyclerView.Adapter<AdminOrderAdapter.AdminOrderViewHolder> implements ClickableRecyclerView<Order> {
 
     private List<Order> orders = new ArrayList<>();
-    private RecyclerViewClickListener<Order> listener;
     private List<Order> ordersCopy = new ArrayList<>();
+    private RecyclerViewClickListener<Order> listener;
 
     @NonNull
     @NotNull

@@ -32,17 +32,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9f7a0c3-2cf4-439e-8f22-a485e29e3808" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/models/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/models/Cart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/models/CartItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/models/CartItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/models/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/models/Order.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/services/OrdersRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/services/OrdersRepo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/utils/Constants.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/utils/Constants.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/admin/AdminHomeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/admin/AdminHomeActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/admin/AdminUsersFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/admin/AdminUsersFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/order_detail_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/order_detail_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/product_list_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/product_list_item.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/menu/admin_menu_bottom_navigation.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/menu/admin_menu_bottom_navigation.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/AdminNotificationAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/AdminNotificationAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/AdminOrderAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/AdminOrderAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/services/AdminOrdersRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/services/AdminOrdersRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/admin/AdminOrdersFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/admin/AdminOrdersFragment.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -255,25 +249,25 @@
       <screen x="0" y="25" width="1920" height="969" />
     </state>
     <state x="100" y="125" width="1720" height="769" key="DiffContextDialog/0.25.1920.969@0.25.1920.969" timestamp="1624207220254" />
-    <state width="1868" height="242" key="GridCell.Tab.0.bottom" timestamp="1624399140986">
+    <state width="1868" height="298" key="GridCell.Tab.0.bottom" timestamp="1624420578994">
       <screen x="0" y="25" width="1920" height="969" />
     </state>
-    <state width="1868" height="242" key="GridCell.Tab.0.bottom/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624399140986" />
+    <state width="1868" height="298" key="GridCell.Tab.0.bottom/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624420578994" />
     <state width="1868" height="349" key="GridCell.Tab.0.bottom/0.25.1920.969@0.25.1920.969" timestamp="1624249589352" />
-    <state width="1868" height="242" key="GridCell.Tab.0.center" timestamp="1624399140986">
+    <state width="1868" height="298" key="GridCell.Tab.0.center" timestamp="1624420578994">
       <screen x="0" y="25" width="1920" height="969" />
     </state>
-    <state width="1868" height="242" key="GridCell.Tab.0.center/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624399140986" />
+    <state width="1868" height="298" key="GridCell.Tab.0.center/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624420578994" />
     <state width="1868" height="349" key="GridCell.Tab.0.center/0.25.1920.969@0.25.1920.969" timestamp="1624249589352" />
-    <state width="1868" height="242" key="GridCell.Tab.0.left" timestamp="1624399140986">
+    <state width="1868" height="298" key="GridCell.Tab.0.left" timestamp="1624420578994">
       <screen x="0" y="25" width="1920" height="969" />
     </state>
-    <state width="1868" height="242" key="GridCell.Tab.0.left/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624399140986" />
+    <state width="1868" height="298" key="GridCell.Tab.0.left/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624420578994" />
     <state width="1868" height="349" key="GridCell.Tab.0.left/0.25.1920.969@0.25.1920.969" timestamp="1624249589351" />
-    <state width="1868" height="242" key="GridCell.Tab.0.right" timestamp="1624399140986">
+    <state width="1868" height="298" key="GridCell.Tab.0.right" timestamp="1624420578994">
       <screen x="0" y="25" width="1920" height="969" />
     </state>
-    <state width="1868" height="242" key="GridCell.Tab.0.right/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624399140986" />
+    <state width="1868" height="298" key="GridCell.Tab.0.right/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624420578994" />
     <state width="1868" height="349" key="GridCell.Tab.0.right/0.25.1920.969@0.25.1920.969" timestamp="1624249589352" />
     <state x="469" y="91" key="SettingsEditor" timestamp="1624362073037">
       <screen x="0" y="25" width="1920" height="969" />
@@ -294,11 +288,11 @@
       <screen x="0" y="25" width="1920" height="969" />
     </state>
     <state x="541" y="229" width="838" height="1032" key="run.anything.popup/0.25.1920.969@0.25.1920.969" timestamp="1624210807898" />
-    <state x="625" y="241" width="838" height="607" key="search.everywhere.popup" timestamp="1624399662258">
+    <state x="625" y="241" width="838" height="607" key="search.everywhere.popup" timestamp="1624420583480">
       <screen x="0" y="25" width="1920" height="969" />
     </state>
     <state x="625" y="241" width="670" height="676" key="search.everywhere.popup/0.0.1920.1080@0.0.1920.1080" timestamp="1624039875506" />
-    <state x="625" y="241" width="838" height="607" key="search.everywhere.popup/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624399662258" />
+    <state x="625" y="241" width="838" height="607" key="search.everywhere.popup/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624420583480" />
     <state x="625" y="241" width="838" height="607" key="search.everywhere.popup/0.25.1920.969@0.25.1920.969" timestamp="1624247870439" />
   </component>
 </project>

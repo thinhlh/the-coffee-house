@@ -28,8 +28,8 @@ public class ProductDetailViewModel extends ViewModel {
     public LiveData<String> sum;
     public LiveData<Boolean> toppingCheck;
 
-    private Integer amount = 0;
-    private Integer amountPerOrder = 0;
+    private Integer amount;
+    private Integer amountPerOrder;
     private final Integer toppingPrice = 10000;
     private Integer sizePrice = 0;
     private final Integer upSize = 5000;
@@ -38,9 +38,9 @@ public class ProductDetailViewModel extends ViewModel {
     NumberFormat format = NumberFormat.getCurrencyInstance(locale);
 
     public ProductDetailViewModel() {
-        countM = new MutableLiveData<>(0);
-        sumM = new MutableLiveData<>("Thêm vào giỏ - " + format.format(amount));
+        countM = new MutableLiveData<>(1);
         toppingCheckM = new MutableLiveData<>(false);
+        sumM = new MutableLiveData<>("Thêm vào giỏ");
         count = countM;
         sum = sumM;
         toppingCheck = toppingCheckM;

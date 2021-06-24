@@ -37,6 +37,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:padding">@dimen/general_padding</item>
         <item name="android:textAppearance">@style/TextAppearance.MaterialComponents.Body2</item>
+        <item name="android:drawablePadding">@dimen/general_dimen</item>
     </style>
 
     <style name="splashScreen" parent="Theme.AppCompat.Light.NoActionBar">

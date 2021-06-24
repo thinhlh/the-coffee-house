@@ -170,6 +170,8 @@
     <string name="orders">Orders</string>
     <string name="recovery_email">Nhập email khôi phục</string>
     <string name="send">Gửi yêu cầu</string>
+    <string name="order_information">Order Information</string>
+    <string name="recovery">Recovery</string>
 
     <!--
     This string is used for square devices and overridden by hello_world in

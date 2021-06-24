@@ -1,5 +1,6 @@
 package com.coffeehouse.the.views.admin;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +30,6 @@ public class AdminOrdersFragment extends Fragment implements SearchView.OnQueryT
 
     private final AdminOrderAdapter adapter = new AdminOrderAdapter();
 
-
     @Nullable
     @org.jetbrains.annotations.Nullable
     @Override
@@ -58,6 +58,10 @@ public class AdminOrdersFragment extends Fragment implements SearchView.OnQueryT
 
         adapter.setClickListener(item -> {
             //TODO START ACTIVITY HERE
+            Intent intent = new Intent(getContext(), AdminOrderDetail.class);
+            intent.putExtra("order", item.toGson());
+            intent.putExtra("cart", item.getCart());
+            startActivity(intent);
         });
 
     }

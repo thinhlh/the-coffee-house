@@ -18,6 +18,7 @@
     <color name="yellow_pastel">#FDFD96</color>
     <color name="magenta">#FF00FF</color>
     <color name="green">#32CD32</color>
+    <color name="dark_green">#32AF00</color>
     <color name="deep_sky_blue">#00BFFF</color>
     <color name="turquoise">#40E0D0</color>
 </resources>

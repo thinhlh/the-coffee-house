@@ -3,7 +3,9 @@ package com.coffeehouse.the.views;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.WindowManager;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -49,19 +51,26 @@ public class MainActivity extends AppCompatActivity {
                 Task<Void> task1;
                 if (UserRepo.user.getSubscribeToNotifications()) {
                     task1 = FirebaseMessaging.getInstance().subscribeToTopic(FCMService.TOPIC);
+                    Log.d("Subscribed", "TRUE");
                 } else {
                     task1 = FirebaseMessaging.getInstance().unsubscribeFromTopic(FCMService.TOPIC);
                 }
-                Toast.makeText(this, "Welcome " + UserRepo.user.getName(), Toast.LENGTH_SHORT).show();
-                task1.addOnCompleteListener(task2 -> startActivity(new Intent(context, task.getResult() ? AdminHomeActivity.class : HomeActivity.class)));
+
+                task1.addOnCompleteListener(task2 -> {
+                    Toast.makeText(this, "Welcome " + UserRepo.user.getName(), Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(context, task.getResult() ? AdminHomeActivity.class : HomeActivity.class));
+                });
             });
         }
     }
 
+
     @Override
-    protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle
+                                    savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.auth_skeleton);
+
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Objects.requireNonNull(getSupportActionBar()).hide();
 

@@ -73,11 +73,13 @@
         <activity android:name=".views.ProductDetailActivity" />
         <activity android:name=".views.HomeActivity" />
         <activity android:name=".views.GreetingActivity" />
+        <activity android:name=".views.LoginForgotPasswordActivity"/>
 
         <activity android:name=".views.admin.AdminHomeActivity" />
         <activity android:name=".views.admin.AdminEditProduct" />
         <activity android:name=".views.admin.AdminEditNotification" />
         <activity android:name=".views.admin.AdminUserInfo" />
+        <activity android:name=".views.admin.AdminOrderDetail"/>
     </application>
 
 </manifest>

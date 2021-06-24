@@ -1,10 +1,12 @@
 package com.coffeehouse.the.adapter;
 
+import android.graphics.Color;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -36,6 +38,17 @@ public class AdminOrderAdapter extends RecyclerView.Adapter<AdminOrderAdapter.Ad
     public void onBindViewHolder(@NonNull @NotNull AdminOrderAdapter.AdminOrderViewHolder holder, int position) {
         Order currentOrder = orders.get(position);
         holder.adminOrderCardBinding.setOrder(currentOrder);
+
+        if (currentOrder.getDelivered()) {
+            holder.adminOrderCardBinding.status.setText("Delivered");
+            holder.adminOrderCardBinding.status.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.dark_green));
+            holder.adminOrderCardBinding.status.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_baseline_check_green_24, 0);
+        } else {
+            holder.adminOrderCardBinding.status.setText("Pending");
+            holder.adminOrderCardBinding.status.setTextColor(Color.RED);
+            holder.adminOrderCardBinding.status.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_baseline_timer_red_24, 0);
+        }
+
         holder.bindOnClick(currentOrder, listener);
     }
 

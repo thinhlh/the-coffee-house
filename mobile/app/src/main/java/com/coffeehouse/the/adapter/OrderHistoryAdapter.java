@@ -2,7 +2,6 @@ package com.coffeehouse.the.adapter;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -90,10 +89,10 @@ public class OrderHistoryAdapter extends Adapter<OrderHistoryAdapter.OrderHistor
     private String itemName(Order order) {
         String itemName = "";
         if (order.getCart().getItems().size() == 1) {
-            return productsRepo.getProductsById(order.getCart().getItems().get(0).getProductId()).getTitle();
+            return productsRepo.getProductById(order.getCart().getItems().get(0).getProductId()).getTitle();
         }
         for (CartItem cartItem : order.getCart().getItems()) {
-            itemName = itemName + productsRepo.getProductsById(cartItem.getProductId()).getTitle() + ", ";
+            itemName = itemName + productsRepo.getProductById(cartItem.getProductId()).getTitle() + ", ";
         }
         return itemName;
     }
@@ -101,7 +100,7 @@ public class OrderHistoryAdapter extends Adapter<OrderHistoryAdapter.OrderHistor
     private String itemPrice(Order order) {
         Locale locale = new Locale("vi", "VN");
         Format format = NumberFormat.getCurrencyInstance(locale);
-        if (order.isDelivered()) {
+        if (order.getDelivered()) {
             return format.format(order.getTotal() + 30000);
         } else
             return format.format(order.getTotal());

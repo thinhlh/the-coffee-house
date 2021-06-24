@@ -3,6 +3,7 @@ package com.coffeehouse.the.views.admin;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -60,6 +61,7 @@ public class AdminEditNotification extends AppCompatActivity {
                     if (currentNotification.getId().equals("")) {
                         currentNotification.setDateTime(Date.from(Instant.now()));
                     }
+
                     viewModel.onSubmitNotification(currentNotification, imageData, this).addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                             this.finish();
@@ -116,7 +118,7 @@ public class AdminEditNotification extends AppCompatActivity {
             new AlertDialog.Builder(this).setTitle("No image").setMessage("You have not choose any notification image!").setPositiveButton("OKAY", (dialog, which) -> {
                 dialog.dismiss();
             }).show();
-            result=false;
+            result = false;
         }
         return result;
     }

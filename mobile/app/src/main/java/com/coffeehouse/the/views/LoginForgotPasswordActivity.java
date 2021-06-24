@@ -14,9 +14,13 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.databinding.DataBindingUtil;
 
 import com.coffeehouse.the.R;
+import com.coffeehouse.the.databinding.LoginForgotPasswordActivityBinding;
+import com.google.android.material.appbar.MaterialToolbar;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.ActionCodeSettings;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -25,20 +29,25 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 public class LoginForgotPasswordActivity extends AppCompatActivity {
-    private EditText email;
-    private String _email;
-    private FirebaseAuth auth = FirebaseAuth.getInstance();
+
+    private final FirebaseAuth auth = FirebaseAuth.getInstance();
+    private LoginForgotPasswordActivityBinding binding;
+    private String _email = "";
 
     @Override
     protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.login_forgot_password_activity);
+        binding = DataBindingUtil.setContentView(this, R.layout.login_forgot_password_activity);
+
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Objects.requireNonNull(getSupportActionBar()).hide();
 
-        email = findViewById(R.id.input_email_reset_pwd);
-        (findViewById(R.id.btn_send_request_reset_pwd)).setOnClickListener(l -> {
-            _email = email.getText().toString();
+        setUpListeners();
+    }
+
+    private void setUpListeners() {
+        binding.appBar.setNavigationOnClickListener(v -> this.finish());
+        binding.btnSendRequestResetPwd.setOnClickListener(v -> {
             if (emailValidation()) {
                 auth.sendPasswordResetEmail(_email).addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
@@ -51,13 +60,11 @@ public class LoginForgotPasswordActivity extends AppCompatActivity {
                 });
             }
         });
-
-        (findViewById(R.id.close_forget_password)).setOnClickListener(l -> {
-            finish();
-        });
     }
 
     private boolean emailValidation() {
+        _email = binding.inputEmailResetPwd.getEditText().getText().toString();
+        EditText email = binding.inputEmailResetPwd.getEditText();
         if (_email.isEmpty()) {
             email.setError("Email is required");
             email.requestFocus();

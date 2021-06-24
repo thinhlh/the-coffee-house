@@ -2,14 +2,12 @@ package com.coffeehouse.the.models;
 
 import com.coffeehouse.the.utils.Constants;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 //Cart class to be used at client side, can be convert to Order object for further information
-public class Cart {
-
-    public Cart() {
-    }
+public class Cart implements Serializable {
 
     // A Map of Products that user choose include ProductId and its quantity
     private List<CartItem> items = new ArrayList<>();
@@ -52,10 +50,7 @@ public class Cart {
     }
 
     public int getTotalCartValue() {
-        int total = 0;
-        for (int i = 0; i < items.size(); i++) {
-            total += items.get(i).getTotalCartItemValue();
-        }
+        int total = items.stream().mapToInt(CartItem::getTotalCartItemValue).sum();
         return total;
     }
 
@@ -69,6 +64,17 @@ public class Cart {
 
     public String getAmountQuantity() {
         return "Giao tận nơi " + amountQuantity().toString() + " món";
+    }
+
+    public List<String> getAllProductsId() {
+        List<String> result = new ArrayList<>();
+
+        items.forEach(item -> {
+            if (!result.contains(item.getProductId()))
+                result.add(item.getProductId());
+        });
+
+        return result;
     }
 
     public String getTotalCurrency() {

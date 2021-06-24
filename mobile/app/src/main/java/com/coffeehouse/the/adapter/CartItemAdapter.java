@@ -2,7 +2,6 @@ package com.coffeehouse.the.adapter;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -37,7 +36,7 @@ public class CartItemAdapter extends Adapter<CartItemAdapter.CartItemViewHolder>
     public void onBindViewHolder(@NonNull @NotNull CartItemAdapter.CartItemViewHolder holder, int position) {
         CartItem currentCartItem = cart.getItems().get(position);
         holder.orderDetailItemBinding.setCartItem(currentCartItem);
-        holder.txtItemName.setText(productsRepo.getProductsById(currentCartItem.getProductId()).getTitle());
+        holder.txtItemName.setText(productsRepo.getProductById(currentCartItem.getProductId()).getTitle());
         holder.bindOnClick(cart, position, listener);
     }
 

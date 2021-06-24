@@ -21,7 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="@dimen/general_padding">
+            android:paddingVertical="@dimen/general_dimen"
+            android:paddingHorizontal="@dimen/general_padding">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -33,35 +34,32 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/general_dimen"
-                    android:text="Le Hoang Thinh"
+                    android:text="@{order.recipientName}"
                     android:textAppearance="?attr/textAppearanceHeadline5" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/general_dimen"
-                    android:text="Total: 128000đ"
+                    android:text="@{`Total: `+order.total+` đ`}"
                     android:textAppearance="?attr/textAppearanceBody1"
                     android:textStyle="bold" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="14:42:55 Tue 18-08-2021" />
+                    android:text="@{order.formattedOrderTime}" />
 
             </LinearLayout>
 
             <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/status"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:drawableEnd="@drawable/ic_baseline_check_24"
-                android:drawableTint="@color/green"
                 android:layout_weight="3"
                 android:gravity="center"
-                android:textStyle="bold"
-                android:textColor="@color/green"
-                android:text="Delivered"
-                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5" />
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                android:textStyle="bold" />
         </LinearLayout>
 
 

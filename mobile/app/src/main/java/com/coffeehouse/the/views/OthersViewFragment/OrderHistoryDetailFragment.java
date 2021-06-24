@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.OrderHistoryDetailAdapter;
 import com.coffeehouse.the.databinding.OrderHistoryDetailFragmentBinding;
-import com.coffeehouse.the.models.Cart;
 import com.coffeehouse.the.models.Order;
 import com.coffeehouse.the.viewModels.OrderDetailViewModel;
 
@@ -77,7 +76,7 @@ public class OrderHistoryDetailFragment extends Fragment {
     private String total() {
         Locale locale = new Locale("vi", "VN");
         Format format = NumberFormat.getCurrencyInstance(locale);
-        if (order.isDelivered()) {
+        if (order.getDelivered()) {
             return format.format(order.getCart().getTotalCartValue() + 30000);
         } else {
             return format.format(order.getCart().getTotalCartValue());

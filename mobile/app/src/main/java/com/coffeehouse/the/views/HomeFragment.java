@@ -1,7 +1,9 @@
 package com.coffeehouse.the.views;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,19 +52,21 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         return binding.getRoot();
     }
 
-    private void setUpRecyclerView(){
+    private void setUpRecyclerView() {
         RecyclerView recyclerView = binding.notificationsRecyclerView;
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
 
         homeViewModel.getNotifications().observe(getViewLifecycleOwner(), adapter::setItems);
+
+
         adapter.setClickListener(notification -> {
             //TODO: BOTTOM NAVIGATION NOTIFICATION HERE
         });
     }
 
-    private void setUpCarouselViewer(){
+    private void setUpCarouselViewer() {
         CarouselView carouselView = binding.carouseView;
         carouselView.setPageCount(5);
         carouselView.setImageListener((position, imageView) -> {
@@ -86,17 +90,17 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         });
     }
 
-    private void Initview (View view){
-        CardView cardViewdelivery=view.findViewById(R.id.cardview_delivery);
+    private void Initview(View view) {
+        CardView cardViewdelivery = view.findViewById(R.id.cardview_delivery);
         cardViewdelivery.setOnClickListener(this);
-        CardView cardViewpickup=view.findViewById(R.id.pickUpCard);
+        CardView cardViewpickup = view.findViewById(R.id.pickUpCard);
         cardViewpickup.setOnClickListener(this);
 
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.cardview_delivery:
                 Changefragment();
                 break;
@@ -109,16 +113,16 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
     private void Changefragmentstorelocation() {
-        FragmentManager fragmentManager =requireActivity().getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.home_fragment_container,new StoresFragment()).addToBackStack(null).commit();
-        BottomNavigationView bottomNavigationView=getActivity().findViewById(R.id.bottom_navigation);
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.home_fragment_container, new StoresFragment()).addToBackStack(null).commit();
+        BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.action_store_location);
     }
 
     private void Changefragment() {
-        FragmentManager fragmentManager=requireActivity().getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.home_fragment_container,new OrderFragment()).addToBackStack(null).commit();
-        BottomNavigationView bottomNavigationView=getActivity().findViewById(R.id.bottom_navigation);
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.home_fragment_container, new OrderFragment()).addToBackStack(null).commit();
+        BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.action_order);
     }
 }

@@ -61,6 +61,9 @@ public class NotificationsRepo implements Fetching {
     @Override
     public void setUpRealTimeListener() {
         db.collection("notifications").addSnapshotListener((value, error) -> {
+
+            Log.d("Invoked", "Invoked");
+
             if (error != null) {
                 Log.w("Notifications Repo", error);
             } else {
@@ -85,6 +88,7 @@ public class NotificationsRepo implements Fetching {
 
     public Task<Void> addNotification(Notification notification, Uri imageUri, Context context) {
         String id = db.collection("notifications").document().getId();
+
         StorageReference storageReferenceToImage = storage.getReference().child("images/notifications/" + id);
         UploadTask uploadTask = storageReferenceToImage.putFile(imageUri);
 

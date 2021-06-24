@@ -1,13 +1,21 @@
 package com.coffeehouse.the.models;
 
+import android.util.Log;
+
 import com.coffeehouse.the.services.UserRepo;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.gson.Gson;
+import com.google.gson.internal.LinkedTreeMap;
 
 import java.text.Format;
 import java.text.NumberFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -19,10 +27,10 @@ public class Order {
     private Cart cart = new Cart();
     private String userId = "";
     private String orderMethod = "";
-    private boolean delivered;
     private String orderAddress = "";
     private String recipientName = "";
     private String recipientPhone = "";
+    private boolean delivered = false;
 
     public Order() {
 
@@ -73,7 +81,7 @@ public class Order {
     }
 
     public int getTotal() {
-        return cart.getItems().stream().mapToInt(CartItem::getTotalCartItemValue).sum();
+        return cart.getTotalCartValue();
     }
 
     public String getUserId() {
@@ -116,26 +124,77 @@ public class Order {
         this.recipientPhone = recipientPhone;
     }
 
-    public boolean isDelivered() {
-        return delivered;
-    }
-
     public void setDelivered(boolean delivered) {
         this.delivered = delivered;
     }
 
-    public static Order fromMap(Map<String, Object> map) {
+    public boolean getDelivered() {
+        return delivered;
+    }
+
+    public String getFormattedOrderTime() {
+        return new SimpleDateFormat("HH:mm EEEE, MMM dd").format(orderTime);
+    }
+
+    public List<String> getAllProductsId(){
+        return cart.getAllProductsId();
+    }
+
+    private static Order fromMap(Map<String, Object> map) {
         Order order = new Order();
 
         order.setId((String) map.get("id"));
         order.setUserId((String) map.get("userId"));
-        order.setOrderTime(((Timestamp) map.get("birthday")).toDate());
 
-        List<Object> cartItemList = (List<Object>) map.get("cart");
-        Cart cart = new Cart();
+        if (map.get("orderTime") instanceof String) {
+            //This is used for fromGson method
+            try {
+                order.orderTime = new SimpleDateFormat("MMM dd, yyyy h:mm:ss a").parse((String) map.get("orderTime"));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+        } else order.orderTime = ((Timestamp) map.get("orderTime")).toDate();
+        
+        order.orderMethod = String.valueOf(map.get("orderMethod"));
+        order.orderAddress = (String) map.get("orderAddress");
+        order.recipientName = (String) map.get("recipientName");
+        order.recipientPhone = (String) map.get("recipientPhone");
+
+
+        if (map.containsKey("delivered")) {
+            order.setDelivered((Boolean) map.get("delivered"));
+        }
 
         return order;
     }
+
+    /*
+     * THIS MAP IS NOT INCLUDED CART
+     * */
+    private Map<String, Object> toMap() {
+        Map<String, Object> map = new HashMap<>();
+
+        map.put("id", id);
+        map.put("orderTime", orderTime);
+        map.put("userId", userId);
+        map.put("orderMethod", orderMethod);
+        map.put("orderAddress", orderAddress);
+        map.put("recipientName", recipientName);
+        map.put("recipientPhone", recipientPhone);
+        map.put("delivered", delivered);
+
+        return map;
+    }
+
+    public String toGson() {
+        return new Gson().toJson(toMap());
+    }
+
+    public static Order fromGson(String gson) {
+        Map<String, Object> map = new Gson().fromJson(gson, HashMap.class);
+        return fromMap(map);
+    }
+
 
     @Override
     public String toString() {

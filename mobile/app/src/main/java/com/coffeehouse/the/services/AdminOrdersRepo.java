@@ -95,5 +95,4 @@ public class AdminOrdersRepo implements Fetching {
     public LiveData<List<Order>> getOrder() {
         return orders;
     }
-
 }

@@ -1,7 +1,6 @@
 package com.coffeehouse.the.adapter;
 
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
@@ -34,8 +33,8 @@ public class OrderHistoryDetailAdapter extends Adapter<OrderHistoryDetailAdapter
     public void onBindViewHolder(@NonNull @NotNull OrderHistoryDetailAdapter.OrderDetailHistoryViewHolder holder, int position) {
         CartItem currentCartItem = cart.getItems().get(position);
         holder.binding.setCartItem(currentCartItem);
-        holder.title.setText(productsRepo.getProductsById(currentCartItem.getProductId()).getTitle());
-        holder.quantity.setText(currentCartItem.getQuantity().toString());
+        holder.title.setText(productsRepo.getProductById(currentCartItem.getProductId()).getTitle());
+        holder.quantity.setText(currentCartItem.getQuantity());
     }
 
     public void setCart(Cart cart) {

@@ -151,7 +151,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                             Toast.makeText(this.getContext(), "Welcome " + FirebaseAuth.getInstance().getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
                             navigateToHome(task.getResult().getAdmin());
                         } else {
-                            Toast.makeText(getContext(), "Login Failed", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                         //loginProgress.setVisibility(View.GONE);
                     });

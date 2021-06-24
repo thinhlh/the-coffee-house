@@ -2,13 +2,14 @@ package com.coffeehouse.the.models;
 
 import com.coffeehouse.the.utils.Constants;
 
+import java.io.Serializable;
 import java.util.Map;
 import java.util.Objects;
 
-public class CartItem {
+public class CartItem implements Serializable {
     private String productId = "";
     private int itemPrice = 0;
-    private Integer quantity = 0;
+    private int quantity = 0;
     private ProductSize size = ProductSize.Medium;
     private String note = "";
     private ProductTopping topping = ProductTopping.Off;
@@ -50,11 +51,11 @@ public class CartItem {
         this.itemPrice = itemPrice;
     }
 
-    public Integer getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(Integer quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 

@@ -8,20 +8,15 @@ import androidx.lifecycle.MutableLiveData;
 import com.coffeehouse.the.models.Cart;
 import com.coffeehouse.the.models.CartItem;
 import com.coffeehouse.the.models.Order;
-import com.coffeehouse.the.utils.Constants;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.Executor;
-import java.util.concurrent.Executors;
 
 public class OrdersRepo implements Fetching {
     private final MutableLiveData<List<Order>> orders = new MutableLiveData<>();
@@ -37,7 +32,7 @@ public class OrdersRepo implements Fetching {
         dataOrder.put("userId", FirebaseAuth.getInstance().getCurrentUser().getUid());
         dataOrder.put("orderTime", order.getOrderTime());
         dataOrder.put("orderMethod", order.getOrderMethod());
-        dataOrder.put("delivered", order.isDelivered());
+        dataOrder.put("delivered", order.getDelivered());
         dataOrder.put("orderAddress", order.getOrderAddress());
         dataOrder.put("recipientName", order.getRecipientName());
         dataOrder.put("recipientPhone", order.getRecipientPhone());

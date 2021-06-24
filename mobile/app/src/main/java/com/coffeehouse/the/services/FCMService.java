@@ -7,6 +7,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.graphics.drawable.LevelListDrawable;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -55,13 +56,13 @@ public class FCMService extends FirebaseMessagingService {
         String channelId = getString(R.string.project_id);
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
-        NotificationCompat.Builder notificationBuilder =
-                null;
-        notificationBuilder = new NotificationCompat.Builder(this, channelId)
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, channelId)
                 .setSmallIcon(R.drawable.ic_baseline_coffee_24)
 //                    .setLargeIcon(BitmapFactory.decodeStream(new URL(notification.get).openConnection().getInputStream()))
                 .setContentTitle(notification.getNotification().getTitle() != null ? notification.getNotification().getTitle() : "The coffee house")
                 .setContentText(notification.getNotification().getBody())
+                .setContentInfo("INFO")
+                .setSubText("Notification")
                 .setAutoCancel(true)
                 .setSound(defaultSoundUri)
                 .setContentIntent(pendingIntent)

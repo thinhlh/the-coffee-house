@@ -8,6 +8,7 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.coffeehouse.the.models.Product;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -47,6 +48,7 @@ public class ProductsRepo implements Fetching {
             }
         });
     }
+
     private Task<QuerySnapshot> fetchProducts() {
         return db.collection("products").get();
     }
@@ -68,7 +70,25 @@ public class ProductsRepo implements Fetching {
         return res;
     }
 
-    public Product getProductsById(String productId) {
+    public Task<List<Product>> getProductsByIds(List<String> ids) {
+        return db.collection("products").whereIn(FieldPath.documentId(), ids).get().continueWith(task -> {
+            List<Product> currentProducts = new ArrayList<>();
+            if (!task.isSuccessful()) {
+                Log.w("Products Repo", task.getException().getMessage());
+            } else {
+                for (QueryDocumentSnapshot doc : task.getResult()) {
+                    if (doc != null) {
+                        Product product = doc.toObject(Product.class);
+                        product.setId(doc.getId());
+                        currentProducts.add(product);
+                    }
+                }
+            }
+            return currentProducts;
+        });
+    }
+
+    public Product getProductById(String productId) {
         for (Product product : products.getValue()) {
             if (product.getId().equals(productId))
                 return product;
@@ -96,6 +116,7 @@ public class ProductsRepo implements Fetching {
             }
         });
     }
+
     public LiveData<List<Product>> getFavProductOfUser() {
         return dataFavProduct;
     }

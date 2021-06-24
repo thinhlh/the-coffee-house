@@ -1,6 +1,6 @@
 package com.coffeehouse.the.models;
 
-import com.coffeehouse.the.utils.Constants;
+import com.coffeehouse.the.utils.commons.Constants;
 
 import java.io.Serializable;
 import java.util.Map;
@@ -98,6 +98,14 @@ public class CartItem implements Serializable {
 
     public void setTotalCartItemValue(int totalCartItemValue) {
         this.totalCartItemValue = totalCartItemValue;
+    }
+
+    public String getToppingString() {
+        return topping == ProductTopping.On ? "ADDED" : "NONE";
+    }
+
+    public String getSizeString() {
+        return size == ProductSize.Large ? "Large" : "Medium";
     }
 
     @Override

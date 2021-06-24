@@ -12,7 +12,9 @@ import com.coffeehouse.the.R;
 import com.coffeehouse.the.databinding.OrderHistoryListItemBinding;
 import com.coffeehouse.the.models.CartItem;
 import com.coffeehouse.the.models.Order;
-import com.coffeehouse.the.services.ProductsRepo;
+import com.coffeehouse.the.services.repositories.ProductsRepo;
+import com.coffeehouse.the.utils.helper.ClickableRecyclerView;
+import com.coffeehouse.the.utils.helper.RecyclerViewClickListener;
 
 import org.jetbrains.annotations.NotNull;
 

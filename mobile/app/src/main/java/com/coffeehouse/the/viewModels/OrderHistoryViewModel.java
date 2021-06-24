@@ -3,9 +3,8 @@ package com.coffeehouse.the.viewModels;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.coffeehouse.the.models.Cart;
 import com.coffeehouse.the.models.Order;
-import com.coffeehouse.the.services.OrdersRepo;
+import com.coffeehouse.the.services.repositories.OrdersRepo;
 
 import java.util.List;
 

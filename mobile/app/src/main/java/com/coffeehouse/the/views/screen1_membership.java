@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.databinding.FragmentScreen1MembershipBinding;
-import com.coffeehouse.the.services.UserRepo;
+import com.coffeehouse.the.services.repositories.UserRepo;
 
 import org.jetbrains.annotations.NotNull;
 

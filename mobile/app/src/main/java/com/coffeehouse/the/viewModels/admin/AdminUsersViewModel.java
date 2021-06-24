@@ -1,13 +1,12 @@
 package com.coffeehouse.the.viewModels.admin;
 
 import android.content.Context;
-import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.coffeehouse.the.models.AdminCustomUser;
-import com.coffeehouse.the.services.UsersRepo;
+import com.coffeehouse.the.services.repositories.UsersRepo;
 
 import java.util.List;
 

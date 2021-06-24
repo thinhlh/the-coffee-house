@@ -1,12 +1,12 @@
-package com.coffeehouse.the.services;
+package com.coffeehouse.the.services.repositories;
 
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.coffeehouse.the.models.Product;
 import com.coffeehouse.the.models.Store;
+import com.coffeehouse.the.utils.helper.Fetching;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 

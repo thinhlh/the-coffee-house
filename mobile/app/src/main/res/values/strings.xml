@@ -172,6 +172,7 @@
     <string name="send">Gửi yêu cầu</string>
     <string name="order_information">Order Information</string>
     <string name="recovery">Recovery</string>
+    <string name="delivery_en">Delivery</string>
 
     <!--
     This string is used for square devices and overridden by hello_world in

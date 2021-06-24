@@ -1,7 +1,6 @@
 package com.coffeehouse.the.views.OthersViewFragment;
 
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +15,7 @@ import androidx.fragment.app.Fragment;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.databinding.FixSavedaddressBinding;
 import com.coffeehouse.the.models.UserAddress;
-import com.coffeehouse.the.services.AddressRepo;
-import com.coffeehouse.the.services.UserRepo;
+import com.coffeehouse.the.services.repositories.AddressRepo;
 import com.google.firebase.auth.FirebaseAuth;
 
 import org.jetbrains.annotations.NotNull;

@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.databinding.PersonalinfoFragmentBinding;
-import com.coffeehouse.the.services.UserRepo;
+import com.coffeehouse.the.services.repositories.UserRepo;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -24,7 +24,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-import java.util.Objects;
 
 public class UserInformationFragment extends Fragment implements View.OnClickListener {
     private UserRepo userRepo = new UserRepo();

@@ -7,8 +7,8 @@ import androidx.lifecycle.ViewModel;
 
 import com.coffeehouse.the.models.Category;
 import com.coffeehouse.the.models.Product;
-import com.coffeehouse.the.services.CategoriesRepo;
-import com.coffeehouse.the.services.ProductsRepo;
+import com.coffeehouse.the.services.repositories.CategoriesRepo;
+import com.coffeehouse.the.services.repositories.ProductsRepo;
 import com.google.android.gms.tasks.Task;
 
 import java.util.List;

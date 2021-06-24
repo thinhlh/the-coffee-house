@@ -17,9 +17,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.StoreAdapter;
 import com.coffeehouse.the.databinding.StoreLocationFragmentBinding;
-import com.coffeehouse.the.services.UserRepo;
+import com.coffeehouse.the.services.repositories.UserRepo;
 import com.coffeehouse.the.viewModels.StoreViewModel;
-import com.coffeehouse.the.views.OthersViewFragment.ChangeAddressBottomSheet;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import org.jetbrains.annotations.NotNull;

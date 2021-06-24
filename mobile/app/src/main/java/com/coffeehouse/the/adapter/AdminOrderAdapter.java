@@ -1,7 +1,6 @@
 package com.coffeehouse.the.adapter;
 
 import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -13,7 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.databinding.AdminOrderCardBinding;
 import com.coffeehouse.the.models.Order;
-import com.coffeehouse.the.viewModels.admin.AdminOrderViewModel;
+import com.coffeehouse.the.utils.helper.ClickableRecyclerView;
+import com.coffeehouse.the.utils.helper.RecyclerViewClickListener;
 
 import org.jetbrains.annotations.NotNull;
 

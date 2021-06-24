@@ -1,6 +1,5 @@
 package com.coffeehouse.the.adapter;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -12,6 +11,8 @@ import com.coffeehouse.the.R;
 import com.coffeehouse.the.databinding.CartItemCardBinding;
 import com.coffeehouse.the.models.CartItem;
 import com.coffeehouse.the.models.Product;
+import com.coffeehouse.the.utils.helper.ClickableRecyclerView;
+import com.coffeehouse.the.utils.helper.RecyclerViewClickListener;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
@@ -49,7 +50,7 @@ public class AdminCartItemAdapter extends RecyclerView.Adapter<AdminCartItemAdap
 
         //TODO SHOW PRODUCT IMAGE HERE
         if (!currentProduct.getImageUrl().isEmpty())
-            Picasso.get().load(currentProduct.getImageUrl()).into(holder.cartItemCardBinding.image);
+            Picasso.get().load(currentProduct.getImageUrl()).into(holder.cartItemCardBinding.productImage);
 
         holder.bindOnClick(currentCartItem, currentProduct, listener);
     }

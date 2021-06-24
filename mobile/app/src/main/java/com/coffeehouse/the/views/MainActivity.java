@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.WindowManager;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -15,8 +14,8 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.AuthViewPagerAdapter;
-import com.coffeehouse.the.services.FCMService;
-import com.coffeehouse.the.services.UserRepo;
+import com.coffeehouse.the.services.local.FCMService;
+import com.coffeehouse.the.services.repositories.UserRepo;
 import com.coffeehouse.the.views.admin.AdminHomeActivity;
 import com.facebook.*;
 import com.google.android.gms.tasks.Task;

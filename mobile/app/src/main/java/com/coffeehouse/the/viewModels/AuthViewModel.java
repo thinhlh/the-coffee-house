@@ -1,17 +1,15 @@
 package com.coffeehouse.the.viewModels;
 
 import android.content.Context;
-import android.util.Log;
 
 import androidx.lifecycle.ViewModel;
 
 import com.coffeehouse.the.models.CustomUser;
-import com.coffeehouse.the.services.UserRepo;
+import com.coffeehouse.the.services.repositories.UserRepo;
 import com.facebook.AccessToken;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;

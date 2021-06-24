@@ -16,14 +16,11 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.SortedList;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.UserAdapter;
 import com.coffeehouse.the.databinding.AdminUserFragmentBinding;
-import com.coffeehouse.the.models.AdminCustomUser;
-import com.coffeehouse.the.utils.SearchComparators;
-import com.coffeehouse.the.utils.SwipeToDeleteCallback;
+import com.coffeehouse.the.utils.helper.SwipeToDeleteCallback;
 import com.coffeehouse.the.viewModels.admin.AdminUsersViewModel;
 
 import org.jetbrains.annotations.NotNull;

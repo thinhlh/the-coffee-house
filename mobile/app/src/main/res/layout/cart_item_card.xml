@@ -13,52 +13,59 @@
             type="com.coffeehouse.the.models.CartItem" />
     </data>
 
-    <com.google.android.material.card.MaterialCardView
+    <com.google.android.material.card.MaterialCardView xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/product_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/general_dimen"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="10dp"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/general_dimen"
+            tools:ignore="RtlSymmetry">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="250dp"
                 android:layout_height="match_parent"
-                android:layout_weight="0.8"
-                android:orientation="vertical"
-                android:paddingVertical="@dimen/general_padding">
+                android:gravity="center_vertical"
+                android:orientation="vertical">
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="match_parent"
+                    android:id="@+id/product_title"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingHorizontal="@dimen/general_padding"
                     android:text="@{product.title}"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline5"
+                    android:textAppearance="?textAppearanceListItem"
                     android:textStyle="bold" />
 
                 <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="match_parent"
+                    android:id="@+id/product_description"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:paddingHorizontal="@dimen/general_padding"
-                    android:text="@{`Quantity: `+cartItem.quantity}"
-                    android:textAppearance="?attr/textAppearanceBody1" />
+                    android:maxLines="3"
+                    android:text="@{`Quantity: `+ cartItem.quantity}"
+                    android:textAppearance="?textAppearanceListItemSecondary" />
 
             </LinearLayout>
 
-            <ImageView
-                android:id="@+id/image"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="0.8"
-                android:padding="@dimen/general_padding" />
+            <com.google.android.material.card.MaterialCardView
+                app:strokeColor="@color/white"
+                android:layout_width="wrap_content"
+                android:layout_height="94dp"
+                android:layout_marginStart="10dp"
+                app:cardCornerRadius="8dp">
 
+                <ImageView
+                    android:id="@+id/product_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </com.google.android.material.card.MaterialCardView>
         </LinearLayout>
 
 

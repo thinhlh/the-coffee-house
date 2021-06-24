@@ -12,9 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.coffeehouse.the.R;
-import com.coffeehouse.the.databinding.SavedAddressFragmentBinding;
 import com.coffeehouse.the.databinding.SettingFragmentBinding;
-import com.coffeehouse.the.services.UserRepo;
+import com.coffeehouse.the.services.repositories.UserRepo;
 import com.coffeehouse.the.viewModels.SettingsViewModel;
 
 import org.jetbrains.annotations.NotNull;

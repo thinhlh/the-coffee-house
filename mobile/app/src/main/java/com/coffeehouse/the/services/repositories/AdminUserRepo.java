@@ -1,4 +1,4 @@
-package com.coffeehouse.the.services;
+package com.coffeehouse.the.services.repositories;
 
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;

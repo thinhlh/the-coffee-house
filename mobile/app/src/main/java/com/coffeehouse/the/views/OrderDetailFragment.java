@@ -19,8 +19,8 @@ import com.coffeehouse.the.adapter.CartItemAdapter;
 import com.coffeehouse.the.databinding.OrderDetailBinding;
 import com.coffeehouse.the.models.Cart;
 import com.coffeehouse.the.models.Order;
-import com.coffeehouse.the.services.OrdersRepo;
-import com.coffeehouse.the.services.UserRepo;
+import com.coffeehouse.the.services.repositories.OrdersRepo;
+import com.coffeehouse.the.services.repositories.UserRepo;
 import com.coffeehouse.the.viewModels.OrderDetailViewModel;
 import com.coffeehouse.the.views.OthersViewFragment.BottomsheetChoosePromotionOrderDetail;
 import com.coffeehouse.the.views.OthersViewFragment.ChangeAddressBottomSheet;
@@ -90,19 +90,49 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
             currentCart = items;
             orderDetailViewModel.setCart(items);
             orderDetailBinding.setCart(items);
+            if (orderDetailViewModel.getCart().getItems().size() == 0) {
+                orderDetailBinding.textAddmenu.setError("Chưa có sản phẩm trong giỏ");
+            }
             getCart(cartItemAdapter);
         });
 
         return v;
     }
 
-    private void createOrder() {
-        if (orderDetailBinding.textOrder.getText().toString().equals("Phương thức giao hàng")) {
+    private boolean validation() {
+        if (orderDetailViewModel.getCart().getItems().size() == 0) {
+            Toast.makeText(getContext(), "Chưa có sản phẩm trong giỏ", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (orderDetailBinding.textOrder.getText().toString().equals("Phương thức giao hàng")) {
             orderDetailBinding.textChange.setError("Chỉnh sửa phương thức nhận hàng");
             Toast.makeText(getContext(), "Chỉnh sửa phương thức nhận hàng", Toast.LENGTH_SHORT).show();
-        } else if (orderDetailViewModel.getCart().getItems().size() == 0) {
-            Toast.makeText(getContext(), "Chưa có sản phẩm trong giỏ", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (orderDetailBinding.textName.getText().toString().isEmpty()) {
+            orderDetailBinding.textName.setError("Nhập tên người nhận");
+            Toast.makeText(getContext(), "Nhập tên người nhận", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (orderDetailBinding.textPhoneNumber.getText().toString().isEmpty()) {
+            orderDetailBinding.textPhoneNumber.setError("Nhập số điện thoại người nhận");
+            Toast.makeText(getContext(), "Nhập số điện thoại người nhận", Toast.LENGTH_SHORT).show();
+            return false;
+        } else if (orderDetailBinding.textPhoneNumber.getText().toString().length() != 10) {
+            orderDetailBinding.textPhoneNumber.setError("Số điện thoại không hợp lệ");
+            Toast.makeText(getContext(), "Số điện thoại không hợp lệ", Toast.LENGTH_SHORT).show();
+            return false;
         } else {
+            try {
+                Integer.parseInt(orderDetailBinding.textPhoneNumber.getText().toString());
+            } catch (NumberFormatException e) {
+                orderDetailBinding.textPhoneNumber.setError("Số điện thoại không hợp lệ");
+                Toast.makeText(getContext(), "Số điện thoại không hợp lệ", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+            return true;
+        }
+    }
+
+    private void createOrder() {
+        if (validation()) {
             order = new Order(orderDetailViewModel.getCart(), orderDetailBinding.textOrder.getText().toString(), delivered, orderDetailBinding.textDestinationDetail.getText().toString(), orderDetailBinding.textName.getText().toString(), orderDetailBinding.textPhoneNumber.getText().toString());
             ordersRepo.addOrderData(order);
             userRepo.updateUserPoint(orderDetailViewModel.getCart().getTotalCartValue() / 1000);

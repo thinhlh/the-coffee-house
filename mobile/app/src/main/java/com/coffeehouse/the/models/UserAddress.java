@@ -1,6 +1,6 @@
 package com.coffeehouse.the.models;
 
-import com.coffeehouse.the.services.UserRepo;
+import com.coffeehouse.the.services.repositories.UserRepo;
 
 public class UserAddress {
     private String id = "";

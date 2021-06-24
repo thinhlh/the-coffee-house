@@ -5,22 +5,19 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
-import androidx.databinding.Observable;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.databinding.ActivityProductDetailBinding;
 import com.coffeehouse.the.models.CartItem;
 import com.coffeehouse.the.models.Product;
-import com.coffeehouse.the.services.UserRepo;
+import com.coffeehouse.the.services.repositories.UserRepo;
 import com.coffeehouse.the.viewModels.ProductDetailViewModel;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.squareup.picasso.Picasso;
@@ -65,6 +62,7 @@ public class ProductDetailBottomSheet extends BottomSheetDialogFragment implemen
         activityProductDetailBinding.setProductDetail(product);
         activityProductDetailBinding.itemPrice.setText(format.format(product.getPrice()));
         productDetailViewModel = new ViewModelProvider(this).get(ProductDetailViewModel.class);
+        productDetailViewModel.setAmountPerOrder(product.getPrice());
         activityProductDetailBinding.setLifecycleOwner(this);
         activityProductDetailBinding.setProductDetailViewModel(productDetailViewModel);
         //END BINDING

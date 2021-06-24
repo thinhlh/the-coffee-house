@@ -1,12 +1,12 @@
-package com.coffeehouse.the.services;
+package com.coffeehouse.the.services.repositories;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.coffeehouse.the.models.UserAddress;
+import com.coffeehouse.the.utils.helper.Fetching;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;

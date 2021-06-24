@@ -153,7 +153,7 @@
                         android:textSize="18sp"
                         android:textStyle="bold" />
                     <TextView
-                        android:id="@+id/new_countunreadednotification"
+                        android:id="@+id/total_unseen_notifications"
                         android:backgroundTint="@color/red"
                         android:background="@drawable/round_with_greyoutline"
                         android:layout_width="30dp"

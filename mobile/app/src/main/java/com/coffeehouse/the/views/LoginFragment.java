@@ -14,9 +14,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.coffeehouse.the.R;
-import com.coffeehouse.the.services.CustomGoogleSignInClient;
-import com.coffeehouse.the.services.FCMService;
-import com.coffeehouse.the.services.UserRepo;
+import com.coffeehouse.the.utils.helper.CustomGoogleSignInClient;
+import com.coffeehouse.the.services.local.FCMService;
+import com.coffeehouse.the.services.repositories.UserRepo;
 import com.coffeehouse.the.viewModels.AuthViewModel;
 import com.coffeehouse.the.views.admin.AdminHomeActivity;
 import com.facebook.CallbackManager;

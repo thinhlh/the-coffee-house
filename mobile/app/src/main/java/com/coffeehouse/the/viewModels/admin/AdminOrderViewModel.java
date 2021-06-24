@@ -4,8 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.coffeehouse.the.models.Order;
-import com.coffeehouse.the.services.AdminOrdersRepo;
-import com.coffeehouse.the.services.OrdersRepo;
+import com.coffeehouse.the.services.repositories.AdminOrdersRepo;
 
 import java.util.List;
 

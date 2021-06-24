@@ -16,7 +16,8 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/accent_color">
 
 
             <com.google.android.material.appbar.MaterialToolbar
@@ -31,7 +32,13 @@
                 app:titleTextColor="@color/white" />
         </com.google.android.material.appbar.AppBarLayout>
 
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progress_circular"
+            style="@style/CustomProgressIndicator"
+            android:visibility="gone" />
+
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="?attr/actionBarSize">
@@ -111,6 +118,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:backgroundTint="@color/accent_color"
                     android:text="@string/pick_an_image_en" />
             </LinearLayout>
 

@@ -1,4 +1,4 @@
-package com.coffeehouse.the.services;
+package com.coffeehouse.the.services.local;
 
 import android.app.Notification;
 import android.app.NotificationChannel;

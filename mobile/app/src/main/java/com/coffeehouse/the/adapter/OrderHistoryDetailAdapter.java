@@ -13,7 +13,7 @@ import com.coffeehouse.the.R;
 import com.coffeehouse.the.databinding.OrderHistoryDetailListItemBinding;
 import com.coffeehouse.the.models.Cart;
 import com.coffeehouse.the.models.CartItem;
-import com.coffeehouse.the.services.ProductsRepo;
+import com.coffeehouse.the.services.repositories.ProductsRepo;
 
 import org.jetbrains.annotations.NotNull;
 

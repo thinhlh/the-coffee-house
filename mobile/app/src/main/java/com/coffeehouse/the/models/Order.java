@@ -1,23 +1,15 @@
 package com.coffeehouse.the.models;
 
-import android.util.Log;
-
-import com.coffeehouse.the.services.UserRepo;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.Gson;
-import com.google.gson.internal.LinkedTreeMap;
 
-import java.text.Format;
-import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
 import java.util.Map;
 
 public class Order {

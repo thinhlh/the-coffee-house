@@ -34,7 +34,7 @@ const pushNotification = async (notification) => {
             body: notification.body,
         }
     };
-    return admin.messaging().sendToTopic("notifications",message);
+    return admin.messaging().sendToTopic("notifications", message);
 }
 
 const authorize = (req) => {
@@ -45,10 +45,36 @@ const denied = (res) => {
     res.status(403).send('Permission Denied');
 }
 
-module.exports = { 
-    listAllUsers, 
-    authorize, 
-    getUserInfo, 
-    deleteUser, 
+const updateMembership = async () => {
+    db.collection('users').get().then(async (documentSnapshots) => {
+        await documentSnapshots.forEach(documentRef => {
+            var point = documentRef.data().point;
+            var membership = documentRef.data().membership;
+
+            if (point >= 0 && point < 500 && membership != 'Bronze') {
+                documentRef.ref.update({ membership: 'Bronze' });
+            }
+            else if (point >= 500 && point < 1000 && membership != 'Silver') {
+                documentRef.ref.update({ membership: 'Silver' });
+            }
+            else if (point >= 1000 && point < 1500 && membership != 'Gold') {
+                documentRef.ref.update({ membership: 'Gold' });
+            }
+            else if (point >= 1500 && membership != 'Diamond') {
+                documentRef.ref.update({ membership: 'Diamond' });
+            }
+        });
+    });
+    console.log('Updated');
+
+}
+
+module.exports = {
+    listAllUsers,
+    authorize,
+    getUserInfo,
+    deleteUser,
     pushNotification,
-    denied, };
+    updateMembership,
+    denied,
+};

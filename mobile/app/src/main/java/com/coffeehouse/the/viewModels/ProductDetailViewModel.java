@@ -12,8 +12,8 @@ import com.coffeehouse.the.models.Category;
 import com.coffeehouse.the.models.Product;
 import com.coffeehouse.the.models.ProductSize;
 import com.coffeehouse.the.models.ProductTopping;
-import com.coffeehouse.the.services.CategoriesRepo;
-import com.coffeehouse.the.services.UserRepo;
+import com.coffeehouse.the.services.repositories.CategoriesRepo;
+import com.coffeehouse.the.services.repositories.UserRepo;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -41,6 +41,7 @@ public class ProductDetailViewModel extends ViewModel {
         countM = new MutableLiveData<>(1);
         toppingCheckM = new MutableLiveData<>(false);
         sumM = new MutableLiveData<>("Thêm vào giỏ");
+        amount = amountPerOrder;
         count = countM;
         sum = sumM;
         toppingCheck = toppingCheckM;
@@ -132,4 +133,7 @@ public class ProductDetailViewModel extends ViewModel {
         return amountPerOrder;
     }
 
+    public void setAmountPerOrder(Integer amountPerOrder) {
+        this.amountPerOrder = amountPerOrder;
+    }
 }

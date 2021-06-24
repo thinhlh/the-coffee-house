@@ -1,12 +1,12 @@
-package com.coffeehouse.the.services;
+package com.coffeehouse.the.services.repositories;
 
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 
 import com.coffeehouse.the.models.CustomUser;
+import com.coffeehouse.the.utils.helper.CustomGoogleSignInClient;
+import com.coffeehouse.the.services.local.FCMService;
 import com.facebook.AccessToken;
-import com.facebook.Profile;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;

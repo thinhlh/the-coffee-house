@@ -12,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView.Adapter;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.databinding.StoreListItemBinding;
 import com.coffeehouse.the.models.Store;
+import com.coffeehouse.the.utils.helper.ClickableRecyclerView;
+import com.coffeehouse.the.utils.helper.RecyclerViewClickListener;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;

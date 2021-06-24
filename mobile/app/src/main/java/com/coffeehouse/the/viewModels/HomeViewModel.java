@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.coffeehouse.the.models.Notification;
-import com.coffeehouse.the.services.NotificationsRepo;
+import com.coffeehouse.the.services.repositories.NotificationsRepo;
 
 import java.util.List;
 

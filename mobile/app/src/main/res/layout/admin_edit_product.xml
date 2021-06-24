@@ -15,7 +15,8 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/accent_color">
 
 
             <com.google.android.material.appbar.MaterialToolbar
@@ -113,6 +114,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
+                    android:backgroundTint="@color/accent_color"
                     android:text="@string/pick_an_image_en" />
 
             </LinearLayout>

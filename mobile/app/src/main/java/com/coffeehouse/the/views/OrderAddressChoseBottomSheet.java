@@ -65,12 +65,9 @@ public class OrderAddressChoseBottomSheet extends BottomSheetDialogFragment {
         });
 
         savedAddressFragmentBinding.closeSavedAddress.setOnClickListener(listener -> {
-            getFragmentManager().popBackStack();
+            dismiss();
         });
-        savedAddressFragmentBinding.addNewAddress.setOnClickListener(listener -> {
-//            Fragment fragment = new UpdateUserAddress();
-//            getFragmentManager().beginTransaction().replace(this.getId(), fragment).addToBackStack(null).commit();
-        });
+
 
         return v;
     }

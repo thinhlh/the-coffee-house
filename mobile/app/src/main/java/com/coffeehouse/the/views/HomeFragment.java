@@ -21,6 +21,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.NotificationAdapter;
 import com.coffeehouse.the.databinding.HomeFragmentBinding;
+import com.coffeehouse.the.models.Notification;
+import com.coffeehouse.the.services.local.NotificationsSharedPref;
 import com.coffeehouse.the.viewModels.HomeViewModel;
 import com.coffeehouse.the.views.admin.AdminEditNotification;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -49,6 +51,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         setUpRecyclerView();
         setUpCarouselViewer();
+
         return binding.getRoot();
     }
 
@@ -60,9 +63,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         homeViewModel.getNotifications().observe(getViewLifecycleOwner(), adapter::setItems);
 
-
         adapter.setClickListener(notification -> {
-            //TODO: BOTTOM NAVIGATION NOTIFICATION HERE
+
+            //TODO CALL NOTIFICATION SHARED PREFERENCES AND DISPATCH THE `NEW` LABEL
+
+            NotificationDetailBottomSheet bottomSheet = new NotificationDetailBottomSheet();
+            bottomSheet.setNotification(notification);
+            bottomSheet.show(getFragmentManager(), "Notification Detail");
         });
     }
 

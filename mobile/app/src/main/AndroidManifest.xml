@@ -17,9 +17,9 @@
         android:theme="@style/Theme.TheCoffeeHouse">
 
         <service
-            android:name=".services.FCMService"
-            android:exported="false"
-            android:directBootAware="true">
+            android:name=".services.local.FCMService"
+            android:directBootAware="true"
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
@@ -59,8 +59,10 @@
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+
                 <data android:scheme="@string/fb_login_protocol_scheme" />
             </intent-filter>
         </activity>
@@ -73,13 +75,14 @@
         <activity android:name=".views.ProductDetailActivity" />
         <activity android:name=".views.HomeActivity" />
         <activity android:name=".views.GreetingActivity" />
-        <activity android:name=".views.LoginForgotPasswordActivity"/>
+        <activity android:name=".views.LoginForgotPasswordActivity" />
 
         <activity android:name=".views.admin.AdminHomeActivity" />
         <activity android:name=".views.admin.AdminEditProduct" />
         <activity android:name=".views.admin.AdminEditNotification" />
         <activity android:name=".views.admin.AdminUserInfo" />
-        <activity android:name=".views.admin.AdminOrderDetail"/>
+        <activity android:name=".views.admin.AdminOrderDetail" />
+        <activity android:name=".views.admin.AdminCartItemDetail" />
     </application>
 
 </manifest>

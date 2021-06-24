@@ -1,4 +1,4 @@
-package com.coffeehouse.the.utils;
+package com.coffeehouse.the.utils.helper;
 
 import android.content.Context;
 import android.graphics.Canvas;

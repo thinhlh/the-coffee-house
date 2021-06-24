@@ -1,4 +1,4 @@
-package com.coffeehouse.the.adapter;
+package com.coffeehouse.the.utils.helper;
 
 public interface Searchable {
 

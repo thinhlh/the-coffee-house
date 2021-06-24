@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/Applications/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material/icons/materialicons/check/baseline_check_24.xml" />
+                                      <entry key="url" value="jar:file:/Applications/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material/icons/materialicons/sticky_note_2/baseline_sticky_note_2_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -28,8 +28,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="32af00" />
-                            <entry key="outputName" value="ic_baseline_check_green_24" />
+                            <entry key="outputName" value="ic_baseline_sticky_note_2_24" />
                           </map>
                         </option>
                       </PersistentState>

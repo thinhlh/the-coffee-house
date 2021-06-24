@@ -14,7 +14,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.coffeehouse.the.R;
-import com.coffeehouse.the.adapter.RecyclerViewClickListener;
 import com.coffeehouse.the.adapter.UserAddressAdapter;
 import com.coffeehouse.the.databinding.SavedAddressFragmentBinding;
 import com.coffeehouse.the.viewModels.UserAddressViewModel;

@@ -87,7 +87,6 @@ public class StoreDetailBottomSheet extends BottomSheetDialogFragment {
             ggPlayIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(ggPlayIntent);
         }
-
     }
 
 

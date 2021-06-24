@@ -1,4 +1,4 @@
-package com.coffeehouse.the.services;
+package com.coffeehouse.the.services.repositories;
 
 import android.net.Uri;
 import android.util.Log;
@@ -7,6 +7,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
 import com.coffeehouse.the.models.Product;
+import com.coffeehouse.the.utils.helper.Fetching;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;

@@ -4,7 +4,7 @@ import android.content.Context;
 
 import androidx.lifecycle.ViewModel;
 
-import com.coffeehouse.the.services.UserRepo;
+import com.coffeehouse.the.services.repositories.UserRepo;
 import com.google.android.gms.tasks.Task;
 
 public class AdminOthersViewModel extends ViewModel {

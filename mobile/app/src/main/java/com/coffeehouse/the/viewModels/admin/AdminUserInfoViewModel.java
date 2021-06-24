@@ -2,10 +2,7 @@ package com.coffeehouse.the.viewModels.admin;
 
 import androidx.lifecycle.ViewModel;
 
-import com.coffeehouse.the.services.AdminUserRepo;
-import com.coffeehouse.the.services.UserRepo;
-import com.coffeehouse.the.services.UsersRepo;
-import com.coffeehouse.the.views.admin.AdminUserInfo;
+import com.coffeehouse.the.services.repositories.AdminUserRepo;
 import com.google.android.gms.tasks.Task;
 
 public class AdminUserInfoViewModel extends ViewModel {

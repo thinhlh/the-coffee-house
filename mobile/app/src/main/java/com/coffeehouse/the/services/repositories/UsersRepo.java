@@ -1,4 +1,4 @@
-package com.coffeehouse.the.services;
+package com.coffeehouse.the.services.repositories;
 
 
 import android.content.Context;
@@ -7,16 +7,14 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.coffeehouse.the.models.AdminCustomUser;
-import com.coffeehouse.the.utils.Constants;
+import com.coffeehouse.the.utils.helper.Fetching;
+import com.coffeehouse.the.utils.commons.Constants;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -29,11 +27,8 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import bolts.Task;
 
 /*
  * This class is used for fetching users for admin screen*/

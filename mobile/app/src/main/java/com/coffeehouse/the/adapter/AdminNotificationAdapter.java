@@ -1,6 +1,5 @@
 package com.coffeehouse.the.adapter;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -10,8 +9,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.databinding.AdminNotificationCardBinding;
-import com.coffeehouse.the.models.AdminCustomUser;
 import com.coffeehouse.the.models.Notification;
+import com.coffeehouse.the.utils.helper.RecyclerViewClickListener;
+import com.coffeehouse.the.utils.helper.Searchable;
+import com.coffeehouse.the.utils.helper.SwipeAbleRecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

@@ -2,12 +2,11 @@ package com.coffeehouse.the.viewModels.admin;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
 import androidx.lifecycle.ViewModel;
 
 import com.coffeehouse.the.models.Notification;
-import com.coffeehouse.the.services.NotificationsRepo;
+import com.coffeehouse.the.services.repositories.NotificationsRepo;
 import com.google.android.gms.tasks.Task;
 
 public class AdminEditNotificationViewModel extends ViewModel {

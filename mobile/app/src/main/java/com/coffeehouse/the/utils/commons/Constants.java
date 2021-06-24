@@ -1,4 +1,4 @@
-package com.coffeehouse.the.utils;
+package com.coffeehouse.the.utils.commons;
 
 import java.text.Format;
 import java.text.NumberFormat;

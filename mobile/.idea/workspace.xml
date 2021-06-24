@@ -32,7 +32,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b9f7a0c3-2cf4-439e-8f22-a485e29e3808" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/NotificationDetailBottomSheet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/AdminOrderAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/AdminOrderAdapter.java" afterDir="false" />
@@ -68,6 +78,17 @@
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/viewModels/ProductDetailViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/viewModels/ProductDetailViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/HomeFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/HomeFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/OrderAddressChoseBottomSheet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/OrderAddressChoseBottomSheet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/OrderDetailFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/OrderDetailFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/OrderFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/OrderFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/OthersViewFragment/ChangeAddressBottomSheet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/OthersViewFragment/ChangeAddressBottomSheet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/ProductDetailBottomSheet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/ProductDetailBottomSheet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/drawable/round_with_greyoutline.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/drawable/round_with_greyoutline.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/bottomsheet_notification.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/bottomsheet_notification.xml" afterDir="false" />
+>>>>>>> ae16194dabdaeff77b9db258004cdc7277dfb8c4
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,6 +150,8 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="VirtualDevicePath@D:\Android_SDK_HOME\.android\avd\Pixel_4_XL_API_30.avd" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-06-24T03:26:53.879284700Z" />
     <property name="ResourceManagerPrefKey.ResourceType" value="LAYOUT" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -220,6 +243,31 @@
       <option name="presentableId" value="Default" />
       <updated>1624074725253</updated>
     </task>
+<<<<<<< HEAD
+=======
+    <task id="LOCAL-00001" summary="feat: forgot password reset, order history detail, update user info, note order product&#10;fix: notify delete cart item order, product detail">
+      <created>1624448310844</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1624448310844</updated>
+    </task>
+    <task id="LOCAL-00002" summary="feat: forgot password reset, order history detail, update user info, note order product&#10;fix: notify delete cart item order, product detail">
+      <created>1624448317986</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1624448317986</updated>
+    </task>
+    <task id="LOCAL-00003" summary="feat: binding membership">
+      <created>1624449281152</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1624449281152</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+>>>>>>> ae16194dabdaeff77b9db258004cdc7277dfb8c4
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -234,15 +282,31 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+<<<<<<< HEAD
+=======
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: forgot password reset, order history detail, update user info, note order product&#10;fix: notify delete cart item order, product detail" />
+    <MESSAGE value="feat: binding membership" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: binding membership" />
+  </component>
+>>>>>>> ae16194dabdaeff77b9db258004cdc7277dfb8c4
   <component name="WindowStateProjectService">
     <state x="460" y="69" key="#Plugins" timestamp="1624394590352">
       <screen x="0" y="25" width="1920" height="969" />
     </state>
     <state x="460" y="69" key="#Plugins/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624394590352" />
+<<<<<<< HEAD
     <state x="576" y="155" key="#com.intellij.ide.util.MemberChooser" timestamp="1624500501341">
       <screen x="0" y="25" width="1920" height="969" />
     </state>
     <state x="576" y="155" key="#com.intellij.ide.util.MemberChooser/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624500501341" />
+=======
+    <state x="461" y="112" key="#com.intellij.ide.util.MemberChooser" timestamp="1624508826881">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="461" y="112" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1624508826881" />
+    <state x="576" y="155" key="#com.intellij.ide.util.MemberChooser/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624398968912" />
+>>>>>>> ae16194dabdaeff77b9db258004cdc7277dfb8c4
     <state x="576" y="155" key="#com.intellij.ide.util.MemberChooser/0.25.1920.969@0.25.1920.969" timestamp="1624245746633" />
     <state x="594" y="220" key="#com.intellij.openapi.keymap.impl.ui.EditKeymapsDialog" timestamp="1624039847560">
       <screen x="0" y="0" width="1920" height="1080" />
@@ -262,9 +326,16 @@
       <screen x="0" y="25" width="1920" height="969" />
     </state>
     <state x="601" y="315" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.25.1920.969@0.25.1920.969" timestamp="1624245705644" />
+<<<<<<< HEAD
     <state x="100" y="115" width="1720" height="790" key="AVDManager" timestamp="1624041142164">
       <screen x="0" y="25" width="1920" height="969" />
     </state>
+=======
+    <state x="80" y="77" width="1376" height="680" key="AVDManager" timestamp="1624506025886">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="80" y="77" width="1376" height="680" key="AVDManager/0.0.1536.834@0.0.1536.834" timestamp="1624506025886" />
+>>>>>>> ae16194dabdaeff77b9db258004cdc7277dfb8c4
     <state x="100" y="100" width="1720" height="880" key="AVDManager/0.0.1920.1080@0.0.1920.1080" timestamp="1624040692751" />
     <state x="100" y="115" width="1720" height="790" key="AVDManager/0.25.1920.969@0.25.1920.969" timestamp="1624041142164" />
     <state x="545" y="261" key="AndroidCreateResourceFileDialog" timestamp="1624433841314">
@@ -282,6 +353,7 @@
     </state>
     <state x="100" y="125" width="1720" height="769" key="DiffContextDialog/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624470474306" />
     <state x="100" y="125" width="1720" height="769" key="DiffContextDialog/0.25.1920.969@0.25.1920.969" timestamp="1624207220254" />
+<<<<<<< HEAD
     <state width="1868" height="216" key="GridCell.Tab.0.bottom" timestamp="1624545850250">
       <screen x="0" y="25" width="1920" height="969" />
     </state>
@@ -301,6 +373,35 @@
       <screen x="0" y="25" width="1920" height="969" />
     </state>
     <state width="1868" height="216" key="GridCell.Tab.0.right/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624545850249" />
+=======
+    <state x="549" y="172" key="FileChooserDialogImpl" timestamp="1624429927085">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="549" y="172" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1624429927085" />
+    <state width="1493" height="426" key="GridCell.Tab.0.bottom" timestamp="1624509537597">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1493" height="426" key="GridCell.Tab.0.bottom/0.0.1536.834@0.0.1536.834" timestamp="1624509537597" />
+    <state width="1868" height="298" key="GridCell.Tab.0.bottom/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624420578994" />
+    <state width="1868" height="349" key="GridCell.Tab.0.bottom/0.25.1920.969@0.25.1920.969" timestamp="1624249589352" />
+    <state width="1493" height="426" key="GridCell.Tab.0.center" timestamp="1624509537594">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1493" height="426" key="GridCell.Tab.0.center/0.0.1536.834@0.0.1536.834" timestamp="1624509537594" />
+    <state width="1868" height="298" key="GridCell.Tab.0.center/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624420578994" />
+    <state width="1868" height="349" key="GridCell.Tab.0.center/0.25.1920.969@0.25.1920.969" timestamp="1624249589352" />
+    <state width="1493" height="426" key="GridCell.Tab.0.left" timestamp="1624509537590">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1493" height="426" key="GridCell.Tab.0.left/0.0.1536.834@0.0.1536.834" timestamp="1624509537590" />
+    <state width="1868" height="298" key="GridCell.Tab.0.left/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624420578994" />
+    <state width="1868" height="349" key="GridCell.Tab.0.left/0.25.1920.969@0.25.1920.969" timestamp="1624249589351" />
+    <state width="1493" height="426" key="GridCell.Tab.0.right" timestamp="1624509537594">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state width="1493" height="426" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1624509537594" />
+    <state width="1868" height="298" key="GridCell.Tab.0.right/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624420578994" />
+>>>>>>> ae16194dabdaeff77b9db258004cdc7277dfb8c4
     <state width="1868" height="349" key="GridCell.Tab.0.right/0.25.1920.969@0.25.1920.969" timestamp="1624249589352" />
     <state width="1868" height="246" key="GridCell.Tab.1.bottom" timestamp="1624440242216">
       <screen x="0" y="25" width="1920" height="969" />

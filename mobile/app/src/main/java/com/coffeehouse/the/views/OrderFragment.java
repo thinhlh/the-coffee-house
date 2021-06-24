@@ -121,7 +121,7 @@ public class OrderFragment extends Fragment implements CategoryBottomSheet.SendC
     @Override
     public void onInputCategory(Category category) {
         orderViewModel.getProductsOfCategory(category.getId()).observe(getViewLifecycleOwner(), productsAdapter::setItems);
-        orderFragmentBinding.txtMenu.setText(category.getTitle());
+//        orderFragmentBinding.txtMenu.setText(category.getTitle());
         orderFragmentBinding.titleMustTry.setText(category.getTitle());
     }
 

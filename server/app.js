@@ -6,9 +6,12 @@ const app = express();
 app.listen(process.env.PORT || 3000);
 app.use(express.json());
 
+setInterval(()=>helper.updateMembership(),1000*3600*24*5);
+
 app.get('/', (req, res) => {    
     res.send('<h1>The Coffee House Server</h1>');
 });
+
 
 app.get('/users', (req, res) => {
     if (helper.authorize(req)) {
@@ -48,9 +51,7 @@ app.delete('/delete-user/:id', (req, res) => {
 });
 
 app.post('/push-notification', (req, res) => {
-    console.log("HERE");
     if (helper.authorize(req)) {
-        console.log(req);
         helper.pushNotification(req.body).then(
             (value) => {
                 console.log('Success',value);

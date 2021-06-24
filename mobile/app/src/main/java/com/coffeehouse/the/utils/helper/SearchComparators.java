@@ -1,4 +1,4 @@
-package com.coffeehouse.the.utils;
+package com.coffeehouse.the.utils.helper;
 
 import com.coffeehouse.the.models.AdminCustomUser;
 import com.coffeehouse.the.models.CustomUser;

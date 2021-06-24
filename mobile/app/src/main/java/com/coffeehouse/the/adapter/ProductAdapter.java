@@ -11,8 +11,10 @@ import androidx.recyclerview.widget.RecyclerView.Adapter;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.databinding.ProductListItemBinding;
-import com.coffeehouse.the.models.AdminCustomUser;
 import com.coffeehouse.the.models.Product;
+import com.coffeehouse.the.utils.helper.RecyclerViewClickListener;
+import com.coffeehouse.the.utils.helper.Searchable;
+import com.coffeehouse.the.utils.helper.SwipeAbleRecyclerView;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;

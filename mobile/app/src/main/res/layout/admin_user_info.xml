@@ -29,12 +29,12 @@
                 android:textStyle="bold" />
 
             <com.google.android.material.textview.MaterialTextView
-                style="@style/AdminUserInfoField"
+                style="@style/AdminCommonInfoField"
                 android:drawableStart="@drawable/ic_baseline_perm_identity_24"
                 android:text="@{user.id}" />
 
             <com.google.android.material.textview.MaterialTextView
-                style="@style/AdminUserInfoField"
+                style="@style/AdminCommonInfoField"
                 android:autoLink="email"
                 android:drawableStart="@drawable/ic_baseline_email_24"
                 android:drawableTint="@color/turquoise"
@@ -44,7 +44,7 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/phone_text_input"
-                style="@style/AdminUserInfoField"
+                style="@style/AdminCommonInfoField"
                 android:autoLink="phone"
                 android:drawableStart="@drawable/ic_baseline_phone_24"
                 android:drawableTint="@color/green"
@@ -57,7 +57,7 @@
                 android:orientation="horizontal">
 
                 <com.google.android.material.textview.MaterialTextView
-                    style="@style/AdminUserInfoField"
+                    style="@style/AdminCommonInfoField"
                     android:layout_width="0dp"
                     android:layout_weight="0.4"
                     android:drawableStart="@drawable/ic_baseline_card_membership_24"
@@ -67,7 +67,7 @@
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/membership"
-                    style="@style/AdminUserInfoField"
+                    style="@style/AdminCommonInfoField"
                     android:layout_width="0dp"
                     android:layout_weight="0.6"
                     android:drawableStart="@drawable/ic_baseline_card_giftcard_24"
@@ -75,19 +75,19 @@
             </LinearLayout>
 
             <com.google.android.material.textview.MaterialTextView
-                style="@style/AdminUserInfoField"
+                style="@style/AdminCommonInfoField"
                 android:drawableStart="@drawable/ic_baseline_cake_24"
                 android:drawableTint="@color/magenta"
                 android:text="@{user.formattedBirthday}" />
 
             <com.google.android.material.textview.MaterialTextView
-                style="@style/AdminUserInfoField"
+                style="@style/AdminCommonInfoField"
                 android:drawableStart="@drawable/ic_baseline_create_24"
                 android:drawableTint="@color/deep_sky_blue"
                 android:text="@{user.formattedDateCreated}" />
 
             <com.google.android.material.textview.MaterialTextView
-                style="@style/AdminUserInfoField"
+                style="@style/AdminCommonInfoField"
                 android:drawableStart="@drawable/ic_baseline_login_24"
                 android:text="@{user.formattedLastSignedIn}" />
 

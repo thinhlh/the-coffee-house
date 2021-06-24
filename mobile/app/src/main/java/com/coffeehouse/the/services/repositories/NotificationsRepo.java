@@ -1,4 +1,4 @@
-package com.coffeehouse.the.services;
+package com.coffeehouse.the.services.repositories;
 
 import android.content.Context;
 import android.net.Uri;
@@ -7,34 +7,25 @@ import android.util.Log;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.coffeehouse.the.models.Notification;
-import com.coffeehouse.the.utils.Constants;
+import com.coffeehouse.the.utils.helper.Fetching;
+import com.coffeehouse.the.utils.commons.Constants;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.messaging.FirebaseMessaging;
-import com.google.firebase.messaging.RemoteMessage;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.google.gson.JsonObject;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -61,8 +52,6 @@ public class NotificationsRepo implements Fetching {
     @Override
     public void setUpRealTimeListener() {
         db.collection("notifications").addSnapshotListener((value, error) -> {
-
-            Log.d("Invoked", "Invoked");
 
             if (error != null) {
                 Log.w("Notifications Repo", error);

@@ -3,7 +3,6 @@ package com.coffeehouse.the.views.admin;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,13 +20,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.ProductAdapter;
 import com.coffeehouse.the.databinding.AdminProductsFragmentBinding;
-import com.coffeehouse.the.models.Product;
-import com.coffeehouse.the.utils.SwipeToDeleteCallback;
+import com.coffeehouse.the.utils.helper.SwipeToDeleteCallback;
 import com.coffeehouse.the.viewModels.admin.AdminProductsViewModel;
 
 import org.jetbrains.annotations.NotNull;
-
-import java.util.List;
 
 public class AdminProductsFragment extends Fragment implements SearchView.OnQueryTextListener {
 

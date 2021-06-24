@@ -1,6 +1,6 @@
 package com.coffeehouse.the.models;
 
-import com.coffeehouse.the.utils.Constants;
+import com.coffeehouse.the.utils.commons.Constants;
 
 import java.io.Serializable;
 import java.util.ArrayList;

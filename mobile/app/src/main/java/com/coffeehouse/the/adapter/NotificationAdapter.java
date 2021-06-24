@@ -1,6 +1,5 @@
 package com.coffeehouse.the.adapter;
 
-import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -12,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView.Adapter;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.databinding.NotificationListItemBinding;
 import com.coffeehouse.the.models.Notification;
+import com.coffeehouse.the.utils.helper.ClickableRecyclerView;
+import com.coffeehouse.the.utils.helper.RecyclerViewClickListener;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

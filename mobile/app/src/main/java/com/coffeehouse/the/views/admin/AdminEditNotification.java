@@ -16,6 +16,7 @@ import com.android.volley.toolbox.Volley;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.databinding.AdminEditNotificationBinding;
 import com.coffeehouse.the.models.Notification;
+import com.coffeehouse.the.utils.helper.WaitingHandler;
 import com.coffeehouse.the.viewModels.admin.AdminEditNotificationViewModel;
 import com.squareup.picasso.Picasso;
 
@@ -25,7 +26,7 @@ import java.sql.Date;
 import java.time.Instant;
 import java.util.Objects;
 
-public class AdminEditNotification extends AppCompatActivity {
+public class AdminEditNotification extends AppCompatActivity implements WaitingHandler {
 
     private static final int PICK_IMAGE = 1;
 
@@ -55,6 +56,7 @@ public class AdminEditNotification extends AppCompatActivity {
         toolbar.setOnMenuItemClickListener(item -> {
             if (item.getItemId() == R.id.submit_area) {
                 if (validate()) {
+                    invokeWaiting();
                     Notification currentNotification = binding.getNotification();
                     currentNotification.setTitle(binding.notificationTitle.getEditText().getText().toString());
                     currentNotification.setDescription(binding.notificationDescription.getEditText().getText().toString());
@@ -63,12 +65,16 @@ public class AdminEditNotification extends AppCompatActivity {
                     }
 
                     viewModel.onSubmitNotification(currentNotification, imageData, this).addOnCompleteListener(task -> {
+                        dispatchWaiting();
                         if (task.isSuccessful()) {
                             this.finish();
                         } else {
-                            new AlertDialog.Builder(this).setTitle("Some thing happened").setPositiveButton("Okay", (dialog, which) ->
-                                    dialog.dismiss()
-                            ).show();
+                            new AlertDialog.Builder(this)
+                                    .setTitle("Some thing happened")
+                                    .setMessage(task.getException().getMessage())
+                                    .setPositiveButton("Okay", (dialog, which) ->
+                                            dialog.dismiss()
+                                    ).show();
                         }
                     });
                 }
@@ -136,4 +142,16 @@ public class AdminEditNotification extends AppCompatActivity {
         }
     }
 
+
+    @Override
+    public void invokeWaiting() {
+        binding.content.setVisibility(View.GONE);
+        binding.progressCircular.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void dispatchWaiting() {
+        binding.content.setVisibility(View.VISIBLE);
+        binding.progressCircular.setVisibility(View.GONE);
+    }
 }

@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="56dp"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -21,6 +21,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:labelVisibilityMode="labeled"
+        app:itemIconTint="@color/admin_bottom_nav"
+        app:itemTextColor="@color/admin_bottom_nav"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/admin_menu_bottom_navigation" />
 

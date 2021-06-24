@@ -1,4 +1,4 @@
-package com.coffeehouse.the.services;
+package com.coffeehouse.the.services.repositories;
 
 import android.util.Log;
 
@@ -8,18 +8,14 @@ import androidx.lifecycle.MutableLiveData;
 import com.coffeehouse.the.models.Cart;
 import com.coffeehouse.the.models.CartItem;
 import com.coffeehouse.the.models.Order;
-import com.coffeehouse.the.utils.Constants;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.auth.FirebaseAuth;
+import com.coffeehouse.the.utils.helper.Fetching;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class AdminOrdersRepo implements Fetching {
     private final MutableLiveData<List<Order>> orders = new MutableLiveData<>();
@@ -27,24 +23,6 @@ public class AdminOrdersRepo implements Fetching {
 
     public AdminOrdersRepo() {
         setUpRealTimeListener();
-    }
-
-    public void addOrderData(Order order) {
-        //ORDER HASH MAP
-        Map<String, Object> dataOrder = new HashMap<>();
-        dataOrder.put("userId", FirebaseAuth.getInstance().getCurrentUser().getUid());
-        dataOrder.put("orderTime", order.getOrderTime());
-        dataOrder.put("orderMethod", order.getOrderMethod());
-        dataOrder.put("orderAddress", order.getOrderAddress());
-        dataOrder.put("recipientName", order.getRecipientName());
-        dataOrder.put("recipientPhone", order.getRecipientPhone());
-
-        db.collection("orders").add(dataOrder).addOnCompleteListener(task -> {
-            String id = task.getResult().getId();
-            order.getCart().getItems().forEach(cartItem -> {
-                db.collection("orders").document(id).collection("cart").document().set(cartItem);
-            });
-        });
     }
 
     @Override
@@ -82,8 +60,6 @@ public class AdminOrdersRepo implements Fetching {
                                                     orders.add(order);
 
                                                     this.orders.setValue(orders);
-                                                    Log.d("FINAL", orders.toString());
-                                                    Log.d("Orders", String.valueOf(orders.size()));
                                                 });
                                     }
                                 }
@@ -94,5 +70,9 @@ public class AdminOrdersRepo implements Fetching {
 
     public LiveData<List<Order>> getOrder() {
         return orders;
+    }
+
+    public Task<Void> delivery(String orderId) {
+        return db.collection("orders").document(orderId).update("delivered", true);
     }
 }

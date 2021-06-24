@@ -20,7 +20,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.AdminNotificationAdapter;
 import com.coffeehouse.the.databinding.AdminNotificationsFragmentBinding;
-import com.coffeehouse.the.utils.SwipeToDeleteCallback;
+import com.coffeehouse.the.utils.helper.SwipeToDeleteCallback;
 import com.coffeehouse.the.viewModels.admin.AdminNotificationsViewModel;
 
 import org.jetbrains.annotations.NotNull;

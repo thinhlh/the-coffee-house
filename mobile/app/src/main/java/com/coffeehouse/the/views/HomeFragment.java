@@ -47,6 +47,13 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
 
         setUpRecyclerView();
         setUpCarouselViewer();
+
+        adapter.setClickListener(item -> {
+            NotificationDetailBottomSheet bottomSheet = new NotificationDetailBottomSheet();
+            bottomSheet.setNotification(item);
+            bottomSheet.show(getFragmentManager(), "Notification Detail");
+        });
+
         return binding.getRoot();
     }
 

@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentManager;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.databinding.BottomsheetChangeaddressOrderdetailBinding;
 import com.coffeehouse.the.models.UserAddress;
+import com.coffeehouse.the.services.UserRepo;
 import com.coffeehouse.the.views.OrderAddressChoseBottomSheet;
 import com.coffeehouse.the.views.OrderStoreChoseBottomSheet;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
@@ -39,6 +40,8 @@ public class ChangeAddressBottomSheet extends BottomSheetDialogFragment implemen
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         bottomsheetChangeaddressOrderdetailBinding = DataBindingUtil.inflate(inflater, R.layout.bottomsheet_changeaddress_orderdetail, container, false);
         View v = bottomsheetChangeaddressOrderdetailBinding.getRoot();
+
+        bottomsheetChangeaddressOrderdetailBinding.setUser(UserRepo.user);
 
         bottomsheetChangeaddressOrderdetailBinding.buttonChangeUseraddress.setOnClickListener(this::onClick);
         bottomsheetChangeaddressOrderdetailBinding.changeUseraddress.setOnClickListener(this::onClick);

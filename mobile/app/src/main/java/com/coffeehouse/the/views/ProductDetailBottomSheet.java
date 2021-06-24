@@ -65,6 +65,7 @@ public class ProductDetailBottomSheet extends BottomSheetDialogFragment implemen
         activityProductDetailBinding.setProductDetail(product);
         activityProductDetailBinding.itemPrice.setText(format.format(product.getPrice()));
         productDetailViewModel = new ViewModelProvider(this).get(ProductDetailViewModel.class);
+        productDetailViewModel.setAmountPerOrder(product.getPrice());
         activityProductDetailBinding.setLifecycleOwner(this);
         activityProductDetailBinding.setProductDetailViewModel(productDetailViewModel);
         //END BINDING

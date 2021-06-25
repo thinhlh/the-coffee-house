@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import com.coffeehouse.the.LocalData.LocalDataManager;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.AuthViewPagerAdapter;
 import com.coffeehouse.the.services.local.FCMService;
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onStart() {
         FirebaseApp.initializeApp(this);
         FacebookSdk.sdkInitialize(this);
-
+        LocalDataManager.init(getApplicationContext());
         initDependencies();
         super.onStart();
     }

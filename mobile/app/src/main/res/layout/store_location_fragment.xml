@@ -33,23 +33,35 @@
                         app:queryHint="@string/store_search" />
                 </androidx.cardview.widget.CardView>
 
-                <ToggleButton
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="30dp"
-                    android:layout_marginTop="10dp"
-                    android:background="?android:attr/selectableItemBackground"
-                    android:backgroundTint="@color/white"
-                    android:drawableLeft="@drawable/ic_baseline_map_24"
-                    android:padding="5dp"
-                    android:text="@string/map"
-                    android:textColor="@color/black"
-                    android:textOff="@string/map"
-                    android:textOn="@string/list"
-                    android:textSize="12sp"
-                    android:textStyle="bold">
+                    android:layout_marginTop="13dp"
+                    android:backgroundTint="@color/white">
 
-                </ToggleButton>
+                    <ImageView
+                        android:id="@+id/image_map"
+                        android:layout_width="40dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/ic_baseline_map_24">
+
+                    </ImageView>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="7dp"
+                        android:layout_toRightOf="@+id/image_map"
+                        android:text="@string/map"
+                        android:textColor="@color/black"
+                        android:textSize="14sp"
+                        android:textStyle="bold">
+
+                    </TextView>
+
+                </RelativeLayout>
 
 
             </LinearLayout>

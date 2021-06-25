@@ -1,6 +1,7 @@
 package com.coffeehouse.the.adapter;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -8,6 +9,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.Adapter;
 
+import com.coffeehouse.the.LocalData.LocalDataManager;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.databinding.NotificationListItemBinding;
 import com.coffeehouse.the.models.Notification;
@@ -33,6 +35,9 @@ public class NotificationAdapter extends Adapter<NotificationAdapter.Notificatio
     public void onBindViewHolder(@NonNull NotificationViewHolder holder, int position) {
         Notification currentNotification = notifications.get(position);
         holder.notificationListItemBinding.setNotification(currentNotification);
+        if (LocalDataManager.getReadNotifications().contains(currentNotification.getId())) {
+            holder.notificationListItemBinding.notificationReadStatus.setVisibility(View.GONE);
+        }
         Picasso.get().load(currentNotification.getImageUrl()).into(holder.notificationListItemBinding.notificationImageView);
         holder.bindOnClick(currentNotification, listener);
     }
@@ -71,6 +76,7 @@ public class NotificationAdapter extends Adapter<NotificationAdapter.Notificatio
             notificationListItemBinding.setNotification(notification);
             notificationListItemBinding.executePendingBindings();
             itemView.setOnClickListener(v -> {
+                notificationListItemBinding.notificationReadStatus.setVisibility(View.GONE);
                 if (clickListener != null) {
                     clickListener.onClick(notification);
                 }

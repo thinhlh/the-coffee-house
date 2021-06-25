@@ -4,21 +4,21 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:background="@drawable/round_button_background"
         android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/bottom_sheet_dialog_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/menu"
-            android:textStyle="bold"
-            android:layout_marginTop="5dp"
             android:layout_centerHorizontal="true"
+            android:layout_margin="15dp"
+            android:text="@string/menu"
             android:textColor="@color/black"
             android:textSize="30sp"
+            android:textStyle="bold"
 
             />
+
         <ImageView
             android:id="@+id/close_oder_bottomesheetdialog"
             android:layout_width="30dp"
@@ -26,19 +26,41 @@
             android:layout_alignParentEnd="true"
             android:src="@drawable/ic_baseline_close_24" />
 
+        <RelativeLayout
+            android:id="@+id/rl_all_product"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bottom_sheet_dialog_name"
+            android:background="@color/white_gray">
+
+            <TextView
+                android:id="@+id/txt_all_product"
+                android:layout_width="220dp"
+                android:layout_height="45dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/round_button_background"
+                android:backgroundTint="@color/accent_color"
+                android:gravity="center"
+                android:text="@string/all_product"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:orientation="vertical"
             android:layout_height="match_parent"
-            android:layout_below="@id/bottom_sheet_dialog_name"
-            android:layout_marginTop="10dp">
+            android:layout_below="@+id/rl_all_product"
+            android:orientation="vertical">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/categories_recycler_view"
                 android:layout_width="match_parent"
-                android:layout_gravity="center_horizontal"
                 android:layout_height="match_parent"
-                android:layout_margin="2dp" />
+                android:layout_gravity="center_horizontal"
+                android:background="@color/white_gray" />
 
         </LinearLayout>
 

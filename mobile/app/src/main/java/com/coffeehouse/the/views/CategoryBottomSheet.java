@@ -10,8 +10,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.CategoryAdapter;
@@ -53,7 +56,7 @@ public class CategoryBottomSheet extends BottomSheetDialogFragment {
         //BINDING
         categoriesViewModel = new ViewModelProvider(this).get(CategoriesViewModel.class);
         RecyclerView recyclerView = menuBottomSheetBinding.categoriesRecyclerView;
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
         recyclerView.setHasFixedSize(true);
 
         CategoryAdapter categoryAdapter = new CategoryAdapter();
@@ -66,6 +69,11 @@ public class CategoryBottomSheet extends BottomSheetDialogFragment {
             dismiss();
         });
         menuBottomSheetBinding.closeOderBottomesheetdialog.setOnClickListener(listener1 -> {
+            dismiss();
+        });
+        menuBottomSheetBinding.txtAllProduct.setOnClickListener(listener1 -> {
+            Category category = new Category("0", "Món phải thử");
+            listener.onInputCategory(category);
             dismiss();
         });
 

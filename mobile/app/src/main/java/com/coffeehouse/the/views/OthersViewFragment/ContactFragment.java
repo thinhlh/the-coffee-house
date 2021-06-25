@@ -38,7 +38,6 @@ public class ContactFragment extends Fragment implements View.OnClickListener {
         contactFragmentBinding.phoneContact.setOnClickListener(this::onClick);
         contactFragmentBinding.emailContact.setOnClickListener(this::onClick);
         contactFragmentBinding.websiteContact.setOnClickListener(this::onClick);
-        contactFragmentBinding.logout.setOnClickListener(this::onClick);
         return v;
     }
 
@@ -57,12 +56,6 @@ public class ContactFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.website_contact:
                 openWebsite();
-                break;
-            case R.id.logout:
-                AuthViewModel authViewModel = new AuthViewModel();
-                authViewModel.signOut(getContext()).addOnCompleteListener(task -> {
-                    startActivity(new Intent(getContext(), MainActivity.class));
-                });
                 break;
         }
     }

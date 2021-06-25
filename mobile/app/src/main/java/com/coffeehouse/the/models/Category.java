@@ -8,6 +8,14 @@ public class Category {
     private String title = "";
     private String imageUrl = "";
 
+    public Category() {
+    }
+
+    public Category(String id, String title) {
+        this.id = id;
+        this.title = title;
+    }
+
     public String getId() {
         return id;
     }

@@ -240,49 +240,6 @@
                     android:background="@color/white_gray" />
 
 
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/logout"
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <ImageView
-                            android:id="@+id/logout_icon"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="20dp"
-                            android:src="@drawable/ic_baseline_login_24" />
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:id="@+id/logout_text"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerVertical="true"
-                            android:layout_marginLeft="15dp"
-                            android:layout_toRightOf="@id/logout_icon"
-                            android:text="@string/logout"
-                            android:textColor="@color/black"
-                            android:textSize="18sp" />
-
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:layout_marginRight="10dp"
-                            android:src="@drawable/ic_baseline_arrow_forward_ios_24" />
-
-
-                    </RelativeLayout>
-
-
-                </androidx.cardview.widget.CardView>
-
-
             </LinearLayout>
 
 

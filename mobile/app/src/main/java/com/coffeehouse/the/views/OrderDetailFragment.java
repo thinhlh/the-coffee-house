@@ -19,6 +19,7 @@ import com.coffeehouse.the.adapter.CartItemAdapter;
 import com.coffeehouse.the.databinding.OrderDetailBinding;
 import com.coffeehouse.the.models.Cart;
 import com.coffeehouse.the.models.Order;
+import com.coffeehouse.the.models.UserAddress;
 import com.coffeehouse.the.services.repositories.OrdersRepo;
 import com.coffeehouse.the.services.repositories.UserRepo;
 import com.coffeehouse.the.viewModels.OrderDetailViewModel;
@@ -36,6 +37,7 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
     private OrderDetailViewModel orderDetailViewModel = new OrderDetailViewModel();
     private CartItemAdapter cartItemAdapter = new CartItemAdapter();
     private Cart currentCart = new Cart();
+    private UserAddress address = new UserAddress();
     private Order order;
     private OrdersRepo ordersRepo = new OrdersRepo();
     private UserRepo userRepo = new UserRepo();
@@ -115,18 +117,7 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
             orderDetailBinding.textPhoneNumber.setError("Nhập số điện thoại người nhận");
             Toast.makeText(getContext(), "Nhập số điện thoại người nhận", Toast.LENGTH_SHORT).show();
             return false;
-        } else if (orderDetailBinding.textPhoneNumber.getText().toString().length() != 10) {
-            orderDetailBinding.textPhoneNumber.setError("Số điện thoại không hợp lệ");
-            Toast.makeText(getContext(), "Số điện thoại không hợp lệ", Toast.LENGTH_SHORT).show();
-            return false;
         } else {
-            try {
-                Integer.parseInt(orderDetailBinding.textPhoneNumber.getText().toString());
-            } catch (NumberFormatException e) {
-                orderDetailBinding.textPhoneNumber.setError("Số điện thoại không hợp lệ");
-                Toast.makeText(getContext(), "Số điện thoại không hợp lệ", Toast.LENGTH_SHORT).show();
-                return false;
-            }
             return true;
         }
     }
@@ -144,6 +135,7 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
     private void backToOrderFragment() {
         OrderFragment fragment = new OrderFragment();
         fragment.setCart(orderDetailViewModel.getCart());
+        fragment.setUserAddress(address);
         getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
     }
 
@@ -167,8 +159,6 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
             case R.id.text_choosepromotion:
                 Choosepromotion();
                 break;
-
-
         }
     }
 
@@ -191,6 +181,14 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
         } else {
             storeOrder(name, des, recipientName, recipientPhone);
         }
+        currentAddress(name, des, recipientName, recipientPhone);
+    }
+
+    private void currentAddress(String name, String des, String recipientName, String recipientPhone) {
+        address.setTitle(name);
+        address.setDescription(des);
+        address.setTitle(name);
+        address.setTitle(name);
     }
 
     private void shipOrder(String name, String des, String recipientName, String recipientPhone) {
@@ -205,13 +203,21 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
     }
 
     private void storeOrder(String name, String des, String recipientName, String recipientPhone) {
-        orderDetailBinding.textOrder.setText("Đến lấy tại cửa hàng");
         orderDetailBinding.textChange.setError(null);
+        orderDetailBinding.textOrder.setText("Đến lấy tại cửa hàng");
         delivered = false;
         orderDetailBinding.textDestination.setText(name);
         orderDetailBinding.textDestinationDetail.setText(des);
         orderDetailBinding.textName.setText(recipientName);
         orderDetailBinding.textPhoneNumber.setText(recipientPhone);
         orderDetailBinding.textOrderprice.setText(format.format(currentCart.getTotalCartValue()));
+    }
+
+    public UserAddress getAddress() {
+        return address;
+    }
+
+    public void setAddress(UserAddress address) {
+        this.address = address;
     }
 }

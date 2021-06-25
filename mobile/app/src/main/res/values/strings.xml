@@ -173,6 +173,7 @@
     <string name="order_information">Order Information</string>
     <string name="recovery">Recovery</string>
     <string name="delivery_en">Delivery</string>
+    <string name="all_product">+ Toàn bộ sản phẩm</string>
 
     <!--
     This string is used for square devices and overridden by hello_world in

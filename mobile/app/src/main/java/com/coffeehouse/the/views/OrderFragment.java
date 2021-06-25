@@ -22,6 +22,7 @@ import com.coffeehouse.the.models.Cart;
 import com.coffeehouse.the.models.CartItem;
 import com.coffeehouse.the.models.Category;
 import com.coffeehouse.the.models.Product;
+import com.coffeehouse.the.models.UserAddress;
 import com.coffeehouse.the.viewModels.OrderViewModel;
 
 public class OrderFragment extends Fragment implements CategoryBottomSheet.SendCategoryPick, ProductDetailBottomSheet.UpdateCart {
@@ -30,6 +31,7 @@ public class OrderFragment extends Fragment implements CategoryBottomSheet.SendC
     private ProductAdapter productsAdapter = new ProductAdapter();
     private OrderFragmentBinding orderFragmentBinding;
     private Cart cart = new Cart();
+    private UserAddress userAddress = new UserAddress();
 
     @Nullable
     @org.jetbrains.annotations.Nullable
@@ -69,10 +71,11 @@ public class OrderFragment extends Fragment implements CategoryBottomSheet.SendC
             getFragmentManager().beginTransaction().replace(this.getId(), fragment).addToBackStack(null).commit();
         });
 
-        //Inflate Order Fragment
+        //Inflate Order Detail Fragment
         orderFragmentBinding.orderView.setOnClickListener(view -> {
             OrderDetailFragment fragment = new OrderDetailFragment();
             fragment.setCartOrderView(cart);
+            fragment.setAddress(userAddress);
             getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
         });
 
@@ -94,7 +97,6 @@ public class OrderFragment extends Fragment implements CategoryBottomSheet.SendC
         searchView.setOnCloseListener(new SearchView.OnCloseListener() {
             @Override
             public boolean onClose() {
-                orderFragmentBinding.titleMustTry.setText("Món phải thử");
                 orderFragmentBinding.txtMenu.setText("Thực đơn");
                 return false;
             }
@@ -121,8 +123,7 @@ public class OrderFragment extends Fragment implements CategoryBottomSheet.SendC
     @Override
     public void onInputCategory(Category category) {
         orderViewModel.getProductsOfCategory(category.getId()).observe(getViewLifecycleOwner(), productsAdapter::setItems);
-//        orderFragmentBinding.txtMenu.setText(category.getTitle());
-        orderFragmentBinding.titleMustTry.setText(category.getTitle());
+        orderFragmentBinding.txtMenu.setText(category.getTitle());
     }
 
     @Override
@@ -132,5 +133,13 @@ public class OrderFragment extends Fragment implements CategoryBottomSheet.SendC
 
     public void setCart(Cart cart) {
         this.cart = cart;
+    }
+
+    public UserAddress getUserAddress() {
+        return userAddress;
+    }
+
+    public void setUserAddress(UserAddress userAddress) {
+        this.userAddress = userAddress;
     }
 }

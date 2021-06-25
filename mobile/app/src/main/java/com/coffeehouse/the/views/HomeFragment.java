@@ -1,16 +1,12 @@
 package com.coffeehouse.the.views;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.cardview.widget.CardView;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -18,36 +14,34 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.coffeehouse.the.LocalData.LocalDataManager;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.NotificationAdapter;
 import com.coffeehouse.the.databinding.HomeFragmentBinding;
-import com.coffeehouse.the.models.Notification;
-import com.coffeehouse.the.services.local.NotificationsSharedPref;
 import com.coffeehouse.the.viewModels.HomeViewModel;
-import com.coffeehouse.the.views.admin.AdminEditNotification;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.synnapps.carouselview.CarouselView;
 
-import org.jetbrains.annotations.NotNull;
+import java.util.Set;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
     private HomeViewModel homeViewModel = new HomeViewModel();
     private HomeFragmentBinding binding;
     private final NotificationAdapter adapter = new NotificationAdapter();
 
-    @Override
-    public void onViewCreated(@NonNull @NotNull View view, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        Initview(view);
-    }
-
     @Nullable
     @org.jetbrains.annotations.Nullable
     @Override
     public View onCreateView(@NonNull @org.jetbrains.annotations.NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         //INFLATE
+        if (LocalDataManager.getIsFirst()) {
+            LocalDataManager.setIsFirst(false);
+        }
         binding = DataBindingUtil.inflate(inflater, R.layout.home_fragment, container, false);
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+
+        binding.cardviewDelivery.setOnClickListener(this::onClick);
+        binding.pickUpCard.setOnClickListener(this::onClick);
 
         setUpRecyclerView();
         setUpCarouselViewer();
@@ -61,16 +55,30 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(adapter);
 
-        homeViewModel.getNotifications().observe(getViewLifecycleOwner(), adapter::setItems);
-
-        adapter.setClickListener(notification -> {
-
-            //TODO CALL NOTIFICATION SHARED PREFERENCES AND DISPATCH THE `NEW` LABEL
-
-            NotificationDetailBottomSheet bottomSheet = new NotificationDetailBottomSheet();
-            bottomSheet.setNotification(notification);
-            bottomSheet.show(getFragmentManager(), "Notification Detail");
+        final int[] notiCount = {0};
+        homeViewModel.getNotifications().observe(getViewLifecycleOwner(), items -> {
+            adapter.setItems(items);
+            notiCount[0] = items.size();
+            setCountText(items.size());
         });
+        adapter.setClickListener(item -> {
+            NotificationDetailBottomSheet bottomSheet = new NotificationDetailBottomSheet();
+            bottomSheet.setNotification(item);
+            bottomSheet.show(getFragmentManager(), "Notification Detail");
+
+            if (!LocalDataManager.getReadNotifications().contains(item.getId())) {
+                LocalDataManager.setCountNotifications(LocalDataManager.getCountNotifications() + 1);
+                Set<String> readNotificationIds = LocalDataManager.getReadNotifications();
+                readNotificationIds.add(item.getId());
+                LocalDataManager.setReadNotifications(readNotificationIds);
+                setCountText(notiCount[0]);
+            }
+        });
+    }
+
+    private void setCountText(int i) {
+        String txtCount = Integer.toString(i - LocalDataManager.getCountNotifications());
+        binding.totalUnseenNotifications.setText(txtCount);
     }
 
     private void setUpCarouselViewer() {
@@ -97,36 +105,26 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         });
     }
 
-    private void Initview(View view) {
-        CardView cardViewdelivery = view.findViewById(R.id.cardview_delivery);
-        cardViewdelivery.setOnClickListener(this);
-        CardView cardViewpickup = view.findViewById(R.id.pickUpCard);
-        cardViewpickup.setOnClickListener(this);
-
-    }
-
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.cardview_delivery:
-                Changefragment();
+                navigateToOrdersFragment();
                 break;
             case R.id.pickUpCard:
-                Changefragmentstorelocation();
+                navigateToStoresFragment();
                 break;
         }
-
-
     }
 
-    private void Changefragmentstorelocation() {
+    private void navigateToStoresFragment() {
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.home_fragment_container, new StoresFragment()).addToBackStack(null).commit();
         BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.action_store_location);
     }
 
-    private void Changefragment() {
+    private void navigateToOrdersFragment() {
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.home_fragment_container, new OrderFragment()).addToBackStack(null).commit();
         BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_navigation);

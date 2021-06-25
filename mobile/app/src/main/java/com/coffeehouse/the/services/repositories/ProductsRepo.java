@@ -59,6 +59,9 @@ public class ProductsRepo implements Fetching {
     }
 
     public LiveData<List<Product>> getProductsOfCategory(String categoryId) {
+        if (categoryId.equals("0"))
+            return products;
+
         List<Product> list = new ArrayList<>();
 
         for (Product product : products.getValue()) {

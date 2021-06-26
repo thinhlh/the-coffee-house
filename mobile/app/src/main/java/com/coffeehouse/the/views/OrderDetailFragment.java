@@ -19,11 +19,11 @@ import com.coffeehouse.the.adapter.CartItemAdapter;
 import com.coffeehouse.the.databinding.OrderDetailBinding;
 import com.coffeehouse.the.models.Cart;
 import com.coffeehouse.the.models.Order;
+import com.coffeehouse.the.models.Promotion;
 import com.coffeehouse.the.models.UserAddress;
 import com.coffeehouse.the.services.repositories.OrdersRepo;
 import com.coffeehouse.the.services.repositories.UserRepo;
 import com.coffeehouse.the.viewModels.OrderDetailViewModel;
-import com.coffeehouse.the.views.OthersViewFragment.BottomsheetChoosePromotionOrderDetail;
 import com.coffeehouse.the.views.OthersViewFragment.ChangeAddressBottomSheet;
 
 import org.jetbrains.annotations.NotNull;
@@ -32,7 +32,7 @@ import java.text.Format;
 import java.text.NumberFormat;
 import java.util.Locale;
 
-public class OrderDetailFragment extends Fragment implements View.OnClickListener, ChangeAddressBottomSheet.OrderStorePick {
+public class OrderDetailFragment extends Fragment implements View.OnClickListener, ChangeAddressBottomSheet.OrderStorePick, OrderPromotionChoseBottomSheet.updatePromotionSelect {
     private OrderDetailBinding orderDetailBinding;
     private OrderDetailViewModel orderDetailViewModel = new OrderDetailViewModel();
     private CartItemAdapter cartItemAdapter = new CartItemAdapter();
@@ -60,6 +60,7 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
         //BINDING
         orderDetailViewModel = new ViewModelProvider(this).get(OrderDetailViewModel.class);
         orderDetailViewModel.setCart(currentCart);
+        orderDetailViewModel.setTotalBill(currentCart.getTotalCartValue());
         RecyclerView recyclerView = orderDetailBinding.cartRecyclerView;
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
@@ -76,6 +77,8 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
         orderDetailBinding.deleteCart.setOnClickListener(listener -> {
             currentCart = new Cart();
             orderDetailViewModel.setCart(currentCart);
+            orderDetailBinding.txtPromotionCode.setText("");
+            orderDetailBinding.txtPromotionCode.setError("Chọn lại ưu đãi phù hợp với đơn hàng mới");
             getCart(cartItemAdapter);
             orderDetailBinding.setCart(currentCart);
         });
@@ -92,11 +95,23 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
             currentCart = items;
             orderDetailViewModel.setCart(items);
             orderDetailBinding.setCart(items);
+            orderDetailViewModel.setTotalBill(items.getTotalCartValue());
+            orderDetailBinding.txtPromotionCode.setText("");
+            orderDetailBinding.txtPromotionCode.setError("Chọn lại ưu đãi phù hợp với đơn hàng mới");
+            Toast.makeText(getContext(), "Chọn lại ưu đãi phù hợp với đơn hàng mới", Toast.LENGTH_SHORT).show();
             if (orderDetailViewModel.getCart().getItems().size() == 0) {
                 orderDetailBinding.textAddmenu.setError("Chưa có sản phẩm trong giỏ");
             }
             getCart(cartItemAdapter);
         });
+
+        orderDetailBinding.selectPromotion.setOnClickListener(l -> {
+            selectPromotion();
+        });
+
+        if (orderDetailBinding.txtPromotionCode.getText().toString().isEmpty()) {
+            orderDetailBinding.txtPromotionCode.setError("Chọn ưu đãi nếu có");
+        }
 
         return v;
     }
@@ -157,15 +172,15 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
                 backToOrderFragment();
                 break;
             case R.id.text_choosepromotion:
-                Choosepromotion();
+                selectPromotion();
                 break;
         }
     }
 
-    private void Choosepromotion() {
-        BottomsheetChoosePromotionOrderDetail bottomsheetChoosePromotionOrderDetail = new BottomsheetChoosePromotionOrderDetail();
-        bottomsheetChoosePromotionOrderDetail.setTargetFragment(OrderDetailFragment.this, 4);
-        bottomsheetChoosePromotionOrderDetail.show(getFragmentManager(), "Choose Promotion");
+    private void selectPromotion() {
+        OrderPromotionChoseBottomSheet orderPromotionChoseBottomSheet = new OrderPromotionChoseBottomSheet();
+        orderPromotionChoseBottomSheet.setTargetFragment(OrderDetailFragment.this, 4);
+        orderPromotionChoseBottomSheet.show(getFragmentManager(), "Choose Promotion");
     }
 
     private void orderMethod() {
@@ -199,7 +214,7 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
         orderDetailBinding.textDestinationDetail.setText(des);
         orderDetailBinding.textName.setText(recipientName);
         orderDetailBinding.textPhoneNumber.setText(recipientPhone);
-        orderDetailBinding.textOrderprice.setText(format.format(currentCart.getTotalCartValue() + 30000));
+        orderDetailBinding.textOrderprice.setText(format.format(orderDetailViewModel.getTotalBill() + 30000));
     }
 
     private void storeOrder(String name, String des, String recipientName, String recipientPhone) {
@@ -210,7 +225,7 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
         orderDetailBinding.textDestinationDetail.setText(des);
         orderDetailBinding.textName.setText(recipientName);
         orderDetailBinding.textPhoneNumber.setText(recipientPhone);
-        orderDetailBinding.textOrderprice.setText(format.format(currentCart.getTotalCartValue()));
+        orderDetailBinding.textOrderprice.setText(format.format(orderDetailViewModel.getTotalBill()));
     }
 
     public UserAddress getAddress() {
@@ -219,5 +234,24 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
 
     public void setAddress(UserAddress address) {
         this.address = address;
+    }
+
+    @Override
+    public void onPromotionPick(Promotion promotion) {
+        orderDetailBinding.txtPromotionCode.setText(promotion.getCode());
+        orderDetailBinding.txtPromotionCode.setError(null);
+        String price;
+        int ship = 0;
+        if (orderDetailBinding.textOrder.getText().equals("Giao tận nơi"))
+            ship = 30000;
+
+        if (promotion.getValue().contains("%")) {
+            orderDetailViewModel.setTotalBill((int) currentCart.getTotalCartValue() / promotion.getValueToInt());
+        } else {
+            orderDetailViewModel.setTotalBill(currentCart.getTotalCartValue() - Integer.parseInt(promotion.getValue()));
+        }
+
+        price = format.format(ship + orderDetailViewModel.getTotalBill());
+        orderDetailBinding.textOrderprice.setText(price);
     }
 }

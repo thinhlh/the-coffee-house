@@ -114,7 +114,7 @@ public class UpdateUserAddress extends AppCompatActivity implements View.OnClick
     private boolean titleValidation() {
         String title = txtTitle.getText().toString();
         if (title.isEmpty()) {
-            txtTitle.setError("Tilte Required");
+            txtTitle.setError("Title Required");
             txtTitle.requestFocus();
             return false;
         }

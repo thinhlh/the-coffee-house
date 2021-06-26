@@ -8,6 +8,7 @@ import com.coffeehouse.the.models.Cart;
 
 public class OrderDetailViewModel extends ViewModel {
     private Cart cart = new Cart();
+    private int totalBill = cart.getTotalCartValue();
 
     public OrderDetailViewModel() {
     }
@@ -24,5 +25,13 @@ public class OrderDetailViewModel extends ViewModel {
         MutableLiveData<Cart> _cart = new MutableLiveData<>();
         _cart.setValue(cart);
         return _cart;
+    }
+
+    public int getTotalBill() {
+        return totalBill;
+    }
+
+    public void setTotalBill(int totalBill) {
+        this.totalBill = totalBill;
     }
 }

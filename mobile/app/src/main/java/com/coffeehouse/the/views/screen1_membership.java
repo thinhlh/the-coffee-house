@@ -10,16 +10,24 @@ import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.coffeehouse.the.R;
+import com.coffeehouse.the.adapter.PromotionAdapter;
 import com.coffeehouse.the.databinding.FragmentScreen1MembershipBinding;
 import com.coffeehouse.the.databinding.MembershipFragmentBinding;
 import com.coffeehouse.the.services.repositories.UserRepo;
+import com.coffeehouse.the.viewModels.PromotionViewModel;
 
 import org.jetbrains.annotations.NotNull;
 
-public class screen1_membership extends Fragment implements View.OnClickListener {
+public class screen1_membership extends Fragment {
     private FragmentScreen1MembershipBinding binding;
+    private final PromotionAdapter promotionAdapter = new PromotionAdapter();
+    private PromotionViewModel promotionViewModel;
+
     public screen1_membership() {
     }
 
@@ -29,18 +37,28 @@ public class screen1_membership extends Fragment implements View.OnClickListener
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_screen1__membership, container, false);
         binding.setUser(UserRepo.user);
-        binding.cardviewChangepromotion.setOnClickListener(this::onClick);
+//        binding.cardviewChangepromotion.setOnClickListener(this::onClick);
+
+        //Binding
+        promotionViewModel = new ViewModelProvider(this).get(PromotionViewModel.class);
+        RecyclerView recyclerView = binding.promotionRecyclerview;
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(promotionAdapter);
+        getPromotions(promotionAdapter);
+        //End binding
+
+        promotionAdapter.setClickListener(item -> {
+            PromotionDetailBottomSheet bottomSheet = new PromotionDetailBottomSheet();
+            bottomSheet.setPromotion(item);
+            bottomSheet.show(getFragmentManager(), "Promotion Detail");
+        });
+
         return binding.getRoot();
     }
 
-
-
-    @Override
-    public void onClick(View v) {
-             switch (v.getId()){
-                 case R.id.cardview_changepromotion:
-
-                     break;
-             }
+    private void getPromotions(PromotionAdapter promotionAdapter) {
+        promotionViewModel.getPromotions().observe(getViewLifecycleOwner(), promotionAdapter::setItems);
     }
+
 }

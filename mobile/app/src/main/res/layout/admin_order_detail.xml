@@ -72,7 +72,7 @@
                     style="@style/AdminCommonInfoField"
                     android:drawableStart="@drawable/ic_baseline_attach_money_24"
                     android:drawableTint="@color/brown"
-                    android:text="@{order.total+ `đ`}"
+                    android:text="@{order.formattedOrderValue}"
                     android:textStyle="bold" />
 
 

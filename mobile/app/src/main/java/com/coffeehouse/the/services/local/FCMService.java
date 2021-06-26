@@ -31,10 +31,10 @@ public class FCMService extends FirebaseMessagingService {
 
     public static final String TOPIC = "notifications";
 
+
+
     @Override
     public void onMessageReceived(@NonNull @NotNull RemoteMessage remoteMessage) {
-
-        Log.d("FCMService", "From: " + remoteMessage.getFrom());
 
         if (remoteMessage.getData().size() > 0) {
             //Contains data
@@ -51,7 +51,7 @@ public class FCMService extends FirebaseMessagingService {
     private void sendNotification(RemoteMessage notification) {
         Intent intent = new Intent(this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_ONE_SHOT);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
         String channelId = getString(R.string.project_id);
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
@@ -79,6 +79,7 @@ public class FCMService extends FirebaseMessagingService {
                     NotificationManager.IMPORTANCE_HIGH);
             notificationManager.createNotificationChannel(channel);
         }
+        Log.d("","HERE");
         notificationManager.notify(0, notificationBuilder.build());
     }
 }

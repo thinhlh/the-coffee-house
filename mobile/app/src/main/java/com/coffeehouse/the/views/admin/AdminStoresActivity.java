@@ -71,7 +71,6 @@ public class AdminStoresActivity extends AppCompatActivity implements SearchView
     private void setUpListener() {
         binding.backButton.setOnClickListener(v -> this.finish());
         binding.addButton.setOnClickListener(v -> {
-            //TODO NAVIGATE TO NEW ADMIN EDIT STORE INTENT
             startActivity(new Intent(this, AdminEditStore.class));
         });
         binding.searchView.setOnQueryTextListener(this);

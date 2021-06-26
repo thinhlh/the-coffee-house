@@ -46,6 +46,8 @@ public class AdminOthersFragment extends Fragment {
 
         binding.statistic.setOnClickListener(v -> startActivity(new Intent(getContext(), ProfitActivity.class)));
 
+        binding.promotion.setOnClickListener(v -> startActivity(new Intent(getContext(), AdminPromotions.class)));
+
         binding.logout.setOnClickListener(v -> viewModel.signOut(getContext()).addOnCompleteListener(task -> {
             startActivity(new Intent(getContext(), MainActivity.class));
         }));

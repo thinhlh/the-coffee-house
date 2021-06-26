@@ -1,5 +1,6 @@
 package com.coffeehouse.the.models;
 
+import com.coffeehouse.the.utils.commons.Constants;
 import com.google.firebase.Timestamp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.gson.Gson;
@@ -18,6 +19,7 @@ public class Order {
     private Date orderTime = Date.from(Instant.now());
     private Cart cart = new Cart();
     private String userId = "";
+    private int orderValue = 0;
     private String orderMethod = "";
     private String orderAddress = "";
     private String recipientName = "";
@@ -72,8 +74,20 @@ public class Order {
         this.orderTime = orderTime;
     }
 
-    public int getTotal() {
+    public int getTotalBaseOrderValue() {
         return cart.getTotalCartValue();
+    }
+
+    public void setOrderValue(int orderValue) {
+        this.orderValue = orderValue;
+    }
+
+    public int getOrderValue() {
+        return orderValue;
+    }
+
+    public String getFormattedOrderValue() {
+        return Constants.currencyFormatter.format(orderValue);
     }
 
     public String getUserId() {
@@ -128,7 +142,7 @@ public class Order {
         return new SimpleDateFormat("HH:mm EEEE, MMM dd").format(orderTime);
     }
 
-    public List<String> getAllProductsId(){
+    public List<String> getAllProductsId() {
         return cart.getAllProductsId();
     }
 
@@ -146,12 +160,17 @@ public class Order {
                 e.printStackTrace();
             }
         } else order.orderTime = ((Timestamp) map.get("orderTime")).toDate();
-        
+
         order.orderMethod = String.valueOf(map.get("orderMethod"));
         order.orderAddress = (String) map.get("orderAddress");
         order.recipientName = (String) map.get("recipientName");
         order.recipientPhone = (String) map.get("recipientPhone");
 
+        if (map.get("orderValue") instanceof Double) {
+            order.orderValue = ((Double) map.get("orderValue")).intValue();
+        } else {
+            order.orderValue = (int) map.get("orderValue");
+        }
 
         if (map.containsKey("delivered")) {
             order.setDelivered((Boolean) map.get("delivered"));
@@ -174,6 +193,7 @@ public class Order {
         map.put("recipientName", recipientName);
         map.put("recipientPhone", recipientPhone);
         map.put("delivered", delivered);
+        map.put("orderValue", orderValue);
 
         return map;
     }

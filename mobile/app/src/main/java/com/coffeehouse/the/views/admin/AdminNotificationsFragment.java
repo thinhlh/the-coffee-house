@@ -25,7 +25,8 @@ import com.coffeehouse.the.viewModels.admin.AdminNotificationsViewModel;
 
 import org.jetbrains.annotations.NotNull;
 
-public class AdminNotificationsFragment extends Fragment implements SearchView.OnQueryTextListener {
+public class
+AdminNotificationsFragment extends Fragment implements SearchView.OnQueryTextListener {
 
     private AdminNotificationsViewModel viewModel;
     private final AdminNotificationAdapter adapter = new AdminNotificationAdapter();

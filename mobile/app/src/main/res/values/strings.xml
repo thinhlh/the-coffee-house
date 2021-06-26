@@ -73,7 +73,7 @@
     <string name="right">Quyền lợi của bạn</string>
     <string name="yourpromotion">Phiếu ưu đãi của bạn</string>
     <string name="seeall">Xem Tất Cả</string>
-    <string name="enterpromotioncode">Nhập mã khuyến mãi</string>
+    <string name="enterpromotioncode">Tìm kiếm mã khuyến mãi</string>
     <string name="outofdate">Sắp hết hạn</string>
     <string name="on_use">Sẵn sàng sử dụng</string>
     <string name="apply">Áp dụng</string>
@@ -190,6 +190,7 @@
     <string name="longitude">Longitude</string>
     <string name="latitude">Latitude</string>
     <string name="store_name">Store name</string>
+    <string name="promotions">Promotions</string>
 
     <!--
     This string is used for square devices and overridden by hello_world in

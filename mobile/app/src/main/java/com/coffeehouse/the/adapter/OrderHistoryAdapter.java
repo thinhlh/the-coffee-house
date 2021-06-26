@@ -102,10 +102,8 @@ public class OrderHistoryAdapter extends Adapter<OrderHistoryAdapter.OrderHistor
     private String itemPrice(Order order) {
         Locale locale = new Locale("vi", "VN");
         Format format = NumberFormat.getCurrencyInstance(locale);
-        if (order.getDelivered()) {
-            return format.format(order.getTotal() + 30000);
-        } else
-            return format.format(order.getTotal());
+        return format.format(order.getOrderValue());
+
     }
 
     private String itemTime(Order order) {

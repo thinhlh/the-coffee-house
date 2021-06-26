@@ -52,11 +52,11 @@ const getProfit = async (fromDate, toDate) => {
     let endDate = new Date(toDate);
     endDate.setDate(endDate.getDate() + 1);
 
-    var total = 0, delivered = 0, waiting = 0;
+    var total = 0, delivered = 0;
     var orders = await db.collection('orders').where('orderTime', '>=', startDate).where('orderTime', '<=', endDate).get();
 
     for (var order of orders.docs) {
-        if (order.data().delivered == true) 
+        if (order.data().delivered == true)
             delivered++;
         const cartItems = await order.ref.collection('cart').get();
         cartItems.forEach((cartItemSnapshot) => {

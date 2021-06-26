@@ -24,7 +24,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class PromotionAdapter extends Adapter<PromotionAdapter.PromotionViewHolder> implements ClickableRecyclerView<Promotion> {
-    private List<Promotion> promotions;
+    protected List<Promotion> promotions;
     private RecyclerViewClickListener<Promotion> listener;
 
     @NonNull
@@ -40,7 +40,6 @@ public class PromotionAdapter extends Adapter<PromotionAdapter.PromotionViewHold
         Promotion currentPromotion = promotions.get(position);
         holder.binding.setPromotion(currentPromotion);
         Picasso.get().load(currentPromotion.getImageUrl()).into(holder.binding.image1CardviewPromotion1);
-        holder.binding.expiryDate.setText("Hết hạn vào " + promotionExpiryDate(currentPromotion));
         holder.bindOnClick(currentPromotion, listener);
     }
 

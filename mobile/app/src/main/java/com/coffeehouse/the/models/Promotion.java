@@ -1,5 +1,6 @@
 package com.coffeehouse.the.models;
 
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
@@ -65,6 +66,10 @@ public class Promotion {
         this.targetCustomer = targetCustomer;
     }
 
+    public String getFormattedExpiryDate() {
+        return new SimpleDateFormat("dd-MM-yy").format(this.expiryDate);
+    }
+
     public Date getExpiryDate() {
         return expiryDate;
     }
@@ -76,7 +81,6 @@ public class Promotion {
     public int getValueToInt() {
         int count = 0;
         int number = 0;
-        String s = "";
         while (value.charAt(count) != '%') {
             number *= 10;
             number += value.charAt(count++) - '0';

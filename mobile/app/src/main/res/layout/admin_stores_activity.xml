@@ -52,8 +52,6 @@
             android:id="@+id/store_recycler_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="2dp"
-            android:padding="@dimen/general_padding"
             android:background="@color/white_gray" />
     </LinearLayout>
 </layout>

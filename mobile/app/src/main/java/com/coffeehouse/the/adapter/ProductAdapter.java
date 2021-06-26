@@ -51,6 +51,7 @@ public class ProductAdapter extends Adapter<ProductAdapter.ProductViewHolder> im
     @Override
     public void setItems(List<Product> items) {
         this.products = items;
+        this.productsCopy.clear();
         this.productsCopy.addAll(items);
         notifyDataSetChanged();
     }

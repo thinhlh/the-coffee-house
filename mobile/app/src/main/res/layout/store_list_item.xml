@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardCornerRadius="8dp"
+        android:layout_marginVertical="@dimen/general_dimen"
         app:cardElevation="8dp">
 
         <LinearLayout
@@ -24,7 +25,7 @@
             android:paddingEnd="16dp"
             android:paddingBottom="16dp">
 
-            <androidx.cardview.widget.CardView
+            <com.google.android.material.card.MaterialCardView
 
                 android:layout_width="120dp"
                 android:layout_height="94dp"
@@ -36,7 +37,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent" />
 
-            </androidx.cardview.widget.CardView>
+            </com.google.android.material.card.MaterialCardView>
 
             <LinearLayout
                 android:layout_width="250dp"
@@ -64,7 +65,7 @@
                     android:maxLines="3"
                     android:text="@{store.address}"
                     android:textColor="@color/black"
-                    android:textSize="18sp" />
+                    android:textSize="16sp" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/action_store_discription"

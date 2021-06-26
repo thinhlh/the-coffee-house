@@ -86,9 +86,14 @@
         <activity android:name=".views.admin.AdminHomeActivity" />
         <activity android:name=".views.admin.AdminEditProduct" />
         <activity android:name=".views.admin.AdminEditNotification" />
+        <activity android:name=".views.admin.AdminEditCategory" />
+        <activity android:name=".views.admin.AdminEditStore" />
         <activity android:name=".views.admin.AdminUserInfo" />
         <activity android:name=".views.admin.AdminOrderDetail" />
         <activity android:name=".views.admin.AdminCartItemDetail" />
+        <activity android:name=".views.admin.AdminStoresActivity" />
+        <activity android:name=".views.admin.AdminCategories" />
+        <activity android:name=".views.admin.ProfitActivity" />
     </application>
 
 </manifest>

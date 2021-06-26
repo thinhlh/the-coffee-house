@@ -146,41 +146,15 @@ public class ProductsRepo implements Fetching {
         });
     }
 
-    public LiveData<List<Product>> filterProduct() {
-        return filters;
-    }
-
     public Task<Void> removeProduct(int index) {
         String id = products.getValue().get(index).getId();
         return storage.getReference().child("images/products/" + id).delete()
                 .continueWithTask(task -> db.collection("products").document(id).delete());
     }
 
-    public Task<Void> addProduct(Product product, Uri imageUri) {
-        String id = db.collection("products").document().getId();
-        StorageReference storageReferenceToImage = storage.getReference("images/products/" + id);
-        UploadTask uploadTask = storageReferenceToImage.putFile(imageUri);
-        return uploadTask.continueWithTask(upTask -> storageReferenceToImage.getDownloadUrl()).continueWith(uri -> {
-            product.setImageUrl(uri.getResult().toString());
-            return null;
-        }).continueWithTask(task -> db.collection("products").document(id).set(product.toMap()));
+    public LiveData<List<Product>> filterProduct() {
+        return filters;
     }
 
-    public Task<Void> updateProduct(Product product, Uri imageUri) {
-        if (imageUri != null) {
-            // Update the image
-            StorageReference storageReferenceImage = storage.getReference().child("images/products/" + product.getId());
-            UploadTask uploadTask = storageReferenceImage.putFile(imageUri);
-            return uploadTask.continueWithTask(upTask -> storageReferenceImage.getDownloadUrl())
-                    .continueWith(uri -> {
-                        product.setImageUrl(uri.getResult().toString());
-                        return null;
-                    })
-                    .continueWithTask(task -> db.collection("products").document(product.getId()).update(product.toMap()));
-        } else {
-            // Don't update the image
-            return db.collection("products").document(product.getId()).update(product.toMap());
-        }
-    }
 
 }

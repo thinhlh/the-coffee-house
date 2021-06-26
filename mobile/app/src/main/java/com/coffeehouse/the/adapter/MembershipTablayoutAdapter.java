@@ -42,6 +42,5 @@ public class MembershipTablayoutAdapter extends FragmentPagerAdapter {
     public void addFragment(Fragment fragment, String title) {
         fragmentList.add(fragment);
         titleList.add(title);
-
     }
 }

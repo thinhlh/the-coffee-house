@@ -1,8 +1,11 @@
 package com.coffeehouse.the.models;
 
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
-public class Category {
+public class Category implements Serializable {
 
     private String id = "";
     private String title = "";
@@ -46,6 +49,13 @@ public class Category {
         if (o == null || getClass() != o.getClass()) return false;
         Category category = (Category) o;
         return id.equals(category.id);
+    }
+
+    public Map<String, Object> toMap() {
+        return new HashMap<String, Object>() {{
+            put("title", title);
+            put("imageUrl", imageUrl);
+        }};
     }
 
     @Override

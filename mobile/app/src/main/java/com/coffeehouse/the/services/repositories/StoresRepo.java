@@ -7,8 +7,10 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.coffeehouse.the.models.Store;
 import com.coffeehouse.the.utils.helper.Fetching;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +19,7 @@ import java.util.Objects;
 public class StoresRepo implements Fetching {
 
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
-
+    private final FirebaseStorage storage = FirebaseStorage.getInstance();
     private final MutableLiveData<List<Store>> stores = new MutableLiveData<>();
     private final MutableLiveData<List<Store>> filters = new MutableLiveData<>();
 
@@ -39,7 +41,6 @@ public class StoresRepo implements Fetching {
                 for (QueryDocumentSnapshot doc : Objects.requireNonNull(value)) {
                     if (doc != null) {
                         Store store = Store.fromQueryDocumentSnapshot(doc);
-                        Log.d("", store.toString());
                         _stores.add(store);
                     }
                 }
@@ -57,7 +58,6 @@ public class StoresRepo implements Fetching {
                 for (QueryDocumentSnapshot doc : Objects.requireNonNull(value)) {
                     if (doc != null) {
                         Store store = Store.fromQueryDocumentSnapshot(doc);
-                        Log.d("", store.toString());
                         if (store.getAddress().toLowerCase().contains(s.toLowerCase()))
                             _stores.add(store);
                     }
@@ -69,5 +69,11 @@ public class StoresRepo implements Fetching {
 
     public LiveData<List<Store>> filterStores() {
         return filters;
+    }
+
+    public Task<Void> deleteStore(int position) {
+        String id = stores.getValue().get(position).getId();
+        return storage.getReference("image/stores/" + id).delete()
+                .continueWithTask(task -> db.collection("stores").document(id).delete());
     }
 }

@@ -2,7 +2,6 @@ package com.coffeehouse.the.adapter;
 
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -18,10 +17,11 @@ import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class StoreAdapter extends Adapter<StoreAdapter.StoreViewHolder> implements ClickableRecyclerView<Store> {
-    private List<Store> stores;
+    protected List<Store> stores = new ArrayList<>();
     private RecyclerViewClickListener<Store> listener;
 
     @NonNull
@@ -36,7 +36,7 @@ public class StoreAdapter extends Adapter<StoreAdapter.StoreViewHolder> implemen
     public void onBindViewHolder(@NonNull @NotNull StoreAdapter.StoreViewHolder holder, int position) {
         Store currentStore = stores.get(position);
         holder.storeListItemBinding.setStore(currentStore);
-        Picasso.get().load(currentStore.getImageUrls().get(0)).into((ImageView) holder.itemView.findViewById(R.id.store_image));
+        Picasso.get().load(currentStore.getImageUrl()).into(holder.storeListItemBinding.storeImage);
         holder.bindOnClick(currentStore, listener);
     }
 

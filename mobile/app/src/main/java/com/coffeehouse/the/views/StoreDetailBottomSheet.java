@@ -23,6 +23,7 @@ import com.coffeehouse.the.databinding.StoreLocationDetailBinding;
 import com.coffeehouse.the.models.Store;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
+import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -46,23 +47,14 @@ public class StoreDetailBottomSheet extends BottomSheetDialogFragment {
         storeLocationDetailBinding.setLifecycleOwner(this);
         //END BINDING
 
-        storeLocationDetailBinding.storeDetailButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dismiss();
-            }
-        });
-        storeLocationDetailBinding.imgStoreDetailGgMap.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                navigateToGoogleMap();
-            }
-        });
+        storeLocationDetailBinding.storeDetailButton.setOnClickListener(v1 -> dismiss());
+        storeLocationDetailBinding.imgStoreDetailGgMap.setOnClickListener(v1 -> navigateToGoogleMap());
         storeLocationDetailBinding.storePhoneContact.setOnClickListener(listener -> {
             Intent intent = new Intent(Intent.ACTION_DIAL);
             intent.setData(Uri.parse("tel:" + contactPhoneNumber));
             startActivity(intent);
         });
+        Picasso.get().load(store.getImageUrl()).into(storeLocationDetailBinding.image);
 
         return v;
     }

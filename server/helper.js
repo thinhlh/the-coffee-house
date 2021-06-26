@@ -45,6 +45,27 @@ const denied = (res) => {
     res.status(403).send('Permission Denied');
 }
 
+const getProfit = async (fromDate, toDate) => {
+    let startDate = new Date(fromDate);
+
+    //Because this is start of the date => we have to make it to the next day in order to cover the last day value
+    let endDate = new Date(toDate);
+    endDate.setDate(endDate.getDate() + 1);
+
+    var total = 0, delivered = 0, waiting = 0;
+    var orders = await db.collection('orders').where('orderTime', '>=', startDate).where('orderTime', '<=', endDate).get();
+
+    for (var order of orders.docs) {
+        if (order.data().delivered == true) 
+            delivered++;
+        const cartItems = await order.ref.collection('cart').get();
+        cartItems.forEach((cartItemSnapshot) => {
+            total += cartItemSnapshot.data().totalCartItemValue;
+        });
+    }
+    return { total: total, numberOfOrders: orders.size, deliveredOrders: delivered };
+}
+
 const updateMembership = async () => {
     db.collection('users').get().then(async (documentSnapshots) => {
         await documentSnapshots.forEach(documentRef => {
@@ -66,7 +87,6 @@ const updateMembership = async () => {
         });
     });
     console.log('Updated');
-
 }
 
 module.exports = {
@@ -76,5 +96,6 @@ module.exports = {
     deleteUser,
     pushNotification,
     updateMembership,
+    getProfit,
     denied,
 };

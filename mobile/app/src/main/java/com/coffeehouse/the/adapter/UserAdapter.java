@@ -54,6 +54,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     @Override
     public void setItems(List<AdminCustomUser> items) {
         this.users = items;
+        this.usersCopy.clear();
         this.usersCopy.addAll(items);
         notifyDataSetChanged();
     }

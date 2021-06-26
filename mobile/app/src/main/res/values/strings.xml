@@ -174,9 +174,22 @@
     <string name="order_information">Order Information</string>
     <string name="recovery">Recovery</string>
     <string name="delivery_en">Delivery</string>
-    <string name="all_product">+ Toàn bộ sản phẩm</string>
     <string name="usenow">Sử dụng ngay</string>
     <string name="date">Ngày hết hạn:</string>
+    <string name="add_new_store">Add new store</string>
+    <string name="from_date">From Date</string>
+    <string name="to_date">To Date</string>
+    <string name="show_profit">Show profit</string>
+    <string name="checkout_profit">Checkout Profit</string>
+    <string name="select_to_date">Select to date</string>
+    <string name="select_from_date">Select from date</string>
+    <string name="delivered_orders">Delivered Orders</string>
+    <string name="total_orders">Total Orders</string>
+    <string name="all_product">Tất cả sản phẩm</string>
+    <string name="address_en">Address</string>
+    <string name="longitude">Longitude</string>
+    <string name="latitude">Latitude</string>
+    <string name="store_name">Store name</string>
 
     <!--
     This string is used for square devices and overridden by hello_world in

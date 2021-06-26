@@ -48,7 +48,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         if (currentUser != null) {
             Context context = this;
-            startActivity(new Intent(context, FlashScreen.class));
+            //startActivity(new Intent(context, FlashScreen.class));
+            setContentView(R.layout.flash_screen);
             UserRepo.isCurrentUserAdmin().addOnCompleteListener(task -> {
                 Task<Void> task1;
                 if (UserRepo.user.getSubscribeToNotifications()) {

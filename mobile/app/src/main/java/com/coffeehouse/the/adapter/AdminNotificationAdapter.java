@@ -22,7 +22,7 @@ import java.util.regex.Pattern;
 public class AdminNotificationAdapter extends RecyclerView.Adapter<AdminNotificationAdapter.AdminNotificationViewHolder> implements SwipeAbleRecyclerView<Notification>, Searchable {
 
     private List<Notification> notifications = new ArrayList<>();
-    private List<Notification> notificationsCopy = new ArrayList<>();
+    private final List<Notification> notificationsCopy = new ArrayList<>();
     private RecyclerViewClickListener<Notification> listener;
 
     @NonNull
@@ -48,7 +48,8 @@ public class AdminNotificationAdapter extends RecyclerView.Adapter<AdminNotifica
     @Override
     public void setItems(List<Notification> items) {
         this.notifications = items;
-        this.notificationsCopy.addAll(items);
+        this.notificationsCopy.clear();
+        notificationsCopy.addAll(notifications);
         notifyDataSetChanged();
     }
 
@@ -64,7 +65,7 @@ public class AdminNotificationAdapter extends RecyclerView.Adapter<AdminNotifica
 
     @Override
     public void remove(int position) {
-        notifyItemRemoved(position);
+//        notifyItemRemoved(position);
     }
 
     @Override
@@ -77,7 +78,7 @@ public class AdminNotificationAdapter extends RecyclerView.Adapter<AdminNotifica
             String regex = ".*" + query + ".*";
 
             for (Notification notification : notificationsCopy) {
-                if (Pattern.matches(regex, notification.getTitle().toLowerCase()) || Pattern.matches(regex, notification.getDescription().toLowerCase())) {
+                if (Pattern.matches(regex, notification.getTitle().toLowerCase()) || Pattern.matches(regex, notification.getDescription().toLowerCase()) && !notifications.contains(notification)) {
                     notifications.add(notification);
                 }
             }

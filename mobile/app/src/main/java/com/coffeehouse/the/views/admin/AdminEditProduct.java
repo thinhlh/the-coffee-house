@@ -18,6 +18,7 @@ import com.coffeehouse.the.adapter.AdminCategorySpinnerAdapter;
 import com.coffeehouse.the.databinding.AdminEditProductBinding;
 import com.coffeehouse.the.models.Category;
 import com.coffeehouse.the.models.Product;
+import com.coffeehouse.the.utils.helper.WaitingHandler;
 import com.coffeehouse.the.viewModels.admin.AdminEditProductViewModel;
 import com.squareup.picasso.Picasso;
 
@@ -25,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Objects;
 
-public class AdminEditProduct extends AppCompatActivity {
+public class AdminEditProduct extends AppCompatActivity implements WaitingHandler {
 
     private static final int PICK_IMAGE = 1;
 
@@ -75,6 +76,9 @@ public class AdminEditProduct extends AppCompatActivity {
         //TODO on submit listener for toolbar
         toolbar.setOnMenuItemClickListener(item -> {
             if (validation()) {
+
+                invokeWaiting();
+
                 Product currentProduct = binding.getProduct();
                 currentProduct.setTitle(binding.title.getEditText().getText().toString());
                 currentProduct.setDescription(binding.productDescription.getEditText().getText().toString());
@@ -82,8 +86,14 @@ public class AdminEditProduct extends AppCompatActivity {
                 currentProduct.setCategoryId(((Category) binding.spinner.getSelectedItem()).getId());
 
                 //TODO TASK HANDLER HERE
-                viewModel.onSubmitProduct(currentProduct, imageData).addOnSuccessListener(task -> {
-                    this.finish();
+                viewModel.onSubmitProduct(currentProduct, imageData).addOnCompleteListener(task -> {
+                    dispatchWaiting();
+                    if (task.isSuccessful()) {
+                        this.finish();
+                    } else {
+                        Toast.makeText(this, "Error occurred: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+
                 });
             }
             return true;
@@ -168,7 +178,7 @@ public class AdminEditProduct extends AppCompatActivity {
 
     private boolean validateImage() {
         //New product but not yes choose image
-        if (binding.getProduct().getId().equals("") && imageData == null) {
+        if (binding.getProduct().getId().isEmpty() && imageData == null) {
             new AlertDialog.Builder(this).setTitle("No image").setMessage("You have not choose any product image!").setPositiveButton("OKAY", (dialog, which) -> {
                 dialog.dismiss();
             }).show();
@@ -204,5 +214,19 @@ public class AdminEditProduct extends AppCompatActivity {
             return false;
         }
         return true;
+    }
+
+    @Override
+    public void invokeWaiting() {
+        binding.progressCircular.setVisibility(View.VISIBLE);
+        binding.content.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void dispatchWaiting() {
+
+
+        binding.progressCircular.setVisibility(View.GONE);
+        binding.content.setVisibility(View.VISIBLE);
     }
 }

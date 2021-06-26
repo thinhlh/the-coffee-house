@@ -39,11 +39,15 @@ public class AdminOthersFragment extends Fragment {
     }
 
     private void setListeners() {
-//        binding.users.setOnClickListener(v -> startActivity(new Intent(getContext(),AdminUsersActivity.class)));
-        binding.logout.setOnClickListener(v -> {
-            viewModel.signOut(getContext()).addOnCompleteListener(task -> {
-                startActivity(new Intent(getContext(), MainActivity.class));
-            });
-        });
+
+        binding.stores.setOnClickListener(v -> startActivity(new Intent(getContext(), AdminStoresActivity.class)));
+
+        binding.categories.setOnClickListener(v -> startActivity(new Intent(getContext(), AdminCategories.class)));
+
+        binding.statistic.setOnClickListener(v -> startActivity(new Intent(getContext(), ProfitActivity.class)));
+
+        binding.logout.setOnClickListener(v -> viewModel.signOut(getContext()).addOnCompleteListener(task -> {
+            startActivity(new Intent(getContext(), MainActivity.class));
+        }));
     }
 }

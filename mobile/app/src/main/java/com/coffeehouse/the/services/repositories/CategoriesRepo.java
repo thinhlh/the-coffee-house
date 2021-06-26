@@ -10,6 +10,7 @@ import com.coffeehouse.the.utils.helper.Fetching;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.storage.FirebaseStorage;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,7 +48,14 @@ public class CategoriesRepo implements Fetching {
         });
     }
 
-    public Task<List<Category>> getCategoriesTask(){
+
+    public Task<Void> deleteCategory(int position) {
+        String id = categories.getValue().get(position).getId();
+        return FirebaseStorage.getInstance().getReference("images/categories/" + id).delete()
+                .continueWithTask(task -> db.collection("categories").document(id).delete());
+    }
+
+    public Task<List<Category>> getCategoriesTask() {
         return db.collection("categories").get().continueWith(task -> task.getResult().toObjects(Category.class));
     }
 }

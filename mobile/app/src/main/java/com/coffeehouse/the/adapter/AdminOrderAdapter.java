@@ -60,6 +60,7 @@ public class AdminOrderAdapter extends RecyclerView.Adapter<AdminOrderAdapter.Ad
     @Override
     public void setItems(List<Order> items) {
         this.orders = items;
+        this.ordersCopy.clear();
         this.ordersCopy.addAll(items);
         notifyDataSetChanged();
 

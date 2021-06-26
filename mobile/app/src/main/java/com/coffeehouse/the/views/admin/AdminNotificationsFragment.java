@@ -60,7 +60,7 @@ public class AdminNotificationsFragment extends Fragment implements SearchView.O
 
         viewModel.getNotifications().observe(getViewLifecycleOwner(), adapter::setItems);
 
-        enableSwipeToDelete(notificationsRecyclerView);
+        enableSwipeToDelete();
 
         adapter.setClickListener(notification -> {
             Intent intent = new Intent(getContext(), AdminEditNotification.class);
@@ -69,20 +69,20 @@ public class AdminNotificationsFragment extends Fragment implements SearchView.O
         });
     }
 
-    private void enableSwipeToDelete(RecyclerView notificationsRecyclerView) {
+    private void enableSwipeToDelete() {
         SwipeToDeleteCallback swipeToDeleteCallback = new SwipeToDeleteCallback(getContext()) {
             @Override
             public void onSwiped(@NonNull @NotNull RecyclerView.ViewHolder viewHolder, int direction) {
                 final int position = viewHolder.getAdapterPosition();
 
-                new AlertDialog.Builder(getContext()).setTitle("Delete product").setMessage("Are you sure want to delete this notification?").setPositiveButton("Yes", (dialog, which) -> {
+                new AlertDialog.Builder(getContext()).setTitle("Delete notification").setMessage("Are you sure want to delete this notification?").setPositiveButton("Yes", (dialog, which) -> {
                     viewModel.removeANotification(position);
                 }).setNegativeButton("No", (dialog, which) -> {
                     adapter.notifyDataSetChanged();
                 }).show();
             }
         };
-        new ItemTouchHelper(swipeToDeleteCallback).attachToRecyclerView(notificationsRecyclerView);
+        new ItemTouchHelper(swipeToDeleteCallback).attachToRecyclerView(binding.notificationsRecyclerView);
     }
 
     @Override

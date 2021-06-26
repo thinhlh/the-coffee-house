@@ -18,8 +18,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.Objects;
 
 public class AdminHomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
-
-    private ActionBar toolBar;
     private FrameLayout frameLayout;
 
     @Override

@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         if (currentUser != null) {
             Context context = this;
+            startActivity(new Intent(context, FlashScreen.class));
             UserRepo.isCurrentUserAdmin().addOnCompleteListener(task -> {
                 Task<Void> task1;
                 if (UserRepo.user.getSubscribeToNotifications()) {

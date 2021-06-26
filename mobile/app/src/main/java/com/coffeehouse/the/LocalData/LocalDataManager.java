@@ -9,7 +9,7 @@ public class LocalDataManager {
     private NotificationSharedPreferences sharedPreferences;
     private static final String NOTIFICATIONS_READ_PREF = "NOTIFICATIONS_READ_PREF";
     private static final String NOTIFICATIONS_COUNT_PREF = "NOTIFICATIONS_COUNT_PREF";
-    private static final String IS_FIRST_PREF = "IS_FIRST_PREF";
+    private static final String CURRENT_USER_PREF = "CURRENT_USER_PREF";
 
     public static void init(Context context) {
         instance = new LocalDataManager();
@@ -23,14 +23,13 @@ public class LocalDataManager {
         return instance;
     }
 
-    public static void setIsFirst(boolean isFirst) {
-        LocalDataManager.instance.sharedPreferences.putBooleanValue(IS_FIRST_PREF, isFirst);
+    public static void setCurrentUserId(String userId) {
+        LocalDataManager.instance.sharedPreferences.putStringValue(CURRENT_USER_PREF, userId);
     }
 
-    public static boolean getIsFirst() {
-        return LocalDataManager.instance.sharedPreferences.getBooleanValue(IS_FIRST_PREF);
+    public static String getCurrentUserId() {
+        return LocalDataManager.instance.sharedPreferences.getStringValue(CURRENT_USER_PREF);
     }
-
 
     public static void setReadNotifications(Set<String> readNotifications) {
         LocalDataManager.instance.sharedPreferences.putStringSetValue(NOTIFICATIONS_READ_PREF, readNotifications);

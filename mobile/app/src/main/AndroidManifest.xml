@@ -76,6 +76,7 @@
         <activity android:name=".views.HomeActivity" />
         <activity android:name=".views.GreetingActivity" />
         <activity android:name=".views.LoginForgotPasswordActivity" />
+        <activity android:name=".views.FlashScreen" />
 
         <activity android:name=".views.admin.AdminHomeActivity" />
         <activity android:name=".views.admin.AdminEditProduct" />

@@ -14,16 +14,16 @@ public class NotificationSharedPreferences {
         this.context = context;
     }
 
-    public void putBooleanValue(String key, boolean value) {
+    public void putStringValue(String key, String value) {
         SharedPreferences preferences = context.getSharedPreferences(NOTIFICATIONS_PREF, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
-        editor.putBoolean(key, value);
+        editor.putString(key, value);
         editor.apply();
     }
 
-    public boolean getBooleanValue(String key) {
+    public String getStringValue(String key) {
         SharedPreferences preferences = context.getSharedPreferences(NOTIFICATIONS_PREF, Context.MODE_PRIVATE);
-        return preferences.getBoolean(key, true);
+        return preferences.getString(key, "");
     }
 
     public void putStringSetValue(String key, Set<String> value) {

@@ -34,7 +34,7 @@ public class OrderHistoryDetailAdapter extends Adapter<OrderHistoryDetailAdapter
         CartItem currentCartItem = cart.getItems().get(position);
         holder.binding.setCartItem(currentCartItem);
         holder.title.setText(productsRepo.getProductById(currentCartItem.getProductId()).getTitle());
-        holder.quantity.setText(currentCartItem.getQuantity());
+        holder.quantity.setText(Integer.toString(currentCartItem.getQuantity()));
     }
 
     public void setCart(Cart cart) {

@@ -14,14 +14,18 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.airbnb.lottie.model.LottieCompositionCache;
 import com.coffeehouse.the.LocalData.LocalDataManager;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.NotificationAdapter;
 import com.coffeehouse.the.databinding.HomeFragmentBinding;
+import com.coffeehouse.the.services.repositories.UserRepo;
 import com.coffeehouse.the.viewModels.HomeViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
 import com.synnapps.carouselview.CarouselView;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class HomeFragment extends Fragment implements View.OnClickListener {
@@ -34,8 +38,14 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(@NonNull @org.jetbrains.annotations.NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         //INFLATE
-        if (LocalDataManager.getIsFirst()) {
-            LocalDataManager.setIsFirst(false);
+//        if (LocalDataManager.getIsFirst()) {
+//            LocalDataManager.setIsFirst(false);
+//        }
+        if (!LocalDataManager.getCurrentUserId().equals(FirebaseAuth.getInstance().getUid())) {
+            LocalDataManager.setCurrentUserId(FirebaseAuth.getInstance().getUid());
+            Set<String> set = new HashSet<>();
+            LocalDataManager.setReadNotifications(set);
+            LocalDataManager.setCountNotifications(0);
         }
         binding = DataBindingUtil.inflate(inflater, R.layout.home_fragment, container, false);
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);

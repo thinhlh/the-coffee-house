@@ -128,7 +128,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
     private void navigateToStoresFragment() {
-        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        FragmentManager fragmentManager =getFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.home_fragment_container, new StoresFragment()).addToBackStack(null).commit();
         BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.action_store_location);

@@ -162,7 +162,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/support_cardview"
             android:layout_width="360dp"
-            android:layout_height="122dp"
+            android:layout_height="wrap_content"
             android:layout_below="@id/support_text"
             android:layout_centerInParent="true"
             android:layout_marginTop="10dp"
@@ -170,12 +170,12 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="60dp">
+                    android:layout_height="45dp">
 
                     <RelativeLayout
                         android:id="@+id/feedback"
@@ -222,7 +222,7 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="60dp">
+                    android:layout_height="45dp">
 
                     <RelativeLayout
                         android:id="@+id/contact"
@@ -295,12 +295,12 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="60dp">
+                    android:layout_height="45dp">
 
                     <RelativeLayout
                         android:id="@+id/user_info"
@@ -347,7 +347,7 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="60dp">
+                    android:layout_height="45dp">
 
                     <RelativeLayout
                         android:id="@+id/saved_address"
@@ -396,7 +396,7 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="60dp">
+                    android:layout_height="45dp">
 
                     <RelativeLayout
                         android:id="@+id/settings"
@@ -445,7 +445,7 @@
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
-                    android:layout_height="60dp">
+                    android:layout_height="45dp">
 
                     <RelativeLayout
                         android:id="@+id/logout"

@@ -4,35 +4,45 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import com.coffeehouse.the.R;
+import com.coffeehouse.the.adapter.AuthViewPagerAdapter;
 import com.coffeehouse.the.databinding.FixSavedaddressBinding;
 import com.coffeehouse.the.models.UserAddress;
 import com.coffeehouse.the.services.repositories.AddressRepo;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 
 import org.jetbrains.annotations.NotNull;
 
-public class UpdateUserAddress extends Fragment implements View.OnClickListener {
+import java.util.Objects;
+
+public class UpdateUserAddress extends AppCompatActivity implements View.OnClickListener {
     private FixSavedaddressBinding fixSavedaddressBinding;
     private EditText txtTitle, txtDescription, txtDetail, txtGate, txtNote, txtRecipientName, txtRecipientPhone;
     private AddressRepo addressRepo = new AddressRepo();
     private UserAddress userAddress = new UserAddress();
     private boolean flag = true;
 
-    @Nullable
-    @org.jetbrains.annotations.Nullable
     @Override
-    public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-        fixSavedaddressBinding = DataBindingUtil.inflate(inflater, R.layout.fix_savedaddress, container, false);
-        View v = fixSavedaddressBinding.getRoot();
+    protected void onCreate(@Nullable @org.jetbrains.annotations.Nullable Bundle
+                                    savedInstanceState) {
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        Objects.requireNonNull(getSupportActionBar()).hide();
+
+        super.onCreate(savedInstanceState);
+        fixSavedaddressBinding=DataBindingUtil.setContentView(this,R.layout.fix_savedaddress);
 
         init();
         setVariable();
@@ -41,8 +51,9 @@ public class UpdateUserAddress extends Fragment implements View.OnClickListener 
         fixSavedaddressBinding.updateAddress.setOnClickListener(this::onClick);
         fixSavedaddressBinding.backButton.setOnClickListener(this::onClick);
 
-        return v;
+
     }
+
 
     private void setVariable() {
         txtTitle.setText(userAddress.getTitle());
@@ -69,10 +80,10 @@ public class UpdateUserAddress extends Fragment implements View.OnClickListener 
         switch (v.getId()) {
             case R.id.delete_address:
                 if (userAddress.getId() == "") {
-                    Toast.makeText(getContext(), "Address haven't created", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Address haven't created", Toast.LENGTH_SHORT).show();
                 } else {
                     addressRepo.deleteUserAddress(userAddress.getId());
-                    Toast.makeText(getContext(), "Delete Address success", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Delete Address success", Toast.LENGTH_SHORT).show();
                     getFragmentManager().popBackStack();
                 }
                 break;
@@ -81,10 +92,10 @@ public class UpdateUserAddress extends Fragment implements View.OnClickListener 
                     UserAddress currentAddress = new UserAddress(FirebaseAuth.getInstance().getUid(), txtTitle.getText().toString(), txtDescription.getText().toString(), txtDetail.getText().toString(), txtGate.getText().toString(), txtNote.getText().toString(), txtRecipientName.getText().toString(), txtRecipientPhone.getText().toString());
                     if (flag) {
                         addressRepo.addUserAddress(currentAddress);
-                        Toast.makeText(getContext(), "Add Address success", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Add Address success", Toast.LENGTH_SHORT).show();
                     } else {
                         addressRepo.updateAddress(userAddress.getId(), currentAddress);
-                        Toast.makeText(getContext(), "Update Address success", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Update Address success", Toast.LENGTH_SHORT).show();
                     }
 
                     getFragmentManager().popBackStack();

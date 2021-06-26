@@ -7,14 +7,17 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.MembershipTablayoutAdapter;
+import com.coffeehouse.the.databinding.FragmentScreen1MembershipBinding;
+import com.coffeehouse.the.databinding.MembershipFragmentBinding;
 import com.google.android.material.tabs.TabLayout;
 
-public class MembershipFragment extends Fragment {
+public class MembershipFragment extends Fragment implements View.OnClickListener {
     ViewPager viewPager;
     TabLayout tabLayout;
     View v;
@@ -27,22 +30,7 @@ public class MembershipFragment extends Fragment {
       super.onActivityCreated(savedInstanceState);
         setUpViewPager(viewPager);
         tabLayout.setupWithViewPager(viewPager);
-        tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
-            @Override
-            public void onTabSelected(TabLayout.Tab tab) {
 
-            }
-
-            @Override
-            public void onTabUnselected(TabLayout.Tab tab) {
-
-            }
-
-            @Override
-            public void onTabReselected(TabLayout.Tab tab) {
-
-            }
-        });
     }
 
     private void setUpViewPager(ViewPager viewPager) {
@@ -61,5 +49,11 @@ public class MembershipFragment extends Fragment {
         viewPager =v.findViewById(R.id.viewpager_membership);
         tabLayout=v.findViewById(R.id.tablayout_membership);
         return v;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+        }
     }
 }

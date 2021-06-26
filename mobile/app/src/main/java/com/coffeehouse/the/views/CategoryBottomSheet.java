@@ -71,7 +71,7 @@ public class CategoryBottomSheet extends BottomSheetDialogFragment {
         menuBottomSheetBinding.closeOderBottomesheetdialog.setOnClickListener(listener1 -> {
             dismiss();
         });
-        menuBottomSheetBinding.txtAllProduct.setOnClickListener(listener1 -> {
+        menuBottomSheetBinding.rlAllProduct.setOnClickListener(listener1 -> {
             Category category = new Category("0", "Món phải thử");
             listener.onInputCategory(category);
             dismiss();

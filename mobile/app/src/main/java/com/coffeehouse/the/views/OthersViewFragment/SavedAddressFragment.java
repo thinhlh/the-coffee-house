@@ -1,5 +1,6 @@
 package com.coffeehouse.the.views.OthersViewFragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,9 +47,9 @@ public class SavedAddressFragment extends Fragment implements View.OnClickListen
 
         userAddressAdapter.setClickListener(item -> {
             UpdateUserAddress fragment = new UpdateUserAddress();
-            fragment.setFlag(false);
             fragment.setUserAddress(item);
-            getFragmentManager().beginTransaction().replace(this.getId(), fragment).addToBackStack(null).commit();
+            Intent intent = new Intent(getContext(), UpdateUserAddress.class);
+            startActivity(intent);
         });
 
         savedAddressFragmentBinding.closeSavedAddress.setOnClickListener(listener -> {
@@ -65,7 +66,7 @@ public class SavedAddressFragment extends Fragment implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
-        Fragment fragment1 = new UpdateUserAddress();
-        getFragmentManager().beginTransaction().replace(this.getId(), fragment1).addToBackStack(null).commit();
+        Intent intent = new Intent(getContext(), UpdateUserAddress.class);
+        startActivity(intent);
     }
 }

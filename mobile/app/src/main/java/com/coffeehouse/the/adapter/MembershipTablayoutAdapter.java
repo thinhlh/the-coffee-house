@@ -12,8 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MembershipTablayoutAdapter extends FragmentPagerAdapter {
-    private List<Fragment> fragmentList =new ArrayList<>();
+    private List<Fragment> fragmentList = new ArrayList<>();
     private List<String> titleList = new ArrayList<>();
+
     public MembershipTablayoutAdapter(@NonNull @NotNull FragmentManager fm) {
         super(fm);
     }
@@ -22,6 +23,7 @@ public class MembershipTablayoutAdapter extends FragmentPagerAdapter {
     @NotNull
     @Override
     public Fragment getItem(int position) {
+
         return fragmentList.get(position);
     }
 
@@ -37,9 +39,9 @@ public class MembershipTablayoutAdapter extends FragmentPagerAdapter {
         return titleList.get(position);
     }
 
-    public void addFragment(Fragment fragment,String title){
-               fragmentList.add(fragment);
-               titleList.add(title);
+    public void addFragment(Fragment fragment, String title) {
+        fragmentList.add(fragment);
+        titleList.add(title);
 
     }
 }

@@ -4,11 +4,13 @@
     <data>
 
     </data>
-
+<androidx.core.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/white_gray"
+        android:background="@color/browser_actions_bg_grey"
         android:orientation="vertical">
 
         <com.google.android.material.appbar.AppBarLayout
@@ -56,13 +58,14 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:textSize="16sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="7dp"
                     android:text="@string/nameaddress" />
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/addnewadress_edittext"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -72,9 +75,8 @@
                     android:layout_marginBottom="5dp"
                     android:background="@android:color/transparent"
                     android:hint="Nhà / Cơ quan / Gym / ..."
-                    android:text=""
-                    android:textColorHint="@color/black"
-                    android:textSize="16sp" />
+                    android:textColorHint="@color/grey"
+                    android:textSize="18sp" />
 
 
             </LinearLayout>
@@ -97,12 +99,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="7dp"
+                    android:textSize="16sp"
                     android:text="@string/address" />
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/text_address_description"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:layout_below="@+id/address"
                     android:layout_centerHorizontal="true"
                     android:layout_marginLeft="20dp"
@@ -110,18 +114,8 @@
                     android:layout_marginBottom="5dp"
                     android:background="@android:color/transparent"
                     android:hint="@string/chooseaddress"
-                    android:text=""
-                    android:textColorHint="@color/black"
-                    android:textSize="16sp" />
-
-                <!--                <ImageButton-->
-                <!--                    android:layout_width="wrap_content"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_alignParentRight="true"-->
-                <!--                    android:layout_centerVertical="true"-->
-                <!--                    android:layout_marginRight="10dp"-->
-                <!--                    android:background="@color/white"-->
-                <!--                    android:src="@drawable/ic_baseline_arrow_forward_ios_24" />-->
+                    android:textColorHint="@color/grey"
+                    android:textSize="18sp" />
 
 
             </RelativeLayout>
@@ -144,12 +138,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="7dp"
+                    android:textSize="16sp"
                     android:text="@string/floor" />
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/text_address_detail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:textColor="@color/black"
                     android:layout_centerHorizontal="true"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
@@ -157,8 +153,8 @@
                     android:background="@android:color/transparent"
                     android:hint="@string/floor"
                     android:text=""
-                    android:textColorHint="@color/black"
-                    android:textSize="16sp" />
+                    android:textColorHint="@color/grey"
+                    android:textSize="18sp" />
 
 
             </LinearLayout>
@@ -176,6 +172,7 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:textSize="16sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
@@ -189,12 +186,12 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
+                    android:textColor="@color/black"
                     android:layout_marginBottom="5dp"
                     android:background="@android:color/transparent"
                     android:hint="@string/gate"
-                    android:text=""
-                    android:textColorHint="@color/black"
-                    android:textSize="16sp" />
+                    android:textColorHint="@color/grey"
+                    android:textSize="18sp" />
 
 
             </LinearLayout>
@@ -213,13 +210,14 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:textSize="16sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="7dp"
                     android:text="@string/noti" />
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/text_address_note"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -227,11 +225,11 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
+                    android:textColor="@color/black"
                     android:background="@android:color/transparent"
                     android:hint="@string/howtodeliver"
-                    android:text=""
-                    android:textColorHint="@color/black"
-                    android:textSize="16sp" />
+                    android:textColorHint="@color/grey"
+                    android:textSize="18sp" />
 
 
             </LinearLayout>
@@ -249,13 +247,14 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:textSize="16sp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="7dp"
                     android:text="@string/nameofclient" />
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/text_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -265,9 +264,9 @@
                     android:layout_marginBottom="5dp"
                     android:background="@android:color/transparent"
                     android:hint="@string/nameofclient"
-                    android:text=""
-                    android:textColorHint="@color/black"
-                    android:textSize="16sp" />
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"
+                    android:textSize="18sp" />
 
 
             </LinearLayout>
@@ -291,7 +290,7 @@
                     android:layout_marginTop="7dp"
                     android:text="@string/telephonenumber" />
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/text_phone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -301,9 +300,9 @@
                     android:layout_marginBottom="5dp"
                     android:background="@android:color/transparent"
                     android:hint="@string/telephonenumber"
-                    android:text=""
-                    android:textColorHint="@color/black"
-                    android:textSize="16sp" />
+                    android:textColor="@color/black"
+                    android:textColorHint="@color/grey"
+                    android:textSize="18sp" />
 
 
             </LinearLayout>
@@ -350,11 +349,15 @@
             android:id="@+id/update_address"
             android:layout_width="350dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="200dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="35dp"
+            android:textSize="18sp"
             android:backgroundTint="@color/accent_color"
             android:text="@string/finish" />
 
 
     </LinearLayout>
+</androidx.core.widget.NestedScrollView>
+
 </layout>

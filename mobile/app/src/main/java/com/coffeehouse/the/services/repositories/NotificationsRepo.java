@@ -54,7 +54,6 @@ public class NotificationsRepo implements Fetching {
     @Override
     public void setUpRealTimeListener() {
         db.collection("notifications").addSnapshotListener((value, error) -> {
-
             if (error != null) {
                 Log.w("Notifications Repo", error);
             } else {

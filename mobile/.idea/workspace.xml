@@ -5,6 +5,9 @@
       <config />
     </shared>
   </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
@@ -38,6 +41,7 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/checksums/checksums.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Gradle__com_google_zxing_core_3_3_0.xml" beforeDir="false" />
@@ -46,6 +50,47 @@
       <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/screen1_membership.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/screen1_membership.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/fragment_screen1__membership.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_screen1__membership.xml" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/AdminCategoryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/AdminCategoryAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/AdminNotificationAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/AdminNotificationAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/AuthViewPagerAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/AuthViewPagerAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/CartItemAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/CartItemAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/CategoryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/CategoryAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/NotificationAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/NotificationAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/OrderHistoryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/OrderHistoryAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/ProductAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/ProductAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/PromotionAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/PromotionAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/StoreAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/StoreAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/UserAddressAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/adapter/UserAddressAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/models/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/models/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/models/Promotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/models/Promotion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/services/repositories/AdminProductRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/services/repositories/AdminProductRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/services/repositories/NotificationsRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/services/repositories/NotificationsRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/services/repositories/PromotionsRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/services/repositories/PromotionsRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/services/repositories/UserRepo.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/services/repositories/UserRepo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/viewModels/AuthViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/viewModels/AuthViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/viewModels/admin/AdminNotificationsViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/viewModels/admin/AdminNotificationsViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/viewModels/admin/AdminPromotionsViewModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/viewModels/admin/AdminPromotionsViewModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/LoginFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/LoginFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/SignUpFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/SignUpFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/admin/AdminEditNotification.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/admin/AdminEditNotification.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/admin/AdminEditProduct.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/admin/AdminEditProduct.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/admin/AdminEditPromotion.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/admin/AdminEditPromotion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/admin/AdminNotificationsFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/admin/AdminNotificationsFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/admin/AdminPromotions.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/admin/AdminPromotions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/admin_edit_notification.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/admin_edit_notification.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/admin_edit_product.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/admin_edit_product.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/admin_edit_promotion.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/admin_edit_promotion.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/login_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/login_fragment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/signup_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/signup_fragment.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
+>>>>>>> Stashed changes
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,8 +153,15 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+<<<<<<< Updated upstream
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="show.migrate.to.gradle.popup" value="false" />
+=======
+    <property name="android-custom-view/Users/hoangthinh/.gradle/caches/modules-2/files-2.1/androidx.viewpager/viewpager/1.0.0/db045f92188b9d247d5f556866f8861ab68528f0/viewpager-1.0.0-sources.jar!/androidx/viewpager/widget/ViewPager.java_SELECTED" value="ViewPager" />
+    <property name="android-custom-view/Users/hoangthinh/.gradle/caches/modules-2/files-2.1/com.facebook.android/facebook-common/4.42.0/530f5efa4a36dbe8c7b41563278085ffc59b5b26/facebook-common-4.42.0-sources.jar!/com/facebook/FacebookButtonBase.java_SELECTED" value="FacebookButtonBase" />
+    <property name="android-custom-view/Users/hoangthinh/.gradle/caches/modules-2/files-2.1/com.facebook.android/facebook-login/4.42.0/5e3d08fc791650cc0df09ac481295c0ed24fe4c8/facebook-login-4.42.0-sources.jar!/com/facebook/login/widget/LoginButton.java_SELECTED" value="LoginButton" />
+    <property name="android-custom-view/Users/hoangthinh/Library/Android/sdk/sources/android-30/android/view/View.java_SELECTED" value="View" />
+>>>>>>> Stashed changes
   </component>
   <component name="RunManager">
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
@@ -214,11 +266,19 @@
     <option name="LAST_COMMIT_MESSAGE" value="feat: update user password, upload feedbacks&#10;fix: order valid, some UI, notification sharedpref" />
   </component>
   <component name="WindowStateProjectService">
+<<<<<<< Updated upstream
     <state x="581" y="111" key="#com.intellij.ide.util.MemberChooser" timestamp="1624790100317">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
     <state x="581" y="111" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1624790100317" />
     <state x="726" y="154" key="#com.intellij.ide.util.MemberChooser/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624744500315" />
+=======
+    <state x="726" y="154" key="#com.intellij.ide.util.MemberChooser" timestamp="1624811586226">
+      <screen x="0" y="25" width="1920" height="969" />
+    </state>
+    <state x="726" y="154" key="#com.intellij.ide.util.MemberChooser/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624778765612" />
+    <state x="726" y="154" key="#com.intellij.ide.util.MemberChooser/0.25.1920.969/1920.58.1366.743@0.25.1920.969" timestamp="1624811586226" />
+>>>>>>> Stashed changes
     <state x="288" y="25" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1624730242649">
       <screen x="0" y="25" width="1920" height="969" />
     </state>
@@ -231,6 +291,7 @@
       <screen x="0" y="25" width="1920" height="969" />
     </state>
     <state x="632" y="203" key="#com.intellij.refactoring.typeMigration.ui.FailedConversionsDialog/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624730215363" />
+<<<<<<< Updated upstream
     <state x="93" y="93" width="1350" height="648" key="AVDManager" timestamp="1624793950092">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -264,14 +325,81 @@
     </state>
     <state width="1493" height="339" key="GridCell.Tab.0.right/0.0.1536.834@0.0.1536.834" timestamp="1624801852735" />
     <state width="1868" height="246" key="GridCell.Tab.0.right/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624745348275" />
+=======
+    <state x="545" y="261" key="AndroidCreateResourceFileDialog" timestamp="1624745787037">
+      <screen x="0" y="25" width="1920" height="969" />
+    </state>
+    <state x="545" y="261" key="AndroidCreateResourceFileDialog/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624745787037" />
+    <state x="777" y="241" key="AndroidCreateXmlResourceDialog" timestamp="1624780935365">
+      <screen x="0" y="25" width="1920" height="969" />
+    </state>
+    <state x="777" y="241" key="AndroidCreateXmlResourceDialog/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624780935365" />
+    <state width="1868" height="246" key="GridCell.Tab.0.bottom" timestamp="1624815298235">
+      <screen x="0" y="25" width="1920" height="969" />
+    </state>
+    <state width="1868" height="246" key="GridCell.Tab.0.bottom/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624785044398" />
+    <state width="1868" height="246" key="GridCell.Tab.0.bottom/0.25.1920.969/1920.58.1366.743@0.25.1920.969" timestamp="1624815298235" />
+    <state width="1868" height="246" key="GridCell.Tab.0.center" timestamp="1624815298235">
+      <screen x="0" y="25" width="1920" height="969" />
+    </state>
+    <state width="1868" height="246" key="GridCell.Tab.0.center/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624785044397" />
+    <state width="1868" height="246" key="GridCell.Tab.0.center/0.25.1920.969/1920.58.1366.743@0.25.1920.969" timestamp="1624815298235" />
+    <state width="1868" height="246" key="GridCell.Tab.0.left" timestamp="1624815298234">
+      <screen x="0" y="25" width="1920" height="969" />
+    </state>
+    <state width="1868" height="246" key="GridCell.Tab.0.left/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624785044395" />
+    <state width="1868" height="246" key="GridCell.Tab.0.left/0.25.1920.969/1920.58.1366.743@0.25.1920.969" timestamp="1624815298234" />
+    <state width="1868" height="246" key="GridCell.Tab.0.right" timestamp="1624815298235">
+      <screen x="0" y="25" width="1920" height="969" />
+    </state>
+    <state width="1868" height="246" key="GridCell.Tab.0.right/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624785044397" />
+    <state width="1868" height="246" key="GridCell.Tab.0.right/0.25.1920.969/1920.58.1366.743@0.25.1920.969" timestamp="1624815298235" />
+    <state width="1868" height="246" key="GridCell.Tab.1.bottom" timestamp="1624810268343">
+      <screen x="0" y="25" width="1920" height="969" />
+    </state>
+    <state width="1868" height="246" key="GridCell.Tab.1.bottom/0.25.1920.969/1920.58.1366.743@0.25.1920.969" timestamp="1624810268343" />
+    <state width="1868" height="246" key="GridCell.Tab.1.center" timestamp="1624810268342">
+      <screen x="0" y="25" width="1920" height="969" />
+    </state>
+    <state width="1868" height="246" key="GridCell.Tab.1.center/0.25.1920.969/1920.58.1366.743@0.25.1920.969" timestamp="1624810268342" />
+    <state width="1868" height="246" key="GridCell.Tab.1.left" timestamp="1624810268342">
+      <screen x="0" y="25" width="1920" height="969" />
+    </state>
+    <state width="1868" height="246" key="GridCell.Tab.1.left/0.25.1920.969/1920.58.1366.743@0.25.1920.969" timestamp="1624810268342" />
+    <state width="1868" height="246" key="GridCell.Tab.1.right" timestamp="1624810268342">
+      <screen x="0" y="25" width="1920" height="969" />
+    </state>
+    <state width="1868" height="246" key="GridCell.Tab.1.right/0.25.1920.969/1920.58.1366.743@0.25.1920.969" timestamp="1624810268342" />
+>>>>>>> Stashed changes
     <state x="445" y="196" key="IDE.errors.dialog" timestamp="1624742593978">
       <screen x="0" y="25" width="1920" height="969" />
     </state>
     <state x="445" y="196" key="IDE.errors.dialog/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624742593977" />
-    <state x="541" y="25" width="838" height="1032" key="search.everywhere.popup" timestamp="1624745644803">
+    <state x="742" y="410" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1624780622632">
       <screen x="0" y="25" width="1920" height="969" />
     </state>
-    <state x="541" y="25" width="838" height="1032" key="search.everywhere.popup/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624745644803" />
+    <state x="742" y="410" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624780622632" />
+    <state width="750" height="535" key="javadoc.popup" timestamp="1624786848262">
+      <screen x="0" y="25" width="1920" height="969" />
+    </state>
+    <state width="750" height="535" key="javadoc.popup/0.25.1920.969/1920.58.1366.743@0.25.1920.969" timestamp="1624786848262" />
+    <state x="541" y="25" width="838" height="646" key="search.everywhere.popup" timestamp="1624816189239">
+      <screen x="0" y="25" width="1920" height="969" />
+    </state>
+    <state x="541" y="25" width="838" height="1124" key="search.everywhere.popup/0.25.1920.1055/1920.25.1366.667@0.25.1920.1055" timestamp="1624785442810" />
+    <state x="541" y="25" width="838" height="1032" key="search.everywhere.popup/0.25.1920.969/1920.25.1366.743@0.25.1920.969" timestamp="1624784576662" />
+    <state x="541" y="25" width="838" height="646" key="search.everywhere.popup/0.25.1920.969/1920.58.1366.743@0.25.1920.969" timestamp="1624816189239" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/main/java/com/coffeehouse/the/views/LoginFragment.java</url>
+          <line>184</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XDebuggerManager">
     <watches-manager>

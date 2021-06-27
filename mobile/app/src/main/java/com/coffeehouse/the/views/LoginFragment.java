@@ -1,6 +1,8 @@
 package com.coffeehouse.the.views;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -11,17 +13,21 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.coffeehouse.the.R;
+import com.coffeehouse.the.databinding.LoginFragmentBinding;
 import com.coffeehouse.the.utils.helper.CustomGoogleSignInClient;
 import com.coffeehouse.the.services.local.FCMService;
 import com.coffeehouse.the.services.repositories.UserRepo;
+import com.coffeehouse.the.utils.helper.WaitingHandler;
 import com.coffeehouse.the.viewModels.AuthViewModel;
 import com.coffeehouse.the.views.admin.AdminHomeActivity;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -39,8 +45,8 @@ import java.security.GeneralSecurityException;
 import java.util.Objects;
 
 
-public class LoginFragment extends Fragment implements View.OnClickListener {
-
+public class LoginFragment extends Fragment implements View.OnClickListener, WaitingHandler {
+    private LoginFragmentBinding binding;
     private final AuthViewModel authViewModel = new AuthViewModel();
     private TextInputLayout input_email, input_password;
     private String email, password;
@@ -59,7 +65,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
+        binding = DataBindingUtil.inflate(inflater, R.layout.login_fragment, container, false);
         View v = inflater.inflate(R.layout.login_fragment, container, false);
 
         input_email = v.findViewById(R.id.text_input_email);
@@ -77,16 +83,17 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         LoginButton facebookLoginButton = v.findViewById(R.id.facebook_login_button);
         facebookLoginButton.setReadPermissions("email", "public_profile");
         facebookLoginButton.setFragment(this);
+
         facebookLoginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 authViewModel.handleFacebookAccessToken(loginResult.getAccessToken())
                         .addOnCompleteListener(task -> {
                             if (task.isSuccessful()) {
+                                Log.d("FBLOGIN", "SUCCESS");
                                 Toast.makeText(v.getContext(), "Welcome " + FirebaseAuth.getInstance().getCurrentUser().getDisplayName(), Toast.LENGTH_SHORT).show();
                                 navigateToHome(
-                                        //TODO SPECIFY THE ROLE HERE
-                                        false
+                                        task.getResult().getAdmin()
                                 );
                             } else {
                                 Log.d("", Objects.requireNonNull(task.getException()).getMessage());
@@ -144,16 +151,26 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         password = Objects.requireNonNull(input_password.getEditText()).getText().toString().trim();
 
         if (validate()) {
-            //loginProgress.setVisibility(View.VISIBLE);
+            invokeWaiting();
             authViewModel.signIn(email, password)
                     .addOnCompleteListener(task -> {
+                        dispatchWaiting();
                         if (task.isSuccessful()) {
-                            Toast.makeText(this.getContext(), "Welcome " + FirebaseAuth.getInstance().getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
-                            navigateToHome(task.getResult().getAdmin());
+                            if (task.getResult() != null) {
+                                input_email.setError(null);
+                                input_password.setError(null);
+                                Toast.makeText(this.getContext(), "Welcome " + FirebaseAuth.getInstance().getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
+                                navigateToHome(task.getResult().getAdmin());
+                            } else {
+                                new AlertDialog.Builder(getContext())
+                                        .setMessage("Wrong email or password, please try again ")
+                                        .setTitle("Autentication Error").setPositiveButton("Okay", (dialog, which) -> {
+                                    dialog.dismiss();
+                                }).show();
+                            }
                         } else {
-                            Toast.makeText(getContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this.getContext(), "Error occurred: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
-                        //loginProgress.setVisibility(View.GONE);
                     });
         }
     }
@@ -165,15 +182,15 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
+        super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {
                 authViewModel.handleGoogleSignIn(task).addOnCompleteListener(task1 -> {
                     if (task1.isSuccessful()) {
-                        Toast.makeText(this.getContext(), "Welcome " + FirebaseAuth.getInstance().getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
                         navigateToHome(task1.getResult().getAdmin());
+                        Toast.makeText(this.getContext(), "Welcome " + FirebaseAuth.getInstance().getCurrentUser().getEmail(), Toast.LENGTH_SHORT).show();
                     }
                 });
             } catch (ApiException | GeneralSecurityException | IOException e) {
@@ -215,5 +232,18 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             input_password.setError(null);
             return true;
         }
+    }
+
+    @Override
+    public void invokeWaiting() {
+        binding.content.setVisibility(View.GONE);
+        binding.progressCircular.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void dispatchWaiting() {
+        binding.content.setVisibility(View.VISIBLE);
+        binding.progressCircular.setVisibility(View.GONE);
+
     }
 }

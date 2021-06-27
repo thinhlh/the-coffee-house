@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     @Override
     protected void onStart() {
         FirebaseApp.initializeApp(this);
-        FacebookSdk.sdkInitialize(this);
         LocalDataManager.init(getApplicationContext());
         LocalDataManager.setCountNotifications(0);
         initDependencies();

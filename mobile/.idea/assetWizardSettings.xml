@@ -23,7 +23,11 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
+<<<<<<< Updated upstream
                                       <entry key="url" value="jar:file:/D:/AS/plugins/android/lib/android.jar!/images/material/icons/materialicons/vpn_key/baseline_vpn_key_24.xml" />
+=======
+                                      <entry key="url" value="jar:file:/Applications/Android%20Studio.app/Contents/plugins/android/lib/android.jar!/images/material/icons/materialicons/qr_code/baseline_qr_code_24.xml" />
+>>>>>>> Stashed changes
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -33,8 +37,12 @@
                         </option>
                         <option name="values">
                           <map>
+<<<<<<< Updated upstream
                             <entry key="outputName" value="ic_baseline_password_24" />
                             <entry key="sourceFile" value="D:\the-coffee-house\mobile" />
+=======
+                            <entry key="outputName" value="ic_baseline_qr_code_24" />
+>>>>>>> Stashed changes
                           </map>
                         </option>
                       </PersistentState>

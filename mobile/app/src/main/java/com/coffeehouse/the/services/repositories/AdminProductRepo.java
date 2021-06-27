@@ -9,7 +9,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
-public class AdminProductRepo {
+public class
+AdminProductRepo {
     private final FirebaseStorage storage = FirebaseStorage.getInstance();
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
 

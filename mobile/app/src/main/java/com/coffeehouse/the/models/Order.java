@@ -155,12 +155,12 @@ public class Order {
         return new SimpleDateFormat("HH:mm EEEE, MMM dd").format(orderTime);
     }
 
-    public String getPromotionId() {
-        return promotionId;
-    }
-
     public void setPromotionId(String promotionId) {
         this.promotionId = promotionId;
+    }
+
+    public String getPromotionId() {
+        return promotionId;
     }
 
     public List<String> getAllProductsId() {
@@ -186,6 +186,7 @@ public class Order {
         order.orderAddress = (String) map.get("orderAddress");
         order.recipientName = (String) map.get("recipientName");
         order.recipientPhone = (String) map.get("recipientPhone");
+        order.promotionId= (String) map.get("promotionId");
 
         if (map.get("orderValue") instanceof Double) {
             order.orderValue = ((Double) map.get("orderValue")).intValue();
@@ -215,6 +216,7 @@ public class Order {
         map.put("recipientPhone", recipientPhone);
         map.put("delivered", delivered);
         map.put("orderValue", orderValue);
+        map.put("promotionId",promotionId);
 
         return map;
     }

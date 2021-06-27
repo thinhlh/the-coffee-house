@@ -193,12 +193,14 @@ public class AdminEditProduct extends AppCompatActivity implements WaitingHandle
             binding.title.requestFocus();
             return false;
         }
+        binding.title.setError(null);
         return true;
     }
 
     private boolean validatePrice() {
         try {
             Integer.parseInt(binding.itemPrice.getEditText().getText().toString());
+            binding.itemPrice.setError(null);
             return true;
         } catch (NumberFormatException e) {
             binding.itemPrice.setError("Invalid price");

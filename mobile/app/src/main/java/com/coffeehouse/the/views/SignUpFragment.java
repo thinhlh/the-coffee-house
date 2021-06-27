@@ -8,11 +8,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModel;
 
 import com.coffeehouse.the.R;
+import com.coffeehouse.the.databinding.SignupFragmentBinding;
+import com.coffeehouse.the.utils.helper.WaitingHandler;
 import com.coffeehouse.the.viewModels.AuthViewModel;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.datepicker.CalendarConstraints;
+import com.google.android.material.datepicker.DateValidatorPointBackward;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -22,7 +28,9 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
 
-public class SignUpFragment extends Fragment implements View.OnClickListener {
+public class SignUpFragment extends Fragment implements WaitingHandler {
+
+    private SignupFragmentBinding binding;
 
     TextInputLayout input_name, input_email, input_phone, input_password, input_cf_password, mDisplayDate;
     String name, email, phone, password, cf_password, birthday;
@@ -43,12 +51,16 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.signup_fragment, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.signup_fragment, container, false);
         init(v);
 
         //CREATE DATE_PICKER
         MaterialDatePicker.Builder<Long> builder = MaterialDatePicker.Builder.datePicker();
         builder.setTitleText("Select birthday date");
         builder.setTheme(R.style.MaterialCalendarTheme);
+        CalendarConstraints.Builder constraints = new CalendarConstraints.Builder();
+        constraints.setValidator(DateValidatorPointBackward.now());
+        builder.setCalendarConstraints(constraints.build());
         MaterialDatePicker<Long> materialDatePicker = builder.build();
         materialDatePicker.addOnPositiveButtonClickListener(selection -> {
             String datePicked = materialDatePicker.getHeaderText();
@@ -98,7 +110,9 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
     }
 
     private void signUp() {
+        invokeWaiting();
         authViewModel.signUp(email, name, password, phone, birthDate).addOnCompleteListener(task -> {
+            dispatchWaiting();
             if (task.isSuccessful()) {
                 startActivity(new Intent(getContext(), HomeActivity.class));
             } else {
@@ -182,8 +196,16 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    @Override
-    public void onClick(View v) {
 
+    @Override
+    public void invokeWaiting() {
+        binding.content.setVisibility(View.GONE);
+        binding.progressCircular.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void dispatchWaiting() {
+        binding.content.setVisibility(View.VISIBLE);
+        binding.progressCircular.setVisibility(View.GONE);
     }
 }

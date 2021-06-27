@@ -22,4 +22,10 @@
     <color name="deep_sky_blue">#00BFFF</color>
     <color name="turquoise">#40E0D0</color>
     <color name="dark_red">#8B0000</color>
+    <color name="bronze_membership">#99964B00</color>
+    <color name="silver_membership">#AA808080</color>
+    <color name="gold_membership">#AAFFBF00</color>
+    <color name="diamond_membership">#BB00FFFF</color>
+    <color name="default_chip_background">#1A000000</color>
+
 </resources>

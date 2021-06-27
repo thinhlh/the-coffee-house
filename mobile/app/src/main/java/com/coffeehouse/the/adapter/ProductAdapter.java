@@ -39,7 +39,8 @@ public class ProductAdapter extends Adapter<ProductAdapter.ProductViewHolder> im
     public void onBindViewHolder(@NonNull @NotNull ProductAdapter.ProductViewHolder holder, int position) {
         Product currentProduct = products.get(position);
         holder.productListItemBinding.setProduct(currentProduct);
-        Picasso.get().load(currentProduct.getImageUrl()).into((ImageView) holder.itemView.findViewById(R.id.product_image));
+        if (!currentProduct.getImageUrl().isEmpty())
+            Picasso.get().load(currentProduct.getImageUrl()).into((ImageView) holder.itemView.findViewById(R.id.product_image));
         holder.bindOnClick(currentProduct, listener);
     }
 

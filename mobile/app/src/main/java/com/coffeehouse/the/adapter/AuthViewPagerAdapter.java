@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import com.coffeehouse.the.views.LoginFragment;
+import com.coffeehouse.the.views.SignInFragment;
 import com.coffeehouse.the.views.SignUpFragment;
 
 public class AuthViewPagerAdapter extends FragmentStatePagerAdapter {
@@ -18,7 +19,7 @@ public class AuthViewPagerAdapter extends FragmentStatePagerAdapter {
     @NonNull
     @Override
     public Fragment getItem(int position) {
-        return (position == 0) ? new LoginFragment() : new SignUpFragment();
+        return (position == 0) ? new SignInFragment() : new SignUpFragment();
     }
 
     @Override

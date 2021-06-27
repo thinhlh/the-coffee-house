@@ -108,15 +108,19 @@ public class AdminEditNotification extends AppCompatActivity implements WaitingH
 
     private boolean validate() {
         boolean result = true;
-        if (Objects.requireNonNull(binding.notificationDescription.getEditText()).getText().toString().trim().equals("")) {
+        if (Objects.requireNonNull(binding.notificationDescription.getEditText()).getText().toString().isEmpty()) {
             binding.notificationDescription.setError("Description cannot be empty");
             binding.notificationDescription.requestFocus();
             result = false;
+        } else {
+            binding.notificationDescription.setError(null);
         }
-        if (Objects.requireNonNull(binding.notificationTitle.getEditText()).getText().toString().trim().equals("")) {
+        if (Objects.requireNonNull(binding.notificationTitle.getEditText()).getText().toString().isEmpty()) {
             binding.notificationTitle.setError("Title cannot be empty");
             binding.notificationTitle.requestFocus();
             result = false;
+        } else {
+            binding.notificationTitle.setError(null);
         }
 
         // This happend when user not choose any image when create a new notification

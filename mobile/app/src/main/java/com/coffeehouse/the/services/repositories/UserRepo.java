@@ -58,8 +58,9 @@ public class UserRepo {
             if (task.isSuccessful()) {
                 uid = task.getResult().getUser().getUid();
                 return db.collection("users").document(uid).get().continueWith(task1 -> user = task1.getResult().toObject(CustomUser.class));
+            } else {
+                return task.continueWith(task1 -> null);
             }
-            return null;
         });
     }
 
@@ -76,10 +77,10 @@ public class UserRepo {
                 .update("subscribeToNotifications", user.getSubscribeToNotifications())
                 .continueWithTask(task -> {
                     if (user.getSubscribeToNotifications()) {
-                        Log.d("","Subscribed");
+                        Log.d("", "Subscribed");
                         return FirebaseMessaging.getInstance().subscribeToTopic(FCMService.TOPIC);
                     } else {
-                        Log.d("","Unsubscribed");
+                        Log.d("", "Unsubscribed");
                         return FirebaseMessaging.getInstance().unsubscribeFromTopic(FCMService.TOPIC);
                     }
                 });
@@ -111,15 +112,15 @@ public class UserRepo {
         AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
         return mAuth.signInWithCredential(credential).continueWithTask(task -> {
             uid = task.getResult().getUser().getUid();
+
             return isRegistered(uid).continueWithTask(isRegistered -> {
                 if (!isRegistered.getResult()) {
-                    Log.d("REGISTER", "HAVENT'T REGISTER");
+                    Log.d("REGISTERED", "HAVEN'T REGISTERED");
                     CustomUser signUpUser = new CustomUser();
                     signUpUser.setName(task.getResult().getUser().getDisplayName());
                     signUpUser.setEmail(task.getResult().getUser().getEmail());
 
                     //TODO PHONE NUMBER AND BIRTHDAY CAN BE SPECIFY HERE IF HAVE TIME
-
                     user = signUpUser;
                     return db.collection("users").document(uid).set(signUpUser).continueWith(task1 -> signUpUser);
                 } else {

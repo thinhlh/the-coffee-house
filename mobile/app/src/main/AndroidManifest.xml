@@ -73,7 +73,7 @@
             android:label="@string/app_name" />
         <activity
             android:name=".views.OthersViewFragment.UpdateUserAddress"
-            android:windowSoftInputMode="adjustNothing"></activity>
+            android:windowSoftInputMode="adjustNothing" />
 
         <activity android:name=".views.ProductDetailActivity" />
         <activity android:name=".views.HomeActivity" />
@@ -88,6 +88,7 @@
         <activity android:name=".views.admin.AdminEditCategory" />
         <activity android:name=".views.admin.AdminEditStore" />
         <activity android:name=".views.admin.AdminPromotions" />
+        <activity android:name=".views.admin.AdminEditPromotion" />
         <activity android:name=".views.admin.AdminUserInfo" />
         <activity android:name=".views.admin.AdminOrderDetail" />
         <activity android:name=".views.admin.AdminCartItemDetail" />

@@ -17,7 +17,7 @@ public class AdminNotificationsViewModel extends ViewModel {
         return repo.getNotifications();
     }
 
-    public Task<Void> removeANotification(int position){
+    public Task<Void> removeNotification(int position){
         return repo.removeNotification(position);
     }
 }

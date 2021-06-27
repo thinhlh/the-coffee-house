@@ -199,6 +199,14 @@
     <string name="latitude">Latitude</string>
     <string name="store_name">Store name</string>
     <string name="promotions">Promotions</string>
+    <string name="code">Code</string>
+    <string name="value">Value</string>
+    <string name="expiry_date">Expiry Date</string>
+    <string name="target_customer">Target Customer</string>
+    <string name="silver">Silver</string>
+    <string name="bronze">Bronze</string>
+    <string name="gold">Gold</string>
+    <string name="diamond">Diamond</string>
 
     <!--
     This string is used for square devices and overridden by hello_world in

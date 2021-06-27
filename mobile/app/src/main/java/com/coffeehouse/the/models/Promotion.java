@@ -1,10 +1,14 @@
 package com.coffeehouse.the.models;
 
+import com.google.gson.Gson;
+
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Promotion {
     private String id = "";
@@ -13,7 +17,7 @@ public class Promotion {
     private String description = "";
     private String imageUrl = "";
     private String value = "";
-    private List<String> targetCustomer = new ArrayList<>();
+    private List<Membership> targetCustomer = new ArrayList<Membership>();
     private Date expiryDate = Date.from(Instant.now());
 
     public Promotion() {
@@ -67,11 +71,11 @@ public class Promotion {
         this.value = value;
     }
 
-    public List<String> getTargetCustomer() {
+    public List<Membership> getTargetCustomer() {
         return targetCustomer;
     }
 
-    public void setTargetCustomer(List<String> targetCustomer) {
+    public void setTargetCustomer(List<Membership> targetCustomer) {
         this.targetCustomer = targetCustomer;
     }
 
@@ -87,6 +91,18 @@ public class Promotion {
         this.expiryDate = expiryDate;
     }
 
+    public Map<String, Object> toMap() {
+        return new HashMap<String, Object>() {{
+            put("code", code);
+            put("title", title);
+            put("description", description);
+            put("imageUrl", imageUrl);
+            put("value", value);
+            put("targetCustomer", targetCustomer);
+            put("expiryDate", expiryDate);
+        }};
+    }
+
     public int getValueToInt() {
         int count = 0;
         int number = 0;
@@ -95,5 +111,13 @@ public class Promotion {
             number += value.charAt(count++) - '0';
         }
         return number;
+    }
+
+    public String toGson() {
+        return new Gson().toJson(this);
+    }
+
+    public static Promotion fromGson(String gson) {
+        return new Gson().fromJson(gson, Promotion.class);
     }
 }

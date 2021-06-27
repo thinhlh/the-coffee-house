@@ -22,11 +22,12 @@ import java.text.DateFormat;
 import java.text.Format;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 public class OrderHistoryAdapter extends Adapter<OrderHistoryAdapter.OrderHistoryViewHolder> implements ClickableRecyclerView<Order> {
-    private List<Order> orders;
+    private List<Order> orders = new ArrayList<>();
     private ProductsRepo productsRepo = new ProductsRepo();
     private RecyclerViewClickListener<Order> listener;
 

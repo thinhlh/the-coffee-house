@@ -51,7 +51,7 @@ public class AdminPromotions extends AppCompatActivity implements SearchView.OnQ
     private void setUpListeners() {
         binding.backButton.setOnClickListener(v -> this.finish());
         binding.addButton.setOnClickListener(v -> {
-            //TODO HANDLING OPEN NEW PROMOTION EDIT
+            startActivity(new Intent(this, AdminEditPromotion.class));
         });
         binding.searchView.setOnQueryTextListener(this);
     }
@@ -66,7 +66,9 @@ public class AdminPromotions extends AppCompatActivity implements SearchView.OnQ
         viewModel.getPromotions().observe(this, adapter::setItems);
 
         adapter.setClickListener(promotion -> {
-            //TODO HANDLING PROMOTION EDIT
+            Intent intent = new Intent(this, AdminEditPromotion.class);
+            intent.putExtra("promotion", promotion.toGson());
+            startActivity(intent);
         });
 
         enableSwipeToDelete();
@@ -80,12 +82,11 @@ public class AdminPromotions extends AppCompatActivity implements SearchView.OnQ
                 final int position = viewHolder.getAdapterPosition();
 
                 new AlertDialog.Builder(context).setTitle("Delete promotion").setMessage("Are you sure want to delete this promotion?").setPositiveButton("Yes", (dialog, which) -> {
-                    //TODO Delete promotion
-//                    viewModel.removeStore(position).addOnCompleteListener(task -> {
-//                        if (task.getException() != null) {
-//                            Toast.makeText(context, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-//                        }
-//                    });
+                    viewModel.deletePromotion(position).addOnCompleteListener(task -> {
+                        if (task.getException() != null) {
+                            Toast.makeText(context, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
                 }).setNegativeButton("No", (dialog, which) -> {
                     adapter.notifyDataSetChanged();
                 }).show();

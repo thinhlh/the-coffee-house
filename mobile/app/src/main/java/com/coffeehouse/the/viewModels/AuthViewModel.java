@@ -41,11 +41,6 @@ public class AuthViewModel extends ViewModel {
         return userRepo.googleSignIn(account);
     }
 
-    // Facebook Sign-in
-//    public Task<CustomUser> handleFacebookAccessToken(AccessToken accessToken){
-//        AuthCredential credential = FacebookAuthProvider.getCredential(accessToken.getToken());
-//        return mAuth.signInWithCredential(credential).continueWithTask(task -> userRepo.fetchUser(accessToken, mAuth.getCurrentUser()));
-//    }
     public Task<CustomUser> handleFacebookAccessToken(AccessToken token) {
         return userRepo.facebookSignIn(token);
     }

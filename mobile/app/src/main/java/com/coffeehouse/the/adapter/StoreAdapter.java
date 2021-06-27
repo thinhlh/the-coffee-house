@@ -36,7 +36,8 @@ public class StoreAdapter extends Adapter<StoreAdapter.StoreViewHolder> implemen
     public void onBindViewHolder(@NonNull @NotNull StoreAdapter.StoreViewHolder holder, int position) {
         Store currentStore = stores.get(position);
         holder.storeListItemBinding.setStore(currentStore);
-        Picasso.get().load(currentStore.getImageUrl()).into(holder.storeListItemBinding.storeImage);
+        if (!currentStore.getImageUrl().isEmpty())
+            Picasso.get().load(currentStore.getImageUrl()).into(holder.storeListItemBinding.storeImage);
         holder.bindOnClick(currentStore, listener);
     }
 

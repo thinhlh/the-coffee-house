@@ -1,5 +1,6 @@
 package com.coffeehouse.the.adapter;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -36,7 +37,8 @@ public class AdminNotificationAdapter extends RecyclerView.Adapter<AdminNotifica
     public void onBindViewHolder(@NonNull AdminNotificationViewHolder holder, int position) {
         Notification currentNotification = notifications.get(position);
         holder.adminNotificationCardBinding.setNotification(currentNotification);
-        Picasso.get().load(currentNotification.getImageUrl()).into(holder.adminNotificationCardBinding.notificationImageView);
+        if (!currentNotification.getImageUrl().isEmpty())
+            Picasso.get().load(currentNotification.getImageUrl()).into(holder.adminNotificationCardBinding.notificationImageView);
         holder.bindOnClick(currentNotification, listener);
     }
 

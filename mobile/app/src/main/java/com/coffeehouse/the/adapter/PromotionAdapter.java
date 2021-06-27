@@ -21,10 +21,11 @@ import org.jetbrains.annotations.NotNull;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 
 public class PromotionAdapter extends Adapter<PromotionAdapter.PromotionViewHolder> implements ClickableRecyclerView<Promotion> {
-    protected List<Promotion> promotions;
+    protected List<Promotion> promotions = new ArrayList<>();
     private RecyclerViewClickListener<Promotion> listener;
 
     @NonNull
@@ -39,7 +40,8 @@ public class PromotionAdapter extends Adapter<PromotionAdapter.PromotionViewHold
     public void onBindViewHolder(@NonNull @NotNull PromotionAdapter.PromotionViewHolder holder, int position) {
         Promotion currentPromotion = promotions.get(position);
         holder.binding.setPromotion(currentPromotion);
-        Picasso.get().load(currentPromotion.getImageUrl()).into(holder.binding.image1CardviewPromotion1);
+        if (!currentPromotion.getImageUrl().isEmpty())
+            Picasso.get().load(currentPromotion.getImageUrl()).into(holder.binding.image1CardviewPromotion1);
         holder.bindOnClick(currentPromotion, listener);
     }
 

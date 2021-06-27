@@ -37,7 +37,8 @@ public class AdminCategoryAdapter extends RecyclerView.Adapter<AdminCategoryAdap
     public void onBindViewHolder(@NonNull AdminCategoryViewHolder holder, int position) {
         Category currentCategory = categories.get(position);
         holder.adminCategoryCardBinding.setCategory(currentCategory);
-        Picasso.get().load(currentCategory.getImageUrl()).into(holder.adminCategoryCardBinding.categoryImage);
+        if (!currentCategory.getImageUrl().isEmpty())
+            Picasso.get().load(currentCategory.getImageUrl()).into(holder.adminCategoryCardBinding.categoryImage);
         holder.bindOnClick(currentCategory, listener);
     }
 

@@ -22,7 +22,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 public class CartItemAdapter extends Adapter<CartItemAdapter.CartItemViewHolder> implements ClickableRecyclerView<Cart> {
-    private Cart cart;
+    private Cart cart = new Cart();
     private ProductsRepo productsRepo = new ProductsRepo();
     private RecyclerViewClickListener<Cart> listener;
 

@@ -78,8 +78,10 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:inputType="text"
-                        android:maxLines="3"
+                        android:inputType="textMultiLine|textImeMultiLine"
+                        android:lines="2"
+                        android:scrollbars="vertical"
+                        android:maxLines="4"
                         android:text="@{product.description}" />
                 </com.google.android.material.textfield.TextInputLayout>
 

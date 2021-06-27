@@ -58,10 +58,7 @@ const getProfit = async (fromDate, toDate) => {
     for (var order of orders.docs) {
         if (order.data().delivered == true)
             delivered++;
-        const cartItems = await order.ref.collection('cart').get();
-        cartItems.forEach((cartItemSnapshot) => {
-            total += cartItemSnapshot.data().totalCartItemValue;
-        });
+        total+=order.data().orderValue;
     }
     return { total: total, numberOfOrders: orders.size, deliveredOrders: delivered };
 }

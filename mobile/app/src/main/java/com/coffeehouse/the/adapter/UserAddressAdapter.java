@@ -16,10 +16,11 @@ import com.coffeehouse.the.utils.helper.RecyclerViewClickListener;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserAddressAdapter extends Adapter<UserAddressAdapter.UserAddressViewHolder> implements ClickableRecyclerView<UserAddress> {
-    private List<UserAddress> list;
+    private List<UserAddress> list = new ArrayList<>();
     private RecyclerViewClickListener<UserAddress> listener;
 
     @NonNull

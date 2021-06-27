@@ -7,19 +7,20 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.coffeehouse.the.models.Promotion;
 import com.coffeehouse.the.utils.helper.Fetching;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.storage.FirebaseStorage;
 
 import java.sql.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 
 public class PromotionsRepo implements Fetching {
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
-    private final MutableLiveData<List<Promotion>> data = new MutableLiveData<>();
+    private final FirebaseStorage storage = FirebaseStorage.getInstance();
+    private final MutableLiveData<List<Promotion>> promotions = new MutableLiveData<>();
     private final MutableLiveData<List<Promotion>> search = new MutableLiveData<>();
 
     public PromotionsRepo() {
@@ -35,6 +36,7 @@ public class PromotionsRepo implements Fetching {
                     } else {
                         List<Promotion> list = new ArrayList<>();
                         for (QueryDocumentSnapshot doc : value) {
+                            Log.d("PRMOTION", doc.getId());
                             if (doc != null) {
                                 Promotion promotion = doc.toObject(Promotion.class);
                                 promotion.setId(doc.getId());
@@ -42,13 +44,13 @@ public class PromotionsRepo implements Fetching {
                                     list.add(promotion);
                             }
                         }
-                        data.setValue(list);
+                        promotions.setValue(list);
                     }
                 });
     }
 
     public LiveData<List<Promotion>> getPromotions() {
-        return data;
+        return promotions;
     }
 
     public void setUpRealTimeSearch(String s) {
@@ -77,7 +79,7 @@ public class PromotionsRepo implements Fetching {
     }
 
     public Promotion getPromotionById(String promotionId) {
-        for (Promotion promotion : data.getValue()) {
+        for (Promotion promotion : promotions.getValue()) {
             if (promotion.getId().equals(promotionId))
                 return promotion;
         }

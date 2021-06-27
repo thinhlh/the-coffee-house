@@ -77,7 +77,7 @@ AdminNotificationsFragment extends Fragment implements SearchView.OnQueryTextLis
                 final int position = viewHolder.getAdapterPosition();
 
                 new AlertDialog.Builder(getContext()).setTitle("Delete notification").setMessage("Are you sure want to delete this notification?").setPositiveButton("Yes", (dialog, which) -> {
-                    viewModel.removeANotification(position);
+                    viewModel.removeNotification(position);
                 }).setNegativeButton("No", (dialog, which) -> {
                     adapter.notifyDataSetChanged();
                 }).show();

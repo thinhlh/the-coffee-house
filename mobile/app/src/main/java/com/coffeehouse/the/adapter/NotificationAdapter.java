@@ -17,10 +17,11 @@ import com.coffeehouse.the.utils.helper.ClickableRecyclerView;
 import com.coffeehouse.the.utils.helper.RecyclerViewClickListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NotificationAdapter extends Adapter<NotificationAdapter.NotificationViewHolder> implements ClickableRecyclerView<Notification> {
-    private List<Notification> notifications;
+    private List<Notification> notifications=new ArrayList<>();
     private RecyclerViewClickListener<Notification> listener;
 
 

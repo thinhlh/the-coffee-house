@@ -17,11 +17,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
+import androidx.fragment.app.FragmentManager;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.databinding.StoreLocationDetailBinding;
 import com.coffeehouse.the.models.Store;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.squareup.picasso.Picasso;
 
@@ -47,7 +49,10 @@ public class StoreDetailBottomSheet extends BottomSheetDialogFragment {
         storeLocationDetailBinding.setLifecycleOwner(this);
         //END BINDING
 
-        storeLocationDetailBinding.storeDetailButton.setOnClickListener(v1 -> dismiss());
+        storeLocationDetailBinding.storeDetailButton.setOnClickListener(v1 -> {
+            navigateToOrder();
+            dismiss();
+        });
         storeLocationDetailBinding.imgStoreDetailGgMap.setOnClickListener(v1 -> navigateToGoogleMap());
         storeLocationDetailBinding.storePhoneContact.setOnClickListener(listener -> {
             Intent intent = new Intent(Intent.ACTION_DIAL);
@@ -57,6 +62,13 @@ public class StoreDetailBottomSheet extends BottomSheetDialogFragment {
         Picasso.get().load(store.getImageUrl()).into(storeLocationDetailBinding.image);
 
         return v;
+    }
+
+    private void navigateToOrder() {
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.home_fragment_container, new OrderFragment()).addToBackStack(null).commit();
+        BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.action_order);
     }
 
     private void navigateToGoogleMap() {

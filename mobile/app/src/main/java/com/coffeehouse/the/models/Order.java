@@ -20,6 +20,7 @@ public class Order {
     private Cart cart = new Cart();
     private String userId = "";
     private int orderValue = 0;
+    private String promotionId = "";
     private String orderMethod = "";
     private String orderAddress = "";
     private String recipientName = "";
@@ -35,6 +36,18 @@ public class Order {
         this.userId = FirebaseAuth.getInstance().getUid();
         this.orderMethod = orderMethod;
         this.delivered = delivered;
+        this.orderAddress = orderAddress;
+        this.recipientName = recipientName;
+        this.recipientPhone = recipientPhone;
+    }
+
+    public Order(Cart cart, String orderMethod, boolean delivered, int orderValue, String promotionId, String orderAddress, String recipientName, String recipientPhone) {
+        this.cart = cart;
+        this.userId = FirebaseAuth.getInstance().getUid();
+        this.orderMethod = orderMethod;
+        this.delivered = delivered;
+        this.orderValue = orderValue;
+        this.promotionId = promotionId;
         this.orderAddress = orderAddress;
         this.recipientName = recipientName;
         this.recipientPhone = recipientPhone;
@@ -140,6 +153,14 @@ public class Order {
 
     public String getFormattedOrderTime() {
         return new SimpleDateFormat("HH:mm EEEE, MMM dd").format(orderTime);
+    }
+
+    public String getPromotionId() {
+        return promotionId;
+    }
+
+    public void setPromotionId(String promotionId) {
+        this.promotionId = promotionId;
     }
 
     public List<String> getAllProductsId() {

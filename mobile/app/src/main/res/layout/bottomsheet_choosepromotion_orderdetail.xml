@@ -57,10 +57,10 @@
 
                     <ImageView
                         android:id="@+id/imageView"
-                        android:layout_marginLeft="@dimen/general_padding"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/general_padding"
                         android:src="@drawable/ic_baseline_article_24"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -71,6 +71,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_vertical"
+                        android:layout_marginLeft="@dimen/general_dimen"
                         android:background="@android:color/transparent"
                         android:hint="@string/enterpromotioncode"
                         android:maxLines="1"
@@ -79,7 +80,6 @@
                         android:textStyle="bold"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toEndOf="@+id/imageView"
-                        android:layout_marginLeft="@dimen/general_dimen"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <com.google.android.material.button.MaterialButton
@@ -88,8 +88,8 @@
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
                         android:gravity="center"
-                        app:iconTint="@color/grey"
                         app:icon="@drawable/ic_baseline_search_24"
+                        app:iconTint="@color/grey"
                         app:layout_constraintEnd_toEndOf="parent" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -102,7 +102,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="30dp"
                 android:layout_marginTop="20dp"
-                android:text="@string/outofdate"
+                android:text="@string/on_use"
                 android:textColor="@color/black"
                 android:textSize="20sp"
                 android:textStyle="bold" />

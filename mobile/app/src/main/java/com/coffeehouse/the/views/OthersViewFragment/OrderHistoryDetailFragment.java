@@ -17,6 +17,7 @@ import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.OrderHistoryDetailAdapter;
 import com.coffeehouse.the.databinding.OrderHistoryDetailFragmentBinding;
 import com.coffeehouse.the.models.Order;
+import com.coffeehouse.the.services.repositories.PromotionsRepo;
 import com.coffeehouse.the.viewModels.OrderDetailViewModel;
 
 import org.jetbrains.annotations.NotNull;
@@ -29,7 +30,8 @@ public class OrderHistoryDetailFragment extends Fragment {
     private Order order;
     private OrderHistoryDetailFragmentBinding orderHistoryDetailFragmentBinding;
     private OrderDetailViewModel orderDetailViewModel = new OrderDetailViewModel();
-    private OrderHistoryDetailAdapter adapter = new OrderHistoryDetailAdapter();
+    private final OrderHistoryDetailAdapter adapter = new OrderHistoryDetailAdapter();
+    private final PromotionsRepo promotionsRepo = new PromotionsRepo();
 
     public OrderHistoryDetailFragment() {
     }
@@ -51,7 +53,13 @@ public class OrderHistoryDetailFragment extends Fragment {
         getCart(adapter);
         //End binding
 
+        //Set up View
         orderHistoryDetailFragmentBinding.totalOrder.setText(total());
+        promotionsRepo.getPromotions().observe(getViewLifecycleOwner(), observe -> {
+            if (promotionsRepo.getPromotionById(order.getPromotionId()) != null)
+                orderHistoryDetailFragmentBinding.textPromotionCode.setText(promotionsRepo.getPromotionById(order.getPromotionId()).getCode());
+        });
+        //End
 
         orderHistoryDetailFragmentBinding.closeOrderHistoryFragmentDetailFragment.setOnClickListener(l -> {
             OrderHistoryFragment fragment = new OrderHistoryFragment();
@@ -77,9 +85,9 @@ public class OrderHistoryDetailFragment extends Fragment {
         Locale locale = new Locale("vi", "VN");
         Format format = NumberFormat.getCurrencyInstance(locale);
         if (order.getDelivered()) {
-            return format.format(order.getCart().getTotalCartValue() + 30000);
+            return format.format(order.getOrderValue() + 30000);
         } else {
-            return format.format(order.getCart().getTotalCartValue());
+            return format.format(order.getOrderValue());
         }
     }
 }

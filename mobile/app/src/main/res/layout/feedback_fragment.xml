@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
         <variable
             name="user"
             type="com.coffeehouse.the.models.CustomUser" />
@@ -10,8 +11,8 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -25,9 +26,9 @@
                     android:id="@+id/bottom_sheet_dialog_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/sendfeedback"
                     android:layout_centerInParent="true"
                     android:layout_centerHorizontal="true"
+                    android:text="@string/sendfeedback"
                     android:textColor="@color/black"
                     android:textSize="20sp"
 
@@ -37,9 +38,9 @@
                     android:id="@+id/close_feedback_fragment"
                     android:layout_width="30dp"
                     android:layout_height="25dp"
+                    android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
-                    android:layout_alignParentStart="true"
                     android:src="@drawable/ic_baseline_arrow_back_ios_24" />
 
             </RelativeLayout>
@@ -51,33 +52,33 @@
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textStyle="bold"
-            android:textSize="20sp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="30dp"
-            android:text="Gửi phản hồi, thông báo lỗi" />
+            android:text="Gửi phản hồi, thông báo lỗi"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="380dp"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
-            android:textSize="16sp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
-            android:text="Gửi phản hồi về các chức năng của app cho đội ngũ phát triển sản phẩm." />
+            android:text="Gửi phản hồi về các chức năng của app cho đội ngũ phát triển sản phẩm."
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
         <androidx.cardview.widget.CardView
-            android:layout_marginTop="20dp"
             android:layout_width="370dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_height="wrap_content">
+            android:layout_marginTop="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:background="@drawable/round_with_greyoutline">
+                android:background="@drawable/round_with_greyoutline"
+                android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/nameofsender_text"
@@ -92,9 +93,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:textSize="16sp"
                     android:layout_marginBottom="2dp"
-                    android:text="@{user.name}" />
+                    android:text="@{user.name}"
+                    android:textSize="16sp" />
 
 
             </LinearLayout>
@@ -102,16 +103,16 @@
 
 
         <androidx.cardview.widget.CardView
-            android:layout_marginTop="20dp"
             android:layout_width="370dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_height="wrap_content">
+            android:layout_marginTop="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:background="@drawable/round_with_greyoutline">
+                android:background="@drawable/round_with_greyoutline"
+                android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/emailofsender_text"
@@ -126,9 +127,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:textSize="16sp"
                     android:layout_marginBottom="2dp"
-                    android:text="@{user.email}" />
+                    android:text="@{user.email}"
+                    android:textSize="16sp" />
 
 
             </LinearLayout>
@@ -136,16 +137,16 @@
 
 
         <androidx.cardview.widget.CardView
-            android:layout_marginTop="20dp"
             android:layout_width="370dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_height="wrap_content">
+            android:layout_marginTop="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:background="@drawable/round_with_greyoutline">
+                android:background="@drawable/round_with_greyoutline"
+                android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/telephonenumofsender_text"
@@ -160,9 +161,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:textSize="16sp"
                     android:layout_marginBottom="2dp"
-                    android:text="@{user.phoneNumber}" />
+                    android:text="@{user.phoneNumber}"
+                    android:textSize="16sp" />
 
 
             </LinearLayout>
@@ -170,16 +171,16 @@
 
 
         <androidx.cardview.widget.CardView
-            android:layout_marginTop="20dp"
             android:layout_width="370dp"
+            android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:layout_height="wrap_content">
+            android:layout_marginTop="20dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:background="@drawable/round_with_greyoutline">
+                android:background="@drawable/round_with_greyoutline"
+                android:orientation="vertical">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/feedbacksender_text"
@@ -190,24 +191,20 @@
                     android:text="@string/feedbackcontent" />
 
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/text_input_password"
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_feedback"
                     android:layout_width="340dp"
-                    android:layout_marginLeft="15dp"
                     android:layout_height="wrap_content"
-                    android:textColorHint="@color/black"
-                    android:hint="Vui lòng mô tả nội dung phản hồi càng chi tiết càng tốt">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:layout_width="match_parent"
-                        android:backgroundTint="@color/white"
-                        android:paddingVertical="1dp"
-                        android:paddingStart="5dp"
-                        android:maxLines="2"
-                        android:layout_height="wrap_content"
-                        android:inputType="textPassword" />
-
-                </com.google.android.material.textfield.TextInputLayout>
+                    android:layout_marginLeft="20dp"
+                    android:backgroundTint="@color/white"
+                    android:hint="Nhập nội dung phản hồi ở đây..."
+                    android:inputType="text"
+                    android:maxLines="2"
+                    android:paddingVertical="1dp"
+                    android:paddingStart="5dp"
+                    android:text=""
+                    android:textColor="@color/black"
+                    android:textSize="16dp" />
 
 
             </LinearLayout>
@@ -215,12 +212,12 @@
 
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/login_button"
+            android:id="@+id/btn_send_feedback"
             android:layout_width="370dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="100dp"
             android:backgroundTint="#C87533"
-            android:layout_gravity="center_horizontal"
             android:text="@string/sendfeedback"
             android:textSize="16sp" />
 

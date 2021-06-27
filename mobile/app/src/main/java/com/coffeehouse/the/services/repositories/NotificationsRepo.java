@@ -11,6 +11,7 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.coffeehouse.the.LocalData.LocalDataManager;
 import com.coffeehouse.the.models.Notification;
 import com.coffeehouse.the.utils.helper.Fetching;
 import com.coffeehouse.the.utils.commons.Constants;
@@ -29,6 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+import java.util.Set;
 
 public class NotificationsRepo implements Fetching {
 
@@ -57,13 +59,21 @@ public class NotificationsRepo implements Fetching {
                 Log.w("Notifications Repo", error);
             } else {
                 List<Notification> _notifications = new ArrayList<>();
+                int count = 0;
                 for (QueryDocumentSnapshot doc : Objects.requireNonNull(value)) {
                     if (doc != null) {
                         Notification notification = doc.toObject(Notification.class);
                         notification.setId(doc.getId());
+                        if (LocalDataManager.getReadNotifications().contains(notification.getId())) {
+                            count++;
+//                            Set<String> readNotificationIds = LocalDataManager.getReadNotifications();
+//                            readNotificationIds.add(notification.getId());
+//                            LocalDataManager.setReadNotifications(readNotificationIds);
+                        }
                         _notifications.add(notification);
                     }
                 }
+                LocalDataManager.setCountNotifications(count);
                 this.notifications.setValue(_notifications);
             }
         });

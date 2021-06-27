@@ -124,34 +124,6 @@
                 android:background="@color/white_gray" />
 
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:paddingLeft="16dp"
-                android:paddingTop="16dp"
-                android:paddingRight="16dp"
-                android:paddingBottom="16dp">
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:background="@drawable/icon_round_backgound"
-                    android:src="@drawable/ic_baseline_star_rate_24" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:maxLines="2"
-                    android:text="Thêm vào danh sách yêu thích"
-                    android:textColor="@color/black"
-                    android:textSize="17sp" />
-
-
-            </LinearLayout>
-
             <View
                 android:layout_width="match_parent"
                 android:layout_height="2dp"
@@ -198,35 +170,6 @@
                 android:layout_height="2dp"
                 android:layout_gravity="right"
                 android:background="@color/white_gray" />
-
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:paddingLeft="16dp"
-                android:paddingTop="16dp"
-                android:paddingRight="16dp"
-                android:paddingBottom="16dp">
-
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:background="@drawable/icon_round_backgound"
-                    android:src="@drawable/ic_baseline_share_24" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:maxLines="2"
-                    android:text="Chia sẻ với bạn bè"
-                    android:textColor="@color/black"
-                    android:textSize="17sp" />
-
-
-            </LinearLayout>
 
 
             <androidx.cardview.widget.CardView

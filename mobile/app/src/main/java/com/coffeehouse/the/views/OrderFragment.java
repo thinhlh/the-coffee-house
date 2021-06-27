@@ -25,7 +25,7 @@ import com.coffeehouse.the.models.Product;
 import com.coffeehouse.the.models.UserAddress;
 import com.coffeehouse.the.viewModels.OrderViewModel;
 
-public class OrderFragment extends Fragment implements CategoryBottomSheet.SendCategoryPick, ProductDetailBottomSheet.UpdateCart {
+public class OrderFragment extends Fragment implements CategoryBottomSheet.SendCategoryPick, ProductDetailBottomSheet.UpdateCart, OrderDetailFragment.deleteCart {
 
     private OrderViewModel orderViewModel;
     private ProductAdapter productsAdapter = new ProductAdapter();
@@ -76,6 +76,7 @@ public class OrderFragment extends Fragment implements CategoryBottomSheet.SendC
             OrderDetailFragment fragment = new OrderDetailFragment();
             fragment.setCartOrderView(cart);
             fragment.setAddress(userAddress);
+            fragment.setTargetFragment(OrderFragment.this, 19);
             getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
         });
 
@@ -141,5 +142,10 @@ public class OrderFragment extends Fragment implements CategoryBottomSheet.SendC
 
     public void setUserAddress(UserAddress userAddress) {
         this.userAddress = userAddress;
+    }
+
+    @Override
+    public void onDeleteCart() {
+        cart = new Cart();
     }
 }

@@ -44,8 +44,7 @@ public class OrderHistoryFragment extends Fragment {
         orderHistoryAdapter = new OrderHistoryAdapter();
         recyclerView.setAdapter(orderHistoryAdapter);
         getOrder(orderHistoryAdapter);
-//        orderHistoryAdapter.getOrders();
-//        orderHistoryAdapter.getItemCount();
+
         //End binding
 
         historyFragmentBinding.closeOrderHistoryFragment.setOnClickListener(listener -> {

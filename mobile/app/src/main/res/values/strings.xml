@@ -9,6 +9,9 @@
     <string name="login_text">Đăng nhập</string>
     <string name="forget_password_text">Quên mật khẩu</string>
     <string name="email_hint">Email</string>
+    <string name="old_pwd_hint">Nhập mật khẩu cũ</string>
+    <string name="new_pwd_hint">Nhập mật khẩu mới</string>
+    <string name="confirm_new_pwd_hint">Xác nhận mật khẩu mới</string>
     <string name="birthday_hint">Ngày sinh</string>
     <string name="confirm_password_hint">Xác nhận mật khẩu</string>
     <string name="sign_up_text">đăng ký</string>
@@ -24,8 +27,8 @@
     <string name="notifications">Thông báo mới</string>
     <string name="google_default_web_client_id">1008379625573-esujc5bhtv63js83cujpsefq9m0mvot0.apps.googleusercontent.com</string>
 
-    <!--    <string name="facebook_app_id">501408904608563</string>-->
-    <!--    <string name="fb_login_protocol_scheme">fb501408904608563</string>-->
+<!--        <string name="facebook_app_id">501408904608563</string>-->
+<!--        <string name="fb_login_protocol_scheme">fb501408904608563</string>-->
 
     <string name="facebook_app_id">292926142546450</string>
     <string name="fb_login_protocol_scheme">fb292926142546450</string>
@@ -101,6 +104,7 @@
     <string name="feedbackcontent">Nội dung phản hồi</string>
     <string name="updateinfo">Cập nhật thông tin</string>
     <string name="updateaccount">Cập nhật tài khoản</string>
+    <string name="updateaccount_password">Cập nhật mật khẩu mới</string>
     <string name="enteryourname">Nhập tên của bạn</string>
     <string name="enteryourphone">Nhập số điện thoại của bạn</string>
     <string name="enteryouremail">Nhập email của bạn</string>
@@ -158,6 +162,7 @@
     <string name="receiver">Người nhận</string>
     <string name="deliveryto">Giao đến</string>
     <string name="paymentstatus">Trạng thái thanh toán</string>
+    <string name="promotion_status">Phiếu khuyến mãi</string>
     <string name="codeorder">Mã đơn hàng</string>
     <string name="phonenumber">Số điện thoại</string>
     <string name="notifications_en">Notifications</string>
@@ -170,9 +175,12 @@
     <string name="version">Version</string>
     <string name="orders">Orders</string>
     <string name="recovery_email">Nhập email khôi phục</string>
+    <string name="auth_password">Xác thực mật khẩu</string>
     <string name="send">Gửi yêu cầu</string>
+    <string name="submit_update_pwd">Đổi mật khẩu</string>
     <string name="order_information">Order Information</string>
     <string name="recovery">Recovery</string>
+    <string name="update_password">Update Password</string>
     <string name="delivery_en">Delivery</string>
     <string name="usenow">Sử dụng ngay</string>
     <string name="date">Ngày hết hạn:</string>

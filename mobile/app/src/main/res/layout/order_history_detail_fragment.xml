@@ -260,6 +260,34 @@
                         android:background="@color/grey" />
 
                     <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_promotion_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_toRightOf="@id/view2"
+                        android:text="@string/promotion_status"
+                        android:textColor="@color/grey"
+                        android:textSize="14sp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/text_promotion_code"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/text_receiverphone"
+                        android:layout_marginLeft="15dp"
+                        android:layout_toRightOf="@id/view2"
+                        android:text=""
+                        android:textColor="@color/black"
+                        android:textSize="16sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="15dp"
+                        android:background="@color/grey" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/text_paymentstatus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -306,7 +334,7 @@
                         android:layout_marginLeft="15dp"
                         android:layout_marginBottom="10dp"
                         android:layout_toRightOf="@id/view2"
-                        android:text="l17405007302021"
+                        android:text="@{order.id}"
                         android:textColor="@color/black"
                         android:textSize="16sp" />
 

@@ -33,6 +33,8 @@ public class OrdersRepo implements Fetching {
         dataOrder.put("userId", FirebaseAuth.getInstance().getCurrentUser().getUid());
         dataOrder.put("orderTime", order.getOrderTime());
         dataOrder.put("orderMethod", order.getOrderMethod());
+        dataOrder.put("orderValue", order.getOrderValue());
+        dataOrder.put("promotionId", order.getPromotionId());
         dataOrder.put("delivered", order.getDelivered());
         dataOrder.put("orderAddress", order.getOrderAddress());
         dataOrder.put("recipientName", order.getRecipientName());

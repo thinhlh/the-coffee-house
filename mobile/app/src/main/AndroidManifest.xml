@@ -79,6 +79,7 @@
         <activity android:name=".views.HomeActivity" />
         <activity android:name=".views.GreetingActivity" />
         <activity android:name=".views.LoginForgotPasswordActivity" />
+        <activity android:name=".views.OthersViewFragment.UpdatePasswordActivity" />
         <activity android:name=".views.FlashScreen" />
 
         <activity android:name=".views.admin.AdminHomeActivity" />

@@ -1,5 +1,6 @@
 package com.coffeehouse.the.views;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.CartItemAdapter;
 import com.coffeehouse.the.databinding.OrderDetailBinding;
 import com.coffeehouse.the.models.Cart;
+import com.coffeehouse.the.models.CartItem;
 import com.coffeehouse.the.models.Order;
 import com.coffeehouse.the.models.Promotion;
 import com.coffeehouse.the.models.UserAddress;
@@ -25,6 +27,7 @@ import com.coffeehouse.the.services.repositories.OrdersRepo;
 import com.coffeehouse.the.services.repositories.UserRepo;
 import com.coffeehouse.the.viewModels.OrderDetailViewModel;
 import com.coffeehouse.the.views.OthersViewFragment.ChangeAddressBottomSheet;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -42,9 +45,24 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
     private OrdersRepo ordersRepo = new OrdersRepo();
     private UserRepo userRepo = new UserRepo();
     private boolean delivered;
+    private String promotionId;
 
     private Locale locale = new Locale("vi", "VN");
     private Format format = NumberFormat.getCurrencyInstance(locale);
+
+
+    //Declare Delete current Cart Region
+    public interface deleteCart {
+        void onDeleteCart();
+    }
+
+    private deleteCart listener;
+
+    public void setListener(deleteCart listener) {
+        this.listener = listener;
+    }
+    //End
+
 
     @Nullable
     @org.jetbrains.annotations.Nullable
@@ -75,12 +93,7 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
             createOrder();
         });
         orderDetailBinding.deleteCart.setOnClickListener(listener -> {
-            currentCart = new Cart();
-            orderDetailViewModel.setCart(currentCart);
-            orderDetailBinding.txtPromotionCode.setText("");
-            orderDetailBinding.txtPromotionCode.setError("Chọn lại ưu đãi phù hợp với đơn hàng mới");
-            getCart(cartItemAdapter);
-            orderDetailBinding.setCart(currentCart);
+            deleteCurrentCart();
         });
 
         if (orderDetailViewModel.getCart().getItems().size() == 0) {
@@ -97,7 +110,6 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
             orderDetailBinding.setCart(items);
             orderDetailViewModel.setTotalBill(items.getTotalCartValue());
             orderDetailBinding.txtPromotionCode.setText("");
-            orderDetailBinding.txtPromotionCode.setError("Chọn lại ưu đãi phù hợp với đơn hàng mới");
             Toast.makeText(getContext(), "Chọn lại ưu đãi phù hợp với đơn hàng mới", Toast.LENGTH_SHORT).show();
             if (orderDetailViewModel.getCart().getItems().size() == 0) {
                 orderDetailBinding.textAddmenu.setError("Chưa có sản phẩm trong giỏ");
@@ -109,11 +121,17 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
             selectPromotion();
         });
 
-        if (orderDetailBinding.txtPromotionCode.getText().toString().isEmpty()) {
-            orderDetailBinding.txtPromotionCode.setError("Chọn ưu đãi nếu có");
-        }
-
         return v;
+    }
+
+    private void deleteCurrentCart() {
+        currentCart = new Cart();
+        orderDetailViewModel.setCart(currentCart);
+        orderDetailViewModel.setTotalBill(currentCart.getTotalCartValue());
+        orderDetailBinding.txtPromotionCode.setText("");
+        getCart(cartItemAdapter);
+        orderDetailBinding.setCart(currentCart);
+        this.listener.onDeleteCart();
     }
 
     private boolean validation() {
@@ -139,11 +157,14 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
 
     private void createOrder() {
         if (validation()) {
-            order = new Order(orderDetailViewModel.getCart(), orderDetailBinding.textOrder.getText().toString(), delivered, orderDetailBinding.textDestinationDetail.getText().toString(), orderDetailBinding.textName.getText().toString(), orderDetailBinding.textPhoneNumber.getText().toString());
+            order = new Order(orderDetailViewModel.getCart(), orderDetailBinding.textOrder.getText().toString(), delivered, orderDetailViewModel.getTotalBill(), promotionId, orderDetailBinding.textDestinationDetail.getText().toString(), orderDetailBinding.textName.getText().toString(), orderDetailBinding.textPhoneNumber.getText().toString());
             ordersRepo.addOrderData(order);
             userRepo.updateUserPoint(orderDetailViewModel.getCart().getTotalCartValue() / 1000);
+            deleteCurrentCart();
             OrderFragment fragment = new OrderFragment();
             getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
+            BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_navigation);
+            bottomNavigationView.setSelectedItemId(R.id.action_order);
         }
     }
 
@@ -238,20 +259,39 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
 
     @Override
     public void onPromotionPick(Promotion promotion) {
-        orderDetailBinding.txtPromotionCode.setText(promotion.getCode());
-        orderDetailBinding.txtPromotionCode.setError(null);
-        String price;
-        int ship = 0;
-        if (orderDetailBinding.textOrder.getText().equals("Giao tận nơi"))
-            ship = 30000;
-
-        if (promotion.getValue().contains("%")) {
-            orderDetailViewModel.setTotalBill((int) currentCart.getTotalCartValue() / promotion.getValueToInt());
+        if (currentCart.getTotalCartValue() == 0) {
+            Toast.makeText(getContext(), "Chưa có sản phẩm được chọn", Toast.LENGTH_SHORT).show();
         } else {
-            orderDetailViewModel.setTotalBill(currentCart.getTotalCartValue() - Integer.parseInt(promotion.getValue()));
-        }
+            promotionId = promotion.getId();
+            orderDetailBinding.txtPromotionCode.setText(promotion.getCode());
+            orderDetailBinding.txtPromotionCode.setError(null);
+            String price;
+            int ship = 0;
+            if (orderDetailBinding.textOrder.getText().equals("Giao tận nơi"))
+                ship = 30000;
 
-        price = format.format(ship + orderDetailViewModel.getTotalBill());
-        orderDetailBinding.textOrderprice.setText(price);
+            if (promotion.getValue().contains("%")) {
+                orderDetailViewModel.setTotalBill((int) currentCart.getTotalCartValue() / promotion.getValueToInt());
+            } else {
+                int _current = currentCart.getTotalCartValue() - Integer.parseInt(promotion.getValue());
+                if (_current < 0)
+                    orderDetailViewModel.setTotalBill(0);
+                else
+                    orderDetailViewModel.setTotalBill(_current);
+            }
+
+            price = format.format(ship + orderDetailViewModel.getTotalBill());
+            orderDetailBinding.textOrderprice.setText(price);
+        }
+    }
+
+    @Override
+    public void onAttach(@NonNull @NotNull Context context) {
+        super.onAttach(context);
+        try {
+            listener = (deleteCart) getTargetFragment();
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString() + " must implement Delete Current Cart listener");
+        }
     }
 }

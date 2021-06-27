@@ -37,6 +37,7 @@ public class PromotionsRepo implements Fetching {
                         for (QueryDocumentSnapshot doc : value) {
                             if (doc != null) {
                                 Promotion promotion = doc.toObject(Promotion.class);
+                                promotion.setId(doc.getId());
                                 if (Date.from(Instant.now()).before(promotion.getExpiryDate()))
                                     list.add(promotion);
                             }
@@ -73,5 +74,13 @@ public class PromotionsRepo implements Fetching {
 
     public LiveData<List<Promotion>> getPromotionsSearch() {
         return search;
+    }
+
+    public Promotion getPromotionById(String promotionId) {
+        for (Promotion promotion : data.getValue()) {
+            if (promotion.getId().equals(promotionId))
+                return promotion;
+        }
+        return null;
     }
 }

@@ -102,20 +102,19 @@
             android:paddingStart="15dp"
             android:textSize="16sp" />
 
-        <com.google.android.material.textfield.TextInputEditText
+        <TextView
             android:id="@+id/text_input_email"
             android:layout_width="370dp"
             android:layout_height="35dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="15dp"
             android:background="@drawable/round_with_greyoutline"
-            android:editable="false"
             android:gravity="center_vertical"
-            android:hint="@string/enteryouremail"
             android:inputType="textEmailAddress"
             android:paddingStart="15dp"
-            android:textSize="16sp"
-            tools:ignore="Deprecated" />
+            android:text="@string/enteryouremail"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/text_input_birthday"
@@ -147,11 +146,21 @@
 
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/update_user_info_btn"
+            android:id="@+id/update_user_password_btn"
             android:layout_width="370dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="100dp"
+            android:backgroundTint="#C87533"
+            android:text="@string/updateaccount_password"
+            android:textSize="16sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/update_user_info_btn"
+            android:layout_width="370dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="10dp"
             android:backgroundTint="#C87533"
             android:text="@string/updateaccount"
             android:textSize="16sp" />

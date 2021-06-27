@@ -19,7 +19,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class OrderHistoryDetailAdapter extends Adapter<OrderHistoryDetailAdapter.OrderDetailHistoryViewHolder> {
     private Cart cart;
-    private ProductsRepo productsRepo = new ProductsRepo();
+    private final ProductsRepo productsRepo = new ProductsRepo();
 
     @NonNull
     @NotNull

@@ -38,14 +38,11 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(@NonNull @org.jetbrains.annotations.NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         //INFLATE
-//        if (LocalDataManager.getIsFirst()) {
-//            LocalDataManager.setIsFirst(false);
-//        }
+
         if (!LocalDataManager.getCurrentUserId().equals(FirebaseAuth.getInstance().getUid())) {
             LocalDataManager.setCurrentUserId(FirebaseAuth.getInstance().getUid());
             Set<String> set = new HashSet<>();
             LocalDataManager.setReadNotifications(set);
-            LocalDataManager.setCountNotifications(0);
         }
         binding = DataBindingUtil.inflate(inflater, R.layout.home_fragment, container, false);
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);

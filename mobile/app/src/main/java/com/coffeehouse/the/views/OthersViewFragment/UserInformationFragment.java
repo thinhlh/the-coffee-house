@@ -1,9 +1,11 @@
 package com.coffeehouse.the.views.OthersViewFragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.databinding.PersonalinfoFragmentBinding;
 import com.coffeehouse.the.services.repositories.UserRepo;
+import com.coffeehouse.the.views.LoginForgotPasswordActivity;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -27,7 +30,8 @@ import java.util.Locale;
 
 public class UserInformationFragment extends Fragment implements View.OnClickListener {
     private UserRepo userRepo = new UserRepo();
-    private TextInputEditText txtName, txtPhone, txtEmail, txtBirthday;
+    private TextInputEditText txtName, txtPhone, txtBirthday;
+    private TextView txtEmail;
     private Date birthDate;
     private PersonalinfoFragmentBinding personalinfoFragmentBinding;
 
@@ -68,6 +72,9 @@ public class UserInformationFragment extends Fragment implements View.OnClickLis
 
         personalinfoFragmentBinding.closePersonalInformation.setOnClickListener(this::onClick);
         personalinfoFragmentBinding.updateUserInfoBtn.setOnClickListener(this::onClick);
+        personalinfoFragmentBinding.updateUserPasswordBtn.setOnClickListener(l -> {
+            startActivity(new Intent(getContext(), UpdatePasswordActivity.class));
+        });
 
         return v;
     }

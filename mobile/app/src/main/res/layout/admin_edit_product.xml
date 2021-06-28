@@ -60,7 +60,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:inputType="text"
+                        android:inputType="textCapCharacters|textCapWords|textCapSentences"
                         android:maxLines="1"
                         android:text="@{product.title}" />
                 </com.google.android.material.textfield.TextInputLayout>

@@ -54,7 +54,7 @@
     <string name="addhomeaddress">Thêm địa chỉ nhà</string>
     <string name="addcompanyaddress">Thêm địa chỉ công ty</string>
     <string name="addnewaddress">Thêm địa chỉ mới</string>
-    <string name="nameaddress">Tên địa chỉ*</string>
+    <string name="nameaddress">Số nhà*</string>
     <string name="address">Địa chỉ*</string>
     <string name="chooseaddress">Ghi địa chỉ</string>
     <string name="floor">Tòa nhà, số tầng</string>

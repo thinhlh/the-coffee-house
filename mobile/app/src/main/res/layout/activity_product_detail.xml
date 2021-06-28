@@ -126,6 +126,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/item_size"
                         android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
                         android:text="@string/pick_size"
                         android:textSize="15sp" />
 
@@ -141,7 +142,7 @@
 
                     <TextView
                         android:id="@+id/image_compulsory"
-                        android:layout_width="70dp"
+                        android:layout_width="80dp"
                         android:layout_height="30dp"
                         android:layout_alignParentEnd="true"
                         android:layout_marginTop="15dp"
@@ -161,11 +162,11 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/image_compulsory"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginTop="80dp"
+                        android:layout_marginTop="90dp"
                         android:layout_marginRight="15dp"
                         android:layout_toRightOf="@+id/radioGroup"
                         android:text="+ 0đ"
-                        android:textSize="15dp" />
+                        android:textSize="18sp" />
 
                     <View
                         android:layout_width="match_parent"
@@ -180,15 +181,17 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/image_compulsory"
                         android:layout_marginLeft="10dp"
-                        android:layout_marginTop="127dp"
-                        android:layout_marginRight="15dp"
+                        android:layout_marginTop="130dp"
+                        android:maxLines="1"
+                        android:layout_marginRight="10dp"
                         android:layout_toRightOf="@+id/radioGroup"
                         android:text="+ 5.000đ"
-                        android:textSize="15dp" />
+                        android:textSize="18sp" />
 
                     <RadioGroup
+                        android:layout_marginStart="5dp"
                         android:id="@+id/radioGroup"
-                        android:layout_width="300dp"
+                        android:layout_width="280dp"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/item_image"
                         android:checkedButton="@id/size_medium_radioButton">
@@ -196,9 +199,11 @@
                         <RadioButton
                             android:id="@+id/size_medium_radioButton"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="25dp"
+                            android:layout_marginTop="25dp"
                             android:onClick="@{(v)->productDetailViewModel.sizeSelect(v, radioGroup, productDetail)}"
                             android:text="Vừa"
+                            android:textSize="16sp"
 
 
                             />
@@ -207,9 +212,12 @@
                         <RadioButton
                             android:id="@+id/size_large_radioButton"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent"
+                            android:layout_height="25dp"
+                            android:layout_marginTop="15dp"
+                            android:layout_marginBottom="10dp"
                             android:onClick="@{(v)->productDetailViewModel.sizeSelect(v, radioGroup, productDetail)}"
-                            android:text="Lớn" />
+                            android:text="Lớn"
+                            android:textSize="16sp" />
 
                     </RadioGroup>
 
@@ -246,6 +254,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/item_topping"
                         android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
                         android:text="Chọn tối đa 2 loại"
                         android:textSize="15sp" />
 
@@ -261,7 +270,7 @@
 
                     <TextView
                         android:id="@+id/image_optional"
-                        android:layout_width="70dp"
+                        android:layout_width="80dp"
                         android:layout_height="30dp"
                         android:layout_alignParentEnd="true"
                         android:layout_marginTop="15dp"
@@ -280,19 +289,20 @@
                         android:layout_marginStart="10dp"
                         android:layout_marginBottom="5dp"
                         android:checked="@{productDetailViewModel.toppingCheck}"
-                        android:onClick="@{() -> productDetailViewModel.toppingOnCheck(productDetail)}" />
+                        android:onClick="@{() -> productDetailViewModel.toppingOnCheck(productDetail)}"
+                        android:text="Thêm topping" />
 
                     <TextView
                         android:id="@+id/item_nametopping"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:layout_below="@+id/topping_selection"
                         android:layout_marginStart="1dp"
-                        android:layout_marginTop="41dp"
+                        android:layout_marginTop="39dp"
                         android:layout_marginBottom="15dp"
                         android:layout_toEndOf="@+id/topping_selection_radio_button"
                         android:text="Thêm topping"
-                        android:textSize="15sp" />
+                        android:textSize="16sp" />
 
                     <TextView
                         android:id="@+id/topping_price"
@@ -300,9 +310,9 @@
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_marginTop="105dp"
-                        android:layout_marginEnd="10dp"
+                        android:layout_marginEnd="20dp"
                         android:text="+ 10.000đ"
-                        android:textSize="15sp" />
+                        android:textSize="18sp" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
@@ -333,6 +343,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@id/item_require"
                         android:layout_marginStart="10dp"
+                        android:layout_marginTop="5dp"
                         android:paddingStart="4dp"
                         android:text="@string/other_options"
                         android:textSize="15sp"
@@ -350,7 +361,7 @@
 
                     <TextView
                         android:id="@+id/image_optional2"
-                        android:layout_width="70dp"
+                        android:layout_width="80dp"
                         android:layout_height="30dp"
                         android:layout_alignParentEnd="true"
                         android:layout_marginTop="15dp"
@@ -361,17 +372,20 @@
                         android:textSize="15dp"
                         android:textStyle="bold" />
 
-                    <EditText
+                    <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/other_option"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@id/item_image3"
                         android:layout_marginStart="10dp"
-                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
                         android:hint="@string/order_note"
+                        android:maxLines="1"
+                        android:maxLength="20"
+                        android:background="@android:color/transparent"
                         android:paddingStart="4dp"
                         android:text=""
-                        android:textSize="20sp" />
+                        android:textSize="18sp" />
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
@@ -379,7 +393,7 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="120dp"
                 android:layout_alignParentBottom="true">
 
                 <RelativeLayout
@@ -424,11 +438,12 @@
                         android:id="@+id/select_item_button"
                         android:layout_width="350dp"
                         android:layout_height="40dp"
-                        android:layout_alignParentBottom="true"
+                        android:layout_below="@+id/minus_button"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginBottom="2dp"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="5dp"
                         app:cardCornerRadius="8dp"
-                        app:cardElevation="8dp">
+                        app:cardElevation="5dp">
 
                         <RelativeLayout
                             android:id="@+id/add_to_cart"

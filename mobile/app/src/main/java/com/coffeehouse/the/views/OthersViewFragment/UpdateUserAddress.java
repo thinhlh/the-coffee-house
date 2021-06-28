@@ -102,7 +102,7 @@ public class UpdateUserAddress extends AppCompatActivity implements View.OnClick
                 }
                 break;
             case R.id.back_button:
-                getFragmentManager().popBackStack();
+                finish();
                 break;
         }
     }

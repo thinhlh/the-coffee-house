@@ -12,9 +12,9 @@
     <com.google.android.material.card.MaterialCardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         app:cardCornerRadius="8dp"
-        android:layout_marginVertical="@dimen/general_dimen"
-        app:cardElevation="8dp">
+        app:cardElevation="5dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -27,10 +27,10 @@
 
             <com.google.android.material.card.MaterialCardView
 
-                android:layout_width="120dp"
-                android:layout_height="94dp"
+                android:layout_width="126dp"
+                android:layout_height="84dp"
                 app:cardCornerRadius="8dp"
-                app:cardElevation="8dp">
+            >
 
                 <ImageView
                     android:id="@+id/store_image"
@@ -51,15 +51,15 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="5dp"
                     android:text="THE COFFEE HOUSE"
                     android:textColor="@color/accent_color"
-                    android:textSize="11sp"
+                    android:textSize="13sp"
                     android:textStyle="bold" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/action_store_location"
-                    android:layout_width="wrap_content"
+                    android:layout_width="180dp"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:maxLines="3"
@@ -67,16 +67,7 @@
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/action_store_discription"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginTop="3dp"
-                    android:maxLines="3"
-                    android:text="Cách đây ? km"
-                    android:textColor="@color/grey"
-                    android:textSize="12sp" />
+
 
             </LinearLayout>
 

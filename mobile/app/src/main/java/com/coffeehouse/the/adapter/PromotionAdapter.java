@@ -42,6 +42,7 @@ public class PromotionAdapter extends Adapter<PromotionAdapter.PromotionViewHold
         holder.binding.setPromotion(currentPromotion);
         if (!currentPromotion.getImageUrl().isEmpty())
             Picasso.get().load(currentPromotion.getImageUrl()).into(holder.binding.image1CardviewPromotion1);
+
         holder.bindOnClick(currentPromotion, listener);
     }
 
@@ -68,7 +69,7 @@ public class PromotionAdapter extends Adapter<PromotionAdapter.PromotionViewHold
 
 
     static class PromotionViewHolder extends RecyclerView.ViewHolder {
-        private final PromotionListItemBinding binding;
+        private final PromotionListItemBinding binding;// trong lớp viewholder khởi tạo phải có 1 biến binding
 
         public PromotionViewHolder(@NonNull @NotNull PromotionListItemBinding binding) {
             super(binding.getRoot());

@@ -71,8 +71,9 @@
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
+                    android:maxLines="1"
+                    android:maxLength="10"
                     android:background="@android:color/transparent"
                     android:hint="Nhà / Cơ quan / Gym / ..."
                     android:textColorHint="@color/grey"
@@ -104,13 +105,14 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/text_address_description"
-                    android:layout_width="match_parent"
+                    android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:layout_below="@+id/address"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginLeft="20dp"
+                    android:layout_alignStart="@+id/address"
                     android:layout_marginTop="3dp"
+                    android:maxLines="2"
+                    android:maxLength="50"
                     android:layout_marginBottom="5dp"
                     android:background="@android:color/transparent"
                     android:hint="@string/chooseaddress"
@@ -143,7 +145,7 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/text_address_detail"
-                    android:layout_width="match_parent"
+                    android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:textColor="@color/black"
                     android:layout_centerHorizontal="true"
@@ -152,7 +154,8 @@
                     android:layout_marginBottom="5dp"
                     android:background="@android:color/transparent"
                     android:hint="@string/floor"
-                    android:text=""
+                    android:maxLines="2"
+                    android:maxLength="50"
                     android:textColorHint="@color/grey"
                     android:textSize="18sp" />
 
@@ -179,17 +182,19 @@
                     android:layout_marginTop="7dp"
                     android:text="@string/gate" />
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/text_address_gate"
-                    android:layout_width="match_parent"
+                    android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
                     android:layout_marginLeft="10dp"
+                    android:maxLength="20"
+                    android:maxLines="2"
                     android:layout_marginTop="5dp"
-                    android:textColor="@color/black"
                     android:layout_marginBottom="5dp"
                     android:background="@android:color/transparent"
                     android:hint="@string/gate"
+                    android:textColor="@color/black"
                     android:textColorHint="@color/grey"
                     android:textSize="18sp" />
 
@@ -219,9 +224,11 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/text_address_note"
-                    android:layout_width="match_parent"
+                    android:layout_width="350dp"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
+                    android:maxLines="2"
+                    android:maxLength="50"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
@@ -262,6 +269,7 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
                     android:layout_marginBottom="5dp"
+                    android:maxLength="30"
                     android:background="@android:color/transparent"
                     android:hint="@string/nameofclient"
                     android:textColor="@color/black"
@@ -297,9 +305,11 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="5dp"
+                    android:inputType="phone"
                     android:layout_marginBottom="5dp"
                     android:background="@android:color/transparent"
                     android:hint="@string/telephonenumber"
+                    android:maxLength="12"
                     android:textColor="@color/black"
                     android:textColorHint="@color/grey"
                     android:textSize="18sp" />

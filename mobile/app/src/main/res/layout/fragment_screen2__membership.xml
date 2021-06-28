@@ -41,7 +41,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <EditText
+                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/input_promotion_code"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
@@ -49,6 +49,7 @@
                     android:background="@android:color/transparent"
                     android:hint="@string/enterpromotioncode"
                     android:maxLines="1"
+                    android:maxLength="25"
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold"

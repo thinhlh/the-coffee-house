@@ -9,7 +9,9 @@ import com.coffeehouse.the.models.Cart;
 import com.coffeehouse.the.models.CartItem;
 import com.coffeehouse.the.models.Order;
 import com.coffeehouse.the.utils.helper.Fetching;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -27,7 +29,7 @@ public class OrdersRepo implements Fetching {
         setUpRealTimeListener();
     }
 
-    public void addOrderData(Order order) {
+    public Task<DocumentReference> addOrderData(Order order) {
         //ORDER HASH MAP
         Map<String, Object> dataOrder = new HashMap<>();
         dataOrder.put("userId", FirebaseAuth.getInstance().getCurrentUser().getUid());
@@ -40,7 +42,7 @@ public class OrdersRepo implements Fetching {
         dataOrder.put("recipientName", order.getRecipientName());
         dataOrder.put("recipientPhone", order.getRecipientPhone());
 
-        db.collection("orders").add(dataOrder).addOnCompleteListener(task -> {
+        return db.collection("orders").add(dataOrder).addOnCompleteListener(task -> {
             String id = task.getResult().getId();
             order.getCart().getItems().forEach(cartItem -> {
                 db.collection("orders").document(id).collection("cart").document().set(cartItem);

@@ -1,5 +1,6 @@
 package com.coffeehouse.the.views;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -52,13 +53,16 @@ public class screen1_membership extends Fragment implements View.OnClickListener
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_screen1__membership, container, false);
+        UserRepo.fetchUser();
         binding.setUser(UserRepo.user);
-       binding.cardviewYourvoucher.setOnClickListener(this::onClick);
-       binding.cardviewChangepromotion.setOnClickListener(this::onClick);
-       binding.textSeeall.setOnClickListener(this::onClick);
+
+        binding.cardviewYourvoucher.setOnClickListener(this::onClick);
+        binding.cardviewChangepromotion.setOnClickListener(this::onClick);
+        binding.textSeeall.setOnClickListener(this::onClick);
 
         //Binding
         promotionViewModel = new ViewModelProvider(this).get(PromotionViewModel.class);
+        promotionAdapter.setFlag(false);
         RecyclerView recyclerView = binding.promotionRecyclerview;
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
@@ -104,24 +108,20 @@ public class screen1_membership extends Fragment implements View.OnClickListener
         promotionViewModel.getPromotions().observe(getViewLifecycleOwner(), promotionAdapter::setItems);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.cardview_yourvoucher:
-                TabLayout tabhost = (TabLayout) getActivity().findViewById(R.id.tablayout_membership);
-                tabhost.getTabAt(1).select();
-                ViewPager viewPager=getActivity().findViewById(R.id.viewpager_membership);
+            case R.id.text_seeall:
+                TabLayout tabHost = (TabLayout) getActivity().findViewById(R.id.tablayout_membership);
+                tabHost.getTabAt(1).select();
+                ViewPager viewPager = getActivity().findViewById(R.id.viewpager_membership);
                 viewPager.setCurrentItem(1);
                 break;
             case R.id.cardview_changepromotion:
-                Intent intent = new Intent(getActivity(),CustomerRightActivity.class);
+                Intent intent = new Intent(getActivity(), CustomerRightActivity.class);
                 startActivity(intent);
-                break;
-            case R.id.text_seeall:
-                TabLayout tabLayout = (TabLayout) getActivity().findViewById(R.id.tablayout_membership);
-                tabLayout.getTabAt(1).select();
-                ViewPager viewPager1=getActivity().findViewById(R.id.viewpager_membership);
-                viewPager1.setCurrentItem(1);
                 break;
         }
 

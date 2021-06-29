@@ -1,5 +1,6 @@
 package com.coffeehouse.the.views.OthersViewFragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,7 +43,11 @@ public class UpdateUserAddress extends AppCompatActivity implements View.OnClick
         Objects.requireNonNull(getSupportActionBar()).hide();
 
         super.onCreate(savedInstanceState);
-        fixSavedaddressBinding=DataBindingUtil.setContentView(this,R.layout.fix_savedaddress);
+        fixSavedaddressBinding = DataBindingUtil.setContentView(this, R.layout.fix_savedaddress);
+
+        Intent intent = getIntent();
+        userAddress = (UserAddress) intent.getSerializableExtra("UserAddress");
+        flag = intent.getBooleanExtra("Flag", true);
 
         init();
         setVariable();
@@ -84,7 +89,7 @@ public class UpdateUserAddress extends AppCompatActivity implements View.OnClick
                 } else {
                     addressRepo.deleteUserAddress(userAddress.getId());
                     Toast.makeText(getApplicationContext(), "Delete Address success", Toast.LENGTH_SHORT).show();
-                    getFragmentManager().popBackStack();
+                    finish();
                 }
                 break;
             case R.id.update_address:
@@ -98,7 +103,7 @@ public class UpdateUserAddress extends AppCompatActivity implements View.OnClick
                         Toast.makeText(getApplicationContext(), "Update Address success", Toast.LENGTH_SHORT).show();
                     }
 
-                    getFragmentManager().popBackStack();
+                    finish();
                 }
                 break;
             case R.id.back_button:
@@ -166,4 +171,5 @@ public class UpdateUserAddress extends AppCompatActivity implements View.OnClick
     public void setFlag(boolean flag) {
         this.flag = flag;
     }
+
 }

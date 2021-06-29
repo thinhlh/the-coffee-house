@@ -46,9 +46,9 @@ public class SavedAddressFragment extends Fragment implements View.OnClickListen
         //End binding
 
         userAddressAdapter.setClickListener(item -> {
-            UpdateUserAddress fragment = new UpdateUserAddress();
-            fragment.setUserAddress(item);
             Intent intent = new Intent(getContext(), UpdateUserAddress.class);
+            intent.putExtra("Flag", false);
+            intent.putExtra("UserAddress", item);
             startActivity(intent);
         });
 
@@ -69,4 +69,5 @@ public class SavedAddressFragment extends Fragment implements View.OnClickListen
         Intent intent = new Intent(getContext(), UpdateUserAddress.class);
         startActivity(intent);
     }
+
 }

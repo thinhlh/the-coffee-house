@@ -38,17 +38,16 @@ import java.util.Locale;
 public class OrderDetailFragment extends Fragment implements View.OnClickListener, ChangeAddressBottomSheet.OrderStorePick, OrderPromotionChoseBottomSheet.updatePromotionSelect {
     private OrderDetailBinding orderDetailBinding;
     private OrderDetailViewModel orderDetailViewModel = new OrderDetailViewModel();
-    private CartItemAdapter cartItemAdapter = new CartItemAdapter();
+    private final CartItemAdapter cartItemAdapter = new CartItemAdapter();
     private Cart currentCart = new Cart();
     private UserAddress address = new UserAddress();
-    private Order order;
-    private OrdersRepo ordersRepo = new OrdersRepo();
-    private UserRepo userRepo = new UserRepo();
+    private final OrdersRepo ordersRepo = new OrdersRepo();
+    private final UserRepo userRepo = new UserRepo();
     private boolean delivered;
     private String promotionId;
 
-    private Locale locale = new Locale("vi", "VN");
-    private Format format = NumberFormat.getCurrencyInstance(locale);
+    private final Locale locale = new Locale("vi", "VN");
+    private final Format format = NumberFormat.getCurrencyInstance(locale);
 
 
     //Declare Delete current Cart Region
@@ -104,24 +103,28 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
         orderDetailBinding.textAddmenu.setOnClickListener(this::onClick);
         orderDetailBinding.textChoosepromotion.setOnClickListener(this::onClick);
 
-        cartItemAdapter.setClickListener(items -> {
-            currentCart = items;
-            orderDetailViewModel.setCart(items);
-            orderDetailBinding.setCart(items);
-            orderDetailViewModel.setTotalBill(items.getTotalCartValue());
-            orderDetailBinding.txtPromotionCode.setText("");
-            Toast.makeText(getContext(), "Chọn lại ưu đãi phù hợp với đơn hàng mới", Toast.LENGTH_SHORT).show();
-            if (orderDetailViewModel.getCart().getItems().size() == 0) {
-                orderDetailBinding.textAddmenu.setError("Chưa có sản phẩm trong giỏ");
-            }
-            getCart(cartItemAdapter);
-        });
+        cartItemAdapter.setClickListener(this::updateCartItem);
 
         orderDetailBinding.selectPromotion.setOnClickListener(l -> {
             selectPromotion();
         });
 
         return v;
+    }
+
+    private void updateCartItem(Cart items) {
+        currentCart = items;
+        orderDetailViewModel.setCart(items);
+        orderDetailBinding.setCart(items);
+        orderDetailViewModel.setTotalBill(items.getTotalCartValue());
+        if (!orderDetailBinding.txtPromotionCode.getText().toString().isEmpty()) {
+            orderDetailBinding.txtPromotionCode.setText("");
+            Toast.makeText(getContext(), "Chọn lại ưu đãi phù hợp với đơn hàng mới", Toast.LENGTH_SHORT).show();
+        }
+        if (orderDetailViewModel.getCart().getItems().size() == 0) {
+            orderDetailBinding.textAddmenu.setError("Chưa có sản phẩm trong giỏ");
+        }
+        getCart(cartItemAdapter);
     }
 
     private void deleteCurrentCart() {
@@ -157,14 +160,18 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
 
     private void createOrder() {
         if (validation()) {
-            order = new Order(orderDetailViewModel.getCart(), orderDetailBinding.textOrder.getText().toString(), delivered, orderDetailViewModel.getTotalBill(), promotionId, orderDetailBinding.textDestinationDetail.getText().toString(), orderDetailBinding.textName.getText().toString(), orderDetailBinding.textPhoneNumber.getText().toString());
-            ordersRepo.addOrderData(order);
-            userRepo.updateUserPoint(orderDetailViewModel.getCart().getTotalCartValue() / 1000);
-            deleteCurrentCart();
-            OrderFragment fragment = new OrderFragment();
-            getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
-            BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_navigation);
-            bottomNavigationView.setSelectedItemId(R.id.action_order);
+            Order order = new Order(orderDetailViewModel.getCart(), orderDetailBinding.textOrder.getText().toString(), delivered, orderDetailViewModel.getTotalBill(), promotionId, orderDetailBinding.textDestinationDetail.getText().toString(), orderDetailBinding.textName.getText().toString(), orderDetailBinding.textPhoneNumber.getText().toString());
+            ordersRepo.addOrderData(order).addOnCompleteListener(task -> {
+                if (task.isSuccessful()) {
+                    userRepo.updateUserPoint(orderDetailViewModel.getCart().getTotalCartValue() / 1000);
+                    Toast.makeText(getContext(), "Đặt hàng thành công!", Toast.LENGTH_SHORT).show();
+                    deleteCurrentCart();
+                    backToOrderFragment();
+                } else {
+                    String e = task.getException().getMessage();
+                    Toast.makeText(getContext(), "Đơn hàng chưa được ghi nhận: " + e, Toast.LENGTH_SHORT).show();
+                }
+            });
         }
     }
 

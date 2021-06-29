@@ -27,6 +27,7 @@ import java.util.List;
 public class PromotionAdapter extends Adapter<PromotionAdapter.PromotionViewHolder> implements ClickableRecyclerView<Promotion> {
     protected List<Promotion> promotions = new ArrayList<>();
     private RecyclerViewClickListener<Promotion> listener;
+    private boolean flag = true;
 
     @NonNull
     @NotNull
@@ -48,7 +49,15 @@ public class PromotionAdapter extends Adapter<PromotionAdapter.PromotionViewHold
 
     @Override
     public int getItemCount() {
-        return promotions != null ? promotions.size() : 0;
+        if (promotions.isEmpty())
+            return 0;
+
+        if (flag)
+            return promotions.size();
+        else {
+            return Math.min(promotions.size(), 3);
+        }
+//        return promotions != null ? promotions.size() : 0;
     }
 
     @Override
@@ -67,9 +76,12 @@ public class PromotionAdapter extends Adapter<PromotionAdapter.PromotionViewHold
         this.listener = listener;
     }
 
+    public void setFlag(boolean flag) {
+        this.flag = flag;
+    }
 
     static class PromotionViewHolder extends RecyclerView.ViewHolder {
-        private final PromotionListItemBinding binding;// trong lớp viewholder khởi tạo phải có 1 biến binding
+        private final PromotionListItemBinding binding;
 
         public PromotionViewHolder(@NonNull @NotNull PromotionListItemBinding binding) {
             super(binding.getRoot());
@@ -85,10 +97,5 @@ public class PromotionAdapter extends Adapter<PromotionAdapter.PromotionViewHold
                 }
             });
         }
-    }
-
-    private String promotionExpiryDate(Promotion promotion) {
-        DateFormat df = new SimpleDateFormat("dd/MMM/yyyy");
-        return df.format(promotion.getExpiryDate());
     }
 }

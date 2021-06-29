@@ -2,7 +2,9 @@ package com.coffeehouse.the.models;
 
 import com.coffeehouse.the.services.repositories.UserRepo;
 
-public class UserAddress {
+import java.io.Serializable;
+
+public class UserAddress implements Serializable {
     private String id = "";
     private String userId = "";
     private String title = "";

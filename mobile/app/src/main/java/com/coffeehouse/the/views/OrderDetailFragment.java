@@ -176,10 +176,11 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
     }
 
     private void backToOrderFragment() {
-        OrderFragment fragment = new OrderFragment();
-        fragment.setCart(orderDetailViewModel.getCart());
-        fragment.setUserAddress(address);
-        getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
+//        OrderFragment fragment = new OrderFragment();
+//        fragment.setCart(orderDetailViewModel.getCart());
+//        fragment.setUserAddress(address);
+//        getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
+        getFragmentManager().popBackStack();
     }
 
     private void getCart(CartItemAdapter cartItemAdapter) {

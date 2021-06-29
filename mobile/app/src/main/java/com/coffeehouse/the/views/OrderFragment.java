@@ -77,7 +77,7 @@ public class OrderFragment extends Fragment implements CategoryBottomSheet.SendC
             fragment.setCartOrderView(cart);
             fragment.setAddress(userAddress);
             fragment.setTargetFragment(OrderFragment.this, 19);
-            getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
+            getFragmentManager().beginTransaction().replace(this.getId(), fragment).addToBackStack(null).commit();
         });
 
         //SEARCH PRODUCT REGION

@@ -27,8 +27,8 @@
     <string name="notifications">Thông báo mới</string>
     <string name="google_default_web_client_id">1008379625573-esujc5bhtv63js83cujpsefq9m0mvot0.apps.googleusercontent.com</string>
 
-<!--        <string name="facebook_app_id">501408904608563</string>-->
-<!--        <string name="fb_login_protocol_scheme">fb501408904608563</string>-->
+    <!--        <string name="facebook_app_id">501408904608563</string>-->
+    <!--        <string name="fb_login_protocol_scheme">fb501408904608563</string>-->
 
     <string name="facebook_app_id">292926142546450</string>
     <string name="fb_login_protocol_scheme">fb292926142546450</string>

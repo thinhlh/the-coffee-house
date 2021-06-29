@@ -1,5 +1,6 @@
 package com.coffeehouse.the.views;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.PromotionAdapter;
@@ -24,6 +26,7 @@ import com.coffeehouse.the.databinding.FragmentScreen1MembershipBinding;
 import com.coffeehouse.the.databinding.MembershipFragmentBinding;
 import com.coffeehouse.the.services.repositories.UserRepo;
 import com.coffeehouse.the.viewModels.PromotionViewModel;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.zxing.BarcodeFormat;
 import com.google.zxing.EncodeHintType;
@@ -36,7 +39,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Hashtable;
 
-public class screen1_membership extends Fragment {
+public class screen1_membership extends Fragment implements View.OnClickListener {
     private FragmentScreen1MembershipBinding binding;
     private final PromotionAdapter promotionAdapter = new PromotionAdapter();
     private PromotionViewModel promotionViewModel;
@@ -50,7 +53,9 @@ public class screen1_membership extends Fragment {
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_screen1__membership, container, false);
         binding.setUser(UserRepo.user);
-//        binding.cardviewChangepromotion.setOnClickListener(this::onClick);
+       binding.cardviewYourvoucher.setOnClickListener(this::onClick);
+       binding.cardviewChangepromotion.setOnClickListener(this::onClick);
+       binding.textSeeall.setOnClickListener(this::onClick);
 
         //Binding
         promotionViewModel = new ViewModelProvider(this).get(PromotionViewModel.class);
@@ -99,4 +104,26 @@ public class screen1_membership extends Fragment {
         promotionViewModel.getPromotions().observe(getViewLifecycleOwner(), promotionAdapter::setItems);
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.cardview_yourvoucher:
+                TabLayout tabhost = (TabLayout) getActivity().findViewById(R.id.tablayout_membership);
+                tabhost.getTabAt(1).select();
+                ViewPager viewPager=getActivity().findViewById(R.id.viewpager_membership);
+                viewPager.setCurrentItem(1);
+                break;
+            case R.id.cardview_changepromotion:
+                Intent intent = new Intent(getActivity(),CustomerRightActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.text_seeall:
+                TabLayout tabLayout = (TabLayout) getActivity().findViewById(R.id.tablayout_membership);
+                tabLayout.getTabAt(1).select();
+                ViewPager viewPager1=getActivity().findViewById(R.id.viewpager_membership);
+                viewPager1.setCurrentItem(1);
+                break;
+        }
+
+    }
 }

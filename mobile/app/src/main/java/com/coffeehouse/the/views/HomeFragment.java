@@ -19,6 +19,7 @@ import com.coffeehouse.the.LocalData.LocalDataManager;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.NotificationAdapter;
 import com.coffeehouse.the.databinding.HomeFragmentBinding;
+import com.coffeehouse.the.databinding.NotificationListItemBinding;
 import com.coffeehouse.the.services.repositories.UserRepo;
 import com.coffeehouse.the.viewModels.HomeViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -32,6 +33,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     private HomeViewModel homeViewModel = new HomeViewModel();
     private HomeFragmentBinding binding;
     private final NotificationAdapter adapter = new NotificationAdapter();
+    NotificationListItemBinding notificationListItemBinding;
 
     @Nullable
     @org.jetbrains.annotations.Nullable
@@ -63,7 +65,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
         recyclerView.setAdapter(adapter);
 
         final int[] notiCount = {0};
-        homeViewModel.getNotifications().observe(getViewLifecycleOwner(), items -> {
+        homeViewModel.getNotifications().observe(this, items -> {
             adapter.setItems(items);
             notiCount[0] = items.size();
             setCountText(items.size());

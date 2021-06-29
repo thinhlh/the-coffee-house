@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -82,6 +83,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(viewPagerAdapter);
         ((TabLayout) findViewById(R.id.tab_layout)).setupWithViewPager(viewPager);
+
+
     }
 
     @Override

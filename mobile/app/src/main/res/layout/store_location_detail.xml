@@ -15,16 +15,18 @@
         android:orientation="vertical">
 
         <LinearLayout
+            android:layout_margin="5dp"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/card_view"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
+                android:layout_width="346dp"
+                android:layout_height="235dp"
                 android:layout_gravity="center_horizontal"
-                app:cardCornerRadius="8dp"
+                app:cardCornerRadius="3dp"
+                android:layout_marginBottom="5dp"
                 app:cardElevation="8dp">
 
                 <ImageView
@@ -69,9 +71,11 @@
                         android:layout_width="250dp"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="20dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginBottom="5dp"
                         android:text="Giờ mở cửa: 7:00 - 22:00"
                         android:textColor="@color/grey"
-                        android:textSize="12sp" />
+                        android:textSize="15sp" />
 
                 </LinearLayout>
 
@@ -80,7 +84,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
+                android:layout_height="1dp"
                 android:background="@color/white_gray" />
 
             <androidx.cardview.widget.CardView
@@ -119,16 +123,12 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
+                android:layout_height="1dp"
                 android:layout_gravity="right"
                 android:background="@color/white_gray" />
 
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_gravity="right"
-                android:background="@color/white_gray" />
+
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -167,8 +167,7 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="2dp"
-                android:layout_gravity="right"
+                android:layout_height="1dp"
                 android:background="@color/white_gray" />
 
 

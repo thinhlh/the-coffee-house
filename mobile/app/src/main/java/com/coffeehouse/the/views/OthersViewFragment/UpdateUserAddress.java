@@ -32,7 +32,7 @@ import java.util.Objects;
 public class UpdateUserAddress extends AppCompatActivity implements View.OnClickListener {
     private FixSavedaddressBinding fixSavedaddressBinding;
     private EditText txtTitle, txtDescription, txtDetail, txtGate, txtNote, txtRecipientName, txtRecipientPhone;
-    private AddressRepo addressRepo = new AddressRepo();
+    private final AddressRepo addressRepo = new AddressRepo();
     private UserAddress userAddress = new UserAddress();
     private boolean flag = true;
 

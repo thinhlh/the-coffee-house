@@ -23,7 +23,7 @@ import java.util.List;
 
 public class CartItemAdapter extends Adapter<CartItemAdapter.CartItemViewHolder> implements ClickableRecyclerView<Cart> {
     private Cart cart = new Cart();
-    private ProductsRepo productsRepo = new ProductsRepo();
+    private final ProductsRepo productsRepo = new ProductsRepo();
     private RecyclerViewClickListener<Cart> listener;
 
     @NonNull
@@ -71,14 +71,12 @@ public class CartItemAdapter extends Adapter<CartItemAdapter.CartItemViewHolder>
 
     static class CartItemViewHolder extends RecyclerView.ViewHolder {
         private final OrderDetailItemBinding orderDetailItemBinding;
-        private TextView txtItemName;
-        //private ImageButton btnDeleteItem;
+        private final TextView txtItemName;
 
         public CartItemViewHolder(@NonNull @NotNull OrderDetailItemBinding orderDetailItemBinding) {
             super(orderDetailItemBinding.getRoot());
             this.orderDetailItemBinding = orderDetailItemBinding;
             txtItemName = orderDetailItemBinding.textItemname;
-            //btnDeleteItem = orderDetailItemBinding.bush;
         }
 
         public void bindOnClick(Cart cart, int position, RecyclerViewClickListener<Cart> clickListener) {

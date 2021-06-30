@@ -20,7 +20,6 @@ public class Notification {
     private List<String> targetCustomer = new ArrayList<>();
 
     public Notification() {
-
     }
 
     public Notification(Date dateTime, String title, String description) {

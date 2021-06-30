@@ -1,6 +1,5 @@
 package com.coffeehouse.the.services.repositories;
 
-import android.net.Uri;
 import android.util.Log;
 
 import androidx.lifecycle.LiveData;
@@ -14,8 +13,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +37,8 @@ public class ProductsRepo implements Fetching {
                 List<Product> currentProducts = new ArrayList<>();
                 for (QueryDocumentSnapshot doc : value) {
                     if (doc != null) {
-                        Product product = doc.toObject(Product.class);
+                        Product product = new Product();
+                        product = doc.toObject(Product.class);
                         product.setId(doc.getId());
                         currentProducts.add(product);
                     }

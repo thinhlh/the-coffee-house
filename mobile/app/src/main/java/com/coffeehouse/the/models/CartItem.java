@@ -120,13 +120,20 @@ public class CartItem implements Serializable {
 
     public static CartItem fromMap(Map<String, Object> map) {
         CartItem cartItem = new CartItem();
-        cartItem.itemPrice = Integer.parseInt(map.get("itemPrice").toString());
-        cartItem.setNote(String.valueOf(map.get("note")));
-        cartItem.setProductId(String.valueOf(map.get("productId")));
-        cartItem.setQuantity(Integer.parseInt(map.get("quantity").toString()));
-        cartItem.size = map.get("size").equals("Medium") ? ProductSize.Medium : ProductSize.Large;
-        cartItem.topping = map.get("topping").equals("Off") ? ProductTopping.Off : ProductTopping.On;
-        cartItem.totalCartItemValue = Integer.parseInt(map.get("totalCartItemValue").toString());
+        if (map.get("itemPrice") != null)
+            cartItem.itemPrice = Integer.parseInt(Objects.requireNonNull(map.get("itemPrice")).toString());
+        if (map.get("note") != null)
+            cartItem.setNote(String.valueOf(map.get("note")));
+        if (map.get("productId") != null)
+            cartItem.setProductId(String.valueOf(map.get("productId")));
+        if (map.get("quantity") != null)
+            cartItem.setQuantity(Integer.parseInt(Objects.requireNonNull(map.get("quantity")).toString()));
+        if (map.get("size") != null)
+            cartItem.size = Objects.equals(map.get("size"), "Medium") ? ProductSize.Medium : ProductSize.Large;
+        if (map.get("topping") != null)
+            cartItem.topping = Objects.equals(map.get("topping"), "Off") ? ProductTopping.Off : ProductTopping.On;
+        if (map.get("totalCartItemValue") != null)
+            cartItem.totalCartItemValue = Integer.parseInt(Objects.requireNonNull(map.get("totalCartItemValue")).toString());
 
         return cartItem;
     }

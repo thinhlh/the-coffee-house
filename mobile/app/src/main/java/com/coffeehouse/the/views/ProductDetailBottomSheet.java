@@ -74,7 +74,8 @@ public class ProductDetailBottomSheet extends BottomSheetDialogFragment implemen
         } else {
             ((ToggleButton) v.findViewById(R.id.image_favorite)).setChecked(false);
         }
-        Picasso.get().load(product.getImageUrl()).into((ImageView) v.findViewById(R.id.detail_product_image));
+        if (!product.getImageUrl().isEmpty())
+            Picasso.get().load(product.getImageUrl()).into((ImageView) v.findViewById(R.id.detail_product_image));
         //DONE
 
 

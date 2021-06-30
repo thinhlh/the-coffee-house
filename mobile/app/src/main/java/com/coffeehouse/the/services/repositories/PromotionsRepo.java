@@ -7,7 +7,6 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.coffeehouse.the.models.Promotion;
 import com.coffeehouse.the.utils.helper.Fetching;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.storage.FirebaseStorage;
@@ -36,9 +35,10 @@ public class PromotionsRepo implements Fetching {
                     } else {
                         List<Promotion> list = new ArrayList<>();
                         for (QueryDocumentSnapshot doc : value) {
-                            Log.d("PRMOTION", doc.getId());
+                            Log.d("PROMOTION", doc.getId());
                             if (doc != null) {
-                                Promotion promotion = doc.toObject(Promotion.class);
+                                Promotion promotion = new Promotion();
+                                promotion = doc.toObject(Promotion.class);
                                 promotion.setId(doc.getId());
                                 if (Date.from(Instant.now()).before(promotion.getExpiryDate()))
                                     list.add(promotion);

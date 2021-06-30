@@ -1,5 +1,6 @@
 package com.coffeehouse.the.adapter;
 
+import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -29,6 +30,7 @@ public class OrderHistoryDetailAdapter extends Adapter<OrderHistoryDetailAdapter
         return new OrderDetailHistoryViewHolder(binding);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull @NotNull OrderHistoryDetailAdapter.OrderDetailHistoryViewHolder holder, int position) {
         CartItem currentCartItem = cart.getItems().get(position);

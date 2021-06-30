@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.UserAddressAdapter;
 import com.coffeehouse.the.databinding.SavedAddressFragmentBinding;
+import com.coffeehouse.the.models.UserAddress;
 import com.coffeehouse.the.viewModels.UserAddressViewModel;
 
 import org.jetbrains.annotations.NotNull;
@@ -67,6 +68,9 @@ public class SavedAddressFragment extends Fragment implements View.OnClickListen
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(getContext(), UpdateUserAddress.class);
+        intent.putExtra("Flag", true);
+        UserAddress userAddress = new UserAddress();
+        intent.putExtra("UserAddress", userAddress);
         startActivity(intent);
     }
 

@@ -38,7 +38,8 @@ public class CategoriesRepo implements Fetching {
                 List<Category> currentCategories = new ArrayList<>();
                 for (QueryDocumentSnapshot doc : value) {
                     if (doc != null) {
-                        Category category = doc.toObject(Category.class);
+                        Category category = new Category();
+                        category = doc.toObject(Category.class);
                         category.setId(doc.getId());
                         currentCategories.add(category);
                     }

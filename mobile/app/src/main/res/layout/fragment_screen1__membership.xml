@@ -23,7 +23,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardview_screen1"
                 android:layout_width="360dp"
-                android:layout_height="350dp"
+                android:layout_height="320dp"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
                 app:cardCornerRadius="10dp">
@@ -56,9 +56,9 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:background="@drawable/round_background_withleftrightbottom_conner"
                         android:layout_width="match_parent"
                         android:layout_height="110dp"
+                        android:background="@drawable/round_background_withleftrightbottom_conner"
                         android:backgroundTint="@color/accent_color"
                         android:orientation="vertical">
 
@@ -77,104 +77,96 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="5dp"
-                            android:textSize="18sp"
                             android:text="@{user.membershipString()}"
-                            android:textColor="@color/white" />
+                            android:textColor="@color/white"
+                            android:textSize="18sp" />
 
                         <com.google.android.material.textview.MaterialTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:layout_marginTop="5dp"
-                            android:textSize="18sp"
                             android:text="@{Integer.toString(user.point) + ` Beans`}"
-                            android:textColor="@color/white" />
+                            android:textColor="@color/white"
+                            android:textSize="18sp" />
 
                     </LinearLayout>
 
                     <RelativeLayout
-                        android:layout_margin="10dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:layout_margin="10dp">
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/beginstatus_point"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/grey"
                             android:text="Mới"
-                            android:textStyle="bold"
-                            android:textSize="16sp"/>
+                            android:textColor="@color/grey"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/endstatus_point"
-                            android:layout_alignParentEnd="true"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/grey"
+                            android:layout_alignParentEnd="true"
                             android:text="Đồng"
-                            android:textStyle="bold"
-                            android:textSize="16sp"/>
+                            android:textColor="@color/grey"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
 
                         <androidx.coordinatorlayout.widget.CoordinatorLayout
-                            android:layout_marginTop="5dp"
-                            android:layout_below="@+id/endstatus_point"
                             android:layout_width="320dp"
+                            android:layout_height="10dp"
+                            android:layout_below="@+id/endstatus_point"
                             android:layout_marginStart="23dp"
-                            android:layout_height="10dp">
+                            android:layout_marginTop="5dp">
 
                             <androidx.cardview.widget.CardView
-                                app:cardCornerRadius="30dp"
                                 android:id="@+id/card_point"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:backgroundTint="@color/accent_color">
+                                android:backgroundTint="@color/accent_color"
+                                app:cardCornerRadius="30dp">
 
                                 <RelativeLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent">
 
                                     <ImageView
-                                        android:layout_alignParentEnd="true"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:background="@drawable/smallcirclepoint"
+                                        android:layout_alignParentEnd="true"
                                         android:layout_centerVertical="true"
-                                        android:layout_marginEnd="3dp"/>
+                                        android:layout_marginEnd="3dp"
+                                        android:background="@drawable/smallcirclepoint" />
 
 
                                 </RelativeLayout>
 
 
-
                             </androidx.cardview.widget.CardView>
 
 
-
-
-
-
-
-
-
-
-
                         </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
                         <ImageView
-                            android:layout_marginTop="20dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:src="@drawable/ic_baseline_check_circle_outline_24"/>
+                            android:layout_marginTop="20dp"
+                            android:src="@drawable/ic_baseline_check_circle_outline_24" />
                     </RelativeLayout>
 
-                 <androidx.appcompat.widget.AppCompatTextView
-                     android:layout_marginStart="5dp"
-                     android:layout_width="320dp"
-                     android:textSize="12sp"
-                     android:textColor="@color/grey"
-                     android:gravity="center_horizontal"
-                     android:layout_marginBottom="5dp"
-                     android:layout_gravity="center_horizontal"
-                     android:layout_height="wrap_content"/>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="320dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:gravity="center_horizontal"
+                        android:textColor="@color/grey"
+                        android:textSize="12sp" />
 
 
                 </LinearLayout>
@@ -257,7 +249,6 @@
 
 
             </androidx.cardview.widget.CardView>
-
 
 
             <com.google.android.material.textview.MaterialTextView

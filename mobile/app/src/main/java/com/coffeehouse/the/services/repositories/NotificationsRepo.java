@@ -30,7 +30,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
-import java.util.Set;
 
 public class NotificationsRepo implements Fetching {
 
@@ -61,13 +60,11 @@ public class NotificationsRepo implements Fetching {
                 int count = 0;
                 for (QueryDocumentSnapshot doc : Objects.requireNonNull(value)) {
                     if (doc != null) {
-                        Notification notification = doc.toObject(Notification.class);
+                        Notification notification = new Notification();
+                        notification = doc.toObject(Notification.class);
                         notification.setId(doc.getId());
                         if (LocalDataManager.getReadNotifications().contains(notification.getId())) {
                             count++;
-//                            Set<String> readNotificationIds = LocalDataManager.getReadNotifications();
-//                            readNotificationIds.add(notification.getId());
-//                            LocalDataManager.setReadNotifications(readNotificationIds);
                         }
                         _notifications.add(notification);
                     }

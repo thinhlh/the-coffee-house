@@ -7,6 +7,9 @@ public class Feedback {
     private String userPhone = "";
     private String description = "";
 
+    public Feedback() {
+    }
+
     public Feedback(String userId, String userName, String userEmail, String userPhone, String description) {
         this.userId = userId;
         this.userName = userName;

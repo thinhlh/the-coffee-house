@@ -53,8 +53,12 @@ public class screen1_membership extends Fragment implements View.OnClickListener
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_screen1__membership, container, false);
+
+        //Init view
         UserRepo.fetchUser();
         binding.setUser(UserRepo.user);
+        initPointText();
+        //End
 
         binding.cardviewYourvoucher.setOnClickListener(this::onClick);
         binding.cardviewChangepromotion.setOnClickListener(this::onClick);
@@ -80,6 +84,18 @@ public class screen1_membership extends Fragment implements View.OnClickListener
         binding.userId.setText(FirebaseAuth.getInstance().getUid());
 
         return binding.getRoot();
+    }
+
+    private void initPointText() {
+        String membership = UserRepo.user.membershipString();
+        binding.beginstatusPoint.setText(membership);
+        if (membership.equals("Đồng")) {
+            binding.endstatusPoint.setText("Bạc");
+        } else if (membership.equals("Bạc")) {
+            binding.endstatusPoint.setText("Vàng");
+        } else {
+            binding.endstatusPoint.setText("Kim Cương");
+        }
     }
 
     private void createUserBarCode() {

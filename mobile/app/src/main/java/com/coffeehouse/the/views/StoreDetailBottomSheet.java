@@ -59,7 +59,8 @@ public class StoreDetailBottomSheet extends BottomSheetDialogFragment {
             intent.setData(Uri.parse("tel:" + contactPhoneNumber));
             startActivity(intent);
         });
-        Picasso.get().load(store.getImageUrl()).into(storeLocationDetailBinding.image);
+        if (!store.getImageUrl().isEmpty())
+            Picasso.get().load(store.getImageUrl()).into(storeLocationDetailBinding.image);
 
         return v;
     }

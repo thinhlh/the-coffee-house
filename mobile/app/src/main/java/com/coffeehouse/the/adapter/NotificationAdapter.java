@@ -21,7 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NotificationAdapter extends Adapter<NotificationAdapter.NotificationViewHolder> implements ClickableRecyclerView<Notification> {
-    private List<Notification> notifications=new ArrayList<>();
+    private List<Notification> notifications = new ArrayList<>();
     private RecyclerViewClickListener<Notification> listener;
 
 
@@ -39,7 +39,8 @@ public class NotificationAdapter extends Adapter<NotificationAdapter.Notificatio
         if (LocalDataManager.getReadNotifications().contains(currentNotification.getId())) {
             holder.notificationListItemBinding.notificationReadStatus.setVisibility(View.GONE);
         }
-        Picasso.get().load(currentNotification.getImageUrl()).into(holder.notificationListItemBinding.notificationImageView);
+        if (!currentNotification.getImageUrl().isEmpty())
+            Picasso.get().load(currentNotification.getImageUrl()).into(holder.notificationListItemBinding.notificationImageView);
         holder.bindOnClick(currentNotification, listener);
     }
 

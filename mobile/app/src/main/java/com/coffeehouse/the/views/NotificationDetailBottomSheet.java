@@ -31,7 +31,8 @@ public class NotificationDetailBottomSheet extends BottomSheetDialogFragment imp
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.bottomsheet_notification, container, false);
 
-        Picasso.get().load(notification.getImageUrl()).into((ImageView) binding.notiImage);
+        if (!notification.getImageUrl().isEmpty())
+            Picasso.get().load(notification.getImageUrl()).into((ImageView) binding.notiImage);
         binding.setNotification(notification);
         binding.closeNotiDetail.setOnClickListener(this::onClick);
         binding.readNoti.setOnClickListener(this::onClick);

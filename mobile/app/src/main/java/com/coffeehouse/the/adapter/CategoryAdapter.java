@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryAdapter extends Adapter<CategoryAdapter.CategoryViewHolder> implements ClickableRecyclerView<Category> {
-    private List<Category> categories=new ArrayList<>();
+    private List<Category> categories = new ArrayList<>();
     private RecyclerViewClickListener<Category> listener;
 
     @NonNull
@@ -37,7 +37,7 @@ public class CategoryAdapter extends Adapter<CategoryAdapter.CategoryViewHolder>
         Category currentCategory = categories.get(position);
         holder.menuListItemBinding.setCategory(currentCategory);
         if (!currentCategory.getImageUrl().isEmpty())
-        Picasso.get().load(currentCategory.getImageUrl()).into((ImageView) holder.itemView.findViewById(R.id.category_image));
+            Picasso.get().load(currentCategory.getImageUrl()).into((ImageView) holder.itemView.findViewById(R.id.category_image));
         holder.bindOnClick(currentCategory, listener);
     }
 

@@ -43,7 +43,6 @@ public class PromotionAdapter extends Adapter<PromotionAdapter.PromotionViewHold
         holder.binding.setPromotion(currentPromotion);
         if (!currentPromotion.getImageUrl().isEmpty())
             Picasso.get().load(currentPromotion.getImageUrl()).into(holder.binding.image1CardviewPromotion1);
-
         holder.bindOnClick(currentPromotion, listener);
     }
 
@@ -57,7 +56,6 @@ public class PromotionAdapter extends Adapter<PromotionAdapter.PromotionViewHold
         else {
             return Math.min(promotions.size(), 3);
         }
-//        return promotions != null ? promotions.size() : 0;
     }
 
     @Override

@@ -54,6 +54,7 @@ public class screen1_membership extends Fragment implements View.OnClickListener
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_screen1__membership, container, false);
 
+        UserRepo.fetchUser();
         binding.cardviewYourvoucher.setOnClickListener(this::onClick);
         binding.cardviewChangepromotion.setOnClickListener(this::onClick);
         binding.textSeeall.setOnClickListener(this::onClick);
@@ -65,12 +66,9 @@ public class screen1_membership extends Fragment implements View.OnClickListener
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(promotionAdapter);
-        UserRepo.realTimeListener().observe(getViewLifecycleOwner(), observe -> {
-            binding.setUser(UserRepo.user);
-            initPointText();
-            getPromotions(promotionAdapter);
-        });
-//        getPromotions(promotionAdapter);
+        binding.setUser(UserRepo.user);
+        initPointText();
+        getPromotions(promotionAdapter);
         //End binding
 
         promotionAdapter.setClickListener(item -> {

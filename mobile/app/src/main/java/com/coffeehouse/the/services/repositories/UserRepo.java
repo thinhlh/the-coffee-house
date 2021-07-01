@@ -55,18 +55,6 @@ public class UserRepo {
                 .continueWith(task -> user = task.getResult().toObject(CustomUser.class));
     }
 
-    public static LiveData<CustomUser> realTimeListener() {
-        MutableLiveData<CustomUser> data = new MutableLiveData<>();
-        FirebaseFirestore.getInstance().collection("users").document(mAuth.getCurrentUser().getUid())
-                .get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                user = task.getResult().toObject(CustomUser.class);
-                data.setValue(user);
-            }
-        });
-        return data;
-    }
-
     public Task<CustomUser> signIn(String email, String password) {
         return mAuth.signInWithEmailAndPassword(email, password).continueWithTask(task -> {
             if (task.isSuccessful()) {

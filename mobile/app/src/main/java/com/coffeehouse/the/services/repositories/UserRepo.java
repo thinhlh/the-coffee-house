@@ -3,6 +3,9 @@ package com.coffeehouse.the.services.repositories;
 import android.content.Context;
 import android.util.Log;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+
 import com.coffeehouse.the.models.CustomUser;
 import com.coffeehouse.the.utils.helper.CustomGoogleSignInClient;
 import com.coffeehouse.the.services.local.FCMService;
@@ -52,6 +55,17 @@ public class UserRepo {
                 .continueWith(task -> user = task.getResult().toObject(CustomUser.class));
     }
 
+    public static LiveData<CustomUser> realTimeListener() {
+        MutableLiveData<CustomUser> data = new MutableLiveData<>();
+        FirebaseFirestore.getInstance().collection("users").document(mAuth.getCurrentUser().getUid())
+                .get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                user = task.getResult().toObject(CustomUser.class);
+                data.setValue(user);
+            }
+        });
+        return data;
+    }
 
     public Task<CustomUser> signIn(String email, String password) {
         return mAuth.signInWithEmailAndPassword(email, password).continueWithTask(task -> {

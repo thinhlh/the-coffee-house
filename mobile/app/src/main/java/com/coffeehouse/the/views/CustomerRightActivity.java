@@ -15,22 +15,23 @@ import com.coffeehouse.the.R;
 import java.util.Objects;
 
 public class CustomerRightActivity extends AppCompatActivity {
-WebView webView;
+    WebView webView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         Objects.requireNonNull(getSupportActionBar()).hide();
         setContentView(R.layout.activity_customer_right);
-        webView=findViewById(R.id.web_view);
+        webView = findViewById(R.id.web_view);
         webView.setWebViewClient(new WebViewClient());
         webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         webView.getSettings().setLoadsImagesAutomatically(true);
         webView.getSettings().setJavaScriptEnabled(true);
-        WebSettings webSettings=webView.getSettings();
+        WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webView.loadUrl("https://www.thecoffeehouse.com/pages/rewards");
-        ImageView imageView=findViewById(R.id.close_right_activity);
+        ImageView imageView = findViewById(R.id.close_right_activity);
         imageView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -41,9 +42,10 @@ WebView webView;
 
     @Override
     public void onBackPressed() {
-        if(webView.canGoBack()){
+        if (webView.canGoBack()) {
             webView.goBack();
         } else {
-        super.onBackPressed();}
+            super.onBackPressed();
+        }
     }
 }

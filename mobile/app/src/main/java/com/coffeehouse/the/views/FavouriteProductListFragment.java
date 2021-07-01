@@ -1,5 +1,6 @@
 package com.coffeehouse.the.views;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,16 @@ public class FavouriteProductListFragment extends Fragment {
     private ProductAdapter productsAdapter = new ProductAdapter();
     private Cart cart = new Cart();
 
+    public interface onFavouriteProductClick {
+        void onProductClick(Product product);
+    }
+
+    private onFavouriteProductClick listener;
+
+    public void setListener(onFavouriteProductClick listener) {
+        this.listener = listener;
+    }
+
     @Nullable
     @org.jetbrains.annotations.Nullable
     @Override
@@ -49,19 +60,19 @@ public class FavouriteProductListFragment extends Fragment {
         //END BINDING
 
         favouriteFragmentBinding.closeFavoriteListFragment.setOnClickListener(listener -> {
+            assert getFragmentManager() != null;
             getFragmentManager().popBackStack();
         });
 
-        productsAdapter.setClickListener(item -> onFavProductClick(item));
+        productsAdapter.setClickListener(this::onFavProductClick);
 
         return v;
     }
 
     private void onFavProductClick(Product product) {
-        OrderFragment fragment = new OrderFragment();
-        getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
-        fragment.setCart(cart);
-        fragment.navigateToProductDetailBottomSheet(product);
+        listener.onProductClick(product);
+        assert getFragmentManager() != null;
+        getFragmentManager().popBackStack();
     }
 
     private void getFavProducts(ProductAdapter productsAdapter) {
@@ -74,5 +85,15 @@ public class FavouriteProductListFragment extends Fragment {
 
     public void setCart(Cart cart) {
         this.cart = cart;
+    }
+
+    @Override
+    public void onAttach(@NonNull @NotNull Context context) {
+        super.onAttach(context);
+        try {
+            listener = (onFavouriteProductClick) getTargetFragment();
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString() + " must implement onFavoriteProduct listener");
+        }
     }
 }

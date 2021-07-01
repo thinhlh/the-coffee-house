@@ -25,7 +25,7 @@ import com.coffeehouse.the.models.Product;
 import com.coffeehouse.the.models.UserAddress;
 import com.coffeehouse.the.viewModels.OrderViewModel;
 
-public class OrderFragment extends Fragment implements CategoryBottomSheet.SendCategoryPick, ProductDetailBottomSheet.UpdateCart, OrderDetailFragment.deleteCart {
+public class OrderFragment extends Fragment implements CategoryBottomSheet.SendCategoryPick, ProductDetailBottomSheet.UpdateCart, OrderDetailFragment.deleteCart, FavouriteProductListFragment.onFavouriteProductClick {
 
     private OrderViewModel orderViewModel;
     private ProductAdapter productsAdapter = new ProductAdapter();
@@ -68,6 +68,7 @@ public class OrderFragment extends Fragment implements CategoryBottomSheet.SendC
         orderFragmentBinding.favoriteProductsIcon.setOnClickListener(view -> {
             FavouriteProductListFragment fragment = new FavouriteProductListFragment();
             fragment.setCart(cart);
+            fragment.setTargetFragment(OrderFragment.this, 17);
             getFragmentManager().beginTransaction().replace(this.getId(), fragment).addToBackStack(null).commit();
         });
 
@@ -147,5 +148,10 @@ public class OrderFragment extends Fragment implements CategoryBottomSheet.SendC
     @Override
     public void onDeleteCart() {
         cart = new Cart();
+    }
+
+    @Override
+    public void onProductClick(Product product) {
+        navigateToProductDetailBottomSheet(product);
     }
 }

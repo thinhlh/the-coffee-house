@@ -176,10 +176,6 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
     }
 
     private void backToOrderFragment() {
-//        OrderFragment fragment = new OrderFragment();
-//        fragment.setCart(orderDetailViewModel.getCart());
-//        fragment.setUserAddress(address);
-//        getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
         getFragmentManager().popBackStack();
     }
 
@@ -279,16 +275,15 @@ public class OrderDetailFragment extends Fragment implements View.OnClickListene
                 ship = 30000;
 
             if (promotion.getValue().contains("%")) {
-                orderDetailViewModel.setTotalBill((int) currentCart.getTotalCartValue() / promotion.getValueToInt());
+                int _current = (int) (currentCart.getTotalCartValue() * (1 - ((double) promotion.getValueToInt() / 100)));
+                orderDetailViewModel.setTotalBill(_current);
             } else {
                 int _current = currentCart.getTotalCartValue() - Integer.parseInt(promotion.getValue());
-                if (_current < 0)
-                    orderDetailViewModel.setTotalBill(0);
-                else
-                    orderDetailViewModel.setTotalBill(_current);
+                orderDetailViewModel.setTotalBill(Math.max(_current, 0));
             }
 
             price = format.format(ship + orderDetailViewModel.getTotalBill());
+            orderDetailBinding.textItempricetotal2.setText(price);
             orderDetailBinding.textOrderprice.setText(price);
         }
     }

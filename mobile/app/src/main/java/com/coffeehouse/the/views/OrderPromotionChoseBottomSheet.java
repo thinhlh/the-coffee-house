@@ -69,6 +69,10 @@ public class OrderPromotionChoseBottomSheet extends BottomSheetDialogFragment {
             dismiss();
         });
 
+        binding.closePromotion.setOnClickListener(l -> {
+            dismiss();
+        });
+
         return binding.getRoot();
     }
 

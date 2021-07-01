@@ -7,14 +7,11 @@ import androidx.lifecycle.MutableLiveData;
 
 import com.coffeehouse.the.models.Promotion;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.FieldPath;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 
-import java.sql.Date;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 

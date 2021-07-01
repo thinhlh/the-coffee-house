@@ -9,17 +9,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.databinding.AdminCategoryCardBinding;
-import com.coffeehouse.the.databinding.AdminNotificationCardBinding;
 import com.coffeehouse.the.models.Category;
-import com.coffeehouse.the.models.Notification;
 import com.coffeehouse.the.utils.helper.RecyclerViewClickListener;
-import com.coffeehouse.the.utils.helper.Searchable;
 import com.coffeehouse.the.utils.helper.SwipeAbleRecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
 
 public class AdminCategoryAdapter extends RecyclerView.Adapter<AdminCategoryAdapter.AdminCategoryViewHolder> implements SwipeAbleRecyclerView<Category> {
     private List<Category> categories = new ArrayList<>();

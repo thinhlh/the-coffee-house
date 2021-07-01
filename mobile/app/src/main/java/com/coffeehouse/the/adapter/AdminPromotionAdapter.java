@@ -1,7 +1,6 @@
 package com.coffeehouse.the.adapter;
 
 import com.coffeehouse.the.models.Promotion;
-import com.coffeehouse.the.models.Store;
 import com.coffeehouse.the.utils.helper.Searchable;
 import com.coffeehouse.the.utils.helper.SwipeAbleRecyclerView;
 

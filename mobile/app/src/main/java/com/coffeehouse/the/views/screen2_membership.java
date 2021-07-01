@@ -1,7 +1,6 @@
 package com.coffeehouse.the.views;
 
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,7 +16,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.PromotionAdapter;
 import com.coffeehouse.the.databinding.FragmentScreen2MembershipBinding;
-import com.coffeehouse.the.services.repositories.PromotionsRepo;
 import com.coffeehouse.the.viewModels.PromotionViewModel;
 
 import org.jetbrains.annotations.NotNull;

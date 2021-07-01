@@ -35,6 +35,8 @@ public class PromotionDetailBottomSheet extends BottomSheetDialogFragment {
 
         binding.setPromotion(promotion);
         binding.setLifecycleOwner(this);
+        String s = promotion.getDescription().replaceAll("@", "\n");
+        binding.promotionDetailDescription.setText(s);
         binding.expiryDate.setText(promotionExpiryDate(promotion));
 
         binding.closePromotionItemBottomSheet.setOnClickListener(l -> {

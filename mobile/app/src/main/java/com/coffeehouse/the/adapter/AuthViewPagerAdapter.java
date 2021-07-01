@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.coffeehouse.the.views.LoginFragment;
 import com.coffeehouse.the.views.SignInFragment;
 import com.coffeehouse.the.views.SignUpFragment;
 

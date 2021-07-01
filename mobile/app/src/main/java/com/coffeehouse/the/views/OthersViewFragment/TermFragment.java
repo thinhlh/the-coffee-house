@@ -18,6 +18,7 @@ import org.jetbrains.annotations.NotNull;
 
 public class TermFragment extends Fragment implements View.OnClickListener {
     private WebView webView;
+
     public TermFragment() {
     }
 

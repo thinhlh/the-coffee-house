@@ -25,7 +25,6 @@ import com.coffeehouse.the.utils.helper.CustomGoogleSignInClient;
 import com.coffeehouse.the.utils.helper.WaitingHandler;
 import com.coffeehouse.the.viewModels.AuthViewModel;
 import com.coffeehouse.the.views.admin.AdminHomeActivity;
-import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -38,7 +37,6 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputLayout;
-import com.google.firebase.auth.OAuthCredential;
 import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.jetbrains.annotations.NotNull;

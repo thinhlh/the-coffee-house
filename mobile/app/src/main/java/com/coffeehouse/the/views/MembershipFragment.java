@@ -7,14 +7,11 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.MembershipTablayoutAdapter;
-import com.coffeehouse.the.databinding.FragmentScreen1MembershipBinding;
-import com.coffeehouse.the.databinding.MembershipFragmentBinding;
 import com.google.android.material.tabs.TabLayout;
 
 public class MembershipFragment extends Fragment implements View.OnClickListener {

@@ -2,30 +2,19 @@ package com.coffeehouse.the.views.OthersViewFragment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentStatePagerAdapter;
-import androidx.viewpager.widget.ViewPager;
-
 import com.coffeehouse.the.R;
-import com.coffeehouse.the.adapter.AuthViewPagerAdapter;
 import com.coffeehouse.the.databinding.FixSavedaddressBinding;
 import com.coffeehouse.the.models.UserAddress;
 import com.coffeehouse.the.services.repositories.AddressRepo;
-import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 

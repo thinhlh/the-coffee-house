@@ -16,7 +16,6 @@ import androidx.fragment.app.Fragment;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.databinding.PersonalinfoFragmentBinding;
 import com.coffeehouse.the.services.repositories.UserRepo;
-import com.coffeehouse.the.views.LoginForgotPasswordActivity;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.textfield.TextInputEditText;
 

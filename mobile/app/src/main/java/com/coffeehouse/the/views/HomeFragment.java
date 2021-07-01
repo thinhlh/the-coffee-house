@@ -14,13 +14,11 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.airbnb.lottie.model.LottieCompositionCache;
 import com.coffeehouse.the.LocalData.LocalDataManager;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.NotificationAdapter;
 import com.coffeehouse.the.databinding.HomeFragmentBinding;
 import com.coffeehouse.the.databinding.NotificationListItemBinding;
-import com.coffeehouse.the.services.repositories.UserRepo;
 import com.coffeehouse.the.viewModels.HomeViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -127,7 +125,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
     }
 
     private void navigateToStoresFragment() {
-        FragmentManager fragmentManager =getFragmentManager();
+        FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.home_fragment_container, new StoresFragment()).addToBackStack(null).commit();
         BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.action_store_location);

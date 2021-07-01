@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModel;
 
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.databinding.SignupFragmentBinding;

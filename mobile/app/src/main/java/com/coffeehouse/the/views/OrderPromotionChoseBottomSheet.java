@@ -16,9 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.PromotionAdapter;
 import com.coffeehouse.the.databinding.BottomsheetChoosepromotionOrderdetailBinding;
-import com.coffeehouse.the.databinding.FragmentScreen2MembershipBinding;
 import com.coffeehouse.the.models.Promotion;
-import com.coffeehouse.the.services.repositories.PromotionsRepo;
 import com.coffeehouse.the.viewModels.PromotionViewModel;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 

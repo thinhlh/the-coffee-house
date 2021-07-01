@@ -19,7 +19,6 @@ import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.CartItemAdapter;
 import com.coffeehouse.the.databinding.OrderDetailBinding;
 import com.coffeehouse.the.models.Cart;
-import com.coffeehouse.the.models.CartItem;
 import com.coffeehouse.the.models.Order;
 import com.coffeehouse.the.models.Promotion;
 import com.coffeehouse.the.models.UserAddress;
@@ -27,7 +26,6 @@ import com.coffeehouse.the.services.repositories.OrdersRepo;
 import com.coffeehouse.the.services.repositories.UserRepo;
 import com.coffeehouse.the.viewModels.OrderDetailViewModel;
 import com.coffeehouse.the.views.OthersViewFragment.ChangeAddressBottomSheet;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.jetbrains.annotations.NotNull;
 

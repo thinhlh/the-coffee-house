@@ -17,7 +17,6 @@ import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.OrderHistoryAdapter;
 import com.coffeehouse.the.databinding.OrderHistoryFragmentBinding;
 import com.coffeehouse.the.viewModels.OrderHistoryViewModel;
-import com.coffeehouse.the.views.OthersViewFragment.OthersFragment;
 
 import org.jetbrains.annotations.NotNull;
 

@@ -1,9 +1,6 @@
 package com.coffeehouse.the.models;
 
 import android.graphics.Color;
-import android.util.Log;
-
-import androidx.annotation.Nullable;
 
 import com.google.firebase.Timestamp;
 import com.google.gson.Gson;
@@ -101,8 +98,8 @@ public class AdminCustomUser extends CustomUser {
             user.admin = (boolean) map.get("admin");
         }
 
-        if(map.containsKey("subscribeToNotifications")){
-            user.subscribeToNotifications=(boolean) map.get("subscribeToNotifications");
+        if (map.containsKey("subscribeToNotifications")) {
+            user.subscribeToNotifications = (boolean) map.get("subscribeToNotifications");
         }
         return user;
     }
@@ -137,7 +134,7 @@ public class AdminCustomUser extends CustomUser {
         map.put("favoriteProducts", favoriteProducts);
         map.put("lastSignedIn", lastSignedIn);
         map.put("dateCreated", dateCreated);
-        map.put("subscribeToNotifications",subscribeToNotifications);
+        map.put("subscribeToNotifications", subscribeToNotifications);
         map.put("admin", admin);
         return map;
     }

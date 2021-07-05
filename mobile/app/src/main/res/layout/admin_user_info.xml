@@ -7,8 +7,18 @@
             type="com.coffeehouse.the.models.AdminCustomUser" />
     </data>
 
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <com.google.android.material.progressindicator.CircularProgressIndicator
+        android:id="@+id/progress_circular"
+        style="@style/CustomProgressIndicator"
+        android:visibility="gone"/>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -102,5 +112,6 @@
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>

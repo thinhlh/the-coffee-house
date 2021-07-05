@@ -40,13 +40,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="@dimen/general_dimen"
                     android:text="@{user.email}"
+                    android:textStyle="bold"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/grey" />
 
                 <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/role"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@{`Last signed in: `+user.formattedLastSignedIn}"
+                    android:text="@{user.admin?`Admin`:`Customer`}"
+                    android:textStyle="bold"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
             </LinearLayout>

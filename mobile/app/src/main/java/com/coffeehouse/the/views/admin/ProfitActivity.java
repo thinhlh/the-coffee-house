@@ -92,8 +92,8 @@ public class ProfitActivity extends AppCompatActivity implements WaitingHandler 
                         e.printStackTrace();
                     }
                 }, error -> {
-                    binding.progressCircular.setVisibility(View.GONE);
-                    Toast.makeText(this, "Something happened", Toast.LENGTH_SHORT).show();
+                    dispatchWaiting();
+                    Toast.makeText(this, "Something happened: "+error.getMessage(), Toast.LENGTH_SHORT).show();
                 });
             }
         });

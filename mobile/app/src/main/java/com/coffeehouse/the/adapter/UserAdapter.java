@@ -1,5 +1,6 @@
 package com.coffeehouse.the.adapter;
 
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -38,6 +39,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
     public void onBindViewHolder(@NonNull UserViewHolder holder, int position) {
         AdminCustomUser currentUser = users.get(position);
         holder.adminUserCardBinding.setUser(currentUser);
+        holder.adminUserCardBinding.role.setTextColor(currentUser.getAdmin() ? Color.RED : Color.BLACK);
         holder.bindOnClick(currentUser, listener);
     }
 

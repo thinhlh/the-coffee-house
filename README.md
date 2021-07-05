@@ -32,9 +32,12 @@ A coffee client application can be executed natively in Android based mobiles
  * Khách hàng có thể đăng ký tài khoản ngay trên ứng dụng hoặc đăng nhập thông qua tài khoản Google hoặc Facebook.
 
 ## Development Enviroment
- * Ứng dụng được xây dựng và phát triển trên Android Studio.
- * Các vấn đề trong quá trình thực thi ứng dụng [Know issues](https://github.com/thinhlh/the-coffee-house/issues).
+ * Ứng dụng được xây dựng và phát triển trên Android Studio với Android SDK 30
+ * Phiên bản build gradle 4.3.2
+ * Các vấn đề trong quá trình thực thi ứng dụng trên một số nền tảng
+ * [Máy mac M1 chrome bị lỗi](https://github.com/google/android-emulator-m1-preview/issues/1#issuecomment-812989474)
 
 ## Dependencies
  * Cơ sở dữ liệu của ứng dụng được quản lý trên [Firestore](https://firebase.google.com/docs/firestore).
  * Có sử dụng đăng qua Google, Facebook qua Firebase Authenticate do [Google](https://firebase.google.com/docs/auth/android/google-signin),[Facebook](https://firebase.google.com/docs/auth/android/facebook-login) cung cấp.
+ * Heroku để làm server cho REST API

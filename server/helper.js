@@ -19,7 +19,11 @@ const listAllUsers = async (nextPageToken) => {
 };
 
 const getUserInfo = async (uid) => {
-    return await admin.auth().getUser(uid);
+    var normalInfo= await admin.auth().getUser(uid);
+    var userOrders=await admin.firestore().collection('orders').where('userId','==',uid).get();
+    var res=normalInfo.toJSON();
+    res['totalOrders']=userOrders.docs.length;
+    return res;
 }
 
 const deleteUser = async (uid) => {

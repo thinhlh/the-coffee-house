@@ -25,6 +25,7 @@ public class NotificationAdapter extends Adapter<NotificationAdapter.Notificatio
     private RecyclerViewClickListener<Notification> listener;
 
 
+
     @NonNull
     @Override
     public NotificationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -74,7 +75,9 @@ public class NotificationAdapter extends Adapter<NotificationAdapter.Notificatio
             this.notificationListItemBinding = notificationListItemBinding;
         }
 
+
         public void bindOnClick(Notification notification, RecyclerViewClickListener<Notification> clickListener) {
+
             notificationListItemBinding.setNotification(notification);
             notificationListItemBinding.executePendingBindings();
             itemView.setOnClickListener(v -> {

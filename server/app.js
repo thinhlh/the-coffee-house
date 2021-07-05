@@ -26,6 +26,7 @@ app.get('/users', (req, res) => {
 app.get('/user-info/:id', (req, res) => {
     if (helper.authorize(req)) {
         helper.getUserInfo(req.params.id).then((result) => {
+            console.log(result);
             res.status(result == null ? 404 : 200).send(result == null ? 'Somthing happended' : result);
         });
     }

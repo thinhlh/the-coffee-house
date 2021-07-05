@@ -68,6 +68,7 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             notiCount[0] = items.size();
             setCountText(items.size());
         });
+
         adapter.setClickListener(item -> {
             NotificationDetailBottomSheet bottomSheet = new NotificationDetailBottomSheet();
             bottomSheet.setNotification(item);

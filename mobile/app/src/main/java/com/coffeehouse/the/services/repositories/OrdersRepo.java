@@ -37,7 +37,7 @@ public class OrdersRepo implements Fetching {
         dataOrder.put("orderMethod", order.getOrderMethod());
         dataOrder.put("orderValue", order.getOrderValue());
         dataOrder.put("promotionId", order.getPromotionId());
-        dataOrder.put("delivered", order.getDelivered());
+        dataOrder.put("delivered", false);
         dataOrder.put("orderAddress", order.getOrderAddress());
         dataOrder.put("recipientName", order.getRecipientName());
         dataOrder.put("recipientPhone", order.getRecipientPhone());

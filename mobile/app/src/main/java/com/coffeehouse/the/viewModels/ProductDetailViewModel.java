@@ -12,8 +12,8 @@ import com.coffeehouse.the.models.Category;
 import com.coffeehouse.the.models.Product;
 import com.coffeehouse.the.models.ProductSize;
 import com.coffeehouse.the.models.ProductTopping;
-import com.coffeehouse.the.services.CategoriesRepo;
-import com.coffeehouse.the.services.UserRepo;
+import com.coffeehouse.the.services.repositories.CategoriesRepo;
+import com.coffeehouse.the.services.repositories.UserRepo;
 
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -28,8 +28,8 @@ public class ProductDetailViewModel extends ViewModel {
     public LiveData<String> sum;
     public LiveData<Boolean> toppingCheck;
 
-    private Integer amount = 0;
-    private Integer amountPerOrder = 0;
+    private Integer amount;
+    private Integer amountPerOrder;
     private final Integer toppingPrice = 10000;
     private Integer sizePrice = 0;
     private final Integer upSize = 5000;
@@ -38,9 +38,10 @@ public class ProductDetailViewModel extends ViewModel {
     NumberFormat format = NumberFormat.getCurrencyInstance(locale);
 
     public ProductDetailViewModel() {
-        countM = new MutableLiveData<>(0);
-        sumM = new MutableLiveData<>("Thêm vào giỏ - " + format.format(amount));
+        countM = new MutableLiveData<>(1);
         toppingCheckM = new MutableLiveData<>(false);
+        sumM = new MutableLiveData<>("Thêm vào giỏ");
+        amount = amountPerOrder;
         count = countM;
         sum = sumM;
         toppingCheck = toppingCheckM;
@@ -132,4 +133,7 @@ public class ProductDetailViewModel extends ViewModel {
         return amountPerOrder;
     }
 
+    public void setAmountPerOrder(Integer amountPerOrder) {
+        this.amountPerOrder = amountPerOrder;
+    }
 }

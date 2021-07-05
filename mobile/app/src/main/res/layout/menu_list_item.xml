@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -17,67 +19,63 @@
             type="com.coffeehouse.the.viewModels.FavouriteProductViewModel" />
     </data>
 
-    <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/category_view"
-        android:layout_width="200dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="100dp"
+    <GridLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardCornerRadius="8dp"
-        app:cardElevation="8dp">
+        android:orientation="vertical">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            tools:ignore="RtlSymmetry">
+        <com.google.android.material.card.MaterialCardView
+            android:layout_marginStart="20dp"
+            android:layout_marginVertical="5dp"
+            android:layout_marginTop="20dp"
+            android:id="@+id/category_view"
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="3dp">
 
-
-            <androidx.cardview.widget.CardView
-                android:layout_marginTop="7dp"
-                android:layout_width="80dp"
-                android:layout_height="81dp"
-                app:cardCornerRadius="8dp"
-                android:layout_gravity="center"
-                app:cardElevation="8dp">
-
-                <ImageView
-                    android:id="@+id/category_image"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@{category.imageUrl}" />
-
-            </androidx.cardview.widget.CardView>
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/category_title"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:text="@{category.title}"
-                android:textAppearance="?textAppearanceListItem" />
+                android:orientation="horizontal"
+                tools:ignore="RtlSymmetry">
 
 
+                <androidx.cardview.widget.CardView
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_margin="7dp"
+                    app:cardCornerRadius="8dp"
+                    >
+
+                    <ImageView
+                        android:id="@+id/category_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:src="@{category.imageUrl}" />
+
+                </androidx.cardview.widget.CardView>
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/category_title"
+                    android:layout_marginEnd="2dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@{category.title}"
+                    android:textAlignment="center"
+                    android:maxLines="2"
+                    android:textAppearance="?textAppearanceListItem"
+                    android:textColor="@color/black"
+                    android:textSize="16sp"
+                  />
 
 
+            </LinearLayout>
 
 
+        </com.google.android.material.card.MaterialCardView>
+    </GridLayout>
 
-
-
-
-
-
-        </LinearLayout>
-
-
-    </com.google.android.material.card.MaterialCardView>
 
 </layout>

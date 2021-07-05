@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="userAddress"
+            type="com.coffeehouse.the.models.UserAddress" />
+
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_marginTop="1dp"
+        android:layout_height="wrap_content"
+        app:cardElevation="3dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/addhomeadress_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:src="@drawable/ic_baseline_bookmark_24" />
+
+            <TextView
+                android:id="@+id/text_address_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/addhomeadress_icon"
+                android:text="@{userAddress.title}"
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_address_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_address_title"
+                android:layout_alignStart="@+id/text_address_title"
+                android:text="@{userAddress.description}"
+                android:textColor="@color/grey" />
+
+            <TextView
+                android:id="@+id/text_recipient_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_address_description"
+                android:layout_alignStart="@id/text_address_description"
+                android:layout_marginBottom="10dp"
+                android:text="@{userAddress.recipientName}" />
+
+            <TextView
+                android:id="@+id/text_recipient_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/text_address_description"
+                android:layout_marginLeft="10dp"
+                android:layout_toEndOf="@id/text_recipient_name"
+                android:text="@{userAddress.recipientPhone}" />
+
+            <ImageView
+                android:id="@+id/update_user_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="15dp"
+                android:src="@drawable/ic_baseline_brush_24" />
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

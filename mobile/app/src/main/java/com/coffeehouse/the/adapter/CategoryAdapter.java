@@ -12,14 +12,17 @@ import androidx.recyclerview.widget.RecyclerView.Adapter;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.databinding.MenuListItemBinding;
 import com.coffeehouse.the.models.Category;
+import com.coffeehouse.the.utils.helper.ClickableRecyclerView;
+import com.coffeehouse.the.utils.helper.RecyclerViewClickListener;
 import com.squareup.picasso.Picasso;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryAdapter extends Adapter<CategoryAdapter.CategoryViewHolder> implements ClickableRecyclerView<Category> {
-    private List<Category> categories;
+    private List<Category> categories = new ArrayList<>();
     private RecyclerViewClickListener<Category> listener;
 
     @NonNull
@@ -33,7 +36,8 @@ public class CategoryAdapter extends Adapter<CategoryAdapter.CategoryViewHolder>
     public void onBindViewHolder(@NonNull @NotNull CategoryAdapter.CategoryViewHolder holder, int position) {
         Category currentCategory = categories.get(position);
         holder.menuListItemBinding.setCategory(currentCategory);
-        Picasso.get().load(currentCategory.getImageUrl()).into((ImageView) holder.itemView.findViewById(R.id.category_image));
+        if (!currentCategory.getImageUrl().isEmpty())
+            Picasso.get().load(currentCategory.getImageUrl()).into((ImageView) holder.itemView.findViewById(R.id.category_image));
         holder.bindOnClick(currentCategory, listener);
     }
 

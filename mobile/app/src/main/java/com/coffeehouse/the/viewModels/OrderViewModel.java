@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.coffeehouse.the.models.Product;
-import com.coffeehouse.the.services.ProductsRepo;
+import com.coffeehouse.the.services.repositories.ProductsRepo;
 
 import java.util.List;
 

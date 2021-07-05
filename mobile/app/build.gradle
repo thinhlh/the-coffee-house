@@ -49,12 +49,15 @@ dependencies {
     implementation 'org.jetbrains:annotations:15.0'
     implementation 'com.borjabravo:readmoretextview:2.1.0'
     implementation 'com.squareup.picasso:picasso:2.71828'
+    implementation 'com.android.volley:volley:1.2.0'
 
     //Firebase
     implementation platform('com.google.firebase:firebase-bom:27.1.0')
     implementation 'com.google.firebase:firebase-firestore'
     implementation 'com.google.firebase:firebase-auth'
     implementation 'com.google.firebase:firebase-storage'
+    implementation 'com.google.firebase:firebase-messaging:22.0.0'
+    implementation 'com.google.firebase:firebase-analytics'
 
 
     //Google
@@ -64,7 +67,7 @@ dependencies {
     //implementation 'com.google.oauth-client:google-oauth-client-jetty:1.23.0'
 
     //Facebook
-    implementation 'com.facebook.android:facebook-login:4.42.0'
+    implementation 'com.facebook.android:facebook-android-sdk:4.42.0'
     implementation 'com.google.android.gms:play-services-location:18.0.0'
     implementation 'com.google.android.gms:play-services-maps:17.0.1'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
@@ -72,12 +75,17 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
     implementation 'androidx.navigation:navigation-fragment:2.3.5'
     implementation 'androidx.navigation:navigation-ui:2.3.5'
+    implementation 'org.jetbrains:annotations:15.0'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
     compileOnly 'com.google.android.wearable:wearable:2.8.1'
+
+    implementation 'com.google.zxing:core:3.3.3'
+    implementation 'com.journeyapps:zxing-android-embedded:3.2.0@aar'
 }
 
-apply plugin:    'com.google.gms.google-services'
+
+apply plugin: 'com.google.gms.google-services'
 

@@ -1,90 +1,3 @@
-//package com.coffeehouse.the.views;
-//
-//import android.app.DatePickerDialog;
-//import android.content.Intent;
-//import android.os.Bundle;
-//
-//import androidx.fragment.app.Fragment;
-//
-//import android.util.Log;
-//import android.view.LayoutInflater;
-//import android.view.View;
-//import android.view.ViewGroup;
-//import android.widget.Button;
-//import android.widget.TextView;
-//import android.widget.Toast;
-//
-//import com.coffeehouse.the.R;
-//import com.coffeehouse.the.viewModels.AuthViewModel;
-//import com.google.android.material.button.MaterialButton;
-//import com.google.android.material.textfield.TextInputLayout;
-//
-//import java.sql.Date;
-//import java.time.Instant;
-//
-//public class SignUpFragment extends Fragment {
-//
-//    private static final String ARG_PARAM1 = "param1";
-//    private static final String ARG_PARAM2 = "param2";
-//
-//    // TODO: Rename and change types of parameters
-//    private String mParam1;
-//    private String mParam2;
-//    private TextView mDisplayDate;
-//
-//    private AuthViewModel authViewModel=new AuthViewModel();
-//
-//    private DatePickerDialog.OnDateSetListener mDateSetListener;
-//
-//    public SignUpFragment() {
-//    }
-//
-//    public static SignUpFragment newInstance(String param1, String param2) {
-//        SignUpFragment fragment = new SignUpFragment();
-//        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
-//
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
-//    }
-//
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                             Bundle savedInstanceState) {
-//
-//        View v = inflater.inflate(R.layout.fragment_signup, container, false);
-//
-//        //VALIDATION HERE
-//        ((MaterialButton) v.findViewById(R.id.sign_up_button)).setOnClickListener(button -> {
-//
-//            String name = ((TextInputLayout) v.findViewById(R.id.name_text_input)).getEditText().getText().toString().trim();
-//            String email = ((TextInputLayout) v.findViewById(R.id.email_text_input)).getEditText().getText().toString().trim();
-//            String phone = ((TextInputLayout) v.findViewById(R.id.phone_text_input)).getEditText().getText().toString().trim();
-//            String password = ((TextInputLayout) v.findViewById(R.id.password_text_input)).getEditText().getText().toString().trim();
-//
-//            authViewModel.signUp(email, name, password, phone, Date.from(Instant.now())).addOnCompleteListener(task -> {
-//                if (task.isSuccessful()) {
-//                    startActivity(new Intent(getContext(), HomeActivity.class));
-//                } else {
-//                    Toast.makeText(getContext(), "Account incorrect", Toast.LENGTH_SHORT).show();
-//                }
-//            });
-//        });
-//
-//        return v;
-//
-//
-//    }
-//}
 package com.coffeehouse.the.views;
 
 import android.content.Intent;
@@ -95,11 +8,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 
 import com.coffeehouse.the.R;
+import com.coffeehouse.the.databinding.SignupFragmentBinding;
+import com.coffeehouse.the.utils.helper.WaitingHandler;
 import com.coffeehouse.the.viewModels.AuthViewModel;
 import com.google.android.material.button.MaterialButton;
+import com.google.android.material.datepicker.CalendarConstraints;
+import com.google.android.material.datepicker.DateValidatorPointBackward;
 import com.google.android.material.datepicker.MaterialDatePicker;
 import com.google.android.material.textfield.TextInputLayout;
 
@@ -109,7 +27,9 @@ import java.util.Date;
 import java.util.Locale;
 import java.util.Objects;
 
-public class SignUpFragment extends Fragment implements View.OnClickListener {
+public class SignUpFragment extends Fragment implements WaitingHandler {
+
+    private SignupFragmentBinding binding;
 
     TextInputLayout input_name, input_email, input_phone, input_password, input_cf_password, mDisplayDate;
     String name, email, phone, password, cf_password, birthday;
@@ -130,12 +50,16 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.signup_fragment, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.signup_fragment, container, false);
         init(v);
 
         //CREATE DATE_PICKER
         MaterialDatePicker.Builder<Long> builder = MaterialDatePicker.Builder.datePicker();
         builder.setTitleText("Select birthday date");
         builder.setTheme(R.style.MaterialCalendarTheme);
+        CalendarConstraints.Builder constraints = new CalendarConstraints.Builder();
+        constraints.setValidator(DateValidatorPointBackward.now());
+        builder.setCalendarConstraints(constraints.build());
         MaterialDatePicker<Long> materialDatePicker = builder.build();
         materialDatePicker.addOnPositiveButtonClickListener(selection -> {
             String datePicked = materialDatePicker.getHeaderText();
@@ -185,11 +109,13 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
     }
 
     private void signUp() {
+        invokeWaiting();
         authViewModel.signUp(email, name, password, phone, birthDate).addOnCompleteListener(task -> {
+            dispatchWaiting();
             if (task.isSuccessful()) {
                 startActivity(new Intent(getContext(), HomeActivity.class));
             } else {
-                Toast.makeText(getContext(), "Account incorrect", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -269,8 +195,16 @@ public class SignUpFragment extends Fragment implements View.OnClickListener {
         }
     }
 
-    @Override
-    public void onClick(View v) {
 
+    @Override
+    public void invokeWaiting() {
+        binding.content.setVisibility(View.GONE);
+        binding.progressCircular.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void dispatchWaiting() {
+        binding.content.setVisibility(View.VISIBLE);
+        binding.progressCircular.setVisibility(View.GONE);
     }
 }

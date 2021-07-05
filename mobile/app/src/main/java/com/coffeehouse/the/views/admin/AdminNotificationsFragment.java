@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,12 +20,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.AdminNotificationAdapter;
 import com.coffeehouse.the.databinding.AdminNotificationsFragmentBinding;
-import com.coffeehouse.the.utils.SwipeToDeleteCallback;
+import com.coffeehouse.the.utils.helper.SwipeToDeleteCallback;
 import com.coffeehouse.the.viewModels.admin.AdminNotificationsViewModel;
 
 import org.jetbrains.annotations.NotNull;
 
-public class AdminNotificationsFragment extends Fragment {
+public class
+AdminNotificationsFragment extends Fragment implements SearchView.OnQueryTextListener {
 
     private AdminNotificationsViewModel viewModel;
     private final AdminNotificationAdapter adapter = new AdminNotificationAdapter();
@@ -47,6 +49,7 @@ public class AdminNotificationsFragment extends Fragment {
         binding.addButton.setOnClickListener(v -> {
             startActivity(new Intent(getContext(), AdminEditNotification.class));
         });
+        binding.searchView.setOnQueryTextListener(this);
     }
 
     private void setUpRecyclerView() {
@@ -58,7 +61,7 @@ public class AdminNotificationsFragment extends Fragment {
 
         viewModel.getNotifications().observe(getViewLifecycleOwner(), adapter::setItems);
 
-        enableSwipeToDelete(notificationsRecyclerView);
+        enableSwipeToDelete();
 
         adapter.setClickListener(notification -> {
             Intent intent = new Intent(getContext(), AdminEditNotification.class);
@@ -67,19 +70,31 @@ public class AdminNotificationsFragment extends Fragment {
         });
     }
 
-    private void enableSwipeToDelete(RecyclerView notificationsRecyclerView) {
+    private void enableSwipeToDelete() {
         SwipeToDeleteCallback swipeToDeleteCallback = new SwipeToDeleteCallback(getContext()) {
             @Override
             public void onSwiped(@NonNull @NotNull RecyclerView.ViewHolder viewHolder, int direction) {
                 final int position = viewHolder.getAdapterPosition();
 
-                new AlertDialog.Builder(getContext()).setTitle("Delete product").setMessage("Are you sure want to delete this notification?").setPositiveButton("Yes", (dialog, which) -> {
-                    viewModel.removeANotification(position);
+                new AlertDialog.Builder(getContext()).setTitle("Delete notification").setMessage("Are you sure want to delete this notification?").setPositiveButton("Yes", (dialog, which) -> {
+                    viewModel.removeNotification(position);
                 }).setNegativeButton("No", (dialog, which) -> {
                     adapter.notifyDataSetChanged();
                 }).show();
             }
         };
-        new ItemTouchHelper(swipeToDeleteCallback).attachToRecyclerView(notificationsRecyclerView);
+        new ItemTouchHelper(swipeToDeleteCallback).attachToRecyclerView(binding.notificationsRecyclerView);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        adapter.filter(query);
+        return true;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        adapter.filter(newText);
+        return true;
     }
 }

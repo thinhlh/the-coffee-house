@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.coffeehouse.the.models.Notification;
-import com.coffeehouse.the.services.NotificationsRepo;
+import com.coffeehouse.the.services.repositories.NotificationsRepo;
 import com.google.android.gms.tasks.Task;
 
 import java.util.List;
@@ -17,7 +17,7 @@ public class AdminNotificationsViewModel extends ViewModel {
         return repo.getNotifications();
     }
 
-    public Task<Void> removeANotification(int position){
+    public Task<Void> removeNotification(int position){
         return repo.removeNotification(position);
     }
 }

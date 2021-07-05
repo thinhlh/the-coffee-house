@@ -44,77 +44,154 @@
 
         </androidx.cardview.widget.CardView>
 
+        <!--        <androidx.cardview.widget.CardView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="10dp">-->
+
+        <!--            <RelativeLayout-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="match_parent">-->
+
+        <!--                <ImageView-->
+        <!--                    android:id="@+id/addhomeadress_icon"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_centerVertical="true"-->
+        <!--                    android:layout_marginLeft="10dp"-->
+        <!--                    android:src="@drawable/ic_baseline_home_24" />-->
+
+        <!--                <TextView-->
+        <!--                    android:id="@+id/text_addnewhomeadd"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginTop="10dp"-->
+        <!--                    android:layout_marginLeft="10dp"-->
+        <!--                    android:layout_toRightOf="@+id/addhomeadress_icon"-->
+        <!--                    android:text="@string/addhomeaddress"-->
+        <!--                    android:textColor="@color/black"-->
+        <!--                    android:textStyle="bold" />-->
+
+        <!--                <TextView-->
+        <!--                    android:id="@+id/text_homeadd"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_below="@id/text_addnewhomeadd"-->
+        <!--                    android:text="Chợ Bến Thành, Phường Nguyễn Thái Bình"-->
+        <!--                    android:layout_alignStart="@+id/text_addnewhomeadd"-->
+        <!--                    android:textColor="@color/grey"-->
+        <!--                    />-->
+
+        <!--                <TextView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:id="@+id/text_namehomeuser"-->
+        <!--                    android:text="Minh Nhật Huỳnh"-->
+        <!--                    android:layout_marginBottom="10dp"-->
+        <!--                    android:layout_alignStart="@id/text_homeadd"-->
+        <!--                    android:layout_below="@id/text_homeadd"/>-->
+        <!--                <TextView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:id="@+id/text_phonenumberhomeuser"-->
+        <!--                    android:text="0916854821"-->
+        <!--                    android:layout_marginLeft="10dp"-->
+        <!--                    android:layout_toEndOf="@id/text_namehomeuser"-->
+        <!--                    android:layout_below="@id/text_homeadd"/>-->
+
+        <!--                <ImageView-->
+        <!--                    android:id="@+id/fix_homeaddress"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_alignParentEnd="true"-->
+        <!--                    android:src="@drawable/ic_baseline_brush_24"-->
+        <!--                    android:layout_centerVertical="true"-->
+        <!--                    android:layout_marginRight="15dp"/>-->
+
+        <!--            </RelativeLayout>-->
+        <!--        </androidx.cardview.widget.CardView>-->
+
+        <!--        <androidx.cardview.widget.CardView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_marginTop="2dp">-->
+
+        <!--            <RelativeLayout-->
+        <!--                android:layout_width="match_parent"-->
+        <!--                android:layout_height="match_parent">-->
+
+        <!--                <ImageView-->
+        <!--                    android:id="@+id/addcompanyadress_icon"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_centerVertical="true"-->
+        <!--                    android:layout_marginLeft="10dp"-->
+        <!--                    android:src="@drawable/ic_baseline_work_24" />-->
+
+        <!--                <TextView-->
+        <!--                    android:id="@+id/text_addnewcompanyadd"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_marginTop="10dp"-->
+        <!--                    android:layout_marginLeft="10dp"-->
+        <!--                    android:layout_toRightOf="@+id/addcompanyadress_icon"-->
+        <!--                    android:text="@string/addcompanyaddress"-->
+        <!--                    android:textColor="@color/black"-->
+        <!--                    android:textStyle="bold" />-->
+        <!--                // nhớ set visibility cho cái đống text ở dười chỉ hiện ra sau khi add_new address-->
+        <!--                <TextView-->
+        <!--                    android:id="@+id/text_companyadd"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_below="@id/text_addnewcompanyadd"-->
+        <!--                    android:text="Chợ Bến Thành, Phường Nguyễn Thái Bình"-->
+        <!--                    android:layout_alignStart="@+id/text_addnewcompanyadd"-->
+        <!--                    android:textColor="@color/grey"-->
+        <!--                    />-->
+
+        <!--                <TextView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:id="@+id/text_namecompanyuser"-->
+        <!--                    android:text="Minh Nhật Huỳnh"-->
+        <!--                    android:layout_marginBottom="10dp"-->
+        <!--                    android:layout_alignStart="@id/text_companyadd"-->
+        <!--                    android:layout_below="@id/text_companyadd"/>-->
+        <!--                <TextView-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:id="@+id/text_phonenumbercompanyuser"-->
+        <!--                    android:text="0916854821"-->
+        <!--                    android:layout_marginLeft="10dp"-->
+        <!--                    android:layout_toEndOf="@id/text_namecompanyuser"-->
+        <!--                    android:layout_below="@id/text_companyadd"/>-->
+
+        <!--                <ImageView-->
+        <!--                    android:id="@+id/fix_companyaddress"-->
+        <!--                    android:layout_width="wrap_content"-->
+        <!--                    android:layout_height="wrap_content"-->
+        <!--                    android:layout_alignParentEnd="true"-->
+        <!--                    android:src="@drawable/ic_baseline_brush_24"-->
+        <!--                    android:layout_centerVertical="true"-->
+        <!--                    android:layout_marginRight="15dp"/>-->
+
+
+        <!--            </RelativeLayout>-->
+        <!--        </androidx.cardview.widget.CardView>-->
+
         <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="10dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/addhomeadress_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/ic_baseline_home_24" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/addhomeadress_icon"
-                    android:text="@string/addhomeaddress"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
+            android:id="@+id/add_address_card"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginTop="2dp">
 
             <RelativeLayout
+                android:id="@+id/add_new_address"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
                 <ImageView
-                    android:id="@+id/addcompanyadress_icon"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:src="@drawable/ic_baseline_work_24" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/addcompanyadress_icon"
-                    android:text="@string/addcompanyaddress"
-                    android:textColor="@color/black"
-                    android:textStyle="bold" />
-
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginTop="2dp">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/addnewadress_icon"
+                    android:id="@+id/add_new_address_icon"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
@@ -126,7 +203,7 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_marginLeft="10dp"
-                    android:layout_toRightOf="@+id/addnewadress_icon"
+                    android:layout_toRightOf="@+id/add_new_address_icon"
                     android:text="@string/addnewaddress"
                     android:textColor="@color/black"
                     android:textStyle="bold" />
@@ -134,5 +211,9 @@
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/user_address_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </layout>

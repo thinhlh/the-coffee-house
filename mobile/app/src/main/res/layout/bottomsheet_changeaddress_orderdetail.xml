@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="user"
+            type="com.coffeehouse.the.models.CustomUser" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/bottomsheet_changeaddress_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/choose_order_method"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <ImageButton
+                    android:id="@+id/close_changeaddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="5dp"
+                    android:background="@color/white"
+                    android:backgroundTint="@color/white"
+                    android:src="@drawable/ic_baseline_close_24" />
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:background="@color/browser_actions_bg_grey"
+                android:id="@+id/change_useraddress"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/addhomeadress_icon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/ic_baseline_local_shipping_24" />
+
+                <TextView
+                    android:id="@+id/text_addnewhomeadd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/addhomeadress_icon"
+                    android:text="@string/delivery"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_change_useraddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_margin="25dp"
+                    android:background="@drawable/round_button_background"
+                    android:text="@string/fix"
+                    android:textSize="10dp" />
+
+
+                <TextView
+                    android:id="@+id/text_homeadd"
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_addnewhomeadd"
+                    android:layout_alignStart="@+id/text_addnewhomeadd"
+                    android:maxLines="2"
+                    android:text="Chọn địa điểm nhận hàng"
+                    android:textColor="@color/grey" />
+
+                <TextView
+                    android:id="@+id/text_namehomeuser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_homeadd"
+                    android:layout_alignStart="@id/text_homeadd"
+                    android:layout_marginBottom="10dp"
+                    android:text="@{user.name}" />
+
+                <TextView
+                    android:id="@+id/text_phonenumberhomeuser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_homeadd"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toEndOf="@id/text_namehomeuser"
+                    android:text="@{user.phoneNumber}" />
+
+            </RelativeLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp">
+
+            <RelativeLayout
+                android:id="@+id/choose_storelocation"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/addcompanyadress_icon"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/takeaway" />
+
+                <TextView
+                    android:id="@+id/text_addnewcompanyadd"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@+id/addcompanyadress_icon"
+                    android:text="@string/pickup"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/text_store_address"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/text_addnewcompanyadd"
+                    android:layout_alignStart="@+id/text_addnewcompanyadd"
+                    android:layout_marginBottom="10dp"
+                    android:text="Bạn sẽ đến quầy nhận món tại cửa hàng và lấy mang đi"
+                    android:textColor="@color/grey" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/button_choose_storelocation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_margin="25dp"
+                    android:background="@drawable/round_button_background"
+                    android:text="@string/choose_store_location"
+                    android:textSize="10dp" />
+
+
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+</layout>

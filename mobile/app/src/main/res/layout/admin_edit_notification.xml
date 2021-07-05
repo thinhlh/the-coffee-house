@@ -16,7 +16,8 @@
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/accent_color">
 
 
             <com.google.android.material.appbar.MaterialToolbar
@@ -27,11 +28,17 @@
                 app:menu="@menu/admin_edit_menu"
                 app:navigationIcon="@drawable/ic_baseline_arrow_back_24"
                 app:navigationIconTint="@color/white"
-                app:title="@{notification.title}"
+                app:title=""
                 app:titleTextColor="@color/white" />
         </com.google.android.material.appbar.AppBarLayout>
 
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progress_circular"
+            style="@style/CustomProgressIndicator"
+            android:visibility="gone" />
+
         <androidx.core.widget.NestedScrollView
+            android:id="@+id/content"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="?attr/actionBarSize">
@@ -49,7 +56,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/general_dimen"
-                    android:hint="@string/title"
+                    android:hint="@string/title_en"
                     app:boxBackgroundColor="@color/white"
                     app:startIconDrawable="@drawable/ic_baseline_short_text_24">
 
@@ -68,15 +75,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginVertical="@dimen/general_dimen"
-                    android:hint="@string/description"
+                    android:hint="@string/description_en"
                     app:boxBackgroundColor="@color/white"
                     app:startIconDrawable="@drawable/ic_baseline_text_snippet_24">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:inputType="text"
-                        android:maxLines="3"
+                        android:inputType="text|textMultiLine"
+                        android:lines="2"
+                        android:maxLines="5"
+                        android:scrollbars="vertical"
                         android:text="@{notification.description}" />
                 </com.google.android.material.textfield.TextInputLayout>
 
@@ -111,12 +120,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="@string/pick_an_image" />
+                    android:backgroundTint="@color/accent_color"
+                    android:text="@string/pick_an_image_en" />
             </LinearLayout>
 
         </androidx.core.widget.NestedScrollView>
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
-
 
 </layout>

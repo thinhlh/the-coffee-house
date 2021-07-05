@@ -1,6 +1,7 @@
 package com.coffeehouse.the.adapter;
 
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -8,16 +9,21 @@ import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.RecyclerView.Adapter;
 
+import com.coffeehouse.the.LocalData.LocalDataManager;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.databinding.NotificationListItemBinding;
 import com.coffeehouse.the.models.Notification;
+import com.coffeehouse.the.utils.helper.ClickableRecyclerView;
+import com.coffeehouse.the.utils.helper.RecyclerViewClickListener;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class NotificationAdapter extends Adapter<NotificationAdapter.NotificationViewHolder> implements ClickableRecyclerView<Notification> {
-    private List<Notification> notifications;
+    private List<Notification> notifications = new ArrayList<>();
     private RecyclerViewClickListener<Notification> listener;
+
 
 
     @NonNull
@@ -31,13 +37,17 @@ public class NotificationAdapter extends Adapter<NotificationAdapter.Notificatio
     public void onBindViewHolder(@NonNull NotificationViewHolder holder, int position) {
         Notification currentNotification = notifications.get(position);
         holder.notificationListItemBinding.setNotification(currentNotification);
-        Picasso.get().load(currentNotification.getImageUrl()).into(holder.notificationListItemBinding.notificationImageView);
+        if (LocalDataManager.getReadNotifications().contains(currentNotification.getId())) {
+            holder.notificationListItemBinding.notificationReadStatus.setVisibility(View.GONE);
+        }
+        if (!currentNotification.getImageUrl().isEmpty())
+            Picasso.get().load(currentNotification.getImageUrl()).into(holder.notificationListItemBinding.notificationImageView);
         holder.bindOnClick(currentNotification, listener);
     }
 
     @Override
     public int getItemCount() {
-        return notifications==null?0:notifications.size();
+        return notifications == null ? 0 : notifications.size();
     }
 
     @Override
@@ -65,10 +75,13 @@ public class NotificationAdapter extends Adapter<NotificationAdapter.Notificatio
             this.notificationListItemBinding = notificationListItemBinding;
         }
 
+
         public void bindOnClick(Notification notification, RecyclerViewClickListener<Notification> clickListener) {
+
             notificationListItemBinding.setNotification(notification);
             notificationListItemBinding.executePendingBindings();
             itemView.setOnClickListener(v -> {
+                notificationListItemBinding.notificationReadStatus.setVisibility(View.GONE);
                 if (clickListener != null) {
                     clickListener.onClick(notification);
                 }

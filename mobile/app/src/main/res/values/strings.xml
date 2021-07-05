@@ -9,6 +9,9 @@
     <string name="login_text">Đăng nhập</string>
     <string name="forget_password_text">Quên mật khẩu</string>
     <string name="email_hint">Email</string>
+    <string name="old_pwd_hint">Nhập mật khẩu cũ</string>
+    <string name="new_pwd_hint">Nhập mật khẩu mới</string>
+    <string name="confirm_new_pwd_hint">Xác nhận mật khẩu mới</string>
     <string name="birthday_hint">Ngày sinh</string>
     <string name="confirm_password_hint">Xác nhận mật khẩu</string>
     <string name="sign_up_text">đăng ký</string>
@@ -23,10 +26,16 @@
     <string name="pickup">Tự đến lấy</string>
     <string name="notifications">Thông báo mới</string>
     <string name="google_default_web_client_id">1008379625573-esujc5bhtv63js83cujpsefq9m0mvot0.apps.googleusercontent.com</string>
+
+    <!--        <string name="facebook_app_id">501408904608563</string>-->
+    <!--        <string name="fb_login_protocol_scheme">fb501408904608563</string>-->
+
     <string name="facebook_app_id">292926142546450</string>
     <string name="fb_login_protocol_scheme">fb292926142546450</string>
+
+
     <string name="must_try">Món phải thử</string>
-    <string name="menu">Thực đơn</string>
+    <string name="menu">Thực Đơn</string>
     <string name="show_more">Xem thêm</string>
     <string name="show_less">Rút gọn</string>
     <string name="order_note">Thêm ghi chú món...</string>
@@ -45,9 +54,9 @@
     <string name="addhomeaddress">Thêm địa chỉ nhà</string>
     <string name="addcompanyaddress">Thêm địa chỉ công ty</string>
     <string name="addnewaddress">Thêm địa chỉ mới</string>
-    <string name="nameaddress">Tên địa chỉ</string>
+    <string name="nameaddress">Số nhà*</string>
     <string name="address">Địa chỉ*</string>
-    <string name="chooseaddress">Chọn địa chỉ</string>
+    <string name="chooseaddress">Ghi địa chỉ</string>
     <string name="floor">Tòa nhà, số tầng</string>
     <string name="gate">Cổng</string>
     <string name="noti">Ghi chú khác</string>
@@ -67,8 +76,9 @@
     <string name="right">Quyền lợi của bạn</string>
     <string name="yourpromotion">Phiếu ưu đãi của bạn</string>
     <string name="seeall">Xem Tất Cả</string>
-    <string name="enterpromotioncode">Nhập mã khuyến mãi</string>
+    <string name="enterpromotioncode">Tìm kiếm mã khuyến mãi</string>
     <string name="outofdate">Sắp hết hạn</string>
+    <string name="on_use">Sẵn sàng sử dụng</string>
     <string name="apply">Áp dụng</string>
     <string name="utilities">Tiện ích</string>
     <string name="history">Lịch sử đơn hàng</string>
@@ -94,6 +104,7 @@
     <string name="feedbackcontent">Nội dung phản hồi</string>
     <string name="updateinfo">Cập nhật thông tin</string>
     <string name="updateaccount">Cập nhật tài khoản</string>
+    <string name="updateaccount_password">Cập nhật mật khẩu mới</string>
     <string name="enteryourname">Nhập tên của bạn</string>
     <string name="enteryourphone">Nhập số điện thoại của bạn</string>
     <string name="enteryouremail">Nhập email của bạn</string>
@@ -102,7 +113,7 @@
     <string name="aboutus">Về chúng tôi</string>
     <string name="term">Điều khoản sử dụng</string>
     <string name="confirmorder">Xác nhận đơn hàng</string>
-    <string name="order">Giao hàng tận nơi</string>
+    <string name="order">Phương thức giao hàng</string>
     <string name="change">Thay đổi</string>
     <string name="addmenu">+ Thêm món</string>
     <string name="itemorder">Các món đã chọn</string>
@@ -139,6 +150,63 @@
     <string name="admin_information">Admin Information</string>
     <string name="profit">Profit</string>
     <string name="log_out">Log out</string>
+    <string name="finishoder">Đơn hàng đã hoàn tất</string>
+    <string name="atstore">Tại cửa hàng</string>
+    <string name="statusoderitem">Trạng thái đơn hàng</string>
+    <string name="estimteddeliverytime">Thời gian giao dự kiến</string>
+    <string name="complete">Hoàn tất</string>
+    <string name="evaluate">Đánh giá</string>
+    <string name="Callforsupport">Gọi hỗ trợ</string>
+    <string name="orderagain">Đặt lại</string>
+    <string name="orderinformation">Thông tin đơn hàng</string>
+    <string name="receiver">Người nhận</string>
+    <string name="deliveryto">Giao đến</string>
+    <string name="paymentstatus">Trạng thái thanh toán</string>
+    <string name="promotion_status">Phiếu khuyến mãi</string>
+    <string name="codeorder">Mã đơn hàng</string>
+    <string name="phonenumber">Số điện thoại</string>
+    <string name="notifications_en">Notifications</string>
+    <string name="promote_to_admin">Promote to admin</string>
+    <string name="choose_order_method">Chọn phương thức đặt hàng</string>
+    <string name="choose_store_location">Chọn quán</string>
+    <string name="fix">Chọn địa chỉ</string>
+    <string name="clear_this_address">Xóa địa chỉ này</string>
+    <string name="fix_saved_address">Sửa địa chỉ đã lưu</string>
+    <string name="version">Version</string>
+    <string name="orders">Orders</string>
+    <string name="recovery_email">Nhập email khôi phục</string>
+    <string name="auth_password">Xác thực mật khẩu</string>
+    <string name="send">Gửi yêu cầu</string>
+    <string name="submit_update_pwd">Đổi mật khẩu</string>
+    <string name="order_information">Order Information</string>
+    <string name="recovery">Recovery</string>
+    <string name="update_password">Update Password</string>
+    <string name="delivery_en">Delivery</string>
+    <string name="usenow">Sử dụng ngay</string>
+    <string name="date">Ngày hết hạn:</string>
+    <string name="add_new_store">Add new store</string>
+    <string name="from_date">From Date</string>
+    <string name="to_date">To Date</string>
+    <string name="show_profit">Show profit</string>
+    <string name="checkout_profit">Checkout Profit</string>
+    <string name="select_to_date">Select to date</string>
+    <string name="select_from_date">Select from date</string>
+    <string name="delivered_orders">Delivered Orders</string>
+    <string name="total_orders">Total Orders</string>
+    <string name="all_product">Tất cả sản phẩm</string>
+    <string name="address_en">Address</string>
+    <string name="longitude">Longitude</string>
+    <string name="latitude">Latitude</string>
+    <string name="store_name">Store name</string>
+    <string name="promotions">Promotions</string>
+    <string name="code">Code</string>
+    <string name="value">Value</string>
+    <string name="expiry_date">Expiry Date</string>
+    <string name="target_customer">Target Customer</string>
+    <string name="silver">Silver</string>
+    <string name="bronze">Bronze</string>
+    <string name="gold">Gold</string>
+    <string name="diamond">Diamond</string>
 
     <!--
     This string is used for square devices and overridden by hello_world in

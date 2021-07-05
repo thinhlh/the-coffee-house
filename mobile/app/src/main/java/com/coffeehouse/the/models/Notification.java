@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class Notification {
     private String id = "";
@@ -19,7 +20,6 @@ public class Notification {
     private List<String> targetCustomer = new ArrayList<>();
 
     public Notification() {
-
     }
 
     public Notification(Date dateTime, String title, String description) {
@@ -105,5 +105,18 @@ public class Notification {
         map.put("title", title);
         map.put("targetCustomer", targetCustomer);
         return map;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Notification)) return false;
+        Notification that = (Notification) o;
+        return id.equals(that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

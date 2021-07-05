@@ -1,13 +1,15 @@
 package com.coffeehouse.the.viewModels;
 
+import android.content.Context;
+
 import androidx.lifecycle.ViewModel;
 
 import com.coffeehouse.the.models.CustomUser;
-import com.coffeehouse.the.services.UserRepo;
+import com.coffeehouse.the.services.repositories.UserRepo;
+import com.facebook.AccessToken;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.IOException;
 import java.security.GeneralSecurityException;
@@ -35,19 +37,17 @@ public class AuthViewModel extends ViewModel {
         return null;
     }
 
-    private Task<CustomUser> firebaseAuthWithGoogle(GoogleSignInAccount account) throws GeneralSecurityException, IOException {
+    private Task<CustomUser> firebaseAuthWithGoogle(GoogleSignInAccount account) {
         return userRepo.googleSignIn(account);
     }
 
-    // Facebook Sign-in
-//    public Task<CustomUser> handleFacebookAccessToken(AccessToken accessToken){
-//        AuthCredential credential = FacebookAuthProvider.getCredential(accessToken.getToken());
-//        return mAuth.signInWithCredential(credential).continueWithTask(task -> userRepo.fetchUser(accessToken, mAuth.getCurrentUser()));
-//    }
+    public Task<CustomUser> handleFacebookAccessToken(AccessToken token) {
+        return userRepo.facebookSignIn(token);
+    }
 
     //Sign out
-    public void signOut() {
-        userRepo.signOut();
+    public Task<Void> signOut(Context context) {
+        return userRepo.signOut(context);
     }
 
 }

@@ -3,27 +3,29 @@ package com.coffeehouse.the.models;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.firebase.firestore.GeoPoint;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.gson.Gson;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 
-public class Store {
+public class Store implements Serializable {
     private String id = "";
     private String name = "";
     private String address = "";
     private LatLng coordinate = new LatLng(0, 0);
-    private List<String> imageUrls = new ArrayList<>();
+    private String imageUrl = "";
 
     public Store() {
 
     }
 
-    public Store(String id, String name, String address, LatLng coordinate, List<String> imageUrls) {
+    public Store(String id, String name, String address, LatLng coordinate, String imageUrl) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.coordinate = coordinate;
-        this.imageUrls = imageUrls;
+        this.imageUrl = imageUrl;
     }
 
     public String getId() {
@@ -58,12 +60,12 @@ public class Store {
         this.coordinate = coordinate;
     }
 
-    public List<String> getImageUrls() {
-        return imageUrls;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImageUrls(List<String> imageUrls) {
-        this.imageUrls = imageUrls;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     @Override
@@ -73,13 +75,30 @@ public class Store {
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", coordinate=" + coordinate +
-                ", imageUrls=" + imageUrls +
+                ", imageUrl=" + imageUrl +
                 '}';
     }
 
     public static Store fromQueryDocumentSnapshot(QueryDocumentSnapshot data) {
         GeoPoint geoPoint = data.getGeoPoint("coordinate");
         LatLng coordinate = new LatLng(geoPoint.getLatitude(), geoPoint.getLongitude());
-        return new Store(data.getId(), data.getString("name"), data.getString("address"), coordinate, (List<String>) data.get("imageUrls"));
+        return new Store(data.getId(), data.getString("name"), data.getString("address"), coordinate, (String) data.get("imageUrl"));
+    }
+
+    public Map<String, Object> toMap() {
+        return new HashMap<String, Object>() {{
+            put("name", name);
+            put("address", address);
+            put("coordinate", new GeoPoint(coordinate.latitude, coordinate.longitude));
+            put("imageUrl", imageUrl);
+        }};
+    }
+
+    public String toGson() {
+        return new Gson().toJson(this);
+    }
+
+    public static Store fromGson(String gson) {
+        return new Gson().fromJson(gson, Store.class);
     }
 }

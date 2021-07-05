@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.coffeehouse.the">
-
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.CAMERA"/>
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
 
     <application
         android:icon="@mipmap/ic_launcher"
@@ -15,23 +15,36 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TheCoffeeHouse">
+        <activity android:name=".views.CustomerRightActivity"></activity>
 
-        <activity android:name=".views.admin.AdminHomeActivity" />
-        <activity android:name=".views.ProductDetailActivity" />
-
+        <service
+            android:name=".services.local.FCMService"
+            android:directBootAware="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <!--
+ Set custom default icon. This is used when no icon is set for incoming notification messages.
+     See README(https://goo.gl/l4GJaQ) for more.
+        -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/tcfhlogo" />
+        <!--
+ Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more.
+        -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/accent_color" />
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/MAP_KEY" />
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
-
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="@string/MAP_KEY"/>
-
-        <activity android:name=".views.HomeActivity">
-
-        </activity>
-        <activity android:name=".views.GreetingActivity" />
-
 
         <activity
             android:name=".views.MainActivity"
@@ -42,9 +55,44 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.facebook.CustomTabActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
 
-        <activity android:name=".views.admin.AdminEditProduct"/>
-        <activity android:name=".views.admin.AdminEditNotification"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:scheme="@string/fb_login_protocol_scheme" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.facebook.FacebookActivity"
+            android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
+            android:label="@string/app_name" />
+        <activity
+            android:name=".views.OthersViewFragment.UpdateUserAddress"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity android:name=".views.ProductDetailActivity" />
+        <activity android:name=".views.HomeActivity" />
+        <activity android:name=".views.GreetingActivity" />
+        <activity android:name=".views.LoginForgotPasswordActivity" />
+        <activity android:name=".views.OthersViewFragment.UpdatePasswordActivity" />
+        <activity android:name=".views.FlashScreen" />
+        <activity android:name=".views.admin.AdminHomeActivity" />
+        <activity android:name=".views.admin.AdminEditProduct" />
+        <activity android:name=".views.admin.AdminEditNotification" />
+        <activity android:name=".views.admin.AdminEditCategory" />
+        <activity android:name=".views.admin.AdminEditStore" />
+        <activity android:name=".views.admin.AdminPromotions" />
+        <activity android:name=".views.admin.AdminEditPromotion" />
+        <activity android:name=".views.admin.AdminUserInfo" />
+        <activity android:name=".views.admin.AdminOrderDetail" />
+        <activity android:name=".views.admin.AdminCartItemDetail" />
+        <activity android:name=".views.admin.AdminStoresActivity" />
+        <activity android:name=".views.admin.AdminCategories" />
+        <activity android:name=".views.admin.ProfitActivity" />
     </application>
 
 </manifest>

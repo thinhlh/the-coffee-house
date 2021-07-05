@@ -18,7 +18,6 @@ import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.StoreAdapter;
 import com.coffeehouse.the.databinding.StoreLocationFragmentBinding;
 import com.coffeehouse.the.viewModels.StoreViewModel;
-import com.google.firebase.auth.FirebaseAuth;
 
 public class StoresFragment extends Fragment {
 
@@ -58,6 +57,7 @@ public class StoresFragment extends Fragment {
                 filterStores(query, storeAdapter);
                 return true;
             }
+
             @Override
             public boolean onQueryTextChange(String newText) {
                 filterStores(newText, storeAdapter);

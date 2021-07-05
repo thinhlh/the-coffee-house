@@ -1,12 +1,23 @@
 package com.coffeehouse.the.models;
 
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
-public class Category {
+public class Category implements Serializable {
 
     private String id = "";
     private String title = "";
     private String imageUrl = "";
+
+    public Category() {
+    }
+
+    public Category(String id, String title) {
+        this.id = id;
+        this.title = title;
+    }
 
     public String getId() {
         return id;
@@ -38,6 +49,13 @@ public class Category {
         if (o == null || getClass() != o.getClass()) return false;
         Category category = (Category) o;
         return id.equals(category.id);
+    }
+
+    public Map<String, Object> toMap() {
+        return new HashMap<String, Object>() {{
+            put("title", title);
+            put("imageUrl", imageUrl);
+        }};
     }
 
     @Override

@@ -9,28 +9,36 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.coffeehouse.the.R;
-import com.coffeehouse.the.databinding.SavedAddressFragmentBinding;
 import com.coffeehouse.the.databinding.SettingFragmentBinding;
+import com.coffeehouse.the.services.repositories.UserRepo;
+import com.coffeehouse.the.viewModels.SettingsViewModel;
 
 import org.jetbrains.annotations.NotNull;
 
 public class SettingsFragment extends Fragment implements View.OnClickListener {
-    public SettingsFragment() {
-    }
+    private SettingFragmentBinding settingFragmentBinding;
+    private SettingsViewModel viewModel;
 
     @Nullable
     @org.jetbrains.annotations.Nullable
     @Override
     public View onCreateView(@NonNull @NotNull LayoutInflater inflater, @Nullable @org.jetbrains.annotations.Nullable ViewGroup container, @Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-        SettingFragmentBinding settingFragmentBinding = DataBindingUtil.inflate(inflater, R.layout.setting_fragment, container, false);
-        View v = settingFragmentBinding.getRoot();
+        settingFragmentBinding = DataBindingUtil.inflate(inflater, R.layout.setting_fragment, container, false);
+        viewModel = new ViewModelProvider(this).get(SettingsViewModel.class);
 
-        v.findViewById(R.id.close_settings).setOnClickListener(this::onClick);
-        v.findViewById(R.id.about_us).setOnClickListener(this::onClick);
+        initListeners();
+        settingFragmentBinding.notificationSwitch.setChecked(UserRepo.user.getSubscribeToNotifications());
 
-        return v;
+        return settingFragmentBinding.getRoot();
+    }
+
+    private void initListeners() {
+        settingFragmentBinding.closeSettings.setOnClickListener(this);
+        settingFragmentBinding.aboutUs.setOnClickListener(this);
+        settingFragmentBinding.notificationSwitch.setOnClickListener(this);
     }
 
     @Override
@@ -45,6 +53,15 @@ public class SettingsFragment extends Fragment implements View.OnClickListener {
                 fragment = new AboutUsFragment();
                 getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
                 break;
+            case R.id.notification_switch:
+                UserRepo.user.setSubscribeToNotifications(!UserRepo.user.getSubscribeToNotifications());
+                viewModel.changeSubscriptionStatus().addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        settingFragmentBinding.notificationSwitch.setChecked(UserRepo.user.getSubscribeToNotifications());
+                    }
+                });
+                break;
+
         }
     }
 }

@@ -29,7 +29,7 @@ public class TermFragment extends Fragment implements View.OnClickListener {
         View v = inflater.inflate(R.layout.term_fragment, container, false);
         webView = (WebView) v.findViewById(R.id.term_web_view);
         webView.setWebViewClient(new WebViewClient());
-        webView.loadUrl("https://order.thecoffeehouse.com/term");
+        webView.loadUrl("https://www.thecoffeehouse.com/blogs/trach-nhiem-cong-dong");
 
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);

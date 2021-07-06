@@ -5,10 +5,15 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import com.coffeehouse.the.models.Cart;
+import com.coffeehouse.the.models.Order;
+import com.coffeehouse.the.services.repositories.OrdersRepo;
+
+import java.util.List;
 
 public class OrderDetailViewModel extends ViewModel {
     private Cart cart = new Cart();
     private int totalBill = cart.getTotalCartValue();
+    private OrdersRepo ordersRepo = new OrdersRepo();
 
     public OrderDetailViewModel() {
     }
@@ -33,5 +38,9 @@ public class OrderDetailViewModel extends ViewModel {
 
     public void setTotalBill(int totalBill) {
         this.totalBill = totalBill;
+    }
+
+    public LiveData<Order> getOrderRealTime(String orderId) {
+        return ordersRepo.getOrderDetail(orderId);
     }
 }

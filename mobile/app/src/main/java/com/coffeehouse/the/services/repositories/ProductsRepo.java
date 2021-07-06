@@ -91,11 +91,13 @@ public class ProductsRepo implements Fetching {
     }
 
     public Product getProductById(String productId) {
+        if (products.getValue() == null)
+            return new Product();
         for (Product product : products.getValue()) {
             if (product.getId().equals(productId))
                 return product;
         }
-        return null;
+        return new Product();
     }
 
     //FAVORITE PRODUCT REGION

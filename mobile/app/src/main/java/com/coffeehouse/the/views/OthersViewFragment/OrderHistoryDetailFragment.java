@@ -1,5 +1,8 @@
 package com.coffeehouse.the.views.OthersViewFragment;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.OrderHistoryDetailAdapter;
 import com.coffeehouse.the.databinding.OrderHistoryDetailFragmentBinding;
+import com.coffeehouse.the.models.Cart;
 import com.coffeehouse.the.models.Order;
 import com.coffeehouse.the.services.repositories.PromotionsRepo;
 import com.coffeehouse.the.viewModels.OrderDetailViewModel;
@@ -33,6 +37,18 @@ public class OrderHistoryDetailFragment extends Fragment {
     private final OrderHistoryDetailAdapter adapter = new OrderHistoryDetailAdapter();
     private final PromotionsRepo promotionsRepo = new PromotionsRepo();
 
+    //Buy back listener
+    public interface onBuyBackListener {
+        void onBuyBack(Cart cart);
+    }
+
+    private onBuyBackListener listener;
+
+    public void setListener(onBuyBackListener listener) {
+        this.listener = listener;
+    }
+    //End
+
     public OrderHistoryDetailFragment() {
     }
 
@@ -46,11 +62,7 @@ public class OrderHistoryDetailFragment extends Fragment {
         orderHistoryDetailFragmentBinding.setOrder(order);
         orderDetailViewModel = new ViewModelProvider(this).get(OrderDetailViewModel.class);
         orderDetailViewModel.setCart(order.getCart());
-        RecyclerView recyclerView = orderHistoryDetailFragmentBinding.orderCartRecyclerView;
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setAdapter(adapter);
-        getCart(adapter);
+        setUpRecyclerView();
         //End binding
 
         //Set up View
@@ -61,12 +73,44 @@ public class OrderHistoryDetailFragment extends Fragment {
         });
         //End
 
+        orderDetailViewModel.getOrderRealTime(order.getId()).observe(getViewLifecycleOwner(), item -> {
+            order = item;
+            orderHistoryDetailFragmentBinding.setOrder(item);
+            orderDetailViewModel.setCart(item.getCart());
+            setUpRecyclerView();
+            //Set up View
+            orderHistoryDetailFragmentBinding.totalOrder.setText(total());
+            promotionsRepo.getPromotions().observe(getViewLifecycleOwner(), observe -> {
+                if (promotionsRepo.getPromotionById(order.getPromotionId()) != null)
+                    orderHistoryDetailFragmentBinding.textPromotionCode.setText(promotionsRepo.getPromotionById(order.getPromotionId()).getCode());
+            });
+            //End
+        });
+
         orderHistoryDetailFragmentBinding.closeOrderHistoryFragmentDetailFragment.setOnClickListener(l -> {
-            OrderHistoryFragment fragment = new OrderHistoryFragment();
-            getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
+            getFragmentManager().popBackStack();
+        });
+
+        orderHistoryDetailFragmentBinding.btnContactSupporter.setOnClickListener(l -> {
+            Intent intent = new Intent(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse("tel:18006936"));
+            startActivity(intent);
+        });
+
+        orderHistoryDetailFragmentBinding.btnBuyBack.setOnClickListener(l -> {
+            if (listener != null)
+                listener.onBuyBack(order.getCart());
         });
 
         return orderHistoryDetailFragmentBinding.getRoot();
+    }
+
+    private void setUpRecyclerView() {
+        RecyclerView recyclerView = orderHistoryDetailFragmentBinding.orderCartRecyclerView;
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setAdapter(adapter);
+        getCart(adapter);
     }
 
     private void getCart(OrderHistoryDetailAdapter adapter) {
@@ -88,6 +132,16 @@ public class OrderHistoryDetailFragment extends Fragment {
             return format.format(order.getOrderValue() + 30000);
         } else {
             return format.format(order.getOrderValue());
+        }
+    }
+
+    @Override
+    public void onAttach(@NonNull @NotNull Context context) {
+        super.onAttach(context);
+        try {
+            listener = (onBuyBackListener) getTargetFragment();
+        } catch (ClassCastException e) {
+            throw new ClassCastException(context.toString() + "Must implement onBuyBack listener");
         }
     }
 }

@@ -101,14 +101,17 @@
                         android:orientation="horizontal">
 
                         <com.google.android.material.button.MaterialButton
-                            android:id="@+id/evaluate"
+                            android:id="@+id/btn_buy_back"
                             android:layout_width="170dp"
                             android:layout_height="50dp"
-                            android:text="@string/evaluate"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginBottom="10dp"
+                            android:text="@string/orderagain"
                             android:textColor="@color/accent_color"
                             app:backgroundTint="@color/light_orange" />
 
                         <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_contact_supporter"
                             android:layout_width="170dp"
                             android:layout_height="50dp"
                             android:layout_marginLeft="10dp"
@@ -118,20 +121,21 @@
                             app:backgroundTint="@color/light_orange" />
                     </LinearLayout>
 
-                    <LinearLayout
+                    <!--                    <LinearLayout-->
 
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
+                    <!--                        android:layout_width="match_parent"-->
+                    <!--                        android:layout_height="wrap_content">-->
 
-                        <com.google.android.material.button.MaterialButton
-                            android:layout_width="350dp"
-                            android:layout_height="50dp"
-                            android:layout_marginLeft="16dp"
-                            android:layout_marginBottom="10dp"
-                            android:text="@string/orderagain"
-                            android:textColor="@color/accent_color"
-                            app:backgroundTint="@color/light_orange" />
-                    </LinearLayout>
+                    <!--                        <com.google.android.material.button.MaterialButton-->
+                    <!--                            android:id="@+id/btn_buy_back"-->
+                    <!--                            android:layout_width="170dp"-->
+                    <!--                            android:layout_height="50dp"-->
+                    <!--                            android:layout_marginLeft="16dp"-->
+                    <!--                            android:layout_marginBottom="10dp"-->
+                    <!--                            android:text="@string/orderagain"-->
+                    <!--                            android:textColor="@color/accent_color"-->
+                    <!--                            app:backgroundTint="@color/light_orange" />-->
+                    <!--                    </LinearLayout>-->
                 </LinearLayout>
 
 

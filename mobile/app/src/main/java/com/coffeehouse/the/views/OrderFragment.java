@@ -74,11 +74,7 @@ public class OrderFragment extends Fragment implements CategoryBottomSheet.SendC
 
         //Inflate Order Detail Fragment
         orderFragmentBinding.orderView.setOnClickListener(view -> {
-            OrderDetailFragment fragment = new OrderDetailFragment();
-            fragment.setCartOrderView(cart);
-            fragment.setAddress(userAddress);
-            fragment.setTargetFragment(OrderFragment.this, 19);
-            getFragmentManager().beginTransaction().replace(this.getId(), fragment).addToBackStack(null).commit();
+            navigateToOrderDetail();
         });
 
         //SEARCH PRODUCT REGION
@@ -113,6 +109,14 @@ public class OrderFragment extends Fragment implements CategoryBottomSheet.SendC
 
     private void getProducts(ProductAdapter productAdapter) {
         orderViewModel.getProducts().observe(getViewLifecycleOwner(), productAdapter::setItems);
+    }
+
+    public void navigateToOrderDetail() {
+        OrderDetailFragment fragment = new OrderDetailFragment();
+        fragment.setCartOrderView(cart);
+        fragment.setAddress(userAddress);
+        fragment.setTargetFragment(OrderFragment.this, 19);
+        getFragmentManager().beginTransaction().replace(this.getId(), fragment).addToBackStack(null).commit();
     }
 
     public void navigateToProductDetailBottomSheet(Product product) {

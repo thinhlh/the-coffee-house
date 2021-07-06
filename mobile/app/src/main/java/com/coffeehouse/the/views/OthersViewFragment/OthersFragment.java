@@ -66,8 +66,6 @@ public class OthersFragment extends Fragment implements View.OnClickListener {
                 getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
                 break;
             case R.id.saved_address:
-//                fragment = new SavedAddressFragment();
-//                getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
                 FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 fragmentManager.beginTransaction().replace(R.id.home_fragment_container, new SavedAddressFragment()).addToBackStack(null).commit();
                 break;
@@ -81,7 +79,7 @@ public class OthersFragment extends Fragment implements View.OnClickListener {
                 break;
             case R.id.order_history:
                 fragment = new OrderHistoryFragment();
-                getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
+                getFragmentManager().beginTransaction().replace(this.getId(), fragment).addToBackStack(null).commit();
                 break;
         }
     }

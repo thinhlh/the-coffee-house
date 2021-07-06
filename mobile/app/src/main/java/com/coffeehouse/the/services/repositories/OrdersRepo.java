@@ -23,7 +23,6 @@ import java.util.Map;
 
 public class OrdersRepo implements Fetching {
     private final MutableLiveData<List<Order>> orders = new MutableLiveData<>();
-    private final MutableLiveData<Order> orderDetail = new MutableLiveData<>();
     private final FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     public OrdersRepo() {
@@ -98,49 +97,49 @@ public class OrdersRepo implements Fetching {
         return orders;
     }
 
-    public void setUpRealTimeListenerDetailOrder(String orderId) {
-        db.collection("orders")
-                .orderBy("orderTime", Query.Direction.DESCENDING).addSnapshotListener((orderValue, orderError) -> {
-                    if (orderError != null) {
-                        Log.w("Orders Repository", orderError);
-                    } else {
-                        List<Order> orders = new ArrayList<>();
-                        for (QueryDocumentSnapshot orderDoc : orderValue) {
-                            if (orderDoc != null && orderDoc.getId().equals(orderId)) {
-                                Cart cart = new Cart();
-                                orderDoc.getReference().collection("cart")
-                                        .addSnapshotListener((cartValue, cartError) -> {
-                                            List<CartItem> cartItems = new ArrayList<>();
-                                            if (cartError != null) {
-                                                //TODO Handling error
-                                                Log.e("Cart Error", cartError.getMessage());
-                                            } else {
-                                                for (QueryDocumentSnapshot cartItemDoc : cartValue) {
-                                                    if (cartItemDoc != null) {
-                                                        cartItems.add(CartItem.fromMap(cartItemDoc.getData()));
-                                                    }
-                                                }
-                                                cart.setItems(cartItems);
-                                            }
-                                            Order order = new Order();
-                                            order = orderDoc.toObject(Order.class);
-                                            order.setId(orderDoc.getId());
-                                            order.setCart(cart);
-
-                                            if (order.getUserId().equals(FirebaseAuth.getInstance().getUid()))
-                                                this.orderDetail.setValue(order);
-                                            Log.d("FINAL", orders.toString());
-                                            Log.d("Orders", String.valueOf(orders.size()));
-                                        });
-                            }
-                        }
-                    }
-                }
-        );
-    }
-
-    public LiveData<Order> getOrderDetail(String orderId) {
-        setUpRealTimeListenerDetailOrder(orderId);
-        return orderDetail;
-    }
+//    public void setUpRealTimeListenerDetailOrder(String orderId) {
+//        db.collection("orders")
+//                .orderBy("orderTime", Query.Direction.DESCENDING).addSnapshotListener((orderValue, orderError) -> {
+//                    if (orderError != null) {
+//                        Log.w("Orders Repository", orderError);
+//                    } else {
+//                        List<Order> orders = new ArrayList<>();
+//                        for (QueryDocumentSnapshot orderDoc : orderValue) {
+//                            if (orderDoc != null && orderDoc.getId().equals(orderId)) {
+//                                Cart cart = new Cart();
+//                                orderDoc.getReference().collection("cart")
+//                                        .addSnapshotListener((cartValue, cartError) -> {
+//                                            List<CartItem> cartItems = new ArrayList<>();
+//                                            if (cartError != null) {
+//                                                //TODO Handling error
+//                                                Log.e("Cart Error", cartError.getMessage());
+//                                            } else {
+//                                                for (QueryDocumentSnapshot cartItemDoc : cartValue) {
+//                                                    if (cartItemDoc != null) {
+//                                                        cartItems.add(CartItem.fromMap(cartItemDoc.getData()));
+//                                                    }
+//                                                }
+//                                                cart.setItems(cartItems);
+//                                            }
+//                                            Order order = new Order();
+//                                            order = orderDoc.toObject(Order.class);
+//                                            order.setId(orderDoc.getId());
+//                                            order.setCart(cart);
+//
+//                                            if (order.getUserId().equals(FirebaseAuth.getInstance().getUid()))
+//                                                this.orderDetail.setValue(order);
+//                                            Log.d("FINAL", orders.toString());
+//                                            Log.d("Orders", String.valueOf(orders.size()));
+//                                        });
+//                            }
+//                        }
+//                    }
+//                }
+//        );
+//    }
+//
+//    public LiveData<Order> getOrderDetail(String orderId) {
+//        setUpRealTimeListenerDetailOrder(orderId);
+//        return orderDetail;
+//    }
 }

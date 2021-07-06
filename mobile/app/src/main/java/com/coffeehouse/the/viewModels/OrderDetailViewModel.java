@@ -13,7 +13,6 @@ import java.util.List;
 public class OrderDetailViewModel extends ViewModel {
     private Cart cart = new Cart();
     private int totalBill = cart.getTotalCartValue();
-    private OrdersRepo ordersRepo = new OrdersRepo();
 
     public OrderDetailViewModel() {
     }
@@ -40,7 +39,7 @@ public class OrderDetailViewModel extends ViewModel {
         this.totalBill = totalBill;
     }
 
-    public LiveData<Order> getOrderRealTime(String orderId) {
-        return ordersRepo.getOrderDetail(orderId);
-    }
+//    public LiveData<Order> getOrderRealTime(String orderId) {
+//        return ordersRepo.getOrderDetail(orderId);
+//    }
 }

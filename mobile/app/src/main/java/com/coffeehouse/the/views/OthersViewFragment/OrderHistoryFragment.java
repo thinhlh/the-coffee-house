@@ -9,7 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,14 +16,11 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.coffeehouse.the.R;
 import com.coffeehouse.the.adapter.OrderHistoryAdapter;
 import com.coffeehouse.the.databinding.OrderHistoryFragmentBinding;
-import com.coffeehouse.the.models.Cart;
 import com.coffeehouse.the.viewModels.OrderHistoryViewModel;
-import com.coffeehouse.the.views.OrderFragment;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.jetbrains.annotations.NotNull;
 
-public class OrderHistoryFragment extends Fragment implements OrderHistoryDetailFragment.onBuyBackListener {
+public class OrderHistoryFragment extends Fragment {
     private OrderHistoryViewModel orderHistoryViewModel;
     private OrderHistoryAdapter orderHistoryAdapter;
     private OrderHistoryFragmentBinding historyFragmentBinding;
@@ -51,14 +47,14 @@ public class OrderHistoryFragment extends Fragment implements OrderHistoryDetail
         //End binding
 
         historyFragmentBinding.closeOrderHistoryFragment.setOnClickListener(listener -> {
-            getFragmentManager().popBackStack();
+            Fragment fragment = new OthersFragment();
+            getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
         });
 
         orderHistoryAdapter.setClickListener(order -> {
             OrderHistoryDetailFragment fragment = new OrderHistoryDetailFragment();
-            fragment.setTargetFragment(OrderHistoryFragment.this, 77);
             fragment.setOrder(order);
-            getFragmentManager().beginTransaction().replace(this.getId(), fragment).addToBackStack(null).commit();
+            getFragmentManager().beginTransaction().replace(this.getId(), fragment).commit();
         });
 
         return v;
@@ -66,13 +62,5 @@ public class OrderHistoryFragment extends Fragment implements OrderHistoryDetail
 
     private void getOrder(OrderHistoryAdapter orderHistoryAdapter) {
         orderHistoryViewModel.getOrders().observe(getViewLifecycleOwner(), orderHistoryAdapter::setItems);
-    }
-
-    @Override
-    public void onBuyBack(Cart cart) {
-        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.home_fragment_container, new OrderFragment()).addToBackStack(null).commit();
-        BottomNavigationView bottomNavigationView = getActivity().findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.action_order);
     }
 }
